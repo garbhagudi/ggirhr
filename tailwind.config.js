@@ -3,6 +3,7 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
     "./src/sections/**/*.{js,ts,jsx,tsx}",
+    "node_modules/@zach.codes/react-calendar/dist/**/*.js",
   ],
   presets: [],
   darkMode: "media", // or 'class'
@@ -42,6 +43,18 @@ module.exports = {
       fuchsia: colors.fuchsia,
       pink: colors.pink,
       rose: colors.rose,
+      brandDark: "#363636",
+      brandBlue: "#249dc1",
+      brandBlueDark1: "#208dae",
+      brandBlueDark2: "#1d7e9a",
+      brandBlueDark3: "#196e87",
+      brandBlueLite1: "#3aa7c7",
+      brandBlueLite2: "#50b1cd",
+      brandBlueLite3: "#66bad4",
+      brandPink: "#ea4b6a",
+      brandPink2: "#ec5d79",
+      brandPink3: "#ee6f88",
+      brandPink4: "#f08197",
     }),
     columns: {
       auto: "auto",
@@ -352,7 +365,7 @@ module.exports = {
     },
     fontFamily: {
       sans: [
-        '"Noto Sans Display"',
+        '"Nunito"',
         "-apple-system",
         "BlinkMacSystemFont",
         "system-ui",
@@ -385,7 +398,7 @@ module.exports = {
         '"Courier New"',
         "monospace",
       ],
-      heading: ["B612"]
+      heading: ["B612"],
     },
     fontSize: {
       xs: ["0.75rem", { lineHeight: "1rem" }],
