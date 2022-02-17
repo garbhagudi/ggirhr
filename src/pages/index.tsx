@@ -4,65 +4,6 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Home from "sections/Home";
 
-const Data = [
-  {
-    id: 1,
-    name: "lorem ipsum",
-    designation: "Designer",
-    image:
-      "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
-  },
-  {
-    id: 2,
-    name: "lorem ipsum",
-    designation: "Designer",
-    image:
-      "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
-  },
-  {
-    id: 3,
-    name: "lorem ipsum",
-    designation: "Designer",
-    image:
-      "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
-  },
-  {
-    id: 4,
-    name: "lorem ipsum",
-    designation: "Designer",
-    image:
-      "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
-  },
-  {
-    id: 5,
-    name: "lorem ipsum",
-    designation: "Designer",
-    image:
-      "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
-  },
-  {
-    id: 6,
-    name: "lorem ipsum",
-    designation: "Designer",
-    image:
-      "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
-  },
-  {
-    id: 7,
-    name: "lorem ipsum",
-    designation: "Designer",
-    image:
-      "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
-  },
-  {
-    id: 8,
-    name: "lorem ipsum",
-    designation: "Designer",
-    image:
-      "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
-  },
-];
-
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
@@ -101,7 +42,7 @@ const responsive_team = {
   },
 };
 
-const IndexPage = ({ banners }) => {
+const IndexPage = ({ HomeData }) => {
   return (
     <div>
       <Carousel
@@ -111,7 +52,7 @@ const IndexPage = ({ banners }) => {
         autoPlay={true}
         autoPlaySpeed={5000}
       >
-        {banners.map((items: any) => (
+        {HomeData.banners.map((items: any) => (
           <div className="" key={items?.id}>
             <a href={items?.url}>
               <img src={items?.image?.url} alt={items?.title} />
@@ -131,25 +72,29 @@ const IndexPage = ({ banners }) => {
             responsive={responsive_team}
             ssr={true}
             autoPlaySpeed={5000}
+            infinite={true}
           >
-            {Data.map((item) => (
+            {HomeData?.teachers?.map((item: any) => (
               <div
-                className="w-full bg-white rounded-lg p-12 flex flex-col justify-center items-center"
-                key={item.id}
+                className="w-full bg-white rounded-lg p-6 flex flex-col justify-center items-center"
+                key={item?.id}
               >
                 <div className="mb-8">
                   <img
                     className="object-center object-cover rounded-full h-48 w-48"
-                    src={item.image}
-                    alt={item.name}
+                    src={item?.image?.url}
+                    alt={item?.name}
                   />
                 </div>
                 <div className="text-center">
-                  <p className="text-xl text-gray-700 font-bold mb-2">
-                    {item.name}
+                  <p className="text-lg text-gray-700 font-bold mb-2">
+                    {item?.name}
                   </p>
-                  <p className="text-base text-gray-400 font-normal">
-                    {item.designation}
+                  <p className=" text-brandBlue text-sm">
+                    {item?.qualification}
+                  </p>
+                  <p className=" text-brandPink  text-sm">
+                    {item?.designation}
                   </p>
                 </div>
               </div>
@@ -181,14 +126,24 @@ export const getServerSideProps = async () => {
           url
         }
       }
+      teachers {
+        name
+        id
+        qualification
+        designation
+        slug
+        image {
+          url
+        }
+      }
     }
   `;
   const data = await graphQLClient.request(query);
-  const banners = data.banners;
+  const HomeData = data;
 
   return {
     props: {
-      banners,
+      HomeData,
     },
   };
 };

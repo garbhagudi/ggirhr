@@ -59,7 +59,7 @@ const Features = () => {
             <div className="p-4" key={item.id}>
               <div className="bg-white p-6 rounded-lg">
                 <img
-                  className="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded w-full object-cover object-center mb-6"
+                  className="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded-lg w-full object-cover object-center mb-6"
                   src={item.image}
                   alt={item.Name}
                 />
