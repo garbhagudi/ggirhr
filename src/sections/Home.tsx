@@ -4,21 +4,26 @@ import Overview from "sections/Home/Overview";
 import Courses from "sections/Home/Courses";
 import Stats from "sections/Home/Stats";
 import Testimonial from "sections/Home/Testimonials";
-// import Feartures from "sections/Home/Feartures";
+import Feartures from "sections/Home/Feartures";
 import Video from "sections/Home/Video";
 
-const Home = () => {
+export const Home = () => {
   return (
     <div>
       {/* <Hero /> */}
       <Overview />
-      {/* <Feartures /> */}
       <Courses />
-      <Video />
-      <Stats />
-      <Testimonial />
     </div>
   );
 };
 
-export default Home;
+export const Home_2 = () => {
+  return (
+    <div>
+      <Video />
+      <Stats />
+      <Feartures />
+      <Testimonial />
+    </div>
+  );
+};

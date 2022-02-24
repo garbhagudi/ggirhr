@@ -2,7 +2,7 @@ import React from "react";
 import { gql, GraphQLClient } from "graphql-request";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Home from "sections/Home";
+import { Home, Home_2 } from "sections/Home";
 
 const responsive = {
   superLargeDesktop: {
@@ -102,6 +102,7 @@ const IndexPage = ({ HomeData }) => {
           </Carousel>
         </div>
       </section>
+      <Home_2 />
     </div>
   );
 };
