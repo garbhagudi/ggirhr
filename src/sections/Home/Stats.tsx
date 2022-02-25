@@ -10,33 +10,33 @@ const Data = [
   {
     id: 1,
     icon: <MapIcon />,
-    stat: "450",
-    describe: "Happy Couples",
+    stat: "5+",
+    describe: "Locations for Hands-on",
   },
   {
     id: 2,
     icon: <AcademicCapIcon />,
     stat: "10+",
-    describe: "Insurance Solutions",
+    describe: "Courses Acailable",
   },
   {
     id: 3,
     icon: <LibraryIcon />,
-    stat: "35+",
-    describe: "experience",
+    stat: "12+",
+    describe: "Experienced Staff",
   },
   {
     id: 4,
     icon: <GlobeIcon />,
-    stat: "530",
-    describe: "projects completed",
+    stat: "1000+",
+    describe: "Cases In Library",
   },
 ];
 
 const Stats = () => {
   return (
     <div>
-      <div className="mx-auto max-w-7xl my-20 lg:mt-24 lg:mb-24">
+      <div className="mx-auto max-w-7xl my-12">
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {Data.map((item) => (
             <div className="flex justify-center w-full py-6" key={item.id}>

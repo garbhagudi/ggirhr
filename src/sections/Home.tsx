@@ -1,5 +1,5 @@
 import React from "react";
-// import Hero from "sections/Home/Hero";
+import Hero from "sections/Home/Hero";
 import Overview from "sections/Home/Overview";
 import Courses from "sections/Home/Courses";
 import Stats from "sections/Home/Stats";
@@ -10,7 +10,7 @@ import Video from "sections/Home/Video";
 export const Home = () => {
   return (
     <div>
-      {/* <Hero /> */}
+      <Hero />
       <Overview />
       <Courses />
     </div>
@@ -20,8 +20,8 @@ export const Home = () => {
 export const Home_2 = () => {
   return (
     <div>
-      <Video />
       <Stats />
+      <Video />
       <Feartures />
       <Testimonial />
     </div>

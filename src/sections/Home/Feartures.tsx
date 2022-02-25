@@ -46,13 +46,13 @@ const Feartures = () => {
       <div className="max-w-7xl mx-auto">
         <section className="mx-auto container py-12 ">
           <div className="flex justify-center items-center flex-col">
-            <div className="lg:text-6xl md:text-5xl text-4xl font-black leading-10 text-center text-gray-800">
-              <h1>Features</h1>
+            <div className="lg:text-4xl md:text-5xl text-3xl text-brandDark leading-10 text-center font-bold font-heading">
+              <h1>Research Wing</h1>
             </div>
-            <div className="pt-24 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2 justify-center items-center xl:gap-y-16 gap-y-5 gap-x-4 lg:gap-x-20 xl:gap-x-0 lg:px-10 xl:px-0">
+            <div className="pt-16 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2 justify-center items-center xl:gap-y-8 gap-y-3 gap-x-4 lg:gap-x-20 xl:gap-x-0 lg:px-10 xl:px-0">
               {Data.map((item) => (
                 <div
-                  className="cursor-pointer hover:shadow py-3 xl:px-4 rounded xl:w-96 md:w-60 w-56 flex justify-center items-center flex-col"
+                  className="cursor-pointer hover:shadow-xl py-3 xl:px-4 rounded xl:w-96 md:w-72 w-56 flex justify-center items-center flex-col"
                   key={item.id}
                 >
                   <div className="mb-6 md:h-16 md:w-16 w-12 h-12 text-brandBlue">

@@ -3,10 +3,10 @@ import React from "react";
 const Hero = () => {
   return (
     <div className="max-w-7xl mx-auto my-10">
-      <div className="relative w-full h-full pb-10">
+      <div className="relative w-full h-full pb-4">
         <div className="relative px-4 xl:px-0 container mx-auto md:flex items-center gap-8">
           <div className="text-color w-full md:w-1/3 lg:w-1/2 pt-16 lg:pt-8 xl:pt-16">
-            <h1 className="text-4xl md:text-4xl lg:text-6xl w-11/12 lg:w-11/12 xl:w-full xl:text-6xl text-gray-900 font-bold font-heading xl:-mt-16">
+            <h1 className="text-4xl md:text-4xl lg:text-6xl w-11/12 lg:w-11/12 xl:w-full xl:text-5xl text-gray-900 font-bold font-heading xl:-mt-16">
               GGIRHR
             </h1>
             <div className="text-base lg:text-base pb-10 sm:pb-0 pt-10 xl:pt-6">
@@ -30,7 +30,7 @@ const Hero = () => {
           </div>
           <img
             className="w-full mt-6 md:mt-0 object-cover md:w-2/3 lg:w-1/2 md:-ml-4 lg:-ml-4 xl:ml-0"
-            src="https://tuk-cdn.s3.amazonaws.com/can-uploader/Graphic.png"
+            src="http://placehold.jp/3124x2332.png"
             alt="sample page"
             role="img"
           />

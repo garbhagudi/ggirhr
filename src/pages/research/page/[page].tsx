@@ -6,7 +6,7 @@ const limit = 6;
 const Research = () => {
   return (
     <div>
-      <section className="pt-20 lg:pt-[120px] pb-10 lg:pb-20">
+      <section className="max-w-7xl mx-auto pt-20 lg:pt-[120px] pb-10 lg:pb-20">
         <div className="container">
           <div className="flex flex-wrap justify-center -mx-4">
             <div className="w-full px-4">

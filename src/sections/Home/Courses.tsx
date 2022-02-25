@@ -49,7 +49,7 @@ const Features = () => {
       <div className="max-w-7xl px-5 py-4 mx-auto">
         <div className="flex flex-wrap w-full mb-4 p-4">
           <div className="w-full mb-6 lg:mb-0">
-            <h1 className="sm:text-4xl text-5xl font-medium title-font mb-2 text-gray-900 text-center">
+            <h1 className="sm:text-4xl text-4xl font-bold mb-2 text-gray-900 text-center font-heading">
               Courses
             </h1>
           </div>
@@ -59,7 +59,7 @@ const Features = () => {
             <div className="p-4" key={item.id}>
               <div className="bg-white p-6 rounded-lg">
                 <img
-                  className="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded-lg w-full object-cover object-center mb-6"
+                  className="lg:h-60 xl:h-56 md:h-64 sm:h-72 xs:h-72 h-72 rounded-2xl w-full object-cover object-center mb-6"
                   src={item.image}
                   alt={item.Name}
                 />

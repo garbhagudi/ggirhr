@@ -31,7 +31,7 @@ const Header = () => {
                       className={
                         router.pathname == "/"
                           ? "bg-brandBlue text-white px-3 py-2 rounded-2xl text-sm font-content"
-                          : "text-gray-700 hover:bg-brandBlue hover:text-white text-sm cursor-pointer"
+                          : "text-gray-700 hover:bg-brandBlue px-3 py-2 rounded-2xl hover:text-white text-sm cursor-pointer"
                       }
                     >
                       Home
@@ -47,10 +47,10 @@ const Header = () => {
                     <Events />
                   </span>
                   <span className="text-gray-900 hover:bg-brandBlue hover:text-white rounded-2xl px-3 py-2 text-sm">
-                    Research &amp; Journals
+                    <Link href="/research"> Research &amp; Journals </Link>
                   </span>
                   <span className="text-gray-900 hover:bg-brandBlue hover:text-white rounded-2xl px-3 py-2 text-sm">
-                    Blogs
+                    <Link href="/blogs/page/1">Blogs</Link>
                   </span>
                   <span className="bg-brandBlue text-white rounded-2xl px-3 py-2 text-sm">
                     Contact Us
