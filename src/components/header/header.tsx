@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { About, Courses, Events } from "components/header/popover";
+import { About, Courses } from "components/header/popover";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   return (
     <div className="sticky top-0 z-50">
-      <nav className="border-b pb-4 bg-white shadow-xl">
+      <nav className="border-b pb-4 bg-white shadow-2xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center align-middle cursor-pointer">
@@ -30,7 +30,7 @@ const Header = () => {
                     <span
                       className={
                         router.pathname == "/"
-                          ? "bg-brandBlue text-white px-3 py-2 rounded-2xl text-sm font-content"
+                          ? "bg-brandBlue text-white px-3 py-2 rounded-2xl text-sm"
                           : "text-gray-700 hover:bg-brandBlue px-3 py-2 rounded-2xl hover:text-white text-sm cursor-pointer"
                       }
                     >
@@ -43,12 +43,28 @@ const Header = () => {
                   <span className="text-gray-900 hover:bg-brandBlue hover:text-white rounded-2xl px-3 py-2 text-sm">
                     <Courses />
                   </span>
-                  <span className="text-gray-900 hover:bg-brandBlue hover:text-white rounded-2xl px-3 py-2 text-sm">
-                    <Events />
-                  </span>
-                  <span className="text-gray-900 hover:bg-brandBlue hover:text-white rounded-2xl px-3 py-2 text-sm">
-                    <Link href="/research"> Research &amp; Journals </Link>
-                  </span>
+                  <Link href="/events" passHref>
+                    <span
+                      className={
+                        router.pathname == "/events"
+                          ? "bg-brandBlue text-white px-3 py-2 rounded-2xl text-sm font-content"
+                          : "text-gray-700 hover:bg-brandBlue px-3 py-2 rounded-2xl hover:text-white text-sm cursor-pointer"
+                      }
+                    >
+                      Events & Webinars
+                    </span>
+                  </Link>
+                  <Link href="/research" passHref>
+                    <span
+                      className={
+                        router.pathname == "/research"
+                          ? "bg-brandBlue text-white px-3 py-2 rounded-2xl text-sm font-content"
+                          : "text-gray-700 hover:bg-brandBlue px-3 py-2 rounded-2xl hover:text-white text-sm cursor-pointer"
+                      }
+                    >
+                      Research & Journals
+                    </span>
+                  </Link>
                   <span className="text-gray-900 hover:bg-brandBlue hover:text-white rounded-2xl px-3 py-2 text-sm">
                     <Link href="/blogs/page/1">Blogs</Link>
                   </span>
@@ -133,7 +149,7 @@ const Header = () => {
                   <Courses />
                 </span>
                 <span className="text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm">
-                  <Events />
+                  Events and Webinars
                 </span>
                 <span className="text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm">
                   Research

@@ -3,7 +3,7 @@ import React from "react";
 const Overview = () => {
   return (
     <div>
-      <div className="max-w-7xl mx-auto lg:py-12 lg:px-20 md:py-12 py-9">
+      <div className="max-w-7xl mx-auto px-4 xl:px-0 lg:px-12 md:py-12 py-9">
         <div className="lg:w-10/12 w-full">
           <h2 className="xl:w-8/12 lg:w-10/12 w-full font-bold text-gray-800 lg:text-4xl text-4xl lg:leading-10 leading-9 mt-2 font-heading">
             Why GGIRHR
@@ -20,8 +20,8 @@ const Overview = () => {
 
         <div className="lg:mt-14 sm:mt-10 mt-12">
           <img
-            className=" w-full"
-            src="https://i.ibb.co/GvwJnvn/Group-736.png"
+            className=" w-full rounded-xl"
+            src="http://placehold.jp/1280x352.png"
             alt="Group of people Chilling"
           />
         </div>
@@ -52,8 +52,8 @@ const Overview = () => {
           </div>
           <div className="lg:flex items-center w-full lg:w-1/2 ">
             <img
-              className="w-full"
-              src="https://i.ibb.co/2kxWpNm/Group-740.png"
+              className="w-full rounded-xl"
+              src="http://placehold.jp/624x365.png"
               alt="people discussing on board"
             />
           </div>

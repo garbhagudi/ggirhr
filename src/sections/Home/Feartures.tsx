@@ -49,6 +49,11 @@ const Feartures = () => {
             <div className="lg:text-4xl md:text-5xl text-3xl text-brandDark leading-10 text-center font-bold font-heading">
               <h1>Research Wing</h1>
             </div>
+            <h3 className="text-center max-w-3xl mx-auto font-semibold mt-4">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
+              asperiores, tempora deleniti amet esse quam adipisci? Dignissimos,
+              itaque. Dolores, qui!
+            </h3>
             <div className="pt-16 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2 justify-center items-center xl:gap-y-8 gap-y-3 gap-x-4 lg:gap-x-20 xl:gap-x-0 lg:px-10 xl:px-0">
               {Data.map((item) => (
                 <div

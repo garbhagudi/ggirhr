@@ -37,6 +37,16 @@ const Stats = () => {
   return (
     <div>
       <div className="mx-auto max-w-7xl my-12">
+        <div className="text-center max-w-3xl mx-auto">
+          <h1 className="font-bold text-3xl md:text-4xl font-heading">
+            Something about the numbers
+          </h1>
+          <p className="mt-4 font-semibold mb-10">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque nisi
+            atque natus labore est corporis soluta unde nesciunt, officiis
+            voluptates.
+          </p>
+        </div>
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {Data.map((item) => (
             <div className="flex justify-center w-full py-6" key={item.id}>

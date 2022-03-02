@@ -14,23 +14,34 @@ const Cta = () => {
             <p className="text-3xl md:text-4xl text-brandBlueDark2 my-4 leading-relaxed md:leading-snug">
               Be a part of the most advanced studies in infertility
             </p>
-            <p className="font-sans text-sm md:text-lg my-1">
-              {" "}
-              <PhoneIcon className="w-5 h-5 inline-block mr-4" />
-              +918880000909
-            </p>
-            <p className="font-sans text-sm md:text-lg my-1">
-              <AtSymbolIcon className="w-5 h-5 inline-block mr-4" />
-              research@ggirhr.com
-            </p>
 
-            <p className="font-sans text-sm md:text-lg my-1">
-              <LocationMarkerIcon className="w-5 h-5 inline-block" />
-              <span className="ml-4">
-                #26, Pattalamma Temple Rd, South End Circle, Basavanagudi,
-                Bengaluru, Karnataka 560004
-              </span>
-            </p>
+            <table>
+              <tr>
+                <td>
+                  <PhoneIcon className="w-5 h-5 inline-block mr-4" />
+                </td>
+                <td>
+                  <a href="tel:+918880000909">+918880000909</a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <AtSymbolIcon className="w-5 h-5 inline-block mr-4" />
+                </td>
+                <td>
+                  <a href="mailto:research@ggirhr.com">research@ggirhr.com</a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <LocationMarkerIcon className="w-5 h-5 inline-block" />
+                </td>
+                <td>
+                  #26, Pattalamma Temple Rd, South End Circle, Basavanagudi,
+                  Bengaluru, Karnataka 560004
+                </td>
+              </tr>
+            </table>
 
             <div>
               <button className="px-4 py-2 bg-brandBlue text-white font-semibold rounded-lg mt-4 hover:bg-brandBlueDark3">

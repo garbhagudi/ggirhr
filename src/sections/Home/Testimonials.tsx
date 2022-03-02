@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-export const generateDiceBearBottts = (seed) =>
+export const generateDiceBearBottts = (seed: number) =>
   `https://avatars.dicebear.com/api/jdenticon/${seed}.svg`;
 
 const data = [

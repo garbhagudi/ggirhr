@@ -58,6 +58,11 @@ const Video = () => {
       <span className="text-2xl lg:text-4xl font-extrabold text-brandDark font-heading">
         Testimonials from our happy couples
       </span>
+      <h3 className="text-center max-w-3xl mx-auto font-semibold mt-4">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut asperiores,
+        tempora deleniti amet esse quam adipisci? Dignissimos, itaque. Dolores,
+        qui!
+      </h3>
       <Carousel
         responsive={responsive}
         partialVisbile={true}

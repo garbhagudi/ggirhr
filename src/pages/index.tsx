@@ -1,7 +1,6 @@
 import React from "react";
 import { gql, GraphQLClient } from "graphql-request";
 import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import { Home, Home_2 } from "sections/Home";
 
 const responsive = {
@@ -61,11 +60,16 @@ const IndexPage = ({ HomeData }) => {
         ))}
       </Carousel>
       <Home />
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
+      <section className="max-w-6xl mx-auto px-4 xl:px-0 sm:px-6 py-12">
         <div className="text-center pb-12">
           <h1 className="font-bold text-3xl md:text-4xl lg:text-4xl font-heading text-gray-900">
             Check our awesome team members
           </h1>
+          <h3 className="text-center max-w-3xl mx-auto font-semibold mt-4">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
+            asperiores, tempora deleniti amet esse quam adipisci? Dignissimos,
+            itaque. Dolores, qui!
+          </h3>
         </div>
         <div className="gap-2">
           <Carousel

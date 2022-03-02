@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/globals.css";
+import "../styles/caoursel.css";
 import Header from "components/header/header";
 import Footer from "components/footer/footer";
 

@@ -21,7 +21,7 @@ const BlogList = ({
             BLOGS
           </h2>
         </div>
-        <div className="mt-12 max-w-xl mx-auto grid gap-8 lg:grid-cols-3 lg:max-w-none w">
+        <div className="mt-12 max-w-xl mx-auto grid gap-8 lg:grid-cols-3 lg:max-w-none">
           {blogs?.map((item) => (
             <div
               key={item?.node?.id}

@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -24,13 +25,13 @@ const Hero = () => {
 
             <div className="lg:flex">
               <button className="hover:opacity-90 text-base w-full xl:text-base xl:w-48 mt-4 xl:mt-8 py-4 bg-brandBlue text-white font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 rounded-lg">
-                Learn More
+                <Link href="/about">Learn More</Link>
               </button>
             </div>
           </div>
           <img
-            className="w-full mt-6 md:mt-0 object-cover md:w-2/3 lg:w-1/2 md:-ml-4 lg:-ml-4 xl:ml-0"
-            src="http://placehold.jp/3124x2332.png"
+            className="w-full mt-6 md:mt-0 object-cover md:w-2/3 lg:w-1/2 md:-ml-4 lg:-ml-4 xl:ml-0 rounded-xl"
+            src="http://placehold.jp/650x480.png"
             alt="sample page"
             role="img"
           />
