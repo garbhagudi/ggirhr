@@ -65,10 +65,10 @@ const Features = () => {
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 justify-center items-center">
           {Data.map((item) => (
             <div
-              className="hover:shadow-2xl border border-gray-50 rounded-3xl"
+              className="hover:shadow-2xl border-2 border-gray-50 rounded-3xl bg-gray-50"
               key={item.id}
             >
-              <div className="overflow-hidden ">
+              <div className="overflow-hidden">
                 <img
                   className="rounded-t-3xl mb-6"
                   src={item.image}

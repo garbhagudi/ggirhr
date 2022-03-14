@@ -1,5 +1,7 @@
 import React from "react";
 import { GraphQLClient, gql } from "graphql-request";
+import { ChevronRightIcon } from "@heroicons/react/solid";
+import Link from "next/link";
 
 export const getServerSideProps = async () => {
   const url = process.env.ENDPOINT;
@@ -46,43 +48,31 @@ const Course = ({ courses }) => {
         <div className="mt-12 max-w-xl mx-auto grid gap-8 lg:grid-cols-3 lg:max-w-none">
           {courses?.map((items) => (
             <div
-              className="max-w-sm bg-white rounded-2xl border-2 border-gray-100 shadow-md mx-auto hover:shadow-2xl overflow-hidden"
+              className="max-w-sm bg-white rounded-2xl border-2 border-gray-100 shadow-md mx-auto hover:shadow-2xl overflow-hidden cursor-pointer"
               key={items.id}
             >
-              <a href={`/courses/${items.slug}`}>
+              <Link href={`/courses/${items.slug}`} passHref>
                 <img
                   className="rounded-t-lg"
                   src={items?.courseImage?.url}
                   alt={items?.title}
                 />
-              </a>
+              </Link>
               <div className="p-5">
-                <a href={`/courses/${items.slug}`}>
-                  <h5 className="mb-2 text-2xl tracking-tight text-gray-900 font-heading">
+                <Link href={`/courses/${items.slug}`} passHref>
+                  <h5 className="mb-2 text-xl tracking-tight text-gray-900 font-heading font-semibold">
                     {items?.title}
                   </h5>
-                </a>
+                </Link>
                 <p className="mb-3 font-normal text-gray-700 ">
                   {items.objective.slice(0, 160)}...
                 </p>
-                <a
-                  href={`/courses/${items.slug}`}
-                  className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-brandBlue rounded-xl hover:bg-brandBlueDark3 focus:ring-4 focus:ring-blue-300 "
-                >
-                  Read more
-                  <svg
-                    className="ml-2 -mr-1 w-4 h-4"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </a>
+                <Link href={`/courses/${items.slug}`} passHref>
+                  <span className="items-center py-2 px-3 text-sm font-medium text-center text-white bg-brandBlue rounded-xl hover:bg-brandBlueDark3 focus:ring-4 focus:ring-blue-300">
+                    Read more{" "}
+                    <ChevronRightIcon className="text-white w-4 h-4 inline-flex" />{" "}
+                  </span>
+                </Link>
               </div>
             </div>
           ))}

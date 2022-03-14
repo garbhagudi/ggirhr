@@ -11,7 +11,7 @@ const IndexPage = () => {
       <Banner />
       <Content />
       <Stats />
-      <Alumni />
+      {/* <Alumni /> */}
       <Cta />
     </div>
   );
