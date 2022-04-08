@@ -56,30 +56,27 @@ const Features = () => {
               Courses
             </h1>
             <h3 className="text-center max-w-3xl mx-auto font-semibold mt-4 text-gray-900">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
-              asperiores, tempora deleniti amet esse quam adipisci? Dignissimos,
-              itaque. Dolores, qui!
+              Check out our most popular courses below
             </h3>
           </div>
         </div>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 justify-center items-center">
           {Data.map((item) => (
-            <div
-              className="hover:shadow-2xl border-2 border-gray-50 rounded-3xl bg-gray-50"
-              key={item.id}
-            >
+            <div className="hover:shadow-2xl rounded-3xl" key={item.id}>
               <div className="overflow-hidden">
                 <img
-                  className="rounded-t-3xl mb-6"
+                  className="rounded-t-3xl"
                   src={item.image}
                   alt={item.Name}
                 />
-                <h2 className="text-lg text-gray-900 font-medium title-font mb-4 md:ml-2 text-center md:text-left">
-                  {item.Name}
-                </h2>
-                <p className="leading-relaxed text-base md:ml-2 text-center md:text-left mb-6 ">
-                  {item.details.slice(0, 80)}...
-                </p>
+                <div className="border-r-2 border-l-2 border-b-2 rounded-b-3xl bg-gray-50">
+                  <h2 className="text-lg text-gray-900 font-medium title-font py-4 md:ml-2 text-center md:text-left">
+                    {item.Name}
+                  </h2>
+                  <p className="leading-relaxed text-base md:ml-2 text-center md:text-left mb-6 ">
+                    {item.details.slice(0, 80)}...
+                  </p>
+                </div>
               </div>
             </div>
           ))}

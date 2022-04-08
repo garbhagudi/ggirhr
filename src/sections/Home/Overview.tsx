@@ -9,12 +9,15 @@ const Overview = () => {
             Why GGIRHR
           </h2>
           <p className="font-normal text-base leading-6 text-gray-600 mt-6">
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout. The point
-            of using Lorem Ipsum.In the first place we have granted to God, and
-            by this our present charter confirmed for us and our heirs forever
-            that the English Church shall be free, and shall have her rights
-            entire,
+            At GGIRHR, we have realized a severe shortage of trained clinicians,
+            embryologists, and support staff in infertility, leading to
+            compromised treatment for many infertile couples worldwide.
+            GarbhaGudi Institute of Reproductive Health & Research (GGIRHR) is
+            our venture to address this lacuna by offering advanced fellowship
+            courses and short-term training courses, recognized by Rajiv Gandhi
+            Institute of Health Sciences and Indian Medical Association, in
+            Clinical ART, Embryology, and Obstetric Ultrasound that cater to the
+            needs of a busy practitioner.
           </p>
         </div>
 
@@ -32,22 +35,18 @@ const Overview = () => {
               Our Story
             </h2>
             <p className="font-normal text-base leading-6 text-gray-600 mt-4">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum.In the first place we have granted to
-              God, and by this our present charter confirmed for us and our
-              heirs forever that the English Church shall be free, and shall
-              have her rights entire, and her liberties inviolate; and we will
-              that it be thus observed; which is apparent from
-            </p>
-            <p className="font-normal text-base leading-6 text-gray-600 mt-6">
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum.In the first place we have granted to
-              God, and by this our present charter confirmed for us and our
-              heirs forever that the English Church shall be free, and shall
-              have her rights entire, and her liberties inviolate; and we will
-              that it be thus observed; which is apparent from
+              GarbhaGudi Institute of Reproductive Health & Research (GGIRHR)
+              was established to provide premier quality reproductive medicine
+              and infertility training to clinicians, embryologists,
+              sonologists, and students with a science background, to name a
+              few. We believe in training enthusiastic minds to excel in their
+              desired field. Our infertility courses aim to impart systematic
+              elucidation of all facets of the ART treatments, such as IVF,
+              featuring hands-on IVF training and fellowship programs in
+              Reproductive Medicine for postgraduate doctors. Moreover, GGIRHR’s
+              courses are beneficial in providing insights into the ethical and
+              economic implications of the treatment to equip every individual
+              with full-fledged knowledge.
             </p>
           </div>
           <div className="lg:flex items-center w-full lg:w-1/2 ">

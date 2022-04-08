@@ -10,7 +10,7 @@ const IndexPage = () => {
     <div>
       <Banner />
       <Content />
-      <Stats />
+      {/* <Stats /> */}
       {/* <Alumni /> */}
       <Cta />
     </div>

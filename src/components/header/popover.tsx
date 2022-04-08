@@ -33,27 +33,27 @@ const AboutSection = [
   },
   {
     name: "Our Values",
-    href: "##",
+    href: "/about/values",
     icon: AdjustmentsIcon,
   },
   {
     name: "Vision and Mission",
-    href: "##",
+    href: "/about/mission-and-vision",
     icon: ArchiveIcon,
   },
   {
     name: "Leadership",
-    href: "##",
+    href: "/about/leadership",
     icon: ArchiveIcon,
   },
   {
     name: "Our Faculty",
-    href: "##",
+    href: "/about/faculty",
     icon: AdjustmentsIcon,
   },
   {
     name: "Awards and Accolades",
-    href: "##",
+    href: "/about/awards-and-accolades",
     icon: ArchiveIcon,
   },
 ];

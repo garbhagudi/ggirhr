@@ -28,7 +28,7 @@ const Data = [
   {
     id: 4,
     date: "February 2022",
-    title: "Lorem, ipsum dolor.",
+    title: "IMA",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo asperiores illum, molestias ducimus temporibus nihil.",
     link: "",
@@ -36,7 +36,7 @@ const Data = [
   {
     id: 5,
     date: "February 2022",
-    title: "Lorem, ipsum dolor.",
+    title: "Innaguration",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo asperiores illum, molestias ducimus temporibus nihil.",
     link: "",
@@ -47,7 +47,7 @@ const Content = () => {
   return (
     <div className="max-w-7xl mx-auto">
       <div className="py-16 text-center text-4xl font-heading font-bold">
-        GGIRHR at a glance
+        GGIRHR at a Glance
       </div>
       <ol className="relative border-l border-gray-200 max-w-3xl mx-auto">
         {Data.map((item) => (
