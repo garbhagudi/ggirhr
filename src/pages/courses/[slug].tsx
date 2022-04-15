@@ -12,7 +12,7 @@ const CoursePage = ({ course }) => {
   return (
     <div>
       <div className="py-16 overflow-hidden mx-auto">
-        <div className="max-w-7xl mx-auto px-4 space-y-8 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-3 space-y-8 sm:px-6 lg:px-11">
           <div className="mx-auto">
             <h2 className="text-base text-brandBlue font-semibold tracking-wide uppercase">
               Courses
@@ -28,10 +28,28 @@ const CoursePage = ({ course }) => {
               className="rounded-xl"
             />
           </div>
-          <div className="relative z-10 text-base mx-auto lg:max-w-5xl lg:mx-0">
+          <div className="relative z-10 text-base mx-auto lg:max-w-6xl lg:mx-0">
             <p className="text-lg text-brandDark">{course?.objective}</p>
           </div>
-          <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start">
+          <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none space-x-3">
+            <div className="rounded-md shadow">
+              <a
+                href="#"
+                className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brandBlue hover:bg-brandBlueDark3"
+              >
+                Contact Us
+              </a>
+            </div>
+            <div className="rounded-md shadow flex justify-center">
+              <a
+                href="tel:+918880000909"
+                className="w-full flex items-center justify-center px-5 py-3 bg-white border border-transparent text-base font-medium rounded-md text-brandBlue"
+              >
+                <PhoneIcon className="w-5 h-5 mr-2" /> Call Us
+              </a>
+            </div>
+          </div>
+          <div className="lg:grid lg:grid-cols-2 lg:gap-2 lg:items-start">
             <div className="relative z-10">
               <div className="text-brandDark mx-auto lg:max-w-none">
                 <RichText content={course?.description?.raw.children} />
@@ -48,7 +66,7 @@ const CoursePage = ({ course }) => {
                 <div className="rounded-md shadow flex justify-center">
                   <a
                     href="tel:+918880000909"
-                    className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-brandBlue"
+                    className="w-full flex items-center justify-center px-5 py-3 bg-white border border-transparent text-base font-medium rounded-md text-brandBlue"
                   >
                     <PhoneIcon className="w-5 h-5 mr-2" /> Call Us
                   </a>

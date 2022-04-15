@@ -10,7 +10,7 @@ const values = () => {
             <img
               alt="..."
               className="max-w-full rounded-3xl shadow-lg mb-10"
-              src="https://images.unsplash.com/photo-1647833961026-d44be0f913b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=715&q=80"
+              src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006732/GGIRHR/Images/Our_Values-min_gccmfd.jpg"
             />
           </div>
           <div className="w-full md:w-6/12 lg:w-6/12 ml-auto mr-auto px-4">

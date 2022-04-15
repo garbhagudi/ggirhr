@@ -4,38 +4,28 @@ import { AcademicCapIcon } from "@heroicons/react/solid";
 const Data = [
   {
     id: 1,
-    feature: "lorem ipsum",
-    describe: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    feature: "Internal Ethics Comittee",
+    describe: "Made of eminent and well-qualified members",
     icon: <AcademicCapIcon />,
   },
   {
     id: 2,
-    feature: "lorem ipsum",
-    describe: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    feature: "Full-fledged Research Lab",
+    describe: "To work on innovative and path-breaking technologies",
     icon: <AcademicCapIcon />,
   },
   {
     id: 3,
-    feature: "lorem ipsum",
-    describe: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    feature: "Expert Team",
+    describe:
+      "To help guide and ensure the research is headed in the right direction",
     icon: <AcademicCapIcon />,
   },
   {
     id: 4,
-    feature: "lorem ipsum",
-    describe: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-    icon: <AcademicCapIcon />,
-  },
-  {
-    id: 5,
-    feature: "lorem ipsum",
-    describe: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
-    icon: <AcademicCapIcon />,
-  },
-  {
-    id: 6,
-    feature: "lorem ipsum",
-    describe: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    feature: "Support Staff",
+    describe:
+      "To ensure the documentation, approvals, checks, audits and verifications",
     icon: <AcademicCapIcon />,
   },
 ];
@@ -50,20 +40,21 @@ const Feartures = () => {
               <h1>Research Wing</h1>
             </div>
             <h3 className="text-center max-w-3xl mx-auto font-semibold mt-4">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
-              asperiores, tempora deleniti amet esse quam adipisci? Dignissimos,
-              itaque. Dolores, qui!
+              The research wing of GGIRHR was set up to conduct various studies
+              that can help in diagnosis, treatment, and improved success rates
+              in ART procedures. In this context, GGIRHR has set up the
+              following to assist its endeavours:
             </h3>
-            <div className="pt-16 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2 justify-center items-center xl:gap-y-8 gap-y-3 gap-x-4 lg:gap-x-20 xl:gap-x-0 lg:px-10 xl:px-0">
+            <div className="pt-16 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-2 justify-center items-center xl:gap-y-8 gap-y-3 gap-x-4 lg:gap-x-20 xl:gap-x-0 lg:px-10 xl:px-0">
               {Data.map((item) => (
                 <div
-                  className="cursor-pointer hover:shadow-xl py-3 xl:px-4 rounded xl:w-96 md:w-72 w-56 flex justify-center items-center flex-col"
+                  className="cursor-pointer hover:shadow-2xl py-3 xl:px-2 rounded-3xl xl:w-96 md:max-w-xl w-56 flex justify-center items-center flex-col"
                   key={item.id}
                 >
                   <div className="mb-6 md:h-16 md:w-16 w-12 h-12 text-brandBlue">
                     {item.icon}
                   </div>
-                  <div className="text-gray-800 text-lg md:text-2xl font-semibold text-center">
+                  <div className="text-gray-800 text-md md:text-xl font-semibold text-center">
                     <h2>{item.feature}</h2>
                   </div>
                   <div className="text-gray-600 mt-2 text-sm md:text-lg text-center ">

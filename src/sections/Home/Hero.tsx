@@ -32,7 +32,7 @@ const Hero = () => {
           </div>
           <img
             className="w-full mt-6 md:mt-0 object-cover md:w-2/3 lg:w-1/2 md:-ml-4 lg:-ml-4 xl:ml-0 rounded-xl"
-            src="http://placehold.jp/650x480.png"
+            src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006732/GGIRHR/Images/Welcome_to_GGIRHR-min_wfxqpr.jpg"
             alt="sample page"
             role="img"
           />

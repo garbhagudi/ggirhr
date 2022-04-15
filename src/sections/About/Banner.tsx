@@ -4,7 +4,7 @@ export default function Banner() {
       <img
         className="mb-10 object-cover object-center"
         alt="hero"
-        src="https://dummyimage.com/1920x630"
+        src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006731/GGIRHR/Images/About_us-min_fofilh.jpg"
       />
       <section className="text-gray-600 body-font">
         <div className="flex pb-16 items-center justify-center flex-col">

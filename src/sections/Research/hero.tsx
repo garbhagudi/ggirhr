@@ -6,20 +6,24 @@ const Hero = () => {
       <div className="flex flex-wrap mt-16">
         <div className="w-full lg:w-5/12 px-4">
           <div className="hero-content md:mt-20">
-            <h1 className=" text-dark font-bold text-4xl sm:text-[42px] lg:text-[40px] xl:text-[42px] leading-snug mb-3 ">
-              Something <br />
-              About the <br />
-              Research.
+            <h1 className=" text-dark font-bold text-4xl sm:text-[42px] lg:text-[40px] xl:text-[42px] leading-snug mb-3 font-heading">
+              Introduction
             </h1>
             <p className="text-base mb-8 text-body-color max-w-2xl">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil
-              molestiae voluptatum at. Natus, facilis laborum quas nemo
-              reiciendis ea consequatur dolore, officiis facere sunt quod
-              aspernatur. Iure doloribus nam beatae cumque? Ut aliquam officiis
-              quod consequatur eius odio nobis quam tempora libero neque,
-              deserunt fugit optio itaque? Minus adipisci, placeat eum aliquid
-              voluptas consequatur, deleniti facilis fuga delectus molestiae
-              dignissimos!
+              GGIRHR - the academic and training unit of GarbhaGudi is headed by
+              a renowned infertility expert – Dr Asha S Vijay, with a vision to
+              establish a robust research platform that conducts various studies
+              that can help in diagnosis, treatment, and improved success rates
+              in ART procedures. Dr Muhammed Asif and Dr Damodara Gowda play
+              their roles as Chief Research Officer and Associate Research
+              Director in GGIRHR’s research wing. <br />
+              <br />
+              The research wing of GGIRHR was set up to conduct various studies
+              that can help in diagnosis, treatment, and improved success rates
+              in ART procedures. The reach of GarbhaGudi IVF Centre, due to its
+              multiple branches and high caseload, helps the team analyse a
+              significant amount of data and arrive at actionable insights to
+              help address the growing infertility issue in India.
             </p>
           </div>
         </div>

@@ -7,42 +7,48 @@ const Data = [
     Name: "IMA-AMS Fellowship in Infertility",
     details:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est ratione cupiditate rem id tempore aut veritatis corporis reiciendis eius assumenda laudantium, aliquid praesentium, recusandae deleniti.",
-    image: "http://placehold.jp/1200x630.png",
+    image:
+      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006731/GGIRHR/Images/IMA-AMS_Fellowship_in_Infertility_Web-min_qsenpy.jpg",
   },
   {
     id: 2,
     Name: "RGUHS Fellowship in Reproductive Medicine",
     details:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est ratione cupiditate rem id tempore aut veritatis corporis reiciendis eius assumenda laudantium, aliquid praesentium, recusandae deleniti.",
-    image: "http://placehold.jp/1200x630.png",
+    image:
+      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006732/GGIRHR/Images/RGUHS_Fellowship_in_Reproductive_Medicine_Web-min_divc6o.jpg",
   },
   {
     id: 3,
     Name: "Institutional Fellowship in Reproductive Medicine",
     details:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est ratione cupiditate rem id tempore aut veritatis corporis reiciendis eius assumenda laudantium, aliquid praesentium, recusandae deleniti.",
-    image: "http://placehold.jp/1200x630.png",
+    image:
+      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006731/GGIRHR/Images/Institutional_Fellowship_in_Reproductive_Medicine_Web-min_jigtbe.jpg",
   },
   {
     id: 4,
     Name: "Non-Resident Fellowship in Infertility",
     details:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est ratione cupiditate rem id tempore aut veritatis corporis reiciendis eius assumenda laudantium, aliquid praesentium, recusandae deleniti.",
-    image: "http://placehold.jp/1200x630.png",
+    image:
+      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006732/GGIRHR/Images/Non-Resident_Fellowship_in_Infertility_Web-min_xiatrk.jpg",
   },
   {
     id: 5,
     Name: "Comprehensive Ultrasound Scan Training",
     details:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est ratione cupiditate rem id tempore aut veritatis corporis reiciendis eius assumenda laudantium, aliquid praesentium, recusandae deleniti.",
-    image: "http://placehold.jp/1200x630.png",
+    image:
+      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006731/GGIRHR/Images/Comprehensive_Ultrasound_Scan_Training_Web-min_glpnij.jpg",
   },
   {
     id: 6,
-    Name: "Regular Embryology",
+    Name: "Institutional Diploma in Embryology",
     details:
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est ratione cupiditate rem id tempore aut veritatis corporis reiciendis eius assumenda laudantium, aliquid praesentium, recusandae deleniti.",
-    image: "http://placehold.jp/1200x630.png",
+    image:
+      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006732/GGIRHR/Images/Regular_Embryology_Web-min_dnpmda.jpg",
   },
 ];
 
