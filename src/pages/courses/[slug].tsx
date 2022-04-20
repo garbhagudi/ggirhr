@@ -25,7 +25,7 @@ const CoursePage = ({ course }) => {
             <img
               src={course?.courseImage?.url}
               alt={course?.title}
-              className="rounded-xl"
+              className=""
             />
           </div>
           <div className="relative z-10 text-base mx-auto lg:max-w-6xl lg:mx-0">

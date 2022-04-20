@@ -32,7 +32,7 @@ const Hero = () => {
           <div className="lg:text-right lg:ml-auto">
             <div className="relative inline-block z-10 pt-11 lg:pt-0">
               <img
-                src="http://placehold.jp/550x550.png"
+                src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1650023180/GGIRHR/Images/About_the_Research_rigfug.jpg"
                 alt="hero"
                 className="max-w-full lg:ml-auto rounded-lg rounded-tl-[48px]"
               />

@@ -35,56 +35,39 @@ export const getServerSideProps = async () => {
 
 const Course = ({ courses }) => {
   return (
-    <section className="pt-20 lg:pt-[120px] pb-10 lg:pb-20 mx-auto max-w-7xl">
-      <div className="container">
-        <div className="flex flex-wrap justify-center -mx-4">
-          <div className="w-full px-4">
-            <div className="text-center mx-auto mb-[60px] lg:mb-20 max-w-[510px]">
-              <h2 className=" font-bold text-3xl sm:text-4xl md:text-[40px] text-dark mb-4 font-heading ">
-                Courses Offered
-              </h2>
-              <p className="text-base text-body-color">
-                Check out the courses offered in various fields at GGIRHR
-              </p>
-            </div>
+    <section className="text-gray-600 body-font mb-10">
+      <div className="max-w-7xl px-4 xl:px-0 py-4 mx-auto">
+        <div className="flex flex-wrap w-full mb-4 p-4">
+          <div className="w-full mb-6 lg:mb-0">
+            <h1 className="sm:text-4xl text-4xl font-bold mb-2 text-gray-900 text-center font-heading">
+              Courses
+            </h1>
+            <h3 className="text-center max-w-3xl mx-auto font-semibold mt-4 text-gray-900">
+              Check out our most popular courses below
+            </h3>
           </div>
         </div>
-        <div className="flex flex-wrap -mx-4 px-5 sm:px-2">
-          {courses?.map((items: any) => (
-            <div className="w-full md:w-1/2 lg:w-1/3 px-2" key={items?.id}>
-              <div className="max-w-lg mx-auto mb-16 ">
-                <div className="overflow-clip mb-3">
-                  <Link href={`/courses/${items?.slug}`} passHref>
-                    <img
-                      src={items?.courseImage?.url}
-                      alt={items?.title}
-                      className="cursor-pointer"
-                    />
-                  </Link>
-                </div>
-                <div>
-                  <span className=" bg-brandBlue hover:bg-brandBlueDark3 rounded-md inline-block text-center py-1 px-4 text-base leading-loose font-semibold text-white mb-2 ">
-                    <Link href={`/courses/${items?.slug}`} passHref>
-                      <span className="flex items-center justify-center ">
-                        Learn More <ChevronRightIcon className="h-6 w-6" />
-                      </span>
-                    </Link>
-                  </span>
-                  <h3>
-                    <a className=" font-semibold text-xl sm:text-2xl lg:text-xl xl:text-xl mb-2 inline-block text-dark hover:text-primary h-12 font-heading">
-                      <Link href={`/courses/${items?.slug}`}>
-                        {items?.title}
-                      </Link>
-                    </a>
-                  </h3>
-                  <p className="text-base text-body-color">
-                    <Link href={`/courses/${items?.slug}`}>
-                      {`${items?.objective.slice(0, 150)}...`}
-                    </Link>
-                  </p>
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 justify-center items-center">
+          {courses.map((item) => (
+            <Link href={`/courses/${item?.slug}`} passHref key={item.id}>
+              <div className="hover:shadow-2xl rounded-3xl cursor-pointer">
+                <div className="overflow-hidden">
+                  <img
+                    className="rounded-t-3xl"
+                    src={item.courseImage.url}
+                    alt={item.title}
+                  />
+                  <div className="border-r-2 border-l-2 border-b-2 rounded-b-3xl bg-gray-50">
+                    <h2 className="text-lg text-gray-900 font-medium title-font py-4 md:ml-2 text-center md:text-left">
+                      {item.title}
+                    </h2>
+                    <p className="leading-relaxed text-base md:ml-2 text-center md:text-left mb-6 ">
+                      {item.objective.slice(0, 140)}...
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

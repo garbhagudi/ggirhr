@@ -7,91 +7,107 @@ import {
 } from "@heroicons/react/solid";
 import { Fragment } from "react";
 
-const solutions = [
-  {
-    name: "Insights",
-    href: "##",
-    icon: AcademicCapIcon,
-  },
-  {
-    name: "Automations",
-    href: "##",
-    icon: AdjustmentsIcon,
-  },
-  {
-    name: "Reports",
-    href: "##",
-    icon: ArchiveIcon,
-  },
-];
-
 const AboutSection = [
   {
     name: "About Us",
     href: "/about",
-    icon: AcademicCapIcon,
+    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/About_Us_copqsk.svg",
   },
   {
     name: "Our Values",
     href: "/about/values",
-    icon: AdjustmentsIcon,
+    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Our_Values_kqjt58.svg",
   },
   {
     name: "Vision and Mission",
     href: "/about/mission-and-vision",
-    icon: ArchiveIcon,
+    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Vision_Mission_ez6ate.svg",
   },
   {
     name: "Leadership",
     href: "/about/leadership",
-    icon: ArchiveIcon,
+    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089736/GGIRHR/Icons/header%20icons%20svg/Leadership_psjunm.svg",
   },
   {
     name: "Our Faculty",
     href: "/about/faculty",
-    icon: AdjustmentsIcon,
+    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Our_Faculty_pvz6gk.svg",
   },
   {
     name: "Awards and Accolades",
     href: "/about/awards-and-accolades",
-    icon: ArchiveIcon,
+    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Awards_Accrolades_gz6spo.svg",
   },
 ];
 
 const courses = {
   fellowships: [
-    { name: "IMA-AMS Fellowship in Infertility", href: "#", icon: ArchiveIcon },
+    {
+      name: "IMA-AMS Fellowship in Infertility",
+      href: "/courses/ima-ams-fellowship-in-infertility",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089736/GGIRHR/Icons/header%20icons%20svg/IMA_-_AMS_xoysuq.svg",
+    },
     {
       name: "RGUHS Fellowship in Reproductive Medicine",
-      href: "#",
-      icon: ArchiveIcon,
+      href: "/courses/rguhs-fellowship-in-reproductive-medicine",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/RGUHS_f22qpk.svg",
     },
     {
       name: "Institutional Fellowship in Reproductive Medicine",
-      href: "#",
-      icon: ArchiveIcon,
+      href: "/courses/institutional-fellowship-in-reproductive-medicine",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089736/GGIRHR/Icons/header%20icons%20svg/Ins_Fellowship_dhuxji.svg",
     },
     {
       name: "Non-Resident Fellowship in Infertility",
-      href: "#",
-      icon: ArchiveIcon,
+      href: "/courses/non-resident-fellowship-in-infertility",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Non_-_Resi_Fellowship_tbyizb.svg",
     },
   ],
   ultrasound: [
     {
       name: "Comprehensive Ultrasound Scan Training",
-      href: "#",
-      icon: ArchiveIcon,
+      href: "/courses/comprehensive-ultrasound-scan-training",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg",
     },
   ],
   andrology: [
-    { name: "Andrology Workshop", href: "#", icon: ArchiveIcon },
-    { name: "Regular Embryology", href: "#", icon: ArchiveIcon },
+    {
+      name: "Andrology Workshop",
+      href: "/courses/andrology-lab-technician-course",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg",
+    },
+    {
+      name: "Comprehensive Embryology Course",
+      href: "/courses/comprehensive-embryology-course",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+    },
+    {
+      name: "Institutional Diploma Embryology",
+      href: "/courses/institutional-diploma-in-embryology",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+    },
+    {
+      name: "PG Diploma in Clinical Embryology",
+      href: "/courses/post-graduate-diploma-in-clinical-embryology",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+    },
   ],
   shortTermCourses: [
-    { name: "IUI Workshop", href: "#", icon: ArchiveIcon },
-    { name: "3 Month Preceptor", href: "#", icon: ArchiveIcon },
-    { name: "6 Month Preceptor", href: "#", icon: ArchiveIcon },
+    {
+      name: "IUI Workshop",
+      href: "/courses/iui-workshop",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089736/GGIRHR/Icons/header%20icons%20svg/IUI_-_Workshop_yvaxxh.svg",
+    },
+    {
+      name: " IVF Preceptor - 3 Month",
+      href: "/courses/ivf-preceptor-course",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089739/GGIRHR/Icons/header%20icons%20svg/3_Months_-_Preceptor_wm2tmx.svg",
+    },
+    {
+      name: "IVF Preceptor - 6 Month",
+      href: "/courses/ivf-preceptor-course",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/6_Months_-_Preceptor_drqlm8.svg",
+    },
   ],
 };
 
@@ -133,10 +149,7 @@ export function About() {
                       className="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-blue-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
                     >
                       <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white sm:h-12 sm:w-12">
-                        <item.icon
-                          aria-hidden="true"
-                          className="text-brandBlue"
-                        />
+                        <img src={item.icon} alt={item.name} />
                       </div>
                       <div className="ml-4">
                         <p className="text-sm font-medium text-gray-900">
@@ -196,10 +209,7 @@ export function Courses() {
                       className="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-blue-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
                     >
                       <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white sm:h-12 sm:w-12">
-                        <item.icon
-                          aria-hidden="true"
-                          className="text-brandBlue"
-                        />
+                        <img src={item.icon} alt={item.name} />
                       </div>
                       <div className="ml-4">
                         <p className="sm:text-sm text-xs font-medium text-gray-900">
@@ -221,10 +231,7 @@ export function Courses() {
                       className="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-blue-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
                     >
                       <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white sm:h-12 sm:w-12">
-                        <item.icon
-                          aria-hidden="true"
-                          className="text-brandBlue"
-                        />
+                        <img src={item.icon} alt={item.name} />
                       </div>
                       <div className="ml-4">
                         <p className="sm:text-sm text-xs font-medium text-gray-900">
@@ -246,10 +253,7 @@ export function Courses() {
                       className="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-blue-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
                     >
                       <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white sm:h-12 sm:w-12">
-                        <item.icon
-                          aria-hidden="true"
-                          className="text-brandBlue"
-                        />
+                        <img src={item.icon} alt={item.name} />
                       </div>
                       <div className="ml-4">
                         <p className="sm:text-sm text-xs font-medium text-gray-900">
@@ -270,10 +274,7 @@ export function Courses() {
                       className="flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-blue-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
                     >
                       <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 text-white sm:h-12 sm:w-12">
-                        <item.icon
-                          aria-hidden="true"
-                          className="text-brandBlue"
-                        />
+                        <img src={item.icon} alt={item.name} />
                       </div>
                       <div className="ml-4">
                         <p className="sm:text-sm text-xs font-medium text-gray-900">

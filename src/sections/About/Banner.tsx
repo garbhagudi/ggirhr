@@ -2,15 +2,15 @@ export default function Banner() {
   return (
     <div className="mx-auto">
       <img
-        className="mb-10 object-cover object-center"
+        className="mb-4 object-cover object-center"
         alt="hero"
         src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006731/GGIRHR/Images/About_us-min_fofilh.jpg"
       />
       <section className="text-gray-600 body-font">
-        <div className="flex pb-16 items-center justify-center flex-col">
+        <div className="flex pb-4 items-center justify-center flex-col">
           <div className="max-w-7xl lg:w-2/3 w-full px-3 sm:px-0">
-            <h1 className="text-center title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 font-heading">
-              About Us
+            <h1 className="py-8 text-center text-4xl font-heading font-bold text-brandDark">
+              About GGIRHR
             </h1>
             <p className="mb-8 leading-relaxed text-lg ">
               GarbhaGudi Institute of Reproductive Health and Research (GGIRHR)
@@ -44,52 +44,30 @@ export default function Banner() {
           </div>
         </div>
       </section>
-      <section className="text-gray-600 body-font">
+      <section className="text-brandDark">
         <div className="container px-5 mx-auto">
-          <div className="flex flex-col text-center w-full mb-20">
-            <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900 font-heading">
+          <div className="w-full mb-8">
+            <h1 className="text-center text-4xl font-heading font-bold text-brandDark">
               Affiliations
             </h1>
-            <p className="text-lg mt-4">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae
-              ad illum aut consequatur delectus velit officiis cum eveniet sequi
-              excepturi?
-            </p>
           </div>
-          <div className="flex flex-wrap m-4 -mt-16">
+          <div className="flex flex-wrap m-4 max-w-4xl mx-auto">
             {Data.map((items) => (
-              <div className="p-4 md:w-1/4" key={items.id}>
-                <div className="flex rounded-lg bg-gray-100 p-8 flex-col">
+              <div className="p-4 md:w-2/4 lg:w-2/4 mx-auto" key={items.id}>
+                <div className="flex rounded-2xl w-96 sm:w-auto bg-gray-100 p-8 flex-col h-44">
                   <div className="flex items-center mb-3">
-                    <div className="w-16 h-16 mr-3 inline-flex items-center justify-center rounded-full bg-brandBlue text-white flex-shrink-0 overflow-hidden">
+                    <div className="w-28 h-28 mr-3 inline-flex items-center justify-center rounded-full bg-brandBlue text-white flex-shrink-0 overflow-hidden">
                       <img src={items.icon} alt={items.organisation} />
                     </div>
-                    <h2 className="text-gray-900 text-lg title-font font-medium">
+                    <h2 className="text-gray-900 text-xl font-semibold">
                       {items.organisation}
                     </h2>
                   </div>
-                  <div className="flex-grow">
-                    <p className="leading-relaxed text-base">
+                  {/* <div className="flex-grow">
+                    <p className="text-center font-semibold text-sm">
                       {items.description}
                     </p>
-                    <a
-                      href={items.link}
-                      className="mt-3 text-brandBlue hover:text-brandBlueDark3 inline-flex items-center"
-                    >
-                      Learn More
-                      <svg
-                        fill="none"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        className="w-4 h-4 ml-2"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M5 12h14M12 5l7 7-7 7"></path>
-                      </svg>
-                    </a>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ))}
@@ -104,29 +82,29 @@ const Data = [
   {
     id: 1,
     organisation: "IMA - Academy of Medical Specialities",
-    icon: "http://placehold.jp/64x64.png",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    link: "/about/affiliations/ima-ams",
+    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650091609/GGIRHR/Icons/header%20icons%20svg/IMA_Logo_dhyw55.svg",
+    description: "IMA-AMS Fellowship in Infertility",
+    // link: "/about/affiliations/ima-ams",
   },
   {
     id: 2,
     organisation: "Rajiv Gandhi University of Health Sciences",
-    icon: "http://placehold.jp/64x64.png",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    link: "/about/affiliations/rguhs",
+    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650091609/GGIRHR/Icons/header%20icons%20svg/RGUHS_Logo_xix5k6.svg",
+    description: "RGUHS Fellowship in Reproductive Medicine",
+    // link: "/about/affiliations/rguhs",
   },
   {
     id: 3,
-    organisation: "NITTE",
-    icon: "http://placehold.jp/64x64.png",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    link: "/about/affiliations/nitte",
+    organisation: "NITTE (Deemed to be University)",
+    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650091609/GGIRHR/Icons/header%20icons%20svg/NITTE_Logo_iy1djy.svg",
+    description: "PG Diploma in clinical Embryology ",
+    // link: "/about/affiliations/nitte",
   },
   {
     id: 4,
     organisation: "Bangalore Bio Innovation Centre",
-    icon: "http://placehold.jp/64x64.png",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-    link: "/about/affiliations/bbc",
+    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650091609/GGIRHR/Icons/header%20icons%20svg/Bnglr_Bio_Inn_Logo_luugz3.svg",
+    description: "PG Diploma in clinical Embryology",
+    // link: "/about/affiliations/bbc",
   },
 ];

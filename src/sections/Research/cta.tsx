@@ -8,20 +8,23 @@ import {
 const Cta = () => {
   return (
     <div>
-      <div className="max-w-7xl mx-auto bg-white text-brandDark">
-        <div className="container mx-auto flex flex-col md:flex-row my-12">
+      <div className="max-w-7xl mx-auto bg-white text-brandDark" id="cta">
+        <div className="container mx-auto flex flex-col md:flex-row">
           <div className="flex flex-col w-full lg:w-2/5 p-8">
             <p className="text-3xl md:text-4xl text-brandBlueDark2 my-4 leading-relaxed md:leading-snug">
-              Be a part of the most advanced studies in infertility
+              Be a part of the most advanced studies and research program in
+              infertility
             </p>
 
             <table>
               <tr>
                 <td>
-                  <PhoneIcon className="w-5 h-5 inline-block mr-4" />
+                  <PhoneIcon className="w-5 h-5 inline-block mr-4 " />
                 </td>
                 <td>
-                  <a href="tel:+918880000909">+918880000909</a>
+                  <a href="tel:+918880000909" className="hover:underline">
+                    +918880000909
+                  </a>
                 </td>
               </tr>
               <tr>
@@ -29,7 +32,12 @@ const Cta = () => {
                   <AtSymbolIcon className="w-5 h-5 inline-block mr-4" />
                 </td>
                 <td>
-                  <a href="mailto:research@ggirhr.com">research@ggirhr.com</a>
+                  <a
+                    href="mailto:research@ggirhr.com"
+                    className="hover:underline"
+                  >
+                    research@ggirhr.com
+                  </a>
                 </td>
               </tr>
               <tr>
@@ -49,7 +57,7 @@ const Cta = () => {
               </button>
             </div>
             <p className="font-sans text-sm md:text-lg my-2 md:my-4">
-              Press the chat icon at the right bottom corner to have a live chat
+              Press the chat icon at the bottom right corner to have a live chat
               with our team.
             </p>
           </div>
