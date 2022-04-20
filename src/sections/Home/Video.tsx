@@ -7,28 +7,28 @@ import "react-multi-carousel/lib/styles.css";
 const data = [
   {
     id: 1,
-    videoId: "xIvoIRASbgg",
+    videoId: "mlOOztCaBwc",
   },
   {
     id: 2,
-    videoId: "YVyaYhk8Hbk",
+    videoId: "pqHz_W_SxWg",
   },
 
   {
     id: 3,
-    videoId: "Te1R9a0cc40",
+    videoId: "Rse0H2UQqCY",
   },
   {
     id: 4,
-    videoId: "jlDAsrZWinI",
+    videoId: "pFdDXPezOxQ",
   },
   {
     id: 5,
-    videoId: "QJLHWn1P_-Y",
+    videoId: "NyPwSGHE9WM",
   },
   {
     id: 6,
-    videoId: "VaGyOFVn4H4",
+    videoId: "m6x102K39wI",
   },
 ];
 
@@ -56,36 +56,37 @@ const Video = () => {
   return (
     <div className="container mx-auto text-center py-8">
       <span className="text-2xl lg:text-4xl font-extrabold text-brandDark font-heading">
-        Testimonials from our happy couples
+        Testimonials from our students
       </span>
-      <h3 className="text-center max-w-3xl mx-auto font-semibold mt-4">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut asperiores,
-        tempora deleniti amet esse quam adipisci? Dignissimos, itaque. Dolores,
-        qui!
-      </h3>
-      <Carousel
-        responsive={responsive}
-        partialVisbile={true}
-        focusOnSelect={true}
-        ssr={true}
-        infinite={true}
-      >
-        {data.map((item) => {
-          return (
-            <div
-              className="md:w-3/4 mx-auto aspect-video mt-8 overflow-hidden rounded-3xl"
-              key={item.id}
-            >
-              <LiteYouTubeEmbed
-                id={item.videoId}
-                title="Successful IVF Treatment Testimonial | GarbhaGudi IVF Centre | Dr Asha S Vijay"
-                poster="maxresdefault"
-                thumbnail={""}
-              />
-            </div>
-          );
-        })}
-      </Carousel>
+      <div className="px-3 sm:px-0">
+        <Carousel
+          responsive={responsive}
+          autoPlaySpeed={360000}
+          partialVisbile={true}
+          focusOnSelect={true}
+          ssr={true}
+          infinite={true}
+          showDots={true}
+          swipeable={true}
+          draggable={true}
+        >
+          {data.map((item) => {
+            return (
+              <div
+                className="md:w-4/6 mx-auto aspect-video mt-8 overflow-hidden rounded-3xl border-2 border-brandBlue"
+                key={item.id}
+              >
+                <LiteYouTubeEmbed
+                  id={item.videoId}
+                  title="Successful IVF Treatment Testimonial | GarbhaGudi IVF Centre | Dr Asha S Vijay"
+                  poster="maxresdefault"
+                  thumbnail={""}
+                />
+              </div>
+            );
+          })}
+        </Carousel>
+      </div>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React from "react";
 import { gql, GraphQLClient } from "graphql-request";
 import Carousel from "react-multi-carousel";
 import { Home, Home_2 } from "sections/Home";
+import Link from "next/link";
 
 const responsive = {
   superLargeDesktop: {
@@ -63,12 +64,12 @@ const IndexPage = ({ HomeData }) => {
       <section className="max-w-6xl mx-auto px-4 xl:px-0 sm:px-6 py-12">
         <div className="text-center pb-12">
           <h1 className="font-bold text-3xl md:text-4xl lg:text-4xl font-heading text-gray-900">
-            Check our awesome team members
+            Meet our Experts
           </h1>
           <h3 className="text-center max-w-3xl mx-auto font-semibold mt-4">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
-            asperiores, tempora deleniti amet esse quam adipisci? Dignissimos,
-            itaque. Dolores, qui!
+            Our team of fertility specialists have been known for their
+            extensive clinical experience and research contributions and their
+            success in treating the most challenging fertility cases.
           </h3>
         </div>
         <div className="gap-2">
@@ -79,29 +80,28 @@ const IndexPage = ({ HomeData }) => {
             infinite={true}
           >
             {HomeData?.teachers?.map((item: any) => (
-              <div
-                className="w-full bg-white rounded-lg p-6 flex flex-col justify-center items-center"
-                key={item?.id}
-              >
-                <div className="mb-8">
-                  <img
-                    className="object-center object-cover rounded-full h-64 w-64 lg:h-48 lg:w-48"
-                    src={item?.image?.url}
-                    alt={item?.name}
-                  />
+              <Link href={`/faculty/${item?.slug}`} key={item?.id} passHref>
+                <div className="w-full bg-white rounded-lg p-6 flex flex-col justify-center items-center cursor-pointer">
+                  <div className="mb-8">
+                    <img
+                      className="object-center object-cover rounded-full h-64 w-64 lg:h-48 lg:w-48"
+                      src={item?.image?.url}
+                      alt={item?.name}
+                    />
+                  </div>
+                  <div className="text-center">
+                    <p className="text-lg text-gray-700 font-bold mb-2">
+                      {item?.name}
+                    </p>
+                    <p className=" text-brandBlue text-sm">
+                      {item?.qualification}
+                    </p>
+                    <p className=" text-brandPink  text-sm">
+                      {item?.designation}
+                    </p>
+                  </div>
                 </div>
-                <div className="text-center">
-                  <p className="text-lg text-gray-700 font-bold mb-2">
-                    {item?.name}
-                  </p>
-                  <p className=" text-brandBlue text-sm">
-                    {item?.qualification}
-                  </p>
-                  <p className=" text-brandPink  text-sm">
-                    {item?.designation}
-                  </p>
-                </div>
-              </div>
+              </Link>
             ))}
           </Carousel>
         </div>
