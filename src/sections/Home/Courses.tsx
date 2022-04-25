@@ -9,7 +9,7 @@ const Data = [
       "GGIRHR offers a well-structured Infertility Fellowship Program, affiliated with the Indian Medical Association - Academy of Medical Specialties. The selected candidates shall be trained in Infertility by dedicated faculties with exceptional experiences. Also, this fellowship is explicitly designed for doctors who have busy practices and will not be able to spare time to attend classes amidst their hectic schedules..",
     image:
       "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006731/GGIRHR/Images/IMA-AMS_Fellowship_in_Infertility_Web-min_qsenpy.jpg",
-    link: "/course/ima-ams-fellowship-in-infertility",
+    link: "/courses/ima-ams-fellowship-in-infertility",
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const Data = [
       "Our institution offers a Fellowship in Reproductive Medicine (FRM), affiliated with the prestigious Rajiv Gandhi University of Health Sciences, to train obstetricians and gynaecologists in reproductive medicine. This program is conducted by a multidisciplinary team of renowned fertility experts and embryologists practising at GarbhaGudi. It helps the candidates to gain thorough knowledge in reproductive physiology, endocrinology, medical and surgical treatment of infertility and Assisted Reproductive Technologies in Infertility.",
     image:
       "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006732/GGIRHR/Images/RGUHS_Fellowship_in_Reproductive_Medicine_Web-min_divc6o.jpg",
-    link: "/course/rguhs-fellowship-in-reproductive-medicine",
+    link: "/courses/rguhs-fellowship-in-reproductive-medicine",
   },
   {
     id: 3,
