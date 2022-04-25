@@ -53,7 +53,7 @@ const Data = [
     details:
       "This course is designed to help candidates in the learning process using various methodologies, including interactive lectures, assignments, laboratory rotations, and much more. At the end of the course, every individual will acquire core competencies in IVF, ICSI, gamete, embryo cryopreservation, laser hatching, semen analysis, quality control, isolating and culture of embryos, etc. are the essentials of treatment modalities for infertile patients.",
     image:
-      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006732/GGIRHR/Images/Regular_Embryology_Web-min_dnpmda.jpg",
+      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650886507/GGIRHR/Images/Ins_Diplomo_In_Embryology-min_wc3cmh.jpg",
     link: "/courses/institutional-diploma-in-embryology",
   },
 ];
