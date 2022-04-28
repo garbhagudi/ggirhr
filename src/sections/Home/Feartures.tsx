@@ -6,27 +6,27 @@ const Data = [
     id: 1,
     feature: "Internal Ethics Comittee",
     describe: "Made of eminent and well-qualified members",
-    icon: <AcademicCapIcon />,
+    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1651126722/GGIRHR/Icons/header%20icons%20svg/Internal_Ethics_Comittee_noe6ku.svg",
   },
   {
     id: 2,
     feature: "Full-fledged Research Lab",
     describe: "To work on innovative and path-breaking technologies",
-    icon: <AcademicCapIcon />,
+    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1651126722/GGIRHR/Icons/header%20icons%20svg/Full-fledged_Research_Lab_fzjbvw.svg",
   },
   {
     id: 3,
     feature: "Expert Team",
     describe:
       "To help guide and ensure the research is headed in the right direction",
-    icon: <AcademicCapIcon />,
+    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1651126722/GGIRHR/Icons/header%20icons%20svg/Expert_Team_uv6xei.svg",
   },
   {
     id: 4,
     feature: "Support Staff",
     describe:
       "To ensure the documentation, approvals, checks, audits and verifications",
-    icon: <AcademicCapIcon />,
+    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1651126722/GGIRHR/Icons/header%20icons%20svg/Support_Staff_ic3gaa.svg",
   },
 ];
 
@@ -52,7 +52,7 @@ const Feartures = () => {
                   key={item.id}
                 >
                   <div className="mb-6 md:h-16 md:w-16 w-12 h-12 text-brandBlue">
-                    {item.icon}
+                    <img src={item.icon} alt={item.feature} />
                   </div>
                   <div className="text-gray-800 text-md md:text-xl font-semibold text-center">
                     <h2>{item.feature}</h2>

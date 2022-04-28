@@ -4,29 +4,30 @@ import { SocialIcon } from "react-social-icons";
 
 const navigation = {
   about: [
-    { name: "Vision & Mission", href: "/about/vision-and-mission" },
-    { name: "Directors", href: "/about/overview" },
+    { name: "Vision & Mission", href: "/about/mission-and-vision" },
+    { name: "Leadership", href: "/about/leadership" },
     {
       name: "Awards & Accolades",
-      href: "/about/best-ivf-fertility-hospital-in-india",
+      href: "/about/awards-and-accolades",
     },
     { name: "Dr Asha S Vijay", href: "https://drashasvijay.com" },
   ],
   support: [
-    { name: "GG CARE", href: "/gg-care" },
-    { name: "Courses", href: "#" },
-    { name: "CMEs", href: "#" },
+    // { name: "GG CARE", href: "/gg-care" },
+    { name: "Courses", href: "/courses" },
+    { name: "CMEs", href: "/events" },
     { name: "Contact Us", href: "/gg-care" },
   ],
   company: [
-    { name: "GGIRHR", href: "https://ggirhr.com" },
-    { name: "GarbhaGudi IVF", href: "/about/overview" },
+    { name: "GGIRHR", href: "/" },
+    { name: "GarbhaGudi IVF", href: "https://www.garbhagudi.com" },
     { name: "GarbhaGnan Foundation", href: "https://garbhagnan.org" },
+    { name: "GarbhaGudi Pharma", href: "https://www.garbhagudi.com" },
   ],
   legal: [
-    { name: "Privacy", href: "/legal/privacy-policy" },
-    { name: "Terms", href: "/legal/terms-and-conditions" },
-    { name: "Refund Policy", href: "/legal/refund-policy" },
+    { name: "Privacy Policy", href: "/legal/privacy-policy" },
+    // { name: "Terms", href: "/legal/terms-and-conditions" },
+    // { name: "Refund Policy", href: "/legal/refund-policy" },
   ],
 };
 
@@ -117,32 +118,32 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto border-t border-gray-200 ">
         <div className="mt-8 space-x-2 flex items-ceter justify-center">
           <SocialIcon
-            url="https://www.youtube.com/c/GarbhaGudiIVFCentre"
+            url="https://www.youtube.com/channel/UCPWVap8s4REIDwqYpHq0pew"
             style={{ width: "40px", height: "40px" }}
             target="_blank"
           />
           <SocialIcon
-            url="https://www.facebook.com/garbhagudiIVF/"
+            url="https://www.facebook.com/GGIRHR/"
             style={{ width: "40px", height: "40px" }}
             target="_blank"
           />
           <SocialIcon
-            url="https://www.linkedin.com/company/garbagudi"
+            url="https://www.linkedin.com/company/garbhagudi-institute-of-reproductive-health-research/"
             style={{ width: "40px", height: "40px" }}
             target="_blank"
           />
           <SocialIcon
-            url="https://api.whatsapp.com/send/?phone=918884183338&text=Hi."
+            url="https://api.whatsapp.com/send/?phone=917204937376&text=Hi."
             style={{ width: "40px", height: "40px" }}
             target="_blank"
           />
           <SocialIcon
-            url="https://twitter.com/garbhagudiivf"
+            url="https://twitter.com/ggirhr"
             style={{ width: "40px", height: "40px" }}
             target="_blank"
           />
           <SocialIcon
-            url="mailto:dreams@garbhagudi.com"
+            url="mailto:training@ggirhr.com"
             style={{ width: "40px", height: "40px" }}
             target="_blank"
           />

@@ -54,9 +54,9 @@ const IndexPage = ({ HomeData }) => {
       >
         {HomeData.banners.map((items: any) => (
           <div className="" key={items?.id}>
-            <a href={items?.url}>
+            <Link href={items?.url} passHref>
               <img src={items?.image?.url} alt={items?.title} />
-            </a>
+            </Link>
           </div>
         ))}
       </Carousel>

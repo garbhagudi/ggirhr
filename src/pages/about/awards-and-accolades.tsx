@@ -7,11 +7,13 @@ const Awards = () => {
         <h1 className="text-center text-3xl my-8 font-heading font-bold">
           Awarded as Best IVF and Infertility Training Centre in India
         </h1>
-        <img
-          src="https://media.graphassets.com/cZCpRhM0Snm4T5prE2EH"
-          alt="Award Banner"
-          className="rounded-2xl"
-        />
+        <div className="px-3 sm:px-0">
+          <img
+            src="https://media.graphassets.com/cZCpRhM0Snm4T5prE2EH"
+            alt="Award Banner"
+            className="rounded-2xl "
+          />
+        </div>
         <div className="mx-auto my-8 px-4 sm:px-0">
           <div className="text-lg text-brandDark my-4 font-qs">
             Dr Asha S Vijay’s GarbhaGudi IVF Centre bagged the prestigious title

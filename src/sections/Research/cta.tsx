@@ -4,6 +4,7 @@ import {
   LocationMarkerIcon,
   PhoneIcon,
 } from "@heroicons/react/solid";
+import Link from "next/link";
 
 const Cta = () => {
   return (
@@ -53,7 +54,7 @@ const Cta = () => {
 
             <div>
               <button className="px-4 py-2 bg-brandBlue text-white font-semibold rounded-lg mt-4 hover:bg-brandBlueDark3">
-                Contact us
+                <Link href="/contact.html">Contact us</Link>
               </button>
             </div>
             <p className="font-sans text-sm md:text-lg my-2 md:my-4">
@@ -66,7 +67,7 @@ const Cta = () => {
               <div className="relative flex flex-col min-w-0 break-words w-full">
                 <div className="flex-auto p-5 lg:p-10">
                   <img
-                    src="https://user-images.githubusercontent.com/54521023/152731049-cc744a56-1d6f-4945-9566-0fa3b7ad1d24.png"
+                    src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651130045/GGIRHR/Images/152731049-cc744a56-1d6f-4945-9566-0fa3b7ad1d24_ltrmhf.png"
                     alt="contact image"
                   />
                 </div>

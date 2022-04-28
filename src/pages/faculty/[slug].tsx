@@ -18,7 +18,7 @@ const FacultyPage = ({ teacher }) => {
       <div className="bg-white py-0 sm:py-8">
         <div className="max-w-3xl mx-auto">
           <div className="w-full">
-            <div className="w-full h-40 md:h-64 bg-cover bg-center md:rounded-t-3xl bg-[url('http://placehold.jp/1280x630.png')] shadow-2xl"></div>
+            <div className="w-full h-40 md:h-64 bg-cover bg-center md:rounded-t-3xl bg-[url('https://res.cloudinary.com/garbhagudiivf/image/upload/v1651043881/GGIRHR/Images/Faculty_lv9rz1.jpg')] shadow-2xl blur-sm"></div>
             <div className="absolute -mt-16 md:-mt-28 ml-5">
               <div className="bg-gray-200 border h-32 w-32 md:h-52 md:w-52 rounded-full md:rounded-3xl shadow-2xl border-primary overflow-hidden">
                 <img src={teacher?.image?.url} alt={teacher?.name} />

@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 type Props = {};
 
@@ -15,7 +16,7 @@ const CTA = (props: Props) => {
                     role="heading"
                     className="text-xl font-heading md:text-2xl lg:text-4xl xl:text-4xl lg:w-10/12 text-white font-black leading-6 lg:leading-10 md:text-left text-center"
                   >
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Get Mentored by India&apos;s Leading Fertility Specialists
                   </h1>
                 </div>
                 <button
@@ -23,7 +24,7 @@ const CTA = (props: Props) => {
                   aria-label="Join the community"
                   className="mt-5 lg:mt-8 py-3 lg:py-4 px-4 lg:px-8 bg-white font-bold text-brandBlueDark3 rounded-lg text-sm lg:text-lg xl:text-xl hover:bg-opacity-90  focus:ring-2 focus:ring-offset-2 focus:ring-white focus:outline-none"
                 >
-                  Join Us
+                  <Link href="/gg-care"> Join Us </Link>
                 </button>
               </div>
               <div className="md:w-4/12 w-2/3">
