@@ -1,10 +1,14 @@
 import React from "react";
+import Head from "next/head";
 
 type Props = {};
 
 const PrivacyPolicy = (props: Props) => {
   return (
     <div>
+      <Head>
+        <title>Privacy Policy | GGIRHR</title>
+      </Head>
       <div className="max-w-7xl mx-auto">
         <h1 className="text-center text-3xl my-8 font-heading font-bold">
           Privacy Policy

@@ -7,10 +7,14 @@ import {
   CurrencyRupeeIcon,
   PhoneIcon,
 } from "@heroicons/react/solid";
+import Head from "next/head";
 
 const CoursePage = ({ course }) => {
   return (
     <div>
+      <Head>
+        <title>{course?.title}</title>
+      </Head>
       <div className="py-16 overflow-hidden mx-auto">
         <div className="max-w-7xl mx-auto px-3 space-y-8 sm:px-6 lg:px-11">
           <div className="mx-auto">
@@ -34,7 +38,7 @@ const CoursePage = ({ course }) => {
           <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none space-x-3">
             <div className="rounded-md shadow">
               <a
-                href="#"
+                href="/contact.html"
                 className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brandBlue hover:bg-brandBlueDark3"
               >
                 Contact Us
@@ -42,7 +46,7 @@ const CoursePage = ({ course }) => {
             </div>
             <div className="rounded-md shadow flex justify-center">
               <a
-                href="tel:+918880000909"
+                href="tel:+917204937376"
                 className="w-full flex items-center justify-center px-5 py-3 bg-white border border-transparent text-base font-medium rounded-md text-brandBlue"
               >
                 <PhoneIcon className="w-5 h-5 mr-2" /> Call Us
@@ -57,7 +61,7 @@ const CoursePage = ({ course }) => {
               <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none space-x-3">
                 <div className="rounded-md shadow">
                   <a
-                    href="#"
+                    href="/contact.html"
                     className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brandBlue hover:bg-brandBlueDark3"
                   >
                     Contact Us
@@ -65,7 +69,7 @@ const CoursePage = ({ course }) => {
                 </div>
                 <div className="rounded-md shadow flex justify-center">
                   <a
-                    href="tel:+918880000909"
+                    href="+917204937376"
                     className="w-full flex items-center justify-center px-5 py-3 bg-white border border-transparent text-base font-medium rounded-md text-brandBlue"
                   >
                     <PhoneIcon className="w-5 h-5 mr-2" /> Call Us

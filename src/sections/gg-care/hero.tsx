@@ -19,7 +19,7 @@ const supportLinks = [
       "Reach out to us with your questions, concerns, or challenges. We’ll be happy to help you at any time, and we’re always trying to make things easier for you!",
     icon: PhoneIcon,
     ctaAction: "Call Now",
-    ctaLink: "tel:+918880000909",
+    ctaLink: "tel:+917204937376",
   },
   {
     name: "Book a Counselling Session",

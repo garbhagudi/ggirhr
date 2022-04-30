@@ -1,8 +1,12 @@
+import Head from "next/head";
 import React from "react";
 
 const IndexPage = () => {
   return (
     <div>
+      <Head>
+        <title>Events and Webinars | GGIRHR</title>
+      </Head>
       <div className="w-full mt-10 mb-6 lg:mb-0">
         <h1 className="sm:text-4xl text-4xl font-bold mb-2 text-gray-900 text-center font-heading">
           Events and Webinars

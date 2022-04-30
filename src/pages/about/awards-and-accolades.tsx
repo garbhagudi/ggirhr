@@ -1,8 +1,12 @@
+import Head from "next/head";
 import React from "react";
 
 const Awards = () => {
   return (
     <div>
+      <Head>
+        <title>Awards and Accolades | GGIRHR</title>
+      </Head>
       <div className="max-w-7xl mx-auto">
         <h1 className="text-center text-3xl my-8 font-heading font-bold">
           Awarded as Best IVF and Infertility Training Centre in India

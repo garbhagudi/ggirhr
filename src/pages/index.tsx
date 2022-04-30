@@ -3,6 +3,7 @@ import { gql, GraphQLClient } from "graphql-request";
 import Carousel from "react-multi-carousel";
 import { Home, Home_2 } from "sections/Home";
 import Link from "next/link";
+import Head from "next/head";
 
 const responsive = {
   superLargeDesktop: {
@@ -45,6 +46,9 @@ const responsive_team = {
 const IndexPage = ({ HomeData }) => {
   return (
     <div>
+      <Head>
+        <title>GGIRGR | Home</title>
+      </Head>
       <Carousel
         responsive={responsive}
         ssr={true}

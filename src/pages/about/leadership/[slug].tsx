@@ -2,6 +2,7 @@ import React from "react";
 import graphcms from "lib/graphcms";
 import { useRouter } from "next/router";
 import { RichText } from "@graphcms/rich-text-react-renderer";
+import Head from "next/head";
 
 const LeaderPage = ({ leader }) => {
   const router = useRouter();
@@ -15,6 +16,9 @@ const LeaderPage = ({ leader }) => {
   }
   return (
     <div>
+      <Head>
+        <title>{leader?.name} | GGIRHR</title>
+      </Head>
       <div className="bg-white py-0 sm:py-8">
         <div className="max-w-3xl mx-auto">
           <div className="w-full">

@@ -3,6 +3,7 @@ import { GraphQLClient, gql } from "graphql-request";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 
 import Error from "next/error";
+import Head from "next/head";
 
 export const getServerSideProps = async (pageContext) => {
   const url = process.env.ENDPOINT;
@@ -53,6 +54,9 @@ export const getServerSideProps = async (pageContext) => {
 const BlogPage = ({ blog }) => {
   return (
     <div>
+      <Head>
+        <title>{blog?.title} | GGIRHR</title>
+      </Head>
       <div className="relative py-16 bg-white overflow-hidden">
         <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
           <div
