@@ -47,7 +47,7 @@ const IndexPage = ({ HomeData }) => {
   return (
     <div>
       <Head>
-        <title>GGIRGR | Home</title>
+        <title>GGIRHR | Home</title>
       </Head>
       <Carousel
         responsive={responsive}
