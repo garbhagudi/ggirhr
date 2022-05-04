@@ -6,7 +6,41 @@ const Leadership = ({ leaders }) => {
   return (
     <div>
       <Head>
-        <title>Leadership | GGIRHR</title>
+        {/* Primary Tags */}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title> Our Leadership Team | GGIRHR </title>
+        <meta name="title" content="Our Leadership Team | GGIRHR" />
+        <meta name="description" content="Our Leadership Team | GGIRHR" />
+
+        {/* Open Graph / Facebook */}
+
+        <meta property="og:title" content="Our Leadership Team | GGIRHR" />
+        <meta property="og:site_name" content="GGIRHR" />
+        <meta property="og:url" content="https://ggirhr.com" />
+        <meta
+          property="og:description"
+          content="Our Leadership Team | GGIRHR"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_Leader-min_rnxwx5.jpg"
+        />
+
+        {/* Twitter*/}
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ggirhr" />
+        <meta name="twitter:title" content="Our Leadership Team | GGIRHR" />
+        <meta
+          name="twitter:description"
+          content="Our Leadership Team | GGIRHR"
+        />
+        <meta
+          name="twitter:image"
+          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_Leader-min_rnxwx5.jpg"
+        />
       </Head>
       <div className="bg-white">
         <div className="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">

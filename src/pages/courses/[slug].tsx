@@ -13,7 +13,38 @@ const CoursePage = ({ course }) => {
   return (
     <div>
       <Head>
-        <title>{course?.title}</title>
+        {/* Primary Tags */}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{course?.title} | GGIRHR</title>
+        <meta name="title" content={`${course?.title} | GGIRHR`} />
+        <meta
+          name="description"
+          content={course?.description?.text.slice(0, 180)}
+        />
+
+        {/* Open Graph / Facebook */}
+
+        <meta property="og:title" content={`${course?.title} | GGIRHR`} />
+        <meta property="og:site_name" content="GGIRHR" />
+        <meta property="og:url" content="https://ggirhr.com" />
+        <meta
+          property="og:description"
+          content={course?.description?.text.slice(0, 180)}
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={course?.courseImage?.url} />
+
+        {/* Twitter*/}
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ggirhr" />
+        <meta name="twitter:title" content={`${course?.title} | GGIRHR`} />
+        <meta
+          name="twitter:description"
+          content={course?.description?.text.slice(0, 180)}
+        />
+        <meta name="twitter:image" content={course?.courseImage?.url} />
       </Head>
       <div className="py-16 overflow-hidden mx-auto">
         <div className="max-w-7xl mx-auto px-3 space-y-8 sm:px-6 lg:px-11">
@@ -176,6 +207,7 @@ export const getServerSideProps = async (pageContext: any) => {
         }
         description {
           raw
+          text
         }
       }
     }

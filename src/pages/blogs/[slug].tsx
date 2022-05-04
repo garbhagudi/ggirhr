@@ -1,22 +1,14 @@
 import React from "react";
-import { GraphQLClient, gql } from "graphql-request";
 import { RichText } from "@graphcms/rich-text-react-renderer";
-
+import graphcms from "lib/graphcms";
 import Error from "next/error";
 import Head from "next/head";
 
-export const getServerSideProps = async (pageContext) => {
-  const url = process.env.ENDPOINT;
-  const graphQLClient = new GraphQLClient(url, {
-    headers: {
-      Authorization: `Bearer ${process.env.GRAPH_CMS_TOKEN}`,
-    },
-  });
-  const pageSlug = pageContext.query.slug;
-
-  const query = gql`
-    query ($pageSlug: String!) {
-      blog(where: { slug: $pageSlug }) {
+export const getStaticProps = async ({ params }) => {
+  const { blog } = await graphcms.request(
+    `
+    query ($slug: String!) {
+      blog(where: { slug: $slug }) {
         id
         title
         image {
@@ -37,25 +29,67 @@ export const getServerSideProps = async (pageContext) => {
         publishedOn
       }
     }
-  `;
-  const variables = {
-    pageSlug,
-  };
+  `,
+    {
+      slug: params.slug,
+    }
+  );
 
-  const data = await graphQLClient.request(query, variables);
-  const blog = data.blog;
   return {
     props: {
       blog,
     },
+    revalidate: 180,
   };
 };
+
+export async function getStaticPaths() {
+  const { blogs } = await graphcms.request(`{
+    blogs {
+      slug
+      title
+    }
+  }`);
+
+  return {
+    paths: blogs.map(({ slug }) => ({ params: { slug } })),
+    fallback: false,
+  };
+}
 
 const BlogPage = ({ blog }) => {
   return (
     <div>
       <Head>
+        {/* Primary Tags */}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{blog?.title} | GGIRHR</title>
+        <meta name="title" content={`${blog?.title} | GGIRHR`} />
+        <meta name="description" content={blog?.content?.text.slice(0, 180)} />
+
+        {/* Open Graph / Facebook */}
+
+        <meta property="og:title" content={`${blog?.title} | GGIRHR`} />
+        <meta property="og:site_name" content="GGIRHR" />
+        <meta property="og:url" content="https://ggirhr.com" />
+        <meta
+          property="og:description"
+          content={blog?.content?.text.slice(0, 180)}
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={blog?.image?.url} />
+
+        {/* Twitter*/}
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ggirhr" />
+        <meta name="twitter:title" content={`${blog?.title} | GGIRHR`} />
+        <meta
+          name="twitter:description"
+          content={blog?.content?.text.slice(0, 180)}
+        />
+        <meta name="twitter:image" content={blog?.image?.url} />
       </Head>
       <div className="relative py-16 bg-white overflow-hidden">
         <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">

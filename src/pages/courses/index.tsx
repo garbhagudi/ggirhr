@@ -38,7 +38,44 @@ const Course = ({ courses }) => {
   return (
     <div>
       <Head>
+        {/* Primary Tags */}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Courses Offered | GGIRHR</title>
+        <meta name="title" content="Courses Offered | GGIRHR" />
+        <meta
+          name="description"
+          content="Check out our most popular courses offered"
+        />
+
+        {/* Open Graph / Facebook */}
+
+        <meta property="og:title" content="Courses Offered | GGIRHR" />
+        <meta property="og:site_name" content="GGIRHR" />
+        <meta property="og:url" content="https://ggirhr.com" />
+        <meta
+          property="og:description"
+          content="Check out our most popular courses offered"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644125/GGIRHR/SEO/SEO_Course_Tree-min_z4timn.jpg"
+        />
+
+        {/* Twitter*/}
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ggirhr" />
+        <meta name="twitter:title" content="Courses Offered | GGIRHR" />
+        <meta
+          name="twitter:description"
+          content="Check out our most popular courses offered"
+        />
+        <meta
+          name="twitter:image"
+          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644125/GGIRHR/SEO/SEO_Course_Tree-min_z4timn.jpg"
+        />
       </Head>
       <section className="text-gray-600 body-font mb-10">
         <div className="max-w-7xl px-4 xl:px-0 py-4 mx-auto">

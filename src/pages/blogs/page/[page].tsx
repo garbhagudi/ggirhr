@@ -1,7 +1,8 @@
 import React from "react";
-import { GraphQLClient, gql } from "graphql-request";
+import { gql } from "graphql-request";
 import Link from "next/link";
 import Head from "next/head";
+import graphcms from "lib/graphcms";
 
 const limit = 6;
 
@@ -14,7 +15,50 @@ const BlogList = ({
   return (
     <div>
       <Head>
-        <title>Blogs | Page - {currentPageNumber} | GGIRHR</title>
+        {/* Primary Tags */}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Blogs | Page - {currentPageNumber} | GGIRHR </title>
+        <meta name="title" content={`Blogs | ${currentPageNumber} | GGIRHR`} />
+        <meta
+          name="description"
+          content="Our Blogs and Articles regarding Infertility, Treatment, Academics and Parenthood"
+        />
+
+        {/* Open Graph / Facebook */}
+
+        <meta
+          property="og:title"
+          content={`Blogs | ${currentPageNumber} | GGIRHR`}
+        />
+        <meta property="og:site_name" content="GGIRHR" />
+        <meta property="og:url" content="https://ggirhr.com" />
+        <meta
+          property="og:description"
+          content="Our Blogs and Articles regarding Infertility, Treatment, Academics and Parenthood"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644125/GGIRHR/SEO/SEO_Blogs-min_y4yyv9.jpg"
+        />
+
+        {/* Twitter*/}
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ggirhr" />
+        <meta
+          name="twitter:title"
+          content={`Blogs | ${currentPageNumber} | GGIRHR`}
+        />
+        <meta
+          name="twitter:description"
+          content="Our Blogs and Articles regarding Infertility, Treatment, Academics and Parenthood"
+        />
+        <meta
+          name="twitter:image"
+          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644125/GGIRHR/SEO/SEO_Blogs-min_y4yyv9.jpg"
+        />
       </Head>
       <div className="relative pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
         <div className="absolute inset-0">
@@ -111,14 +155,7 @@ const BlogList = ({
 
 export default BlogList;
 
-export async function getServerSideProps({ params }) {
-  const url = process.env.ENDPOINT;
-  const graphQLClient = new GraphQLClient(url, {
-    headers: {
-      Authorization: `Bearer ${process.env.GRAPH_CMS_TOKEN}`,
-    },
-  });
-
+export async function getStaticProps({ params }) {
   const query = gql`
     query blogPageQuery($limit: Int!, $offset: Int!) {
       blogsConnection(orderBy: publishedOn_DESC, first: $limit, skip: $offset) {
@@ -151,7 +188,7 @@ export async function getServerSideProps({ params }) {
 
   const {
     blogsConnection: { blogs, pageInfo },
-  } = await graphQLClient.request(query, {
+  } = await graphcms.request(query, {
     limit,
     offset: Number((params.page - 1) * limit),
   });
@@ -162,5 +199,43 @@ export async function getServerSideProps({ params }) {
       blogs,
       ...pageInfo,
     },
+    revalidate: 180,
   };
 }
+
+export const getStaticPaths = async () => {
+  const query = gql`
+    query {
+      blogsConnection {
+        aggregate {
+          count
+        }
+      }
+    }
+  `;
+
+  const { blogsConnection } = await graphcms.request(query);
+  function* numberOfPages({ total, limit }) {
+    let page = 1;
+    let offset = 0;
+    while (offset < total) {
+      yield page;
+      page++;
+      offset += limit;
+    }
+  }
+
+  const paths = [
+    ...numberOfPages({
+      total: blogsConnection.aggregate.count,
+      limit,
+    }),
+  ].map((page) => ({
+    params: { page: String(page) },
+  }));
+
+  return {
+    paths,
+    fallback: true,
+  };
+};

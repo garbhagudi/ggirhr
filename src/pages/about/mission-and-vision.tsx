@@ -5,7 +5,44 @@ const VisionMission = () => {
   return (
     <div>
       <Head>
+        {/* Primary Tags */}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Vision and Mission | GGIRHR</title>
+        <meta name="title" content="Vision and Mission | GGIRHR" />
+        <meta
+          name="description"
+          content="Provide learners with a specialized reproductive health and infertility education of exceptional quality and prepare every individual to serve the underserved."
+        />
+
+        {/* Open Graph / Facebook */}
+
+        <meta property="og:title" content="Vision and Mission | GGIRHR" />
+        <meta property="og:site_name" content="GGIRHR" />
+        <meta property="og:url" content="https://ggirhr.com" />
+        <meta
+          property="og:description"
+          content="Provide learners with a specialized reproductive health and infertility education of exceptional quality and prepare every individual to serve the underserved."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644127/GGIRHR/SEO/SEO_Vision_Mission-min_kdnnsz.jpg"
+        />
+
+        {/* Twitter*/}
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ggirhr" />
+        <meta name="twitter:title" content="Vision and Mission | GGIRHR" />
+        <meta
+          name="twitter:description"
+          content="Provide learners with a specialized reproductive health and infertility education of exceptional quality and prepare every individual to serve the underserved."
+        />
+        <meta
+          name="twitter:image"
+          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644127/GGIRHR/SEO/SEO_Vision_Mission-min_kdnnsz.jpg"
+        />
       </Head>
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
