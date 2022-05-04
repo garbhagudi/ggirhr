@@ -157,20 +157,17 @@ const Header = () => {
                   <Courses />
                 </span>
                 <span className="text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm">
-                  Events and Webinars
+                  <Link href="/events">Events</Link>
                 </span>
                 <span className="text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm">
-                  Research
+                  <Link href="/research">Research and Journals</Link>
                 </span>
                 <span className="text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm">
-                  Blogs
+                  <Link href="/blogs/page/1">Blogs</Link>
                 </span>
-                <a
-                  href="#"
-                  className="text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm cursor-pointer"
-                >
-                  Contact Us
-                </a>
+                <span className="text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm cursor-pointer">
+                  <Link href="/gg-care">Contact Us</Link>
+                </span>
               </div>
             </div>
           )}
