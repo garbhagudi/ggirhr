@@ -9,8 +9,14 @@ import * as ga from "../lib/google-analytics";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
+import TagManager from "react-gtm-module";
 
 function MyApp({ Component, pageProps }) {
+  const tagManagerArgs = {
+    gtmId: "AW-681967532",
+  };
+  TagManager.initialize(tagManagerArgs);
+
   const router = useRouter();
   useEffect(() => {
     const handleRouteChange = (url: any) => {
