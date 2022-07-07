@@ -24,7 +24,7 @@ const Cta = () => {
                 </td>
                 <td>
                   <a href="tel:+918880000909" className="hover:underline">
-                    +918880000909
+                    +91 72049 37376
                   </a>
                 </td>
               </tr>
@@ -37,7 +37,7 @@ const Cta = () => {
                     href="mailto:research@ggirhr.com"
                     className="hover:underline"
                   >
-                    research@ggirhr.com
+                    training@ggirhr.com
                   </a>
                 </td>
               </tr>

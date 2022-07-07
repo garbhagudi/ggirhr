@@ -1,10 +1,5 @@
 import { Popover, Transition } from "@headlessui/react";
-import {
-  ChevronDownIcon,
-  AcademicCapIcon,
-  AdjustmentsIcon,
-  ArchiveIcon,
-} from "@heroicons/react/solid";
+import { ChevronDownIcon } from "@heroicons/react/solid";
 import { Fragment } from "react";
 
 const AboutSection = [
@@ -263,6 +258,7 @@ export function Courses() {
                     </a>
                   ))}
                 </div>
+                <hr />
                 <p className="bg-white text-brandDark px-4 py-2 text-xs sm:text-sm font-bold underline">
                   Short Term Courses
                 </p>
