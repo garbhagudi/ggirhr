@@ -71,21 +71,21 @@ const courses = {
       href: "/courses/andrology-lab-technician-course",
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg",
     },
-    {
-      name: "Comprehensive Embryology Course",
-      href: "/courses/comprehensive-embryology-course",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
-    },
+    // {
+    //   name: "Comprehensive Embryology Course",
+    //   href: "/courses/comprehensive-embryology-course",
+    //   icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+    // },
     {
       name: "Institutional Diploma Embryology",
       href: "/courses/institutional-diploma-in-embryology",
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
     },
-    {
-      name: "PG Diploma in Clinical Embryology",
-      href: "/courses/post-graduate-diploma-in-clinical-embryology",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
-    },
+    // {
+    //   name: "PG Diploma in Clinical Embryology",
+    //   href: "/courses/post-graduate-diploma-in-clinical-embryology",
+    //   icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+    // },
   ],
   shortTermCourses: [
     {
