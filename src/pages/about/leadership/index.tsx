@@ -120,5 +120,6 @@ export const getStaticProps = async () => {
     props: {
       leaders,
     },
+    revalidate: 180,
   };
 };

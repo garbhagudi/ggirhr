@@ -109,5 +109,6 @@ export const getStaticProps = async () => {
     props: {
       teachers,
     },
+    revalidate: 180,
   };
 };
