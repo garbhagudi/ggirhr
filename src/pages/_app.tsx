@@ -9,6 +9,7 @@ import * as ga from "../lib/google-analytics";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Script from "next/script";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -40,6 +41,12 @@ function MyApp({ Component, pageProps }) {
   }, [router.events]);
   return (
     <div>
+      <Head>
+        <meta
+          name="google-site-verification"
+          content="hNa9hsmI-YwrJiMxo0FR7-5PWn2ku2yqn3OD6VoVFms"
+        />
+      </Head>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_MEASUREMENT_ID}`}
         strategy="afterInteractive"
