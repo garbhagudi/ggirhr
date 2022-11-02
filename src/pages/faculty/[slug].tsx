@@ -20,7 +20,7 @@ const FacultyPage = ({ teacher }) => {
         {/* Primary Tags */}
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{teacher?.name} | GGIRHR</title>
+        <title>{`${teacher?.name} | GGIRHR`}</title>
         <meta name="title" content={`${teacher?.name} | GGIRHR`} />
         <meta name="description" content={teacher?.bio?.text.slice(0, 180)} />
 

@@ -97,7 +97,7 @@ const Features = () => {
         </div>
       </div>
       <div className="text-center mt-10">
-        <Link href="/courses">
+        <Link href="/courses" legacyBehavior>
           <a className="px-4 py-3 bg-brandBlue hover:bg-brandBlueDark3 text-white font-semibold rounded-xl">
             See All Courses
           </a>

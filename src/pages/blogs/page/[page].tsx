@@ -18,7 +18,7 @@ const BlogList = ({
         {/* Primary Tags */}
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Blogs | Page - {currentPageNumber} | GGIRHR </title>
+        <title>{`Blogs | Page - ${currentPageNumber} | GGIRHR`} </title>
         <meta name="title" content={`Blogs | ${currentPageNumber} | GGIRHR`} />
         <meta
           name="description"
@@ -98,6 +98,7 @@ const BlogList = ({
                       <Link
                         href={`/doctors/${item?.node?.teacher?.slug}`}
                         passHref
+                        legacyBehavior
                       >
                         <a>
                           <span className="sr-only">
@@ -113,7 +114,10 @@ const BlogList = ({
                     </div>
                     <div className="ml-3">
                       <p className="text-sm font-medium text-gray-900">
-                        <Link href={`/doctors/${item?.node?.teacher?.slug}`}>
+                        <Link
+                          legacyBehavior
+                          href={`/doctors/${item?.node?.teacher?.slug}`}
+                        >
                           <a className="font-qs font-semibold">
                             {item?.node?.teacher?.name}
                           </a>
@@ -130,14 +134,20 @@ const BlogList = ({
           </div>
           <div className="flex justify-center space-x-4 text-center mt-10">
             {hasPreviousPage ? (
-              <Link href={`/blogs/page/${currentPageNumber - 1}`}>
+              <Link
+                legacyBehavior
+                href={`/blogs/page/${currentPageNumber - 1}`}
+              >
                 <a className="my-8 rounded-xl w-44 py-4 px-6 bg-brandBlue font-qs font-semibold text-white">
                   {"< "}Previous page
                 </a>
               </Link>
             ) : null}
             {hasNextPage ? (
-              <Link href={`/blogs/page/${currentPageNumber + 1}`}>
+              <Link
+                legacyBehavior
+                href={`/blogs/page/${currentPageNumber + 1}`}
+              >
                 <a className="my-8 rounded-xl py-4 w-44 px-6 bg-brandBlue font-qs font-semibold text-white">
                   Next page {">"}
                 </a>

@@ -107,7 +107,7 @@ const Data = [
       "https://res.cloudinary.com/garbhagudiivf/image/upload/v1651043879/GGIRHR/Images/Webinar_wjquhx.jpg",
     title: "Embryology Webinars",
     description:
-      " The embryology webinars offer priceless experience and a detailed understanding of the critical aspects involved in performing more successful IVF, ICSI, IUI, and various other procedures as a part of assisted reproductive technologies. The sole objective behind GGIRHR’s embryology webinars is to deliver a competitive learning experience for aspiring embryologists. In addition, we offer career guidance to instil confidence and broaden the individual’s exposure to career prospects.",
+      " The embryology webinars offer priceless experience and a detailed understanding of the critical aspects involved in performing more successful IVF, ICSI, IUI, and various other procedures as a part of assisted reproductive technologies. The sole objective behind GGIRHR’s embryology webinars is to deliver a competitive learning experience for aspiring embryologists. In addition, we offer career guidance to instil confidence and broaden the individual’s exposure to career prospects. The Embryology Webinar is held on the last Saturday of every month at 3:00 PM.",
     link: "",
   },
   {

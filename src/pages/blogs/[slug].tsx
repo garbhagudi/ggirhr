@@ -64,7 +64,7 @@ const BlogPage = ({ blog }) => {
         {/* Primary Tags */}
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{blog?.title} | GGIRHR</title>
+        <title>{`${blog?.title} | GGIRHR`}</title>
         <meta name="title" content={`${blog?.title} | GGIRHR`} />
         <meta name="description" content={blog?.content?.text.slice(0, 180)} />
 

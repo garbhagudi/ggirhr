@@ -16,7 +16,7 @@ const CoursePage = ({ course }) => {
         {/* Primary Tags */}
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{course?.title} | GGIRHR</title>
+        <title>{`${course?.title} | GGIRHR`}</title>
         <meta name="title" content={`${course?.title} | GGIRHR`} />
         <meta
           name="description"
@@ -100,7 +100,7 @@ const CoursePage = ({ course }) => {
                 </div>
                 <div className="rounded-md shadow flex justify-center">
                   <a
-                    href="+917204937376"
+                    href="tel:+917204937376"
                     className="w-full flex items-center justify-center px-5 py-3 bg-white border border-transparent text-base font-medium rounded-md text-brandBlue"
                   >
                     <PhoneIcon className="w-5 h-5 mr-2" /> Call Us

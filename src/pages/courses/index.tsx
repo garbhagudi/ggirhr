@@ -1,6 +1,5 @@
 import React from "react";
 import { GraphQLClient, gql } from "graphql-request";
-import { ChevronRightIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import Head from "next/head";
 
