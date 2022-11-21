@@ -58,19 +58,20 @@ export async function getStaticPaths() {
 }
 
 const BlogPage = ({ blog }) => {
+  const blogTitle = `${blog?.title} | GGIRHR`;
   return (
     <div>
       <Head>
         {/* Primary Tags */}
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{`${blog?.title} | GGIRHR`}</title>
-        <meta name="title" content={`${blog?.title} | GGIRHR`} />
+        <title>{blogTitle}</title>
+        <meta name="title" content={blogTitle} />
         <meta name="description" content={blog?.content?.text.slice(0, 180)} />
 
         {/* Open Graph / Facebook */}
 
-        <meta property="og:title" content={`${blog?.title} | GGIRHR`} />
+        <meta property="og:title" content={blogTitle} />
         <meta property="og:site_name" content="GGIRHR" />
         <meta property="og:url" content="https://ggirhr.com" />
         <meta
@@ -84,7 +85,7 @@ const BlogPage = ({ blog }) => {
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@ggirhr" />
-        <meta name="twitter:title" content={`${blog?.title} | GGIRHR`} />
+        <meta name="twitter:title" content={blogTitle} />
         <meta
           name="twitter:description"
           content={blog?.content?.text.slice(0, 180)}

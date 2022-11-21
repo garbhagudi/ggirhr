@@ -5,40 +5,37 @@ import Header from "components/header/header";
 import Footer from "components/footer/footer";
 import SalesIQ from "components/SalesIQ";
 import FloatPhone from "components/floatPhone";
-import * as ga from "../lib/google-analytics";
+import TagManager from "react-gtm-module";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import Script from "next/script";
 import Head from "next/head";
+import Loading from "components/loading";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
+  const [loading, setLoading] = React.useState(false);
+
   useEffect(() => {
-    const handleRouteChange = (url: any) => {
-      ga.pageview(url);
+    TagManager.initialize({ gtmId: "GTM-5462HX7" });
+  }, []);
+
+  useEffect(() => {
+    const start = () => {
+      setLoading(true);
     };
-    router.events.on("routeChangeComplete", handleRouteChange);
+    const end = () => {
+      setLoading(false);
+    };
+    router.events.on("routeChangeStart", start);
+    router.events.on("routeChangeComplete", end);
+    router.events.on("routeChangeError", end);
     return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
+      router.events.off("routeChangeStart", start);
+      router.events.off("routeChangeComplete", end);
+      router.events.off("routeChangeError", end);
     };
   }, [router.events]);
 
-  useEffect(() => {
-    import("react-facebook-pixel")
-      .then((x) => x.default)
-      .then((ReactPixel) => {
-        ReactPixel.init("512213833167180");
-        ReactPixel.pageView();
-        router.events.on("routeChangeComplete", () => {
-          ReactPixel.pageView();
-          return () => {
-            router.events.off("routeChangeComplete", () => {
-              ReactPixel.pageView();
-            });
-          };
-        });
-      });
-  }, [router.events]);
   return (
     <div>
       <Head>
@@ -47,26 +44,19 @@ function MyApp({ Component, pageProps }) {
           content="hNa9hsmI-YwrJiMxo0FR7-5PWn2ku2yqn3OD6VoVFms"
         />
       </Head>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_MEASUREMENT_ID}`}
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', '${process.env.NEXT_PUBLIC_MEASUREMENT_ID}');
-        `}
-      </Script>
-      <Header />
-      <main className="min-h-screen">
-        <Component {...pageProps} />
-      </main>
-      <SalesIQ />
-      <FloatPhone />
-      <Footer />
+      {loading ? (
+        <Loading />
+      ) : (
+        <div>
+          <Header />
+          <main className="min-h-screen">
+            <Component {...pageProps} />
+          </main>
+          <SalesIQ />
+          <FloatPhone />
+          <Footer />
+        </div>
+      )}
     </div>
   );
 }

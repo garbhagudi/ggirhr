@@ -2,7 +2,9 @@ import React from "react";
 import { gql } from "graphql-request";
 import Link from "next/link";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import graphcms from "lib/graphcms";
+import Loading from "components/loading";
 
 const limit = 6;
 
@@ -12,14 +14,20 @@ const BlogList = ({
   hasPreviousPage,
   blogs,
 }) => {
+  const blogTitle = `Blogs | Page - ${currentPageNumber} | GGIRHR`;
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <Loading />;
+  }
   return (
     <div>
       <Head>
         {/* Primary Tags */}
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{`Blogs | Page - ${currentPageNumber} | GGIRHR`} </title>
-        <meta name="title" content={`Blogs | ${currentPageNumber} | GGIRHR`} />
+        <title>{blogTitle}</title>
+        <meta name="title" content={blogTitle} />
         <meta
           name="description"
           content="Our Blogs and Articles regarding Infertility, Treatment, Academics and Parenthood"
@@ -27,10 +35,7 @@ const BlogList = ({
 
         {/* Open Graph / Facebook */}
 
-        <meta
-          property="og:title"
-          content={`Blogs | ${currentPageNumber} | GGIRHR`}
-        />
+        <meta property="og:title" content={blogTitle} />
         <meta property="og:site_name" content="GGIRHR" />
         <meta property="og:url" content="https://ggirhr.com" />
         <meta
@@ -47,10 +52,7 @@ const BlogList = ({
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@ggirhr" />
-        <meta
-          name="twitter:title"
-          content={`Blogs | ${currentPageNumber} | GGIRHR`}
-        />
+        <meta name="twitter:title" content={blogTitle} />
         <meta
           name="twitter:description"
           content="Our Blogs and Articles regarding Infertility, Treatment, Academics and Parenthood"
