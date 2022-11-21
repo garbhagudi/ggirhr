@@ -3,6 +3,8 @@ import { RichText } from "@graphcms/rich-text-react-renderer";
 import graphcms from "lib/graphcms";
 import Error from "next/error";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import Loading from "components/loading";
 
 export const getStaticProps = async ({ params }) => {
   const { blog } = await graphcms.request(
@@ -53,12 +55,16 @@ export async function getStaticPaths() {
 
   return {
     paths: blogs.map(({ slug }) => ({ params: { slug } })),
-    fallback: false,
+    fallback: true,
   };
 }
 
 const BlogPage = ({ blog }) => {
   const blogTitle = `${blog?.title} | GGIRHR`;
+  const router = useRouter();
+  if (router.isFallback) {
+    return <Loading />;
+  }
   return (
     <div>
       <Head>
