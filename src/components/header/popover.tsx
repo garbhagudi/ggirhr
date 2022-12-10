@@ -60,8 +60,13 @@ const courses = {
   ],
   ultrasound: [
     {
-      name: "Comprehensive Ultrasound Scan Training",
-      href: "/courses/comprehensive-ultrasound-scan-training",
+      name: "Comprehensive TVS Ultrasound Scan Training",
+      href: "/courses/comprehensive-tvs-ultrasound-scan-course",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg",
+    },
+    {
+      name: "Online Basic TVS Ultrasound Scan Training",
+      href: "/courses/online-basic-tvs-ultrasound-scan-course",
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg",
     },
   ],
@@ -215,7 +220,7 @@ export function Courses() {
                   ))}
                 </div>
                 <hr />
-                {/* <p className="px-4 py-2 text-xs font-bold underline bg-white text-brandDark text-md sm:text-sm">
+                <p className="px-4 py-2 text-xs font-bold underline bg-white text-brandDark text-md sm:text-sm">
                   Ultrasound Scan Courses
                 </p>
                 <div className="relative grid grid-cols-2 gap-8 p-3 bg-white">
@@ -236,7 +241,7 @@ export function Courses() {
                     </a>
                   ))}
                 </div>
-                <hr /> */}
+                <hr />
                 <p className="px-4 py-2 text-xs font-bold underline bg-white text-brandDark sm:text-sm">
                   Andrology and Embryology Courses
                 </p>

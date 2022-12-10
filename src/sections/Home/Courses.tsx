@@ -40,12 +40,12 @@ const Data = [
   },
   {
     id: 5,
-    Name: "Comprehensive Ultrasound Scan Training",
+    Name: "Comprehensive TVS Ultrasound Scan Training",
     details:
       "The Comprehensive Ultrasound Scan Training provided at GGIRHR comes with the aid of the world’s best scan simulator. It also has a vast library of cases loaded into the cloud, covering all obstetrics, gynaecology, and infertility scenarios. Candidates are trained from the fundamentals of scanning (planes, basic anatomy, identifying structures to advanced topics like various types of fibroids, myomas, cysts, early pregnancy, ectopic pregnancy, uterine anomalies, etc.) till they learn the intricacies. The system automatically tracks their progress and records it. It can provide feedback and measure progress. A senior instructor can also go through each case and provide individual feedback to the candidates.",
     image:
       "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006731/GGIRHR/Images/Comprehensive_Ultrasound_Scan_Training_Web-min_glpnij.jpg",
-    link: "/courses/comprehensive-ultrasound-scan-training",
+    link: "/courses/comprehensive-tvs-ultrasound-scan-course",
   },
   {
     id: 6,
