@@ -72,8 +72,8 @@ const courses = {
   ],
   andrology: [
     {
-      name: "Basic and Advanced Andrology Training Program",
-      href: "/courses/basic-and-advanced-andrology-training-program",
+      name: "Comprehensive Andrology Training Program",
+      href: "/courses/comprehensive-andrology-training-program",
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg",
     },
     // {
