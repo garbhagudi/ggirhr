@@ -86,11 +86,11 @@ const courses = {
       href: "/courses/post-graduate-diploma-in-clinical-embryology-pgdce-program",
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
     },
-    // {
-    //   name: "Institutional Fellowship in Clinical Embryology",
-    //   href: "/courses/institutional-fellowship-in-clinical-embryology",
-    //   icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
-    // },
+    {
+      name: "Institutional Fellowship in Clinical Embryology",
+      href: "/courses/institutional-fellowship-in-clinical-embryology",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+    },
   ],
   shortTermCourses: [
     {
