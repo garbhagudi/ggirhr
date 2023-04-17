@@ -73,7 +73,7 @@ const courses = {
   andrology: [
     {
       name: "Basic and Advanced Andrology Training Program",
-      href: "/courses/andrology-lab-technician-course",
+      href: "/courses/basic-and-advanced-andrology-training-program",
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg",
     },
     // {
@@ -83,12 +83,12 @@ const courses = {
     // },
     {
       name: "Post Graduate Diploma in Clinical Embryology (PGDCE) Program",
-      href: "/courses/institutional-diploma-in-embryology",
+      href: "/courses/post-graduate-diploma-in-clinical-embryology-pgdce-program",
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
     },
     // {
-    //   name: "PG Diploma in Clinical Embryology",
-    //   href: "/courses/post-graduate-diploma-in-clinical-embryology",
+    //   name: "Institutional Fellowship in Clinical Embryology",
+    //   href: "/courses/institutional-fellowship-in-clinical-embryology",
     //   icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
     // },
   ],
