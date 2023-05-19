@@ -4,6 +4,7 @@ import Carousel from "react-multi-carousel";
 import { Home, Home_2 } from "sections/Home";
 import Link from "next/link";
 import Head from "next/head";
+import Courses from "sections/Home/Courses";
 
 const responsive = {
   superLargeDesktop: {
@@ -113,6 +114,7 @@ const IndexPage = ({ HomeData }) => {
         ))}
       </Carousel>
       <Home />
+      <Courses Data={HomeData?.courses} />
       <section className="max-w-6xl mx-auto px-4 xl:px-0 sm:px-6 py-12">
         <div className="text-center pb-12">
           <h1 className="font-bold text-3xl md:text-4xl lg:text-4xl font-heading text-gray-900">
@@ -192,6 +194,15 @@ export const getServerSideProps = async () => {
         image {
           url
         }
+      }
+      courses(orderBy: createdAt_DESC, first: 6) {
+        title
+        slug
+        id
+        courseImage {
+          url
+        }
+        objective
       }
     }
   `;
