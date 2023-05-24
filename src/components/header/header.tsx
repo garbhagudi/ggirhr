@@ -14,7 +14,7 @@ const Header = () => {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center align-middle cursor-pointer">
               <div className="flex-shrink-0 pt-4">
-                <Link href="/" passHref>
+                <Link href="/" passHref legacyBehavior>
                   <a>
                     <img
                       src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1644909568/logos/gg-logo_bg5gzc.png"
@@ -145,7 +145,7 @@ const Header = () => {
           {(ref) => (
             <div className="xl:hidden" id="mobile-menu">
               <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <Link href={"/"} passHref>
+                <Link href={"/"} passHref legacyBehavior>
                   <a className="text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm">
                     Home
                   </a>
@@ -157,20 +157,17 @@ const Header = () => {
                   <Courses />
                 </span>
                 <span className="text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm">
-                  Events and Webinars
+                  <Link href="/events">Events</Link>
                 </span>
                 <span className="text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm">
-                  Research
+                  <Link href="/research">Research and Journals</Link>
                 </span>
                 <span className="text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm">
-                  Blogs
+                  <Link href="/blogs/page/1">Blogs</Link>
                 </span>
-                <a
-                  href="#"
-                  className="text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm cursor-pointer"
-                >
-                  Contact Us
-                </a>
+                <span className="text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm cursor-pointer">
+                  <Link href="/gg-care">Contact Us</Link>
+                </span>
               </div>
             </div>
           )}

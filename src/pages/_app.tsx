@@ -5,17 +5,58 @@ import Header from "components/header/header";
 import Footer from "components/footer/footer";
 import SalesIQ from "components/SalesIQ";
 import FloatPhone from "components/floatPhone";
+import TagManager from "react-gtm-module";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import Head from "next/head";
+import Loading from "components/loading";
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+  const [loading, setLoading] = React.useState(false);
+
+  useEffect(() => {
+    TagManager.initialize({ gtmId: "GTM-5462HX7" });
+  }, []);
+
+  useEffect(() => {
+    const start = () => {
+      setLoading(true);
+    };
+    const end = () => {
+      setLoading(false);
+    };
+    router.events.on("routeChangeStart", start);
+    router.events.on("routeChangeComplete", end);
+    router.events.on("routeChangeError", end);
+    return () => {
+      router.events.off("routeChangeStart", start);
+      router.events.off("routeChangeComplete", end);
+      router.events.off("routeChangeError", end);
+    };
+  }, [router.events]);
+
   return (
     <div>
-      <Header />
-      <main className="min-h-screen">
-        <Component {...pageProps} />
-      </main>
-      <SalesIQ />
-      <FloatPhone />
-      <Footer />
+      <Head>
+        <meta
+          name="google-site-verification"
+          content="hNa9hsmI-YwrJiMxo0FR7-5PWn2ku2yqn3OD6VoVFms"
+        />
+      </Head>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className="selection:bg-brandBlue selection:text-white">
+          <Header />
+          <main className="min-h-screen">
+            <Component {...pageProps} />
+          </main>
+          <SalesIQ />
+          <FloatPhone />
+          <Footer />
+        </div>
+      )}
     </div>
   );
 }

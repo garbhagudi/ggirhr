@@ -19,7 +19,7 @@ const supportLinks = [
       "Reach out to us with your questions, concerns, or challenges. We’ll be happy to help you at any time, and we’re always trying to make things easier for you!",
     icon: PhoneIcon,
     ctaAction: "Call Now",
-    ctaLink: "tel:+918880000909",
+    ctaLink: "tel:+917204937376",
   },
   {
     name: "Book a Counselling Session",
@@ -40,7 +40,7 @@ const Hero = () => {
         <div className="absolute inset-0">
           <img
             className="w-full h-full object-cover"
-            src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1644049097/Banner/GG_Care_Web_Banner-6_iyxanu.webp"
+            src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1657175094/GGIRHR/Images/GG_Care_Web_Banner-min_xh7g5u.webp"
             alt=""
           />
           <div

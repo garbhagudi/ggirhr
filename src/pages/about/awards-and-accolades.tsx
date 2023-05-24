@@ -1,8 +1,52 @@
+import Head from "next/head";
 import React from "react";
 
 const Awards = () => {
   return (
     <div>
+      <Head>
+        {/* Primary Tags */}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Awards and Accolades | GGIRHR</title>
+        <meta name="title" content="Awards and Accolades | GGIRHR" />
+        <meta
+          name="description"
+          content="Awarded as Best IVF and Infertility Training Centre in India"
+        />
+
+        {/* Open Graph / Facebook */}
+
+        <meta
+          property="og:title"
+          content="Awarded as Best IVF and Infertility Training Centre in India"
+        />
+        <meta property="og:site_name" content="GGIRHR" />
+        <meta property="og:url" content="https://ggirhr.com" />
+        <meta
+          property="og:description"
+          content="Awarded as Best IVF and Infertility Training Centre in India"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_Awards-min_nbnk68.jpg"
+        />
+
+        {/* Twitter*/}
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ggirhr" />
+        <meta name="twitter:title" content="Awards and Accolades | GGIRHR" />
+        <meta
+          name="twitter:description"
+          content="Awarded as Best IVF and Infertility Training Centre in India"
+        />
+        <meta
+          name="twitter:image"
+          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_Awards-min_nbnk68.jpg"
+        />
+      </Head>
       <div className="max-w-7xl mx-auto">
         <h1 className="text-center text-3xl my-8 font-heading font-bold">
           Awarded as Best IVF and Infertility Training Centre in India

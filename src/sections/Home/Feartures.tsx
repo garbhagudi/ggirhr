@@ -1,5 +1,4 @@
 import React from "react";
-import { AcademicCapIcon } from "@heroicons/react/solid";
 
 const Data = [
   {
@@ -45,7 +44,7 @@ const Feartures = () => {
               in ART procedures. In this context, GGIRHR has set up the
               following to assist its endeavours:
             </h3>
-            <div className="pt-16 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-2 justify-center items-center xl:gap-y-8 gap-y-3 gap-x-4 lg:gap-x-20 xl:gap-x-0 lg:px-10 xl:px-0">
+            <div className="pt-16 grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 justify-center items-center xl:gap-y-8 gap-y-3 gap-x lg:gap-x-20 xl:gap-x-0 lg:px-10 xl:px-0">
               {Data.map((item) => (
                 <div
                   className="cursor-pointer hover:shadow-2xl py-3 xl:px-2 rounded-3xl xl:w-96 md:max-w-xl w-56 flex justify-center items-center flex-col"

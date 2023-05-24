@@ -1,8 +1,49 @@
+import Head from "next/head";
 import React from "react";
 
 const IndexPage = () => {
   return (
     <div>
+      <Head>
+        {/* Primary Tags */}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Events and Webinars | GGIRHR</title>
+        <meta name="title" content="Events and Webinars | GGIRHR" />
+        <meta
+          name="description"
+          content="Check Our Upcoming and Events, CMEs and Webinars"
+        />
+
+        {/* Open Graph / Facebook */}
+
+        <meta property="og:title" content="Events and Webinars | GGIRHR" />
+        <meta property="og:site_name" content="GGIRHR" />
+        <meta property="og:url" content="https://ggirhr.com" />
+        <meta
+          property="og:description"
+          content="Check Our Upcoming and Events, CMEs and Webinars"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651043879/GGIRHR/Images/Webinar_wjquhx.jpg"
+        />
+
+        {/* Twitter*/}
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ggirhr" />
+        <meta name="twitter:title" content="Events and Webinars | GGIRHR" />
+        <meta
+          name="twitter:description"
+          content="Check Our Upcoming and Events, CMEs and Webinars"
+        />
+        <meta
+          name="twitter:image"
+          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651043879/GGIRHR/Images/Webinar_wjquhx.jpg"
+        />
+      </Head>
       <div className="w-full mt-10 mb-6 lg:mb-0">
         <h1 className="sm:text-4xl text-4xl font-bold mb-2 text-gray-900 text-center font-heading">
           Events and Webinars
@@ -66,7 +107,7 @@ const Data = [
       "https://res.cloudinary.com/garbhagudiivf/image/upload/v1651043879/GGIRHR/Images/Webinar_wjquhx.jpg",
     title: "Embryology Webinars",
     description:
-      " The embryology webinars offer priceless experience and a detailed understanding of the critical aspects involved in performing more successful IVF, ICSI, IUI, and various other procedures as a part of assisted reproductive technologies. The sole objective behind GGIRHR’s embryology webinars is to deliver a competitive learning experience for aspiring embryologists. In addition, we offer career guidance to instil confidence and broaden the individual’s exposure to career prospects.",
+      " The embryology webinars offer priceless experience and a detailed understanding of the critical aspects involved in performing more successful IVF, ICSI, IUI, and various other procedures as a part of assisted reproductive technologies. The sole objective behind GGIRHR’s embryology webinars is to deliver a competitive learning experience for aspiring embryologists. In addition, we offer career guidance to instil confidence and broaden the individual’s exposure to career prospects. The Embryology Webinar is held on the last Saturday of every month at 3:00 PM.",
     link: "",
   },
   {

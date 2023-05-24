@@ -1,10 +1,5 @@
 import { Popover, Transition } from "@headlessui/react";
-import {
-  ChevronDownIcon,
-  AcademicCapIcon,
-  AdjustmentsIcon,
-  ArchiveIcon,
-} from "@heroicons/react/solid";
+import { ChevronDownIcon } from "@heroicons/react/solid";
 import { Fragment } from "react";
 
 const AboutSection = [
@@ -65,30 +60,35 @@ const courses = {
   ],
   ultrasound: [
     {
-      name: "Comprehensive Ultrasound Scan Training",
-      href: "/courses/comprehensive-ultrasound-scan-training",
+      name: "Comprehensive TVS Ultrasound Scan Training",
+      href: "/courses/comprehensive-tvs-ultrasound-scan-course",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg",
+    },
+    {
+      name: "Online Basic TVS Ultrasound Scan Training",
+      href: "/courses/online-basic-tvs-ultrasound-scan-course",
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg",
     },
   ],
   andrology: [
     {
-      name: "Andrology Workshop",
-      href: "/courses/andrology-lab-technician-course",
+      name: "Comprehensive Andrology Training Program",
+      href: "/courses/comprehensive-andrology-training-program",
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg",
     },
+    // {
+    //   name: "Comprehensive Embryology Course",
+    //   href: "/courses/comprehensive-embryology-course",
+    //   icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+    // },
     {
-      name: "Comprehensive Embryology Course",
-      href: "/courses/comprehensive-embryology-course",
+      name: "Post Graduate Diploma in Clinical Embryology (PGDCE) Program",
+      href: "/courses/post-graduate-diploma-in-clinical-embryology-pgdce-program",
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
     },
     {
-      name: "Institutional Diploma Embryology",
-      href: "/courses/institutional-diploma-in-embryology",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
-    },
-    {
-      name: "PG Diploma in Clinical Embryology",
-      href: "/courses/post-graduate-diploma-in-clinical-embryology",
+      name: "Institutional Fellowship in Clinical Embryology",
+      href: "/courses/institutional-fellowship-in-clinical-embryology",
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
     },
   ],
@@ -139,9 +139,9 @@ export function About() {
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-1"
           >
-            <Popover.Panel className="absolute z-10 w-96 max-w-xl px-4 mt-7 transform -translate-x-1/2 left-1/2 sm:px-0">
+            <Popover.Panel className="absolute z-10 max-w-xl px-4 transform -translate-x-1/2 w-96 mt-7 left-1/2 sm:px-0">
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                <div className="relative grid gap-8 bg-white p-3 lg:grid-cols-1">
+                <div className="relative grid gap-8 p-3 bg-white lg:grid-cols-1">
                   {AboutSection.map((item) => (
                     <a
                       key={item.name}
@@ -196,12 +196,12 @@ export function Courses() {
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-1"
           >
-            <Popover.Panel className="absolute mt-7 z-10 w-screen max-w-lg px-4 transform -translate-x-1/2 left-1/2 sm:px-0 lg:max-w-3xl">
+            <Popover.Panel className="absolute z-10 w-screen max-w-lg px-4 transform -translate-x-1/2 mt-7 left-1/2 sm:px-0 lg:max-w-3xl">
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                <p className="bg-white text-brandDark px-4 pt-4 pb-2 font-bold underline text-xs sm:text-sm">
+                <p className="px-4 pt-4 pb-2 text-xs font-bold underline bg-white text-brandDark sm:text-sm">
                   Fellowship Courses
                 </p>
-                <div className="relative grid gap-8 bg-white p-3 grid-cols-2">
+                <div className="relative grid grid-cols-2 gap-8 p-3 bg-white">
                   {courses.fellowships.map((item) => (
                     <a
                       key={item.name}
@@ -212,7 +212,7 @@ export function Courses() {
                         <img src={item.icon} alt={item.name} />
                       </div>
                       <div className="ml-4">
-                        <p className="sm:text-sm text-xs font-medium text-gray-900">
+                        <p className="text-xs font-medium text-gray-900 sm:text-sm">
                           {item.name}
                         </p>
                       </div>
@@ -220,10 +220,10 @@ export function Courses() {
                   ))}
                 </div>
                 <hr />
-                <p className="bg-white text-brandDark px-4 py-2 text-md font-bold underline text-xs sm:text-sm">
+                <p className="px-4 py-2 text-xs font-bold underline bg-white text-brandDark text-md sm:text-sm">
                   Ultrasound Scan Courses
                 </p>
-                <div className="relative grid gap-8 bg-white p-3 grid-cols-2">
+                <div className="relative grid grid-cols-2 gap-8 p-3 bg-white">
                   {courses.ultrasound.map((item) => (
                     <a
                       key={item.name}
@@ -234,7 +234,7 @@ export function Courses() {
                         <img src={item.icon} alt={item.name} />
                       </div>
                       <div className="ml-4">
-                        <p className="sm:text-sm text-xs font-medium text-gray-900">
+                        <p className="text-xs font-medium text-gray-900 sm:text-sm">
                           {item.name}
                         </p>
                       </div>
@@ -242,10 +242,10 @@ export function Courses() {
                   ))}
                 </div>
                 <hr />
-                <p className="bg-white text-brandDark px-4 py-2 text-xs sm:text-sm font-bold underline">
+                <p className="px-4 py-2 text-xs font-bold underline bg-white text-brandDark sm:text-sm">
                   Andrology and Embryology Courses
                 </p>
-                <div className="relative grid gap-8 bg-white p-3 grid-cols-2">
+                <div className="relative grid grid-cols-2 gap-8 p-3 bg-white">
                   {courses.andrology.map((item) => (
                     <a
                       key={item.name}
@@ -256,17 +256,18 @@ export function Courses() {
                         <img src={item.icon} alt={item.name} />
                       </div>
                       <div className="ml-4">
-                        <p className="sm:text-sm text-xs font-medium text-gray-900">
+                        <p className="text-xs font-medium text-gray-900 sm:text-sm">
                           {item.name}
                         </p>
                       </div>
                     </a>
                   ))}
                 </div>
-                <p className="bg-white text-brandDark px-4 py-2 text-xs sm:text-sm font-bold underline">
+                <hr />
+                <p className="px-4 py-2 text-xs font-bold underline bg-white text-brandDark sm:text-sm">
                   Short Term Courses
                 </p>
-                <div className="relative grid gap-8 bg-white p-3 grid-cols-2">
+                <div className="relative grid grid-cols-2 gap-8 p-3 bg-white">
                   {courses.shortTermCourses.map((item) => (
                     <a
                       key={item.name}
@@ -277,7 +278,7 @@ export function Courses() {
                         <img src={item.icon} alt={item.name} />
                       </div>
                       <div className="ml-4">
-                        <p className="sm:text-sm text-xs font-medium text-gray-900">
+                        <p className="text-xs font-medium text-gray-900 sm:text-sm">
                           {item.name}
                         </p>
                       </div>

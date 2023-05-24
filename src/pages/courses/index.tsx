@@ -1,7 +1,7 @@
 import React from "react";
 import { GraphQLClient, gql } from "graphql-request";
-import { ChevronRightIcon } from "@heroicons/react/solid";
 import Link from "next/link";
+import Head from "next/head";
 
 export const getServerSideProps = async () => {
   const url = process.env.ENDPOINT;
@@ -35,43 +35,85 @@ export const getServerSideProps = async () => {
 
 const Course = ({ courses }) => {
   return (
-    <section className="text-gray-600 body-font mb-10">
-      <div className="max-w-7xl px-4 xl:px-0 py-4 mx-auto">
-        <div className="flex flex-wrap w-full mb-4 p-4">
-          <div className="w-full mb-6 lg:mb-0">
-            <h1 className="sm:text-4xl text-4xl font-bold mb-2 text-gray-900 text-center font-heading">
-              Courses
-            </h1>
-            <h3 className="text-center max-w-3xl mx-auto font-semibold mt-4 text-gray-900">
-              Check out our most popular courses below
-            </h3>
+    <div>
+      <Head>
+        {/* Primary Tags */}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Courses Offered | GGIRHR</title>
+        <meta name="title" content="Courses Offered | GGIRHR" />
+        <meta
+          name="description"
+          content="Check out our most popular courses offered"
+        />
+
+        {/* Open Graph / Facebook */}
+
+        <meta property="og:title" content="Courses Offered | GGIRHR" />
+        <meta property="og:site_name" content="GGIRHR" />
+        <meta property="og:url" content="https://ggirhr.com" />
+        <meta
+          property="og:description"
+          content="Check out our most popular courses offered"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644125/GGIRHR/SEO/SEO_Course_Tree-min_z4timn.jpg"
+        />
+
+        {/* Twitter*/}
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ggirhr" />
+        <meta name="twitter:title" content="Courses Offered | GGIRHR" />
+        <meta
+          name="twitter:description"
+          content="Check out our most popular courses offered"
+        />
+        <meta
+          name="twitter:image"
+          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644125/GGIRHR/SEO/SEO_Course_Tree-min_z4timn.jpg"
+        />
+      </Head>
+      <section className="text-gray-600 body-font mb-10">
+        <div className="max-w-7xl px-4 xl:px-0 py-4 mx-auto">
+          <div className="flex flex-wrap w-full mb-4 p-4">
+            <div className="w-full mb-6 lg:mb-0">
+              <h1 className="sm:text-4xl text-4xl font-bold mb-2 text-gray-900 text-center font-heading">
+                Courses
+              </h1>
+              <h3 className="text-center max-w-3xl mx-auto font-semibold mt-4 text-gray-900">
+                Check out our most popular courses below
+              </h3>
+            </div>
           </div>
-        </div>
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 justify-center items-center">
-          {courses.map((item) => (
-            <Link href={`/courses/${item?.slug}`} passHref key={item.id}>
-              <div className="hover:shadow-2xl rounded-3xl cursor-pointer">
-                <div className="overflow-hidden">
-                  <img
-                    className="rounded-t-3xl"
-                    src={item.courseImage.url}
-                    alt={item.title}
-                  />
-                  <div className="border-r-2 border-l-2 border-b-2 rounded-b-3xl bg-gray-50">
-                    <h2 className="text-lg text-gray-900 font-medium title-font py-4 md:ml-2 text-center md:text-left">
-                      {item.title}
-                    </h2>
-                    <p className="leading-relaxed text-base md:ml-2 text-center md:text-left mb-6 ">
-                      {item.objective.slice(0, 140)}...
-                    </p>
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 justify-center items-center">
+            {courses.map((item) => (
+              <Link href={`/courses/${item?.slug}`} passHref key={item.id}>
+                <div className="hover:shadow-2xl rounded-3xl cursor-pointer">
+                  <div className="overflow-hidden">
+                    <img
+                      className="rounded-t-3xl"
+                      src={item.courseImage.url}
+                      alt={item.title}
+                    />
+                    <div className="border-r-2 border-l-2 border-b-2 rounded-b-3xl bg-gray-50">
+                      <h2 className="text-lg text-gray-900 font-medium title-font py-4 md:ml-2 text-center md:text-left">
+                        {item.title}
+                      </h2>
+                      <p className="leading-relaxed text-base md:ml-2 text-center md:text-left mb-6 ">
+                        {item.objective.slice(0, 140)}...
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 

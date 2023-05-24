@@ -19,7 +19,7 @@ const Contact = () => {
                     <dt className="sr-only">Email</dt>
                     <dd>
                       <a
-                        href="mailto:dreams@garbhagudi.com"
+                        href="mailto:goutham@ggirhr.com"
                         className="text-brandPink2 hover:underline"
                       >
                         <AtSymbolIcon className="inline-flex w-5 h-5" />{" "}
@@ -31,11 +31,11 @@ const Contact = () => {
                     <dt className="sr-only">Phone number</dt>
                     <dd>
                       <a
-                        href="tel:+918880000909"
+                        href="tel:+917204937376"
                         className="text-brandBlue hover:underline"
                       >
-                        <PhoneIcon className="inline-block w-5 h-5" /> +91 888
-                        000 0909
+                        <PhoneIcon className="inline-block w-5 h-5" />{" "}
+                        +917204937376
                       </a>
                     </dd>
                   </div>
@@ -50,7 +50,7 @@ const Contact = () => {
                     <dt className="sr-only">Email</dt>
                     <dd>
                       <a
-                        href="mailto:grievance@garbhagudi.com"
+                        href="mailto:manager@ggirhr.com"
                         className="text-brandPink2 hover:underline"
                       >
                         <AtSymbolIcon className="inline-flex w-5 h-5" />{" "}
@@ -62,11 +62,11 @@ const Contact = () => {
                     <dt className="sr-only">Phone number</dt>
                     <dd>
                       <a
-                        href="tel:+918880000909"
+                        href="tel:+917204937376"
                         className="text-brandBlue hover:underline"
                       >
-                        <PhoneIcon className="inline-block w-5 h-5" /> +91 888
-                        000 0909
+                        <PhoneIcon className="inline-block w-5 h-5" />{" "}
+                        +917204937376
                       </a>
                     </dd>
                   </div>

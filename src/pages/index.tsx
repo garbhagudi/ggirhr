@@ -3,6 +3,8 @@ import { gql, GraphQLClient } from "graphql-request";
 import Carousel from "react-multi-carousel";
 import { Home, Home_2 } from "sections/Home";
 import Link from "next/link";
+import Head from "next/head";
+import Courses from "sections/Home/Courses";
 
 const responsive = {
   superLargeDesktop: {
@@ -45,6 +47,57 @@ const responsive_team = {
 const IndexPage = ({ HomeData }) => {
   return (
     <div>
+      <Head>
+        {/* Primary Tags */}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+          GGIRHR | Best IVF &amp; Infertility Training Institute in India
+        </title>
+        <meta
+          name="title"
+          content="GGIRHR | India's Best Fertility Training Institute"
+        />
+        <meta
+          name="description"
+          content="GarbhaGudi Institute of Reproductive Health & Research is a platform launched by a team of renowned specialists interested in training medical professionals and science students in reproductive medicine and infertility."
+        />
+
+        {/* Open Graph / Facebook */}
+
+        <meta
+          property="og:title"
+          content="GGIRHR | Best IVF & Infertility Training Institute in India"
+        />
+        <meta property="og:site_name" content="GGIRHR" />
+        <meta property="og:url" content="https://ggirhr.com" />
+        <meta
+          property="og:description"
+          content="GarbhaGudi Institute of Reproductive Health & Research is a platform launched by a team of renowned specialists interested in training medical professionals and science students in reproductive medicine and infertility."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_About-min_jifn0w.jpg"
+        />
+
+        {/* Twitter*/}
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ggirhr" />
+        <meta
+          name="twitter:title"
+          content="GGIRHR | Best IVF & Infertility Training Institute in India"
+        />
+        <meta
+          name="twitter:description"
+          content="GarbhaGudi Institute of Reproductive Health & Research is a platform launched by a team of renowned specialists interested in training medical professionals and science students in reproductive medicine and infertility."
+        />
+        <meta
+          name="twitter:image"
+          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_About-min_jifn0w.jpg"
+        />
+      </Head>
       <Carousel
         responsive={responsive}
         ssr={true}
@@ -61,6 +114,7 @@ const IndexPage = ({ HomeData }) => {
         ))}
       </Carousel>
       <Home />
+      <Courses Data={HomeData?.courses} />
       <section className="max-w-6xl mx-auto px-4 xl:px-0 sm:px-6 py-12">
         <div className="text-center pb-12">
           <h1 className="font-bold text-3xl md:text-4xl lg:text-4xl font-heading text-gray-900">
@@ -140,6 +194,15 @@ export const getServerSideProps = async () => {
         image {
           url
         }
+      }
+      courses(orderBy: createdAt_DESC, first: 6) {
+        title
+        slug
+        id
+        courseImage {
+          url
+        }
+        objective
       }
     }
   `;

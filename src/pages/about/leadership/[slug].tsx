@@ -2,6 +2,7 @@ import React from "react";
 import graphcms from "lib/graphcms";
 import { useRouter } from "next/router";
 import { RichText } from "@graphcms/rich-text-react-renderer";
+import Head from "next/head";
 
 const LeaderPage = ({ leader }) => {
   const router = useRouter();
@@ -15,6 +16,43 @@ const LeaderPage = ({ leader }) => {
   }
   return (
     <div>
+      <Head>
+        {/* Primary Tags */}
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title> {leader?.name} | GGIRHR</title>
+        <meta name="title" content={`${leader?.name} | GGIRHR`} />
+        <meta name="description" content={leader?.bio?.text.slice(0, 180)} />
+
+        {/* Open Graph / Facebook */}
+
+        <meta property="og:title" content={`${leader?.name} | GGIRHR`} />
+        <meta property="og:site_name" content="GGIRHR" />
+        <meta property="og:url" content="https://ggirhr.com" />
+        <meta
+          property="og:description"
+          content={leader?.bio?.text.slice(0, 180)}
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1643802154/SEO/OG_images_Directors_jbvcep.jpg"
+        />
+
+        {/* Twitter*/}
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ggirhr" />
+        <meta name="twitter:title" content={`${leader?.name} | GGIRHR`} />
+        <meta
+          name="twitter:description"
+          content={leader?.bio?.text.slice(0, 180)}
+        />
+        <meta
+          name="twitter:image"
+          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1643802154/SEO/OG_images_Directors_jbvcep.jpg"
+        />
+      </Head>
       <div className="bg-white py-0 sm:py-8">
         <div className="max-w-3xl mx-auto">
           <div className="w-full">
@@ -78,6 +116,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       leader,
     },
+    revalidate: 180,
   };
 };
 
