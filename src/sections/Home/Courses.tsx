@@ -18,7 +18,7 @@ const Courses = ({ Data }) => {
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 justify-center items-center">
           {Data.map((item) => (
             <Link
-              href={item.slug}
+              href={`/courses/${item.slug}`}
               passHref
               key={item.id}
               className="transition-all duration-150 hover:-translate-x-2 hover:-translate-y-2"
