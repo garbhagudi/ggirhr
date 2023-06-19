@@ -1,10 +1,10 @@
-import React from "react";
-import { gql, GraphQLClient } from "graphql-request";
-import Carousel from "react-multi-carousel";
-import { Home, Home_2 } from "sections/Home";
-import Link from "next/link";
-import Head from "next/head";
-import Courses from "sections/Home/Courses";
+import React from 'react';
+import { gql, GraphQLClient } from 'graphql-request';
+import Carousel from 'react-multi-carousel';
+import { Home, Home_2 } from 'sections/Home';
+import Link from 'next/link';
+import Head from 'next/head';
+import Courses from 'sections/Home/Courses';
 
 const responsive = {
   superLargeDesktop: {
@@ -50,83 +50,85 @@ const IndexPage = ({ HomeData }) => {
       <Head>
         {/* Primary Tags */}
 
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
         <title>
           GGIRHR | Best IVF &amp; Infertility Training Institute in India
         </title>
         <meta
-          name="title"
+          name='title'
           content="GGIRHR | India's Best Fertility Training Institute"
         />
         <meta
-          name="description"
-          content="GarbhaGudi Institute of Reproductive Health & Research is a platform launched by a team of renowned specialists interested in training medical professionals and science students in reproductive medicine and infertility."
+          name='description'
+          content='GarbhaGudi Institute of Reproductive Health & Research is a platform launched by a team of renowned specialists interested in training medical professionals and science students in reproductive medicine and infertility.'
         />
 
         {/* Open Graph / Facebook */}
 
         <meta
-          property="og:title"
-          content="GGIRHR | Best IVF & Infertility Training Institute in India"
+          property='og:title'
+          content='GGIRHR | Best IVF & Infertility Training Institute in India'
         />
-        <meta property="og:site_name" content="GGIRHR" />
-        <meta property="og:url" content="https://ggirhr.com" />
+        <meta property='og:site_name' content='GGIRHR' />
+        <meta property='og:url' content='https://ggirhr.com' />
         <meta
-          property="og:description"
-          content="GarbhaGudi Institute of Reproductive Health & Research is a platform launched by a team of renowned specialists interested in training medical professionals and science students in reproductive medicine and infertility."
+          property='og:description'
+          content='GarbhaGudi Institute of Reproductive Health & Research is a platform launched by a team of renowned specialists interested in training medical professionals and science students in reproductive medicine and infertility.'
         />
-        <meta property="og:type" content="website" />
+        <meta property='og:type' content='website' />
         <meta
-          property="og:image"
-          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_About-min_jifn0w.jpg"
+          property='og:image'
+          content='https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_About-min_jifn0w.jpg'
         />
 
         {/* Twitter*/}
 
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@ggirhr" />
+        <meta name='twitter:card' content='summary_large_image' />
+        <meta name='twitter:site' content='@ggirhr' />
         <meta
-          name="twitter:title"
-          content="GGIRHR | Best IVF & Infertility Training Institute in India"
+          name='twitter:title'
+          content='GGIRHR | Best IVF & Infertility Training Institute in India'
         />
         <meta
-          name="twitter:description"
-          content="GarbhaGudi Institute of Reproductive Health & Research is a platform launched by a team of renowned specialists interested in training medical professionals and science students in reproductive medicine and infertility."
+          name='twitter:description'
+          content='GarbhaGudi Institute of Reproductive Health & Research is a platform launched by a team of renowned specialists interested in training medical professionals and science students in reproductive medicine and infertility.'
         />
         <meta
-          name="twitter:image"
-          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_About-min_jifn0w.jpg"
+          name='twitter:image'
+          content='https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_About-min_jifn0w.jpg'
         />
       </Head>
-      <Carousel
-        responsive={responsive}
-        ssr={true}
-        infinite={true}
-        autoPlay={true}
-        autoPlaySpeed={5000}
-      >
-        {HomeData.banners.map((items: any) => (
-          <div className="" key={items?.id}>
-            <Link href={items?.url} passHref>
-              <img src={items?.image?.url} alt={items?.title} />
-            </Link>
-          </div>
-        ))}
-      </Carousel>
+      <div className='shadow-2xl drop-shadow-2xl'>
+        <Carousel
+          responsive={responsive}
+          ssr={true}
+          infinite={true}
+          autoPlay={true}
+          autoPlaySpeed={5000}
+        >
+          {HomeData.banners.map((items: any) => (
+            <div className='' key={items?.id}>
+              <Link href={items?.url} passHref>
+                <img src={items?.image?.url} alt={items?.title} />
+              </Link>
+            </div>
+          ))}
+        </Carousel>
+      </div>
       <Home />
       <Courses Data={HomeData?.courses} />
-      <section className="max-w-6xl mx-auto px-4 xl:px-0 sm:px-6 py-12">
-        <div className="text-center pb-12">
-          <h1 className="font-bold text-3xl md:text-4xl lg:text-4xl font-heading text-gray-900">
+      <section className='max-w-6xl mx-auto px-4 xl:px-0 sm:px-6 py-12'>
+        <div className='text-center pb-12'>
+          <h1 className='font-bold text-3xl md:text-4xl lg:text-4xl font-heading text-gray-900'>
             Meet our Experts
           </h1>
-          <h3 className="text-center max-w-3xl mx-auto font-semibold mt-4">
+          <h3 className='text-center max-w-3xl mx-auto font-semibold mt-4'>
             Our team of fertility specialists have been known for their
             extensive clinical experience and research contributions and their
             success in treating the most challenging fertility cases.
           </h3>
         </div>
-        <div className="gap-2">
+        <div className='gap-2'>
           <Carousel
             responsive={responsive_team}
             ssr={true}
@@ -135,22 +137,22 @@ const IndexPage = ({ HomeData }) => {
           >
             {HomeData?.teachers?.map((item: any) => (
               <Link href={`/faculty/${item?.slug}`} key={item?.id} passHref>
-                <div className="w-full bg-white rounded-lg p-6 flex flex-col justify-center items-center cursor-pointer">
-                  <div className="mb-8">
+                <div className='w-full bg-white rounded-lg p-6 flex flex-col justify-center items-center cursor-pointer'>
+                  <div className='mb-8'>
                     <img
-                      className="object-center object-cover rounded-full h-64 w-64 lg:h-48 lg:w-48"
+                      className='object-center object-cover rounded-full h-64 w-64 lg:h-48 lg:w-48'
                       src={item?.image?.url}
                       alt={item?.name}
                     />
                   </div>
-                  <div className="text-center">
-                    <p className="text-lg text-gray-700 font-bold mb-2">
+                  <div className='text-center'>
+                    <p className='text-lg text-gray-700 font-bold mb-2'>
                       {item?.name}
                     </p>
-                    <p className=" text-brandBlue text-sm">
+                    <p className=' text-brandBlue text-sm'>
                       {item?.qualification}
                     </p>
-                    <p className=" text-brandPink  text-sm">
+                    <p className=' text-brandPink  text-sm'>
                       {item?.designation}
                     </p>
                   </div>

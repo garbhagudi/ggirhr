@@ -1,81 +1,93 @@
-import Head from "next/head";
-import React from "react";
+import Head from 'next/head';
+import React from 'react';
+import graphcms from 'lib/graphcms';
+import { format } from 'date-fns';
 
-const IndexPage = () => {
+const IndexPage = ({ events }) => {
   return (
     <div>
       <Head>
         {/* Primary Tags */}
 
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
         <title>Events and Webinars | GGIRHR</title>
-        <meta name="title" content="Events and Webinars | GGIRHR" />
+        <meta name='title' content='Events and Webinars | GGIRHR' />
         <meta
-          name="description"
-          content="Check Our Upcoming and Events, CMEs and Webinars"
+          name='description'
+          content='Check Our Upcoming and Events, CMEs and Webinars'
         />
 
         {/* Open Graph / Facebook */}
 
-        <meta property="og:title" content="Events and Webinars | GGIRHR" />
-        <meta property="og:site_name" content="GGIRHR" />
-        <meta property="og:url" content="https://ggirhr.com" />
+        <meta property='og:title' content='Events and Webinars | GGIRHR' />
+        <meta property='og:site_name' content='GGIRHR' />
+        <meta property='og:url' content='https://ggirhr.com' />
         <meta
-          property="og:description"
-          content="Check Our Upcoming and Events, CMEs and Webinars"
+          property='og:description'
+          content='Check Our Upcoming and Events, CMEs and Webinars'
         />
-        <meta property="og:type" content="website" />
+        <meta property='og:type' content='website' />
         <meta
-          property="og:image"
-          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651043879/GGIRHR/Images/Webinar_wjquhx.jpg"
+          property='og:image'
+          content='https://res.cloudinary.com/garbhagudiivf/image/upload/v1651043879/GGIRHR/Images/Webinar_wjquhx.jpg'
         />
 
         {/* Twitter*/}
 
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@ggirhr" />
-        <meta name="twitter:title" content="Events and Webinars | GGIRHR" />
+        <meta name='twitter:card' content='summary_large_image' />
+        <meta name='twitter:site' content='@ggirhr' />
+        <meta name='twitter:title' content='Events and Webinars | GGIRHR' />
         <meta
-          name="twitter:description"
-          content="Check Our Upcoming and Events, CMEs and Webinars"
+          name='twitter:description'
+          content='Check Our Upcoming and Events, CMEs and Webinars'
         />
         <meta
-          name="twitter:image"
-          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651043879/GGIRHR/Images/Webinar_wjquhx.jpg"
+          name='twitter:image'
+          content='https://res.cloudinary.com/garbhagudiivf/image/upload/v1651043879/GGIRHR/Images/Webinar_wjquhx.jpg'
         />
       </Head>
-      <div className="w-full mt-10 mb-6 lg:mb-0">
-        <h1 className="sm:text-4xl text-4xl font-bold mb-2 text-gray-900 text-center font-heading">
+      <div className='w-full mt-10 mb-6 lg:mb-0'>
+        <h1 className='sm:text-4xl text-4xl font-bold mb-2 text-gray-900 text-center font-heading'>
           Events and Webinars
         </h1>
-        <h3 className="text-center max-w-3xl mx-auto font-semibold mt-4 text-gray-900">
+        <h3 className='text-center max-w-3xl mx-auto font-semibold mt-4 text-gray-900'>
           Check Our Upcoming and Events, CMEs and Webinars
         </h3>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
-        {Data?.map((item) => (
+      <div className='max-w-7xl mx-auto'>
+        {events?.length === 0 && (
+          <div className='text-center py-24'>
+            No Events Scheduled! Please, check back later{' '}
+          </div>
+        )}
+        {events?.map((item) => (
           <div
-            className="max-w-sm rounded-2xl overflow-hidden shadow-lg mx-auto my-16"
-            key={item.id}
+            className='max-w-md rounded-2xl overflow-hidden shadow-lg mx-auto my-16'
+            key={item?.id}
           >
             <img
-              className="w-full"
-              src={item.image}
-              alt="Sunset in the mountains"
+              className='w-full'
+              src={item?.bannerImage?.url}
+              alt='Sunset in the mountains'
             />
-            <div className="px-6 py-4">
-              <h1 className="font-bold text-xl mb-2">{item.title}</h1>
-              <p className="text-gray-800 h-auto md:h-80 ">
-                {item.description}
+            <div className='px-6 pt-4'>
+              <h1 className='font-bold text-xl mb-2'>{item?.title}</h1>
+              <p className='text-gray-800 h-auto md:h-80 '>
+                {item?.description}
               </p>
             </div>
-            {item.date && (
-              <dt className="px-7 pt-4 pb-2">Date: {item?.date}</dt>
+            {item?.eventDateTime && (
+              <div className='px-7 pb-2 text-brandBlue font-bold flex space-x-2'>
+                <div>
+                  Date:{format(new Date(item?.eventDateTime), ' dd MMMM yyyy')}{' '}
+                  at {format(new Date(item?.eventDateTime), 'HH:mm')}
+                </div>
+              </div>
             )}
-            {item.link && (
-              <div className="px-6 pt-4 pb-2">
-                <span className="inline-block bg-gray-200 rounded-full px-3 py-2 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                  <a href={item.link} target={"_blank"} rel="noreferrer">
+            {item?.link && (
+              <div className='px-6 pt-4 pb-2'>
+                <span className='inline-block bg-gray-200 rounded-lg px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-brandBlue hover:text-white mr-2 mb-2'>
+                  <a href={item.link} target={'_blank'} rel='noreferrer'>
                     Register Now
                   </a>
                 </span>
@@ -90,33 +102,25 @@ const IndexPage = () => {
 
 export default IndexPage;
 
-const Data = [
-  {
-    id: 1,
-    image:
-      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1651043879/GGIRHR/Images/Webinar_wjquhx.jpg",
-    title: "GarbhaGnan",
-    description:
-      " As part of our endeavour to keep doctors tuned with the latest updates relating to the infertility realm, GGIRHR conducts CMEs and webinars for postgraduate medical students on the last Tuesday of every month. It’s free!",
-    link: "https://docs.google.com/forms/d/e/1FAIpQLSfO3c2uHDyrnXHhuKqKylXxqgJOC9icAlAZHu3oTlDJN8db1w/viewform?usp=sf_link",
-    date: "Every Last Tuesday of the Month",
-  },
-  {
-    id: 1,
-    image:
-      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1651043879/GGIRHR/Images/Webinar_wjquhx.jpg",
-    title: "Embryology Webinars",
-    description:
-      " The embryology webinars offer priceless experience and a detailed understanding of the critical aspects involved in performing more successful IVF, ICSI, IUI, and various other procedures as a part of assisted reproductive technologies. The sole objective behind GGIRHR’s embryology webinars is to deliver a competitive learning experience for aspiring embryologists. In addition, we offer career guidance to instil confidence and broaden the individual’s exposure to career prospects. The Embryology Webinar is held on the last Saturday of every month at 3:00 PM.",
-    link: "",
-  },
-  {
-    id: 1,
-    image:
-      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1651043879/GGIRHR/Images/Webinar_wjquhx.jpg",
-    title: "Physical CMEs",
-    description:
-      "GGIRHR is pleased to organize physical CMEs for postgraduate medical students upon request. Our CMEs provide an excellent platform for refining skills, networking with our eminent faculties, and growing professionally by acquiring new skills and gaining a broader knowledge base.",
-    link: "",
-  },
-];
+export const getServerSideProps = async () => {
+  const { events } = await graphcms.request(`
+    query {
+      events {
+        title
+        id
+        bannerImage {
+          url
+        }
+        description
+        slug
+        link
+        eventDateTime
+      }
+    }
+  `);
+  return {
+    props: {
+      events,
+    },
+  };
+};
