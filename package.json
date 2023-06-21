@@ -22,6 +22,7 @@
     "react-dom": "^18.2.0",
     "react-facebook-pixel": "^1.0.4",
     "react-gtm-module": "^2.0.11",
+    "react-icons": "^4.9.0",
     "react-lite-youtube-embed": "^2.3.52",
     "react-multi-carousel": "^2.8.3",
     "react-social-icons": "^5.15.0"
