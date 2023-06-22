@@ -48,7 +48,7 @@ const IndexPage = () => {
       <Team />
       <Steps />
       <Ongoing />
-      <Affiliations />
+      {/* <Affiliations /> */}
       <Cta />
     </div>
   );
