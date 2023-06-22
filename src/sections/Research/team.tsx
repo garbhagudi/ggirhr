@@ -282,7 +282,31 @@ const teams = [
     qualification: '',
     image:
       'https://res.cloudinary.com/garbhagudiivf/image/upload/v1687344384/GGIRHR/Research%20Assets/Damodar_lutmch.webp',
-    description: <div></div>,
+    description: (
+      <div>
+        Dr. Damodara Gowda K M is an Associate Professor at Nitte University,
+        Karnataka, India. He received his PhD in Physiology from K.S.Hegde
+        Medical Academy, Nitte (Deemed to be University) in 2013. He also holds
+        a Master of Science (Medical Physiology) from Kasturba Medical College,
+        Manipal University. <br />
+        <br /> Dr. Gowda&apos;s research interests include cardiovascular
+        physiology, exercise physiology, and metabolic syndrome. He has
+        published several papers in peer-reviewed journals and has presented his
+        work at national and international conferences. He is also a member of
+        several professional organizations, including the Indian Academy of
+        Physiology and the American Physiological Society. <br />
+        <br /> In addition to his research, Dr. Gowda is also actively involved
+        in teaching and mentoring students. He is the coordinator of the
+        Physiology department at Nitte University and is also a mentor to
+        several PhD students. He is also a member of the GarbhaGudi Institute of
+        Reproductive Health and Research (GGIRHR) and is assisting them on
+        various research studies. <br />
+        <br /> Dr. Gowda is a highly accomplished and experienced researcher who
+        is making significant contributions to the field of physiology. He is
+        also a dedicated teacher and mentor who is passionate about helping
+        students reach their full potential.
+      </div>
+    ),
   },
   {
     name: 'Dr. MS Mustak',
