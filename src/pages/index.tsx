@@ -5,6 +5,7 @@ import { Home, Home_2 } from 'sections/Home';
 import Link from 'next/link';
 import Head from 'next/head';
 import Courses from 'sections/Home/Courses';
+import Image from 'next/image';
 
 const responsive = {
   superLargeDesktop: {
@@ -136,28 +137,39 @@ const IndexPage = ({ HomeData }) => {
             infinite={true}
           >
             {HomeData?.teachers?.map((item: any) => (
-              <Link href={`/faculty/${item?.slug}`} key={item?.id} passHref>
-                <div className='w-full bg-white rounded-lg p-6 flex flex-col justify-center items-center cursor-pointer'>
-                  <div className='mb-8'>
-                    <img
-                      className='object-center object-cover rounded-full h-64 w-64 lg:h-48 lg:w-48'
-                      src={item?.image?.url}
-                      alt={item?.name}
-                    />
+              <div
+                className='mb-2 transition-all duration-500 rounded-xl'
+                key={item.id}
+              >
+                <Link href={`/fertility-experts/${item?.slug}`} passHref>
+                  <div className='space-y-4'>
+                    <div className='relative h-44 w-44 mx-auto'>
+                      <div className='h-full w-full absolute rounded-full bg-gradient-to-br from-brandPink3/80 to-purple-500/40 animate-rotate bg-[length: 400%]'></div>
+                      <Image
+                        className='rounded-full shadow-2xl drop-shadow-2xl bg-transparent'
+                        src={item?.image?.url}
+                        alt={item?.imageAlt || item?.name}
+                        width={500}
+                        height={500}
+                        loading='lazy'
+                      />
+                    </div>
+                    <div className='space-y-4 text-center'>
+                      <div className='space-y-1 text-lg font-medium leading-6'>
+                        <h3 className='text-brandDark font-content'>
+                          {item?.name}
+                        </h3>
+                        {/* <p className='text-sm text-brandPurpleDark font-content'>
+                          {item?.qualification}
+                        </p> */}
+                        <p className='pb-2 text-sm text-brandPink font-content'>
+                          {item?.designation}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <div className='text-center'>
-                    <p className='text-lg text-gray-700 font-bold mb-2'>
-                      {item?.name}
-                    </p>
-                    <p className=' text-brandBlue text-sm'>
-                      {item?.qualification}
-                    </p>
-                    <p className=' text-brandPink  text-sm'>
-                      {item?.designation}
-                    </p>
-                  </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             ))}
           </Carousel>
         </div>
