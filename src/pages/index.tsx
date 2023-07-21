@@ -141,7 +141,7 @@ const IndexPage = ({ HomeData }) => {
                 className='mb-2 transition-all duration-500 rounded-xl'
                 key={item.id}
               >
-                <Link href={`/fertility-experts/${item?.slug}`} passHref>
+                <Link href={`/faculty/${item?.slug}`} passHref>
                   <div className='space-y-4'>
                     <div className='relative h-44 w-44 mx-auto'>
                       <div className='h-full w-full absolute rounded-full bg-gradient-to-br from-brandPink3/80 to-purple-500/40 animate-rotate bg-[length: 400%]'></div>
