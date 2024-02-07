@@ -84,15 +84,14 @@ const IndexPage = ({ events }) => {
                 </div>
               </div>
             )}
-            {item?.link && (
-              <div className='px-6 pt-4 pb-2'>
-                <span className='inline-block bg-gray-200 rounded-lg px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-brandBlue hover:text-white mr-2 mb-2'>
-                  <a href={item.link} target={'_blank'} rel='noreferrer'>
-                    Register Now
-                  </a>
-                </span>
-              </div>
-            )}
+
+            <div className='px-6 pt-4 pb-2'>
+              <span className='inline-block bg-gray-200 rounded-lg px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-brandBlue hover:text-white mr-2 mb-2'>
+                <a href={'/contact'} target={'_blank'} rel='noreferrer'>
+                  Register Now !
+                </a>
+              </span>
+            </div>
           </div>
         ))}
       </div>
