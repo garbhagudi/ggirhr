@@ -187,14 +187,14 @@ const IndexPage = ({ HomeData }) => {
         </div>
         <div>
           <>
-            <div className='fixed inset-0 flex items-center justify-center'>
+            <div className='inset-0 flex items-center justify-center'>
               <button type='button' onClick={openModal} className='invisible'>
                 Open dialog
               </button>
             </div>
 
             <Transition appear show={isOpen} as={Fragment}>
-              <Dialog as='div' className='relative z-10' onClose={closeModal}>
+              <Dialog as='div' className='relative' onClose={closeModal}>
                 <Transition.Child
                   as={Fragment}
                   enter='ease-out duration-300'
