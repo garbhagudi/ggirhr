@@ -1,36 +1,23 @@
-import React from "react";
-import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
-import LiteYouTubeEmbed from "react-lite-youtube-embed";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import React from 'react';
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
-const data = [
-  {
-    id: 1,
-    videoId: "mlOOztCaBwc",
-  },
-  {
-    id: 2,
-    videoId: "pqHz_W_SxWg",
-  },
-
-  {
-    id: 3,
-    videoId: "Rse0H2UQqCY",
-  },
-  {
-    id: 4,
-    videoId: "pFdDXPezOxQ",
-  },
-  {
-    id: 5,
-    videoId: "NyPwSGHE9WM",
-  },
-  {
-    id: 6,
-    videoId: "m6x102K39wI",
-  },
-];
+interface testimonialProps {
+  testimonials: {
+    items: [
+      {
+        id: string;
+        snippet: {
+          resourceId: {
+            videoId: string;
+          };
+        };
+      },
+    ];
+  };
+}
 
 const responsive = {
   superLargeDesktop: {
@@ -52,13 +39,13 @@ const responsive = {
   },
 };
 
-const Video = () => {
+const Video = ({ testimonials }: testimonialProps) => {
   return (
-    <div className="container mx-auto text-center py-8">
-      <span className="text-2xl lg:text-4xl font-extrabold text-brandDark font-heading">
+    <div className='container mx-auto text-center py-8'>
+      <span className='text-2xl lg:text-4xl font-extrabold text-brandDark font-heading'>
         Testimonials from our students
       </span>
-      <div className="px-3 sm:px-0">
+      <div className='px-3 sm:px-0'>
         <Carousel
           responsive={responsive}
           autoPlaySpeed={360000}
@@ -70,17 +57,17 @@ const Video = () => {
           swipeable={true}
           draggable={true}
         >
-          {data.map((item) => {
+          {testimonials?.items?.map((item) => {
             return (
               <div
-                className="md:w-4/6 mx-auto aspect-video mt-8 overflow-hidden rounded-3xl border-2 border-brandBlue"
-                key={item.id}
+                className='md:w-4/6 mx-auto aspect-video mt-8 overflow-hidden rounded-3xl border-2 border-brandBlue'
+                key={item?.id}
               >
                 <LiteYouTubeEmbed
-                  id={item.videoId}
-                  title="Successful IVF Treatment Testimonial | GarbhaGudi IVF Centre | Dr Asha S Vijay"
-                  poster="maxresdefault"
-                  thumbnail={""}
+                  id={item?.snippet?.resourceId.videoId}
+                  title='Successful IVF Treatment Testimonial | GarbhaGudi IVF Centre | Dr Asha S Vijay'
+                  poster='maxresdefault'
+                  thumbnail={''}
                 />
               </div>
             );
