@@ -10,6 +10,9 @@ import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import { format } from 'date-fns';
 
+const YOUTUBE_PLAYLIST_ITEMS_API =
+  'https://www.googleapis.com/youtube/v3/playlistItems';
+
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
@@ -48,7 +51,7 @@ const responsive_team = {
   },
 };
 
-const IndexPage = ({ HomeData }) => {
+const IndexPage = ({ HomeData, testimonials }) => {
   let [isOpen, setIsOpen] = useState(true);
 
   function closeModal() {
@@ -290,7 +293,7 @@ const IndexPage = ({ HomeData }) => {
           </>
         </div>
       </section>
-      <Home_2 />
+      <Home_2 testimonialPassthrough={testimonials} />
     </div>
   );
 };
@@ -346,12 +349,20 @@ export const getServerSideProps = async () => {
       }
     }
   `;
+
+  const testimonialsData = await fetch(
+    `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&playlistId=PLgpadr6SQ-GvgWStgrQnk5ZMXlcjoA-yC&maxResults=10&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`,
+  );
+
+  const testimonials = await testimonialsData.json();
+
   const data = await graphQLClient.request(query);
   const HomeData = data;
 
   return {
     props: {
       HomeData,
+      testimonials,
     },
   };
 };
