@@ -189,10 +189,10 @@ const IndexPage = ({ HomeData, testimonials }) => {
           </Carousel>
         </div>
         <div>
-          {HomeData?.events?.length === 0 && (
+          {HomeData?.events && HomeData.events.length > 0 && (
             <>
               <div className='inset-0 flex items-center justify-center'>
-                <button type='button' onClick={openModal} className='invisible'>
+                <button type='button' onClick={openModal} className=''>
                   Open dialog
                 </button>
               </div>
@@ -208,6 +208,8 @@ const IndexPage = ({ HomeData, testimonials }) => {
                     leaveFrom='opacity-100'
                     leaveTo='opacity-0'
                   >
+                    {/* This element is to trick the browser into centering the modal contents. */}
+
                     <div className='fixed inset-0 bg-black/25' />
                   </Transition.Child>
 
@@ -223,68 +225,69 @@ const IndexPage = ({ HomeData, testimonials }) => {
                         leaveTo='opacity-0 scale-95'
                       >
                         <div>
-                          {HomeData?.events.map((items) => (
-                            <Dialog.Panel
-                              className='w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-2 text-left align-middle shadow-xl transition-all'
-                              key={items.id}
-                            >
-                              <Dialog.Title
-                                as='h3'
-                                className='text-lg font-bold py-1.5 leading-6 text-gray-900 text-center font-heading'
+                          {HomeData &&
+                            HomeData?.events.map((items) => (
+                              <Dialog.Panel
+                                className='w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-2 text-left align-middle shadow-xl transition-all'
+                                key={items.id}
                               >
-                                <h1 key={items?.id}>{items?.title}</h1>
-                              </Dialog.Title>
-                              <div className='mt-2'>
-                                <Link href={`/events`}>
-                                  <Image
-                                    src={items?.squareImage.url}
-                                    alt={items?.title}
-                                    width={500}
-                                    height={500}
-                                    className='rounded-md'
-                                  />
-                                </Link>
-                              </div>
-
-                              <div className='mt-4 flex items-center justify-center flex-col'>
-                                <div>
-                                  {items?.eventDateTime && (
-                                    <div className='px-7 pb-2 text-brandBlue font-bold flex space-x-2'>
-                                      <div>
-                                        Date:
-                                        {format(
-                                          new Date(items?.eventDateTime),
-                                          ' dd MMMM yyyy',
-                                        )}{' '}
-                                        at{' '}
-                                        {format(
-                                          new Date(items?.eventDateTime),
-                                          'HH:mm',
-                                        )}
-                                      </div>
-                                    </div>
-                                  )}
-                                </div>
-                                <div className='space-x-3'>
+                                <Dialog.Title
+                                  as='h3'
+                                  className='text-lg font-bold py-1.5 leading-6 text-gray-900 text-center font-heading'
+                                >
+                                  <h1 key={items?.id}>{items?.title}</h1>
+                                </Dialog.Title>
+                                <div className='mt-2'>
                                   <Link href={`/events`}>
+                                    <Image
+                                      src={items?.squareImage.url}
+                                      alt={items?.title}
+                                      width={500}
+                                      height={500}
+                                      className='rounded-md'
+                                    />
+                                  </Link>
+                                </div>
+
+                                <div className='mt-4 flex items-center justify-center flex-col'>
+                                  <div>
+                                    {items?.eventDateTime && (
+                                      <div className='px-7 pb-2 text-brandBlue font-bold flex space-x-2'>
+                                        <div>
+                                          Date:
+                                          {format(
+                                            new Date(items?.eventDateTime),
+                                            ' dd MMMM yyyy',
+                                          )}{' '}
+                                          at{' '}
+                                          {format(
+                                            new Date(items?.eventDateTime),
+                                            'HH:mm',
+                                          )}
+                                        </div>
+                                      </div>
+                                    )}
+                                  </div>
+                                  <div className='space-x-3'>
+                                    <Link href={`/events`}>
+                                      <button
+                                        type='button'
+                                        className='inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                                      >
+                                        Visit Page
+                                      </button>
+                                    </Link>
                                     <button
                                       type='button'
                                       className='inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
+                                      onClick={closeModal}
                                     >
-                                      Visit Page
+                                      Close
                                     </button>
-                                  </Link>
-                                  <button
-                                    type='button'
-                                    className='inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2'
-                                    onClick={closeModal}
-                                  >
-                                    Close
-                                  </button>
+                                  </div>
                                 </div>
-                              </div>
-                            </Dialog.Panel>
-                          ))}
+                              </Dialog.Panel>
+                            ))}
                         </div>
                       </Transition.Child>
                     </div>
