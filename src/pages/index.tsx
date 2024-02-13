@@ -189,7 +189,7 @@ const IndexPage = ({ HomeData, testimonials }) => {
           </Carousel>
         </div>
         <div>
-          {homeData?.events?.length === 0 && (
+          {HomeData?.events?.length === 0 && (
             <>
               <div className='inset-0 flex items-center justify-center'>
                 <button type='button' onClick={openModal} className='invisible'>
