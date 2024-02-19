@@ -2249,10 +2249,10 @@ react-multi-carousel@^2.8.4:
   resolved "https://registry.yarnpkg.com/react-multi-carousel/-/react-multi-carousel-2.8.4.tgz#eee6493878974e372e5aa9944754602ec0f34968"
   integrity sha512-7Is5Wr+m2ebkR+oq2Su2tjUdBwpVtB2O6Tjb74KDNfxWe/FrsTQwezTJTk/r9cKCrRp9Li308v822/5bZm7XKg==
 
-react-social-icons@^6.12.0:
-  version "6.12.0"
-  resolved "https://registry.yarnpkg.com/react-social-icons/-/react-social-icons-6.12.0.tgz#1951949920d83e8b1d827bc93fc71a3feb2bc10f"
-  integrity sha512-XiiWlN4F7srBy0VDDwbYip5l2UA5ttQqQIsY3tZ2ouqdyN9NDZ5ZMKBLjNPM0pNF0qjosRaP/LqgHtmUK2TFRA==
+react-social-icons@^6.13.0:
+  version "6.13.0"
+  resolved "https://registry.yarnpkg.com/react-social-icons/-/react-social-icons-6.13.0.tgz#a6cb601bbf739dcf0cccd27b1107f4e68c631f4a"
+  integrity sha512-tHXuxLkMCIcXVQ5/yIU3M0tYedDvYa1DwxNAOtJFMm6Tb0I5D91Q2qsCfLtKJToRsp/Y/toqQuf7rugNAiNCwA==
   dependencies:
     "@babel/runtime" "^7.23.8"
     react "^18.2.0"
