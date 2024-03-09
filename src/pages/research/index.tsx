@@ -40,7 +40,7 @@ const IndexPage = () => {
         <meta name='twitter:title' content='Research and Journals | GGIRHR' />
         <meta
           name='twitter:description'
-          content='The research wing of GGIRHR was set up to conduct various studies that can help in diagnosis, treatment, and improved success rates in ART procedures.'
+          content='The research division of GGIRHR was set up to conduct various studies that can help in diagnosis, treatment, and improved success rates in ART procedures.'
         />
         <meta name='twitter:image' content='' />
       </Head>
