@@ -19,11 +19,11 @@ const Contact = () => {
                     <dt className='sr-only'>Email</dt>
                     <dd>
                       <a
-                        href='mailto:goutham@ggirhr.com'
+                        href='mailto:training@ggirhr.com'
                         className='text-brandPink2 hover:underline'
                       >
                         <AtSymbolIcon className='inline-flex w-5 h-5' />{' '}
-                        goutham@ggirhr.com
+                        training@ggirhr.com
                       </a>
                     </dd>
                   </div>
