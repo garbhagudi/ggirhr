@@ -80,9 +80,9 @@ const Hero = () => {
                 </p>
               </div>
               <button className='px-4  py-2 bg-brandBlueDark1 rounded-b-2xl font-content text-white font-semibold'>
-                <a target='_blank' rel='noreferrer'>
-                  <Link href={link.ctaLink}>{link.ctaAction}</Link>
-                </a>
+                <Link href={link.ctaLink} target='_blank' rel='noreferrer'>
+                  {link.ctaAction}
+                </Link>
               </button>
             </div>
           ))}

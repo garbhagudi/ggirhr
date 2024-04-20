@@ -1,4 +1,5 @@
 import { AtSymbolIcon, PhoneIcon } from '@heroicons/react/solid';
+import Link from 'next/link';
 
 const Contact = () => {
   return (
@@ -18,25 +19,25 @@ const Contact = () => {
                   <div>
                     <dt className='sr-only'>Email</dt>
                     <dd>
-                      <a
-                        href='mailto:goutham@ggirhr.com'
+                      <Link
+                        href='mailto:training@ggirhr.com'
                         className='text-brandPink2 hover:underline'
                       >
                         <AtSymbolIcon className='inline-flex w-5 h-5' />{' '}
-                        goutham@ggirhr.com
-                      </a>
+                        training@ggirhr.com
+                      </Link>
                     </dd>
                   </div>
                   <div className='mt-1'>
                     <dt className='sr-only'>Phone number</dt>
                     <dd>
-                      <a
+                      <Link
                         href='tel:+919108910852'
                         className='text-brandBlue hover:underline'
                       >
                         <PhoneIcon className='inline-block w-5 h-5' />{' '}
                         +919108910852
-                      </a>
+                      </Link>
                     </dd>
                   </div>
                 </dl>
@@ -49,25 +50,25 @@ const Contact = () => {
                   <div>
                     <dt className='sr-only'>Email</dt>
                     <dd>
-                      <a
+                      <Link
                         href='mailto:manager@ggirhr.com'
                         className='text-brandPink2 hover:underline'
                       >
                         <AtSymbolIcon className='inline-flex w-5 h-5' />{' '}
                         manager@ggirhr.com
-                      </a>
+                      </Link>
                     </dd>
                   </div>
                   <div className='mt-1'>
                     <dt className='sr-only'>Phone number</dt>
                     <dd>
-                      <a
+                      <Link
                         href='tel:+919108910852'
                         className='text-brandBlue hover:underline'
                       >
                         <PhoneIcon className='inline-block w-5 h-5' />{' '}
                         +919108910852
-                      </a>
+                      </Link>
                     </dd>
                   </div>
                 </dl>
@@ -80,25 +81,25 @@ const Contact = () => {
                   <div>
                     <dt className='sr-only'>Email</dt>
                     <dd>
-                      <a
+                      <Link
                         href='mailto:hr@garbhagudi.com'
                         className='text-brandPink2 hover:underline'
                       >
                         <AtSymbolIcon className='inline-flex w-5 h-5' />{' '}
                         hr@garbhagudi.com
-                      </a>
+                      </Link>
                     </dd>
                   </div>
                   <div className='mt-1'>
                     <dt className='sr-only'>Phone number</dt>
                     <dd>
-                      <a
+                      <Link
                         href='tel:+919606002999'
                         className='text-brandBlue hover:underline'
                       >
                         <PhoneIcon className='inline-block w-5 h-5' /> +91 96060
                         02999
-                      </a>
+                      </Link>
                     </dd>
                   </div>
                 </dl>
@@ -111,25 +112,25 @@ const Contact = () => {
                   <div>
                     <dt className='sr-only'>Email</dt>
                     <dd>
-                      <a
+                      <Link
                         href='mailto:jayaram@garbhagudi.com'
                         className='text-brandPink2 hover:underline'
                       >
                         <AtSymbolIcon className='inline-flex w-5 h-5' />{' '}
                         jayaram@garbhagudi.com
-                      </a>
+                      </Link>
                     </dd>
                   </div>
                   <div className='mt-1'>
                     <dt className='sr-only'>Phone number</dt>
                     <dd>
-                      <a
+                      <Link
                         href='tel:+919980997111'
                         className='text-brandBlue hover:underline'
                       >
                         <PhoneIcon className='inline-block w-5 h-5' /> +91 99809
                         97111
-                      </a>
+                      </Link>
                     </dd>
                   </div>
                 </dl>
@@ -147,27 +148,27 @@ const Contact = () => {
                 </h3>
                 <div className='mt-2 text-base text-gray-500'>
                   <p className='mt-1'>
-                    <a
+                    <Link
                       href='tel:+919886915556'
                       className='text-brandBlue hover:underline'
                     >
                       <PhoneIcon className='inline-block w-5 h-5' /> +91 98869
                       15556
-                    </a>
+                    </Link>
                   </p>
                   <p>
                     Subhasri Complex, 210/A, Kumaraswamy Temple Rd, 2nd Block,
                     Phase 1, Banashankari Stage I, Banashankari,
                   </p>
                   <p className='mt-1 mb-5'>Bengaluru, Karnataka 560050</p>
-                  <a
+                  <Link
                     href='https://g.page/GG1-HN?share'
                     className='py-2 px-3 bg-brandBlue text-white font-semibold rounded-3xl hover:bg-bratext-brandBlue'
                     target={'_blank'}
                     rel='noreferrer'
                   >
                     Directions
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div>
@@ -176,13 +177,13 @@ const Contact = () => {
                 </h3>
                 <div className='mt-2 text-base text-gray-500'>
                   <p className='mt-1'>
-                    <a
+                    <Link
                       href='tel:+918861433339'
                       className='text-brandBlue hover:underline'
                     >
                       <PhoneIcon className='inline-block w-5 h-5' /> +91 88614
                       33339
-                    </a>
+                    </Link>
                   </p>
                   <p>
                     Park Landing, 5AC-709, Outer Ring Rd, Balachandra Layout,
@@ -205,26 +206,26 @@ const Contact = () => {
                 </h3>
                 <div className='mt-2 text-base text-gray-500'>
                   <p className='mt-1'>
-                    <a
+                    <Link
                       href='tel:+919972463355'
                       className='text-brandBlue hover:underline'
                     >
                       <PhoneIcon className='inline-block w-5 h-5' /> +91 99724
                       63355
-                    </a>
+                    </Link>
                   </p>
                   <p>
                     South End Circle, 26, Pattalamma Temple Rd, Basavanagudi,
                   </p>
                   <p className='mt-1 mb-5'>Bengaluru, Karnataka 560004</p>
-                  <a
+                  <Link
                     href='https://g.page/ggivf?share'
                     className='py-2 px-3 bg-brandBlue text-white font-semibold rounded-3xl hover:bg-bratext-brandBlue'
                     target={'_blank'}
                     rel='noreferrer'
                   >
                     Directions
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div>
@@ -233,27 +234,27 @@ const Contact = () => {
                 </h3>
                 <div className='mt-2 text-base text-gray-500'>
                   <p className='mt-1'>
-                    <a
+                    <Link
                       href='tel:+918861811116'
                       className='text-brandBlue hover:underline'
                     >
                       <PhoneIcon className='inline-block w-5 h-5' /> +91 88618
                       11116
-                    </a>
+                    </Link>
                   </p>
                   <p>
                     Ganesh Towers,3rd Floor, 60/5 and 60/6, NH 44, Beside Andhra
                     Bank, Konappana Agrahara, Electronic City,
                   </p>
                   <p className='mt-1 mb-5'>Bengaluru, Karnataka 560100</p>
-                  <a
+                  <Link
                     href='https://g.page/GG4-EC?share'
                     className='py-2 px-3 bg-brandBlue text-white font-semibold rounded-3xl hover:bg-bratext-brandBlue'
                     target={'_blank'}
                     rel='noreferrer'
                   >
                     Directions
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div>
@@ -262,27 +263,27 @@ const Contact = () => {
                 </h3>
                 <div className='mt-2 text-base text-gray-500'>
                   <p className='mt-1'>
-                    <a
+                    <Link
                       href='tel:+918105181515'
                       className='text-brandBlue hover:underline'
                     >
                       <PhoneIcon className='inline-block w-5 h-5' /> +91 81051
                       81515
-                    </a>
+                    </Link>
                   </p>
                   <p>
                     4TH floor, Chirag Towers, Born Babies Building, 24 & 64,
                     Service Rd, next to कलामंदिर, Marathahalli,
                   </p>
                   <p className='mt-1 mb-5'>Bengaluru, Karnataka 560037</p>
-                  <a
+                  <Link
                     href='https://goo.gl/maps/kxhfM5SCZuq6EDnE9'
                     className='py-2 px-3 bg-brandBlue text-white font-semibold rounded-3xl hover:bg-bratext-brandBlue'
                     target={'_blank'}
                     rel='noreferrer'
                   >
                     Directions
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

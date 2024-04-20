@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Transition } from '@headlessui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { About, Courses } from 'components/header/popover';
+import { About, Courses, Contact } from 'components/header/popover';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -68,17 +68,9 @@ const Header = () => {
                   <span className='text-gray-900 hover:bg-brandBlue hover:text-white rounded-2xl px-3 py-2 text-sm'>
                     <Link href='/blogs/page/1'>Blogs</Link>
                   </span>
-                  <Link href='/gg-care' passHref>
-                    <span
-                      className={
-                        router.pathname == '/gg-care'
-                          ? 'bg-brandBlue text-white px-3 py-2 rounded-2xl text-sm font-content'
-                          : 'text-gray-700 hover:bg-brandBlue px-3 py-2 rounded-2xl hover:text-white text-sm cursor-pointer'
-                      }
-                    >
-                      Contact Us
-                    </span>
-                  </Link>
+                  <span className='text-gray-900 hover:bg-brandBlue hover:text-white rounded-2xl px-3 py-2 text-sm'>
+                    <Contact />
+                  </span>
                 </div>
               </div>
             </div>
