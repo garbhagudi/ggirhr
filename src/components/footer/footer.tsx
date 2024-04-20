@@ -17,6 +17,7 @@ const navigation = {
     { name: 'Courses', href: '/courses' },
     { name: 'CMEs', href: '/events' },
     { name: 'Contact Us', href: '/gg-care' },
+    { name: 'Career', href: 'https://www.garbhagudi.com/careers' },
   ],
   company: [
     { name: 'GGIRHR', href: '/' },
