@@ -158,7 +158,7 @@ const Header = () => {
                   <Link href='/blogs/page/1'>Blogs</Link>
                 </span>
                 <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm cursor-pointer'>
-                  <Link href='/gg-care'>Contact Us</Link>
+                  <Contact />
                 </span>
               </div>
             </div>
