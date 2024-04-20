@@ -3,6 +3,8 @@ import { ChevronDownIcon } from '@heroicons/react/solid';
 import { Fragment } from 'react';
 import Link from 'next/link';
 import { Tab } from '@headlessui/react';
+import { MdContactPhone, MdContactSupport } from 'react-icons/md';
+import { CgOrganisation } from 'react-icons/cg';
 
 const AboutSection = [
   {
@@ -120,6 +122,24 @@ const courses = {
   ],
 };
 
+const contactInfo = [
+  {
+    name: 'Contact Us',
+    href: '/gg-care',
+    icon: <MdContactPhone className='w-6 h-6' />,
+  },
+  {
+    name: 'Course Enquiry',
+    href: '/contact',
+    icon: <MdContactSupport className='w-6 h-6' />,
+  },
+  {
+    name: 'Career',
+    href: 'https://www.garbhagudi.com/careers/',
+    icon: <CgOrganisation className='w-6 h-6' />,
+  },
+];
+
 export function About() {
   return (
     <Popover className='relative'>
@@ -159,6 +179,63 @@ export function About() {
                     >
                       <div className='flex items-center justify-center flex-shrink-0 w-10 h-10 text-white sm:h-12 sm:w-12'>
                         <img src={item.icon} alt={item.name} />
+                      </div>
+                      <div className='ml-4'>
+                        <p className='text-sm font-medium text-gray-900'>
+                          {item.name}
+                        </p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </Popover.Panel>
+          </Transition>
+        </>
+      )}
+    </Popover>
+  );
+}
+
+export function Contact() {
+  return (
+    <Popover className='relative'>
+      {({ open }) => (
+        <>
+          <Popover.Button
+            className={`
+                ${open ? '' : 'text-opacity-90'}
+                `}
+          >
+            <span className='hover:text-white'>
+              Contact
+              <ChevronDownIcon
+                className={`${open ? '' : 'text-opacity-70'}
+                  ml-1 h-5 w-5 inline-block`}
+                aria-hidden='true'
+              />
+            </span>
+          </Popover.Button>
+          <Transition
+            as={Fragment}
+            enter='transition ease-out duration-200'
+            enterFrom='opacity-0 translate-y-1'
+            enterTo='opacity-100 translate-y-0'
+            leave='transition ease-in duration-150'
+            leaveFrom='opacity-100 translate-y-0'
+            leaveTo='opacity-0 translate-y-1'
+          >
+            <Popover.Panel className='absolute z-10 max-w-xl px-4 transform -translate-x-1/2 w-96 mt-7 left-1/2 sm:px-0'>
+              <div className='overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5'>
+                <div className='relative grid gap-8 p-3 bg-white lg:grid-cols-1'>
+                  {contactInfo.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className='flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-blue-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50'
+                    >
+                      <div className='flex items-center justify-center flex-shrink-0 w-10 h-10 text-white bg-brandBlue rounded-md sm:h-12 sm:w-12'>
+                        {item.icon}
                       </div>
                       <div className='ml-4'>
                         <p className='text-sm font-medium text-gray-900'>
