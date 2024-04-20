@@ -13,7 +13,7 @@
     "@graphcms/rich-text-react-renderer": "^0.6.1",
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "v1",
-    "date-fns": "^3.3.1",
+    "date-fns": "^3.6.0",
     "eslint-config-react": "^1.1.7",
     "graphql": "^16.8.1",
     "graphql-request": "5.0.0",
@@ -26,7 +26,7 @@
     "react-icons": "^5.0.1",
     "react-lite-youtube-embed": "^2.4.0",
     "react-multi-carousel": "^2.8.4",
-    "react-social-icons": "^6.14.0"
+    "react-social-icons": "^6.15.0"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",
