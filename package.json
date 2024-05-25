@@ -7,7 +7,7 @@
     "start": "next start",
     "lint": "next lint",
     "export": "next export",
-    "postbuild": "next-sitemap --config next-sitemap.config.ts"
+    "postbuild": "next-sitemap --config next-sitemap.config.js"
   },
   "dependencies": {
     "@graphcms/rich-text-react-renderer": "^0.6.1",
