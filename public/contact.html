@@ -26,7 +26,7 @@
   </script>
   <!-- End Google Tag Manager -->
 </head>
-<body class="bg-gray-100">
+<body class="flex items-center justify-center bg-gray-200">
   <!-- Google Tag Manager (noscript) -->
   <noscript
     ><iframe
@@ -37,161 +37,349 @@
     ></iframe
   ></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <header>
-    <!-- component -->
-    <script
-      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
-      defer
-    ></script>
-    <div
-      class="w-full text-gray-700 bg-gray-100 dark-mode:text-gray-200 dark-mode:bg-gray-800 border-b"
-      style="font-family: Nunito"
+  <!-- Note :
+   - You can modify the font style and form style to suit your website. 
+   - Code lines with comments Do not remove this code are required for the form to work properly, make sure that you do not remove these lines of code. 
+   - The Mandatory check script can modified as to suit your business needs. 
+   - It is important that you test the modified form before going live.-->
+  <div
+    id="crmWebToEntityForm"
+    class="zcwf_lblLeft crmWebToEntityForm mx-auto h-auto rounded-lg w-full bg-transparent"
+  >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+    <form
+      id="webform6231628000000491597"
+      action="https://crm.zoho.com/crm/WebToLeadForm"
+      name="WebToLeads6231628000000491597"
+      method="POST"
+      onSubmit='javascript:document.charset="UTF-8"; return checkMandatory6231628000000491597()'
+      accept-charset="UTF-8"
     >
+      <input
+        type="text"
+        style="display: none"
+        name="xnQsjsdp"
+        value="97d053d0268407877722a09bb152c632f52720322cabcc3b01dafbc2f8d7b236"
+      />
+      <input type="hidden" name="zc_gad" id="zc_gad" value="" />
+      <input
+        type="text"
+        style="display: none"
+        name="xmIwtLD"
+        value="4a2bad24db7b0abb52cb38a7a5e51514d27ef81a2a00eadfc561f5cb4fff78408868c08cf03fc79689397acf54c80521"
+      />
+      <input
+        type="text"
+        style="display: none"
+        name="actionType"
+        value="TGVhZHM="
+      />
+      <input
+        type="text"
+        style="display: none"
+        name="returnURL"
+        value="https&#x3a;&#x2f;&#x2f;ggirhr.com&#x2f;thank-you.html"
+      />
+      <!-- Do not remove this code. -->
       <div
-        x-data="{ open: false }"
-        class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8"
+        class="py-8 text-center text-gray-800 font-[B612] text-xl lg:text-2xl font-bold"
       >
-        <div class="p-4 flex flex-row items-center justify-between">
-          <a
-            href="https://ggirhr.com"
-            class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline"
-            ><img
-              src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1644906749/logos/cda38154-9a6e-4ef7-9190-f723bd786bec_tkuoy8.jpg"
-              alt="logo"
-              width="300px"
-          /></a>
-          <button
-            class="md:hidden rounded-lg focus:outline-none focus:shadow-outline"
-            @click="open = !open"
-          >
-            <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
-              <path
-                x-show="!open"
-                fill-rule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-                clip-rule="evenodd"
-              ></path>
-              <path
-                x-show="open"
-                fill-rule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </button>
+        Contact Us!
+      </div>
+      <div class="max-w-sm mx-auto">
+        <input
+          type="text"
+          id="Last_Name"
+          placeholder="Full Name"
+          name="Last Name"
+          maxlength="80"
+          class="w-full font-[nunito] text-base py-1 px-3 border mt-2 active:outline-none focus:outline-none focus:ring-2 focus:ring-[#249dc1] focus:border-[#249dc1] border-[#249dc1] rounded-md"
+        />
+        <div class="zcwf_col_help"></div>
+      </div>
+      <div class="max-w-sm mx-auto">
+        <input
+          type="text"
+          id="Phone"
+          placeholder="Phone"
+          name="Phone"
+          maxlength="30"
+          class="w-full font-[nunito] text-base py-1 px-3 border mt-2 active:outline-none focus:outline-none focus:ring-2 focus:ring-[#249dc1] focus:border-[#249dc1] border-[#249dc1] rounded-md"
+        />
+        <div class="zcwf_col_help"></div>
+      </div>
+      <div class="max-w-sm mx-auto">
+        <input
+          type="text"
+          ftype="email"
+          autocomplete="false"
+          id="Email"
+          name="Email"
+          crmlabel=""
+          maxlength="100"
+          placeholder="Email"
+          class="w-full font-[nunito] text-base py-1 px-3 border mt-2 active:outline-none focus:outline-none focus:ring-2 focus:ring-[#249dc1] focus:border-[#249dc1] border-[#249dc1] rounded-md"
+        />
+        <div class="zcwf_col_help"></div>
+      </div>
+      <div class="max-w-sm mx-auto">
+        <input
+          type="text"
+          id="First_Name"
+          placeholder="Qualification"
+          name="First Name"
+          maxlength="40"
+          class="w-full font-[nunito] text-base py-1 px-3 border mt-2 active:outline-none focus:outline-none focus:ring-2 focus:ring-[#249dc1] focus:border-[#249dc1] border-[#249dc1] rounded-md"
+        />
+        <div class="zcwf_col_help"></div>
+      </div>
+      <div class="zcwf_row wfrm_fld_dpNn hidden">
+        <div class="zcwf_col_lab" style="font-size: 12px; font-family: Arial">
+          <label for="Lead_Source">Lead Source</label>
         </div>
-        <nav
-          :class="{'flex': open, 'hidden': !open}"
-          class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row"
-        >
-          <a
-            class="px-4 py-2 mt-2 text-sm font-semibold text-gray-900 rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-400 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-            href="https://ggirhr.com"
-            target="_blank"
-            >Home</a
-          >
-          <a
-            class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-400 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-            href="https://ggirhr.com/about"
-            target="_blank"
-            >About Us</a
-          >
-          <a
-            class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-400 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-            href="https://ggirhr.com/gg-care"
-            target="_blank"
-            >GG CARE</a
-          >
-          <div
-            @click.away="open = false"
-            class="relative"
-            x-data="{ open: false }"
-          >
-            <button
-              @click="open = !open"
-              class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-400 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-            >
-              <span>Privacy Policy</span>
-              <svg
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                :class="{'rotate-180': open, 'rotate-0': !open}"
-                class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-            </button>
-            <div
-              x-show="open"
-              x-transition:enter="transition ease-out duration-100"
-              x-transition:enter-start="transform opacity-0 scale-95"
-              x-transition:enter-end="transform opacity-100 scale-100"
-              x-transition:leave="transition ease-in duration-75"
-              x-transition:leave-start="transform opacity-100 scale-100"
-              x-transition:leave-end="transform opacity-0 scale-95"
-              class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48"
-            >
-              <div
-                class="px-2 py-2 bg-gray-100 rounded-md shadow dark-mode:bg-gray-800"
-              >
-                <a
-                  class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-400 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                  href="https://ggirhr.com/legal/privacy-policy"
-                  target="_blank"
-                  >Privacy Policy</a
-                >
-              </div>
-            </div>
-          </div>
-        </nav>
+        <div class="zcwf_col_fld">
+          <select class="zcwf_col_fld_slt" id="Lead_Source" name="Lead Source">
+            <option value="-None-">-None-</option>
+            <option selected value="Online">Online</option>
+            <option value="Media">Media</option>
+            <option value="Listing">Listing</option>
+            <option value="Referred">Referral</option>
+            <option value="Camp">Camp &amp; Events</option>
+            <option value="Sponsor">Display</option>
+            <option value="Google&#x2b;">Google&#x2b;</option>
+          </select>
+          <div class="zcwf_col_help"></div>
+        </div>
       </div>
-    </div>
-  </header>
-  <div id="crmWebToEntityForm">
-    <iframe
-      src="https://garbhagudi.campus365.io/web_form_ae_1004"
-      className="max-w-5xl mt-5 lg:mt-0 w-screen mx-auto h-screen"
-      style="height: 100vh; width: 100vw; border: 0; overflow: hidden"
-    ></iframe>
-
-    <footer
-      class="flex-none pb-6 flex items-start justify-center text-gray-400 px-4 sm:px-6 lg:px-8"
-    >
-      <div class="mt-8 text-center" style="font-family: Nunito">
-        &copy; GarbhaGudi Institute of Reproductive Health and Research -
-        <script>
-          document.write(/\d{4}/.exec(Date())[0]);
-        </script>
+      <div class="zcwf_row wfrm_fld_dpNn hidden">
+        <div class="zcwf_col_lab" style="font-size: 12px; font-family: Arial">
+          <label for="LEADCF6">Lead Sub Source</label>
+        </div>
+        <div class="zcwf_col_fld">
+          <select class="zcwf_col_fld_slt" id="LEADCF6" name="LEADCF6">
+            <option value="-None-">-None-</option>
+            <option value="GarbhaGudi&#x20;Website">GarbhaGudi Website</option>
+            <option value="Bagepalli">Bagepalli</option>
+            <option value="Youtube">Youtube</option>
+            <option value="Geo&#x20;Ads">
+              Geo Ads &#x28;Ads Media network&#x29;
+            </option>
+            <option value="Affiliate&#x20;Marketing">
+              Affiliate Marketing
+            </option>
+            <option value="IndiaMART">IndiaMART</option>
+            <option value="TeleConsult&#x20;Tool">TeleConsult Tool</option>
+            <option value="Medobal">Medobal</option>
+            <option value="Live&#x20;events&#x20;&amp;&#x20;Webinar">
+              Live events &amp; Webinar
+            </option>
+            <option value="Vaidam">Vaidam</option>
+            <option value="Linkedin">Linkedin</option>
+            <option value="Picky&#x20;Assist">Picky Assist</option>
+            <option value="Kagglipura&#x20;Camp">Kagglipura Camp</option>
+            <option value="Ferticare">Ferticare</option>
+            <option value="Zealthy">Zealthy</option>
+            <option value="Facebook">Facebook</option>
+            <option value="Live&#x20;Chat">Live Chat</option>
+            <option value="Punyahealth">Punyahealth</option>
+            <option value="Healthcare&#x20;365">Healthcare 365</option>
+            <option value="Old&#x20;Camps">Old Camps</option>
+            <option value="Mfine">Mfine</option>
+            <option selected value="Google">Google</option>
+            <option value="Tiptur&#x20;OPD">Tiptur OPD</option>
+            <option value="Madevapura&#x20;Camp">Madevapura Camp</option>
+            <option value="Foore">Foore</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Chitradurga&#x20;camp">Chitradurga camp</option>
+            <option value="Doctor&#x20;4&#x20;Africa">Doctor 4 Africa</option>
+            <option value="Television">Television</option>
+            <option value="Placidway">Placidway</option>
+            <option value="Radio">Radio</option>
+            <option value="Theater&#x20;Adds">Theater Adds</option>
+            <option value="News&#x20;paper">News paper</option>
+            <option value="Ziffy">Ziffy</option>
+            <option value="Name&#x20;boards">Name boards</option>
+            <option value="Quora">Quora</option>
+            <option value="Practo">Practo</option>
+            <option value="BTP&#x20;-&#x20;App">BTP - App</option>
+            <option value="Uniheal">Uniheal</option>
+            <option value="Just&#x20;Dial">Just Dial</option>
+            <option value="Clinic&#x20;spot">Clinic spot</option>
+            <option value="Sira&#x20;Thumkur">Sira</option>
+            <option value="Whatclinic">Whatclinic</option>
+            <option value="Ovu">Ovu</option>
+            <option value="EllaWomen">EllaWomen</option>
+            <option value="Doctor&#x20;Referral">Doctor Referral</option>
+            <option value="Kunigal&#x20;OPD">Kunigal OPD</option>
+            <option value="GarbhaGudi&#x20;Employee">
+              GarbhaGudi Employee
+            </option>
+            <option value="Friend&#x20;&amp;&#x20;Family">
+              Friend &amp; Family
+            </option>
+            <option value="Camp&#x20;-&#x20;Kanakapura">
+              Camp - Kanakapura
+            </option>
+            <option value="KONANKUNTE&#x20;CAMP">KONANKUNTE CAMP</option>
+            <option value="Cure&#x20;consult">Cure consult</option>
+            <option value="ClinicSpots">ClinicSpots</option>
+            <option value="lybrate">lybrate</option>
+            <option value="Doc&#x20;prime">Doc prime</option>
+            <option value="Ellie&#x20;chat">Ellie chat</option>
+            <option value="Future&#x20;Care">Future Care</option>
+            <option value="ExpertChikitsa">ExpertChikitsa</option>
+            <option value="Others">Others</option>
+            <option value="Elite&#x20;Hospital">Elite Hospital</option>
+            <option value="Shanthinilaya&#x20;Hospital">
+              Shanthinilaya Hospital
+            </option>
+            <option value="Kanakapura">Kanakapura</option>
+            <option value="Harohalli">Harohalli</option>
+            <option value="Hoardings">Hoardings</option>
+            <option value="Display&#x20;vans">Display vans</option>
+            <option value="Banners">Banners</option>
+            <option value="Wall&#x20;paintings">Wall paintings</option>
+            <option value="Bus&#x20;advertisements">Bus advertisements</option>
+          </select>
+          <div class="zcwf_col_help"></div>
+        </div>
       </div>
-    </footer>
+      <div class="zcwf_row pt-6">
+        <div class="zcwf_col_lab"></div>
+        <div class="zcwf_col_fld flex items-center justify-center space-x-3">
+          <input
+            type="submit"
+            id="formsubmit"
+            class="formsubmit zcwf_button font-[nunito] px-3 py-2 rounded-lg text-base font-bold text-white bg-[#249dc1] hover:bg-[#50b1cd] active:outline-none focus:outline-none"
+            value="Submit"
+            title="Submit"
+          /><input
+            type="reset"
+            class="zcwf_button font-[nunito] px-3 py-2 rounded-lg text-base font-bold text-white bg-[#249dc1] hover:bg-[#50b1cd] active:outline-none focus:outline-none"
+            name="reset"
+            value="Reset"
+            title="Reset"
+          />
+        </div>
+      </div>
+      <script>
+        function validateEmail6231628000000491597() {
+          var form = document.forms['WebToLeads6231628000000491597'];
+          var emailFld = form.querySelectorAll('[ftype=email]');
+          var i;
+          for (i = 0; i < emailFld.length; i++) {
+            var emailVal = emailFld[i].value;
+            if (emailVal.replace(/^\s+|\s+$/g, '').length != 0) {
+              var atpos = emailVal.indexOf('@');
+              var dotpos = emailVal.lastIndexOf('.');
+              if (
+                atpos < 1 ||
+                dotpos < atpos + 2 ||
+                dotpos + 2 >= emailVal.length
+              ) {
+                alert('Please enter a valid email address. ');
+                emailFld[i].focus();
+                return false;
+              }
+            }
+          }
+          return true;
+        }
 
-    <!-- Do not remove this --- Analytics Tracking code starts -->
-    <script
-      id="wf_anal"
-      src="https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=61bba0cba3c8377c6a5dd6a5d5678a3600fc3a7dca3c14cc8459e8c5daafda75gid17730c4e7d6442ffce68a431e6d754713eb2b12b9ac7777050f2773ec54ed2d2gid885e3c1045bd9bdcc91bdf30f82b5696gid14f4ec16431e0686150daa43f3210513&tw=61690b96c1d0471b638f31426f38e68aa67fb7ed6da86f32dc10ad817fe55a0a"
-    ></script>
-    <!-- Do not remove this --- Analytics Tracking code ends. -->
+        function checkMandatory6231628000000491597() {
+          var mndFileds = new Array(
+            'First Name',
+            'Last Name',
+            'Email',
+            'Phone',
+          );
+          var fldLangVal = new Array(
+            'Qualification',
+            'Full\x20Name',
+            'Email',
+            'Phone',
+          );
+          for (i = 0; i < mndFileds.length; i++) {
+            var fieldObj =
+              document.forms['WebToLeads6231628000000491597'][mndFileds[i]];
+            if (fieldObj) {
+              if (fieldObj.value.replace(/^\s+|\s+$/g, '').length == 0) {
+                if (fieldObj.type == 'file') {
+                  alert('Please select a file to upload.');
+                  fieldObj.focus();
+                  return false;
+                }
+                alert(fldLangVal[i] + ' cannot be empty.');
+                fieldObj.focus();
+                return false;
+              } else if (fieldObj.nodeName == 'SELECT') {
+                if (
+                  fieldObj.options[fieldObj.selectedIndex].value == '-None-'
+                ) {
+                  alert(fldLangVal[i] + ' cannot be none.');
+                  fieldObj.focus();
+                  return false;
+                }
+              } else if (fieldObj.type == 'checkbox') {
+                if (fieldObj.checked == false) {
+                  alert('Please accept  ' + fldLangVal[i]);
+                  fieldObj.focus();
+                  return false;
+                }
+              }
+              try {
+                if (fieldObj.name == 'Last Name') {
+                  name = fieldObj.value;
+                }
+              } catch (e) {}
+            }
+          }
+          if (!validateEmail6231628000000491597()) {
+            return false;
+          }
 
-    <script type="text/javascript" id="zsiqchat">
-      var $zoho = $zoho || {};
-      $zoho.salesiq = $zoho.salesiq || {
-        widgetcode:
-          '201f3df74e42a63d69ee275e156a88ac916e6c465ec468ed92339a1ae4444508',
-        values: {},
-        ready: function () {},
-      };
-      var d = document;
-      s = d.createElement('script');
-      s.type = 'text/javascript';
-      s.id = 'zsiqscript';
-      s.defer = true;
-      s.src = 'https://salesiq.zoho.com/widget';
-      t = d.getElementsByTagName('script')[0];
-      t.parentNode.insertBefore(s, t);
-    </script>
+          var urlparams = new URLSearchParams(window.location.search);
+          if (
+            urlparams.has('service') &&
+            urlparams.get('service') === 'smarturl'
+          ) {
+            var webform = document.getElementById('webform6231628000000491597');
+            var service = urlparams.get('service');
+            var smarturlfield = document.createElement('input');
+            smarturlfield.setAttribute('type', 'hidden');
+            smarturlfield.setAttribute('value', service);
+            smarturlfield.setAttribute('name', 'service');
+            webform.appendChild(smarturlfield);
+          }
+
+          document
+            .querySelector('.crmWebToEntityForm .formsubmit')
+            .setAttribute('disabled', true);
+        }
+
+        function tooltipShow6231628000000491597(el) {
+          var tooltip = el.nextElementSibling;
+          var tooltipDisplay = tooltip.style.display;
+          if (tooltipDisplay == 'none') {
+            var allTooltip =
+              document.getElementsByClassName('zcwf_tooltip_over');
+            for (i = 0; i < allTooltip.length; i++) {
+              allTooltip[i].style.display = 'none';
+            }
+            tooltip.style.display = 'block';
+          } else {
+            tooltip.style.display = 'none';
+          }
+        }
+      </script>
+      <!-- Do not remove this --- Analytics Tracking code starts -->
+      <script
+        id="wf_anal"
+        src="https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=2b447f8bf1d37903094c80ea15783fb3d99be3f389c88d87052d6f941c4ce381e849f6e107d6cbc6beaaccd60932b598gid13d6cf7011b1ebbcd4f5cc69fd97ddfd3daabb1dc120ebb998e76d2b628a26a8gidfc3cb1b0f01718a16d7dac8e7cb1b8e9cc2bac7bd077e11d92307cd22c3a8bd2gided930a2def675434d167ed97e28297a1818922900a2f1587b9f3d40965b7f96c&tw=d1672c6f78a6d0603f49de2e89da3349b625f71c2d8b16a8b94d32c0212abf58"
+      ></script>
+      <!-- Do not remove this --- Analytics Tracking code ends. -->
+    </form>
   </div>
 </body>
