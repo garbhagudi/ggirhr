@@ -14,14 +14,12 @@ const Header = () => {
           <div className='flex items-center justify-between h-16'>
             <div className='flex items-center align-middle cursor-pointer'>
               <div className='flex-shrink-0 pt-4'>
-                <Link href='/' passHref legacyBehavior>
-                  <a>
-                    <img
-                      src='https://res.cloudinary.com/garbhagudiivf/image/upload/v1644909568/logos/gg-logo_bg5gzc.png'
-                      alt='logo'
-                      className='h-full w-48 xl:w-64'
-                    />
-                  </a>
+                <Link href='/'>
+                  <img
+                    src='https://res.cloudinary.com/garbhagudiivf/image/upload/v1644909568/logos/gg-logo_bg5gzc.png'
+                    alt='logo'
+                    className='h-full w-48 xl:w-64'
+                  />
                 </Link>
               </div>
               <div className='hidden xl:block'>
@@ -135,33 +133,36 @@ const Header = () => {
           leaveTo='opacity-0 scale-95'
         >
           {(ref) => (
-            <div className='xl:hidden' id='mobile-menu'>
-              <div ref={ref} className='px-2 pt-2 pb-3 space-y-1 sm:px-3'>
-                <Link href={'/'} passHref legacyBehavior>
-                  <a className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
+            <>
+              <div className='xl:hidden' id='mobile-menu'>
+                <div ref={ref} className='px-2 pt-2 pb-3 space-y-1 sm:px-3'>
+                  <Link
+                    href={'/'}
+                    className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'
+                  >
                     Home
-                  </a>
-                </Link>
-                <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
-                  <About />
-                </span>
-                <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
-                  <Courses />
-                </span>
-                <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
-                  <Link href='/events'>Events</Link>
-                </span>
-                <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
-                  <Link href='/research'>Research and Journals</Link>
-                </span>
-                <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
-                  <Link href='/blogs/page/1'>Blogs</Link>
-                </span>
-                <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm cursor-pointer'>
-                  <Contact />
-                </span>
+                  </Link>
+                  <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
+                    <About />
+                  </span>
+                  <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
+                    <Courses />
+                  </span>
+                  <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
+                    <Link href='/events'>Events</Link>
+                  </span>
+                  <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
+                    <Link href='/research'>Research and Journals</Link>
+                  </span>
+                  <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
+                    <Link href='/blogs/page/1'>Blogs</Link>
+                  </span>
+                  <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm cursor-pointer'>
+                    <Contact />
+                  </span>
+                </div>
               </div>
-            </div>
+            </>
           )}
         </Transition>
       </nav>
