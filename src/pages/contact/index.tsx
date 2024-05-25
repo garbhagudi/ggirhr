@@ -6,7 +6,9 @@ const IndexPage = () => {
       <iframe
         src='/contact.html'
         className='max-w-5xl mt-5 lg:mt-0 w-screen mx-auto h-screen lg:h-[80vh]'
-      ></iframe>
+      >
+        Loading...
+      </iframe>
     </div>
   );
 };
