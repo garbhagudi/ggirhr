@@ -1,16 +1,8 @@
+import Form from 'components/Form';
 import React from 'react';
 
 const IndexPage = () => {
-  return (
-    <div>
-      <iframe
-        src='/contact.html'
-        className='max-w-5xl mt-5 lg:mt-0 w-screen mx-auto h-screen lg:h-[80vh]'
-      >
-        Loading...
-      </iframe>
-    </div>
-  );
+  return <Form />;
 };
 
 export default IndexPage;
