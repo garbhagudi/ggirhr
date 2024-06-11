@@ -257,12 +257,12 @@ const IndexPage = ({ HomeData, testimonials }) => {
                                           Date:
                                           {format(
                                             new Date(items?.eventDateTime),
-                                            ' dd MMMM yyyy',
+                                            ' dd MMMM yyyy'
                                           )}{' '}
                                           at{' '}
                                           {format(
                                             new Date(items?.eventDateTime),
-                                            'HH:mm',
+                                            'HH:mm'
                                           )}
                                         </div>
                                       </div>
@@ -323,7 +323,7 @@ export const getServerSideProps = async () => {
           url
         }
       }
-      teachers {
+      teachers(orderBy: order_ASC) {
         name
         id
         qualification
@@ -356,7 +356,7 @@ export const getServerSideProps = async () => {
   `;
 
   const testimonialsData = await fetch(
-    `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&playlistId=PLgpadr6SQ-GvgWStgrQnk5ZMXlcjoA-yC&maxResults=10&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`,
+    `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&playlistId=PLgpadr6SQ-GvgWStgrQnk5ZMXlcjoA-yC&maxResults=10&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
   );
 
   const testimonials = await testimonialsData.json();
