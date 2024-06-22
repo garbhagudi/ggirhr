@@ -22,8 +22,8 @@ export default function SalesIQ() {
   return (
     <React.Fragment>
       {useScript(
-        'https://salesiq.zohopublic.in/widget',
-        'siq36d4ad6e23f762f7609018f38cfdfe2eab4c8b7feebbbc5c0f95f382914e90c5'
+        'https://salesiq.zohopublic.com/widget',
+        'siq9cb07e4f29c86a0622c4785734fcaba7b624414ff160b99492e8afeead60bd0a'
       )}
     </React.Fragment>
   );
