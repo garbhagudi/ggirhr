@@ -97,15 +97,17 @@ const courses = {
       href: '/courses/iui-workshop',
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089736/GGIRHR/Icons/header%20icons%20svg/IUI_-_Workshop_yvaxxh.svg',
     },
-    // {
-    //   name: ' ICSI + Vitrification Workshop',
-    //   href: '/courses/ivf-preceptor-course',
-    //   icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089739/GGIRHR/Icons/header%20icons%20svg/3_Months_-_Preceptor_wm2tmx.svg',
-    // },
     {
       name: 'IVF Preceptor - 6 Month',
       href: '/courses/ivf-preceptor-course',
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/6_Months_-_Preceptor_drqlm8.svg',
+    },
+  ],
+  microCertifications: [
+    {
+      name: 'Fundamentals of Scientific Writing',
+      href: '/courses/fundamentals-of-scientific-writing',
+      icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1724493733/GGIRHR/Icons/header%20icons%20svg/Scientific_Writing_Career-_Icon_acvwud.svg',
     },
   ],
   others: [
@@ -341,19 +343,19 @@ export function Courses() {
                     >
                       Short Term
                     </Tab>
-                    {/* <Tab
+                    <Tab
                       className={({ selected }) =>
                         classNames(
                           'w-full py-1 text-sm rounded-lg',
                           'focus:outline-none',
                           selected
                             ? 'ring-2 ring-brandBlueLite1 text-gray-800 bg-white shadow'
-                            : 'text-gray-200 hover:bg-brandBlueDark3 '
+                            : 'text-gray-200 hover:bg-brandBlueDark3 ',
                         )
                       }
                     >
-                      Others
-                    </Tab> */}
+                      Micro Certifications
+                    </Tab>
                   </Tab.List>
                   <Tab.Panels className='px-2 my-2 text-black transition-all ease-out duration-500'>
                     <Tab.Panel>
@@ -444,13 +446,13 @@ export function Courses() {
                         ))}
                       </div>
                     </Tab.Panel>
-                    {/* <Tab.Panel>
+                    <Tab.Panel>
                       <div className='grid grid-cols-3 gap-2 text-center'>
-                        {courses.others.map((items) => (
+                        {courses.microCertifications.map((items) => (
                           <Link
                             href={items.href}
                             key={items.name}
-                            className='group hover:bg-gray-200  rounded-md'
+                            className='group hover:bg-gray-200 rounded-md'
                           >
                             <div className='flex flex-col items-center justify-center p-2'>
                               <img
@@ -465,7 +467,7 @@ export function Courses() {
                           </Link>
                         ))}
                       </div>
-                    </Tab.Panel> */}
+                    </Tab.Panel>
                   </Tab.Panels>
                 </Tab.Group>
               </div>
