@@ -2,8 +2,19 @@ import Head from 'next/head';
 import React from 'react';
 import graphcms from 'lib/graphcms';
 import { format } from 'date-fns';
+import Link from 'next/link';
 
 const IndexPage = ({ events }) => {
+  const [expandedCards, setExpandedCards] = React.useState<
+    Record<string, boolean>
+  >({});
+
+  const handleSeeMore = (id: string) => {
+    setExpandedCards((prevState) => ({
+      ...prevState,
+      [id]: !prevState[id], // Toggle the state for the specific card
+    }));
+  };
   return (
     <div>
       <Head>
@@ -54,7 +65,7 @@ const IndexPage = ({ events }) => {
           Check Our Upcoming and Events, CMEs and Webinars
         </h3>
       </div>
-      <div className='max-w-7xl mx-auto'>
+      <div className='max-w-7xl mx-auto flex flex-wrap'>
         {events?.length === 0 && (
           <div className='text-center py-24'>
             No Events Scheduled! Please, check back later{' '}
@@ -72,26 +83,36 @@ const IndexPage = ({ events }) => {
             />
             <div className='px-6 pt-4'>
               <h1 className='font-bold text-xl mb-2'>{item?.title}</h1>
-              <p className='text-gray-800 h-auto md:h-80 '>
-                {item?.description}
+              <p className='text-gray-800 mb-2'>
+                {expandedCards[item?.id]
+                  ? item?.description
+                  : `${item?.description.slice(0, 180)}...`}{' '}
+                <span
+                  className='text-brandBlue text-sm cursor-pointer'
+                  onClick={() => handleSeeMore(item?.id)} // Pass the card's ID
+                >
+                  {expandedCards[item?.id] ? 'see less' : 'see more'}
+                </span>
               </p>
             </div>
             {item?.eventDateTime && (
-              <div className='px-7 pb-2 text-brandBlue font-bold flex space-x-2'>
+              <div className='px-6 pb-2 text-brandBlue font-bold flex space-x-2'>
                 <div>
-                  Date:{format(new Date(item?.eventDateTime), ' dd MMMM yyyy')}{' '}
-                  at {format(new Date(item?.eventDateTime), 'HH:mm')}
+                  Date:
+                  {format(
+                    new Date(item?.eventDateTime),
+                    ' dd MMMM yyyy',
+                  )} at {format(new Date(item?.eventDateTime), 'HH:mm')}
                 </div>
               </div>
             )}
 
-            <div className='px-6 pt-4 pb-2'>
-              <span className='inline-block bg-gray-200 rounded-lg px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-brandBlue hover:text-white mr-2 mb-2'>
-                <a href={'/contact'} target={'_blank'} rel='noreferrer'>
-                  Register Now !
-                </a>
-              </span>
-            </div>
+            <Link
+              className='px-6 pb-2 bg-brandBlue hover:bg-brandBlueLite1 transition-all duration-300 py-2 w-full mx-auto text-center text-white font-bold flex items-center justify-center uppercase'
+              href={`/events/${item.slug}`}
+            >
+              Learn more
+            </Link>
           </div>
         ))}
       </div>
@@ -104,7 +125,7 @@ export default IndexPage;
 export const getServerSideProps = async () => {
   const { events } = await graphcms.request(`
     query {
-      events {
+      events (orderBy: eventDateTime_DESC) {
         title
         id
         bannerImage {
