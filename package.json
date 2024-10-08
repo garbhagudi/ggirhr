@@ -10,7 +10,7 @@
     "postbuild": "next-sitemap --config next-sitemap.config.js"
   },
   "dependencies": {
-    "@graphcms/rich-text-react-renderer": "^0.6.1",
+    "@graphcms/rich-text-react-renderer": "^0.6.2",
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "v1",
     "date-fns": "^3.6.0",
