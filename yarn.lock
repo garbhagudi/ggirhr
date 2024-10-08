@@ -82,10 +82,10 @@
   dependencies:
     levn "^0.4.1"
 
-"@graphcms/rich-text-react-renderer@^0.6.1":
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/@graphcms/rich-text-react-renderer/-/rich-text-react-renderer-0.6.1.tgz#eabbc24a914896c0235e2873994b283a95ae9df8"
-  integrity sha512-w0OtKf9Fzmf0vI5bzgR502AndRLEeRlmb8x6nxUweDhfNRVKTOiwSEQKetMPpodSZUnXO+PI8J7rqxQvJof2kA==
+"@graphcms/rich-text-react-renderer@^0.6.2":
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/@graphcms/rich-text-react-renderer/-/rich-text-react-renderer-0.6.2.tgz#e7489c652330fd8b531aa9354cf3f795a4e55e6c"
+  integrity sha512-eQpHtAixJZwKM61/tvucKMJ+fCEv0WRXJoTGAG/AW3Xalg3BFZhsp3x/mQJra+DpS6H0hjG+h8cXzDwq/lQPfA==
   dependencies:
     "@graphcms/rich-text-types" "^0.5.0"
     escape-html "^1.0.3"
@@ -192,12 +192,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-
 "@next/env@14.2.14":
   version "14.2.14"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-14.2.14.tgz#08f5175dab727102da02301ba61f7239773670fa"
   integrity sha512-/0hWQfiaD5//LvGNgc8PjvyqV50vGK0cADYzaoOOGN8fxzBn3iAiaq3S0tCRnFBldq0LVveLcxCTi41ZoYgAgg==
-
 
 "@next/env@^13.4.3":
   version "13.4.10"
