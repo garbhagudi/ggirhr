@@ -1,4 +1,13 @@
-import { Popover, Transition } from '@headlessui/react';
+import {
+  Popover,
+  PopoverButton,
+  PopoverPanel,
+  TabGroup,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Transition,
+} from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import { Fragment } from 'react';
 import Link from 'next/link';
@@ -102,6 +111,11 @@ const courses = {
       href: '/courses/ivf-preceptor-course',
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/6_Months_-_Preceptor_drqlm8.svg',
     },
+    {
+      name: 'Mastering Egg Pickup',
+      href: '/courses/mastering-egg-pickup-oocyte-pickup-ovum-pickup-opu',
+      icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1729924632/GGIRHR/Icons/header%20icons%20svg/Egg_Pick-up_1_rw6pho.svg',
+    },
   ],
   microCertifications: [
     {
@@ -147,7 +161,7 @@ export function About() {
     <Popover className='relative'>
       {({ open }) => (
         <>
-          <Popover.Button
+          <PopoverButton
             className={`
                 ${open ? '' : 'text-opacity-90'}
                 `}
@@ -160,7 +174,7 @@ export function About() {
                 aria-hidden='true'
               />
             </span>
-          </Popover.Button>
+          </PopoverButton>
           <Transition
             as={Fragment}
             enter='transition ease-out duration-200'
@@ -170,7 +184,7 @@ export function About() {
             leaveFrom='opacity-100 translate-y-0'
             leaveTo='opacity-0 translate-y-1'
           >
-            <Popover.Panel className='absolute z-10 max-w-xl px-4 transform -translate-x-1/2 w-96 mt-7 left-1/2 sm:px-0'>
+            <PopoverPanel className='absolute z-10 max-w-xl px-4 transform -translate-x-1/2 w-96 mt-7 left-1/2 sm:px-0'>
               <div className='overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5'>
                 <div className='relative grid gap-8 p-3 bg-white lg:grid-cols-1'>
                   {AboutSection.map((item) => (
@@ -191,7 +205,7 @@ export function About() {
                   ))}
                 </div>
               </div>
-            </Popover.Panel>
+            </PopoverPanel>
           </Transition>
         </>
       )}
@@ -204,7 +218,7 @@ export function Contact() {
     <Popover className='relative'>
       {({ open }) => (
         <>
-          <Popover.Button
+          <PopoverButton
             className={`
                 ${open ? '' : 'text-opacity-90'}
                 `}
@@ -217,7 +231,7 @@ export function Contact() {
                 aria-hidden='true'
               />
             </span>
-          </Popover.Button>
+          </PopoverButton>
           <Transition
             as={Fragment}
             enter='transition ease-out duration-200'
@@ -227,7 +241,7 @@ export function Contact() {
             leaveFrom='opacity-100 translate-y-0'
             leaveTo='opacity-0 translate-y-1'
           >
-            <Popover.Panel className='absolute z-10 max-w-xl px-4 transform -translate-x-1/2 w-96 mt-7 left-1/2 sm:px-0'>
+            <PopoverPanel className='absolute z-10 max-w-xl px-4 transform -translate-x-1/2 w-96 mt-7 left-1/2 sm:px-0'>
               <div className='overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5'>
                 <div className='relative grid gap-8 p-3 bg-white lg:grid-cols-1'>
                   {contactInfo.map((item) => (
@@ -248,7 +262,7 @@ export function Contact() {
                   ))}
                 </div>
               </div>
-            </Popover.Panel>
+            </PopoverPanel>
           </Transition>
         </>
       )}
@@ -265,7 +279,7 @@ export function Courses() {
     <Popover className='relative'>
       {({ close }) => (
         <>
-          <Popover.Button
+          <PopoverButton
             className={`
                 ${
                   close
@@ -277,7 +291,7 @@ export function Courses() {
             <div className=''>
               Courses <ChevronDownIcon className='inline-block w-5 h-5' />
             </div>
-          </Popover.Button>
+          </PopoverButton>
           <Transition
             as={Fragment}
             enter='transition ease-out duration-200'
@@ -287,10 +301,10 @@ export function Courses() {
             leaveFrom='opacity-100 translate-y-0'
             leaveTo='opacity-0 translate-y-1'
           >
-            <Popover.Panel className='absolute z-10 px-4 mt-3 lg:mt-7 transform -translate-x-1/2 w-screen max-w-xl left-1/2 sm:px-0 lg:max-w-xl'>
+            <PopoverPanel className='absolute z-10 px-4 mt-3 lg:mt-7 transform -translate-x-1/2 w-screen max-w-xl left-1/2 sm:px-0 lg:max-w-xl'>
               <div className='overflow-hidden shadow-lg rounded-lg ring-1 ring-opacity-5 dark:ring-opacity-100 bg-white bg-opacity-95 dark:bg-opacity-95 backdrop-blur-2xl'>
-                <Tab.Group>
-                  <Tab.List className='grid grid-cols-3 md:flex items-center justify-evenly bg-brandBlue text-white font-content font-bold px-3 lg:px-3 py-1.5 lg:py-2 rounded-t-lg'>
+                <TabGroup>
+                  <TabList className='grid grid-cols-3 md:flex items-center justify-evenly bg-brandBlue text-white font-content font-bold px-3 lg:px-3 py-1.5 lg:py-2 rounded-t-lg'>
                     <Tab
                       className={({ selected }) =>
                         classNames(
@@ -356,9 +370,9 @@ export function Courses() {
                     >
                       Micro Certifications
                     </Tab>
-                  </Tab.List>
-                  <Tab.Panels className='px-2 my-2 text-black transition-all ease-out duration-500'>
-                    <Tab.Panel>
+                  </TabList>
+                  <TabPanels className='px-2 my-2 text-black transition-all ease-out duration-500'>
+                    <TabPanel>
                       <div className='grid grid-cols-3 gap-2 text-center'>
                         {courses.fellowships.map((items) => (
                           <Link
@@ -379,8 +393,8 @@ export function Courses() {
                           </Link>
                         ))}
                       </div>
-                    </Tab.Panel>
-                    <Tab.Panel>
+                    </TabPanel>
+                    <TabPanel>
                       <div className='grid grid-cols-3 text-center'>
                         {courses.ultrasound.map((items) => (
                           <Link
@@ -401,8 +415,8 @@ export function Courses() {
                           </Link>
                         ))}
                       </div>
-                    </Tab.Panel>
-                    <Tab.Panel>
+                    </TabPanel>
+                    <TabPanel>
                       <div className='grid grid-cols-3 gap-2 text-center'>
                         {courses.andrology.map((items) => (
                           <Link
@@ -423,8 +437,8 @@ export function Courses() {
                           </Link>
                         ))}
                       </div>
-                    </Tab.Panel>
-                    <Tab.Panel>
+                    </TabPanel>
+                    <TabPanel>
                       <div className='grid grid-cols-3 gap-2 text-center'>
                         {courses.shortTermCourses.map((items) => (
                           <Link
@@ -445,8 +459,8 @@ export function Courses() {
                           </Link>
                         ))}
                       </div>
-                    </Tab.Panel>
-                    <Tab.Panel>
+                    </TabPanel>
+                    <TabPanel>
                       <div className='grid grid-cols-3 gap-2 text-center'>
                         {courses.microCertifications.map((items) => (
                           <Link
@@ -467,11 +481,11 @@ export function Courses() {
                           </Link>
                         ))}
                       </div>
-                    </Tab.Panel>
-                  </Tab.Panels>
-                </Tab.Group>
+                    </TabPanel>
+                  </TabPanels>
+                </TabGroup>
               </div>
-            </Popover.Panel>
+            </PopoverPanel>
           </Transition>
         </>
       )}
