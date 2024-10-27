@@ -135,7 +135,10 @@ const Header = () => {
           {(ref) => (
             <>
               <div className='xl:hidden' id='mobile-menu'>
-                <div ref={ref} className='px-2 pt-2 pb-3 space-y-1 sm:px-3'>
+                <div
+                  ref={ref as React.Ref<HTMLDivElement>}
+                  className='px-2 pt-2 pb-3 space-y-1 sm:px-3'
+                >
                   <Link
                     href={'/'}
                     className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'

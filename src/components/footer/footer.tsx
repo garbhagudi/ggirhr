@@ -25,11 +25,7 @@ const navigation = {
     { name: 'GarbhaGnan Foundation', href: 'https://garbhagnan.org' },
     { name: 'GarbhaGudi Pharma', href: 'https://www.garbhagudi.com' },
   ],
-  legal: [
-    { name: 'Privacy Policy', href: '/legal/privacy-policy' },
-    // { name: "Terms", href: "/legal/terms-and-conditions" },
-    // { name: "Refund Policy", href: "/legal/refund-policy" },
-  ],
+  legal: [{ name: 'Privacy Policy', href: '/legal/privacy-policy' }],
 };
 
 export default function Footer() {
