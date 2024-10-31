@@ -132,41 +132,34 @@ const Header = () => {
           leaveFrom='opacity-100 scale-100'
           leaveTo='opacity-0 scale-95'
         >
-          {(ref) => (
-            <>
-              <div className='xl:hidden' id='mobile-menu'>
-                <div
-                  ref={ref as React.Ref<HTMLDivElement>}
-                  className='px-2 pt-2 pb-3 space-y-1 sm:px-3'
-                >
-                  <Link
-                    href={'/'}
-                    className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'
-                  >
-                    Home
-                  </Link>
-                  <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
-                    <About />
-                  </span>
-                  <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
-                    <Courses />
-                  </span>
-                  <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
-                    <Link href='/events'>Events</Link>
-                  </span>
-                  <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
-                    <Link href='/research'>Research and Journals</Link>
-                  </span>
-                  <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
-                    <Link href='/blogs/page/1'>Blogs</Link>
-                  </span>
-                  <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm cursor-pointer'>
-                    <Contact />
-                  </span>
-                </div>
-              </div>
-            </>
-          )}
+          <div className='xl:hidden' id='mobile-menu'>
+            <div className='px-2 pt-2 pb-3 space-y-1 sm:px-3'>
+              <Link
+                href={'/'}
+                className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'
+              >
+                Home
+              </Link>
+              <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
+                <About />
+              </span>
+              <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
+                <Courses />
+              </span>
+              <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
+                <Link href='/events'>Events</Link>
+              </span>
+              <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
+                <Link href='/research'>Research and Journals</Link>
+              </span>
+              <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
+                <Link href='/blogs/page/1'>Blogs</Link>
+              </span>
+              <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm cursor-pointer'>
+                <Contact />
+              </span>
+            </div>
+          </div>
         </Transition>
       </nav>
     </div>
