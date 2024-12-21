@@ -102,8 +102,8 @@ const courses = {
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089736/GGIRHR/Icons/header%20icons%20svg/IUI_-_Workshop_yvaxxh.svg',
     },
     {
-      name: 'IVF Preceptor - 6 Month',
-      href: '/courses/ivf-preceptor-course',
+      name: 'Certified Fertility Specialist',
+      href: '/courses/certified-fertility-specialist',
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/6_Months_-_Preceptor_drqlm8.svg',
     },
     {
