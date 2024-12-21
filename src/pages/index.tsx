@@ -6,7 +6,13 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Courses from 'sections/Home/Courses';
 import Image from 'next/image';
-import { Dialog, Transition } from '@headlessui/react';
+import {
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+  Transition,
+  TransitionChild,
+} from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import { format } from 'date-fns';
 
@@ -174,9 +180,6 @@ const IndexPage = ({ HomeData, testimonials }) => {
                         <h3 className='text-brandDark font-content'>
                           {item?.name}
                         </h3>
-                        {/* <p className='text-sm text-brandPurpleDark font-content'>
-                          {item?.qualification}
-                        </p> */}
                         <p className='pb-2 text-sm text-brandPink font-content'>
                           {item?.designation}
                         </p>
@@ -199,7 +202,7 @@ const IndexPage = ({ HomeData, testimonials }) => {
 
               <Transition appear show={isOpen} as={Fragment}>
                 <Dialog as='div' className='relative' onClose={closeModal}>
-                  <Transition.Child
+                  <TransitionChild
                     as={Fragment}
                     enter='ease-out duration-300'
                     enterFrom='opacity-0'
@@ -211,11 +214,11 @@ const IndexPage = ({ HomeData, testimonials }) => {
                     {/* This element is to trick the browser into centering the modal contents. */}
 
                     <div className='fixed inset-0 bg-black/25' />
-                  </Transition.Child>
+                  </TransitionChild>
 
                   <div className='fixed inset-0 overflow-y-auto'>
                     <div className='flex min-h-full items-center justify-center p-4 text-center'>
-                      <Transition.Child
+                      <TransitionChild
                         as={Fragment}
                         enter='ease-out duration-300'
                         enterFrom='opacity-0 scale-95'
@@ -227,16 +230,16 @@ const IndexPage = ({ HomeData, testimonials }) => {
                         <div>
                           {HomeData &&
                             HomeData?.events.map((items) => (
-                              <Dialog.Panel
+                              <DialogPanel
                                 className='w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-2 text-left align-middle shadow-xl transition-all'
                                 key={items.id}
                               >
-                                <Dialog.Title
+                                <DialogTitle
                                   as='h3'
                                   className='text-lg font-bold py-1.5 leading-6 text-gray-900 text-center font-heading'
                                 >
                                   <h1 key={items?.id}>{items?.title}</h1>
-                                </Dialog.Title>
+                                </DialogTitle>
                                 <div className='mt-2'>
                                   <Link href={`/events`}>
                                     <Image
@@ -257,12 +260,12 @@ const IndexPage = ({ HomeData, testimonials }) => {
                                           Date:
                                           {format(
                                             new Date(items?.eventDateTime),
-                                            ' dd MMMM yyyy'
+                                            ' dd MMMM yyyy',
                                           )}{' '}
                                           at{' '}
                                           {format(
                                             new Date(items?.eventDateTime),
-                                            'HH:mm'
+                                            'HH:mm',
                                           )}
                                         </div>
                                       </div>
@@ -286,10 +289,10 @@ const IndexPage = ({ HomeData, testimonials }) => {
                                     </button>
                                   </div>
                                 </div>
-                              </Dialog.Panel>
+                              </DialogPanel>
                             ))}
                         </div>
-                      </Transition.Child>
+                      </TransitionChild>
                     </div>
                   </div>
                 </Dialog>
@@ -356,7 +359,7 @@ export const getServerSideProps = async () => {
   `;
 
   const testimonialsData = await fetch(
-    `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&playlistId=PLgpadr6SQ-GvgWStgrQnk5ZMXlcjoA-yC&maxResults=10&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
+    `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&playlistId=PLgpadr6SQ-GvgWStgrQnk5ZMXlcjoA-yC&maxResults=10&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`,
   );
 
   const testimonials = await testimonialsData.json();

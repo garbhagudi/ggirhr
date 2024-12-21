@@ -1,7 +1,11 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['res.cloudinary.com', 'media.graphassets.com'],
+    domains: [
+      'res.cloudinary.com',
+      'media.graphassets.com',
+      'ap-south-1.graphassets.com',
+    ],
   },
   async rewrites() {
     return [
