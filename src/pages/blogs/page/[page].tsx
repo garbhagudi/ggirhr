@@ -5,6 +5,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import graphcms from 'lib/graphcms';
 import Loading from 'components/loading';
+import { throttledFetch } from 'lib/throttle';
 
 const limit = 6;
 
@@ -95,33 +96,6 @@ const BlogList = ({
                       </p>
                     </Link>
                   </div>
-                  <div className='mt-6 flex items-center'>
-                    <div className='flex-shrink-0'>
-                      <Link href={`/doctors/${item?.node?.teacher?.slug}`}>
-                        <span className='sr-only'>
-                          {item?.node?.teaacher?.name}
-                        </span>
-                        <img
-                          className='h-10 w-10 rounded-full'
-                          src={item?.node?.teacher?.image?.url}
-                          alt={item?.node?.teacher?.name}
-                        />
-                      </Link>
-                    </div>
-                    <div className='ml-3'>
-                      <p className='text-sm font-medium text-gray-900'>
-                        <Link
-                          className='font-qs font-semibold'
-                          href={`/doctors/${item?.node?.teacher?.slug}`}
-                        >
-                          {item?.node?.teacher?.name}
-                        </Link>
-                      </p>
-                      <div className='flex space-x-1 text-sm text-gray-500 font-qs'>
-                        <time>{item?.node?.publishedOn}</time>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             ))}
@@ -154,7 +128,6 @@ const BlogList = ({
 };
 
 export default BlogList;
-
 export async function getStaticProps({ params }) {
   const query = gql`
     query blogPageQuery($limit: Int!, $offset: Int!) {
@@ -186,12 +159,19 @@ export async function getStaticProps({ params }) {
     }
   `;
 
+  // Define the fetch function
+  const fetchBlogs = async (limit, offset) => {
+    return graphcms.request(query, { limit, offset });
+  };
+
+  // Use throttledFetch for the API call
   const {
     blogsConnection: { blogs, pageInfo },
-  } = await graphcms.request(query, {
+  } = await throttledFetch(
+    fetchBlogs,
     limit,
-    offset: Number((params.page - 1) * limit),
-  });
+    Number((params.page - 1) * limit),
+  );
 
   return {
     props: {
@@ -214,7 +194,14 @@ export const getStaticPaths = async () => {
     }
   `;
 
-  const { blogsConnection } = await graphcms.request(query);
+  // Define the fetch function
+  const fetchBlogCount = async () => {
+    return graphcms.request(query);
+  };
+
+  // Use throttledFetch for the API call
+  const { blogsConnection } = await throttledFetch(fetchBlogCount);
+
   function* numberOfPages({ total, limit }) {
     let page = 1;
     let offset = 0;

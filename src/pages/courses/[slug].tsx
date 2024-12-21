@@ -9,13 +9,13 @@ import {
 } from '@heroicons/react/solid';
 import Head from 'next/head';
 import Link from 'next/link';
+import { throttledFetch } from 'lib/throttle';
 
 const CoursePage = ({ course }) => {
   return (
     <div>
       <Head>
         {/* Primary Tags */}
-
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <title>{`${course?.title} | GGIRHR`}</title>
         <meta name='title' content={`${course?.title} | GGIRHR`} />
@@ -23,9 +23,7 @@ const CoursePage = ({ course }) => {
           name='description'
           content={course?.description?.text.slice(0, 180)}
         />
-
         {/* Open Graph / Facebook */}
-
         <meta property='og:title' content={`${course?.title} | GGIRHR`} />
         <meta property='og:site_name' content='GGIRHR' />
         <meta property='og:url' content='https://ggirhr.com' />
@@ -35,9 +33,7 @@ const CoursePage = ({ course }) => {
         />
         <meta property='og:type' content='website' />
         <meta property='og:image' content={course?.courseImage?.url} />
-
         {/* Twitter*/}
-
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='twitter:site' content='@ggirhr' />
         <meta name='twitter:title' content={`${course?.title} | GGIRHR`} />
@@ -88,7 +84,11 @@ const CoursePage = ({ course }) => {
           <div className='lg:grid lg:grid-cols-2 lg:gap-2 lg:items-start'>
             <div className='relative z-10'>
               <div className='text-brandDark mx-auto lg:max-w-none'>
-                <RichText content={course?.description?.raw.children} />
+                {course?.description?.raw?.children ? (
+                  <RichText content={course?.description?.raw?.children} />
+                ) : (
+                  <p>Description not available</p>
+                )}
               </div>
               <div className='mt-10 flex text-base max-w-prose mx-auto lg:max-w-none space-x-3'>
                 <div className='rounded-md shadow'>
@@ -148,27 +148,55 @@ const CoursePage = ({ course }) => {
                   <div className='relative text-lg text-gray-700 font-medium'>
                     <table className='table bg-white rounded-lg mx-auto'>
                       <tbody>
-                        <tr className='text-gray-700'>
-                          <td className='p-4 flex items-center'>
-                            <ClockIcon className='w-8 h-8 inline-block mr-3 text-brandBlue' />
-                            Duration:
-                          </td>
-                          <td className='p-4'>{course?.duration}</td>
-                        </tr>
-                        <tr className='text-gray-700'>
-                          <td className='p-4 flex items-center'>
-                            <AcademicCapIcon className='w-8 h-8 inline-block mr-3 text-brandBlue' />{' '}
-                            Qualification:
-                          </td>
-                          <td className='p-4'>{course?.qualification}</td>
-                        </tr>
-                        <tr className='text-gray-700'>
-                          <td className='p-4 flex items-center'>
-                            <CurrencyRupeeIcon className='w-8 h-8 inline-block mr-3 text-brandBlue' />{' '}
-                            Fee:
-                          </td>
-                          <td className='p-4'>{course?.fees}</td>
-                        </tr>
+                        {course?.duration && (
+                          <tr className='text-gray-700'>
+                            <td className='p-4 flex items-center'>
+                              <ClockIcon className='w-8 h-8 inline-block mr-3 text-brandBlue' />
+                              Duration:
+                            </td>
+                            <td className='p-4'>{course?.duration}</td>
+                          </tr>
+                        )}
+                        {course?.qualification && (
+                          <tr className='text-gray-700'>
+                            <td className='p-4 flex items-center'>
+                              <AcademicCapIcon className='w-8 h-8 inline-block mr-3 text-brandBlue' />{' '}
+                              Qualification:
+                            </td>
+                            <td className='p-4'>{course?.qualification}</td>
+                          </tr>
+                        )}
+                        {course?.fees && (
+                          <tr className='text-gray-700'>
+                            <td className='p-4 flex items-center'>
+                              <CurrencyRupeeIcon className='w-8 h-8 inline-block mr-3 text-brandBlue' />{' '}
+                              Fee:
+                            </td>
+                            <td className='p-4'>{course?.fees}</td>
+                          </tr>
+                        )}
+                        {course?.numberOfBatchesPerYear && (
+                          <tr className='text-gray-700'>
+                            <td className='p-4 flex items-center'>
+                              <CurrencyRupeeIcon className='w-8 h-8 inline-block mr-3 text-brandBlue' />{' '}
+                              Number of Batches Per Year:
+                            </td>
+                            <td className='p-4'>
+                              {course?.numberOfBatchesPerYear}
+                            </td>
+                          </tr>
+                        )}
+                        {course?.numberOfStudentIntakePerBatch && (
+                          <tr className='text-gray-700'>
+                            <td className='p-4 flex items-center'>
+                              <CurrencyRupeeIcon className='w-8 h-8 inline-block mr-3 text-brandBlue' />{' '}
+                              Number of Student Intake Per Batch:
+                            </td>
+                            <td className='p-4'>
+                              {course?.numberOfStudentIntakePerBatch}
+                            </td>
+                          </tr>
+                        )}
                       </tbody>
                     </table>
                   </div>
@@ -183,16 +211,16 @@ const CoursePage = ({ course }) => {
 };
 
 export default CoursePage;
-
-export const getServerSideProps = async (pageContext: any) => {
+export const getStaticProps = async ({ params }: { params: any }) => {
   const url = process.env.ENDPOINT;
-  const graphQLClient = new GraphQLClient(url, {
-    headers: {
-      Authorization: `Bearer ${process.env.GRAPH_CMS_TOKEN}`,
-    },
-  });
 
-  const pageSlug = pageContext.query.slug;
+  // Create a GraphQL client
+  const createGraphQLClient = () =>
+    new GraphQLClient(url, {
+      headers: {
+        Authorization: `Bearer ${process.env.GRAPH_CMS_TOKEN}`,
+      },
+    });
 
   const query = gql`
     query ($pageSlug: String!) {
@@ -200,6 +228,8 @@ export const getServerSideProps = async (pageContext: any) => {
         id
         title
         objective
+        numberOfBatchesPerYear
+        numberOfStudentIntakePerBatch
         duration
         qualification
         fees
@@ -215,15 +245,52 @@ export const getServerSideProps = async (pageContext: any) => {
   `;
 
   const variables = {
-    pageSlug,
+    pageSlug: params.slug,
   };
 
-  const data = await graphQLClient.request(query, variables);
-  const course = data.course;
+  // Fetch the data with throttling
+  const graphQLClient = createGraphQLClient();
+  const fetchCourse = async () => graphQLClient.request(query, variables);
+
+  const data = await throttledFetch(fetchCourse);
+  const course = data?.course;
 
   return {
     props: {
       course,
     },
+    revalidate: 180, // ISR: Regenerate the page every 3 minutes
+  };
+};
+
+export const getStaticPaths = async () => {
+  const url = process.env.ENDPOINT;
+
+  // Create a GraphQL client
+  const graphQLClient = new GraphQLClient(url, {
+    headers: {
+      Authorization: `Bearer ${process.env.GRAPH_CMS_TOKEN}`,
+    },
+  });
+
+  const query = gql`
+    query {
+      courses {
+        slug
+      }
+    }
+  `;
+
+  // Fetch all slugs with throttling
+  const fetchCourses = async () => graphQLClient.request(query);
+  const { courses } = await throttledFetch(fetchCourses);
+
+  const paths = courses.map((course: { slug: string }) => ({
+    params: { slug: course.slug },
+  }));
+
+  return {
+    paths,
+    fallback: true, // Pages not generated at build time will be server-rendered
   };
 };

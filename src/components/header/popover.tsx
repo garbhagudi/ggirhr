@@ -83,12 +83,7 @@ const courses = {
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg',
     },
   ],
-  andrology: [
-    {
-      name: 'Comprehensive Andrology Training Program',
-      href: '/courses/comprehensive-andrology-training-program',
-      icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg',
-    },
+  embryology: [
     {
       name: 'Post Graduate Diploma in Clinical Embryology (PGDCE)',
       href: '/courses/post-graduate-diploma-in-clinical-embryology-pgdce-program',
@@ -122,6 +117,13 @@ const courses = {
       name: 'Fundamentals of Scientific Writing',
       href: '/courses/fundamentals-of-scientific-writing',
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1724493733/GGIRHR/Icons/header%20icons%20svg/Scientific_Writing_Career-_Icon_acvwud.svg',
+    },
+  ],
+  andrology: [
+    {
+      name: 'Comprehensive Andrology Training Program',
+      href: '/courses/comprehensive-andrology-training-program',
+      icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg',
     },
   ],
   others: [
@@ -355,6 +357,19 @@ export function Courses() {
                         )
                       }
                     >
+                      Andrology
+                    </Tab>
+                    <Tab
+                      className={({ selected }) =>
+                        classNames(
+                          'w-full py-1 text-sm rounded-lg',
+                          'focus:outline-none',
+                          selected
+                            ? 'ring-2 ring-brandBlueLite1 text-gray-800 bg-white shadow'
+                            : 'text-gray-200 hover:bg-brandBlueDark3 ',
+                        )
+                      }
+                    >
                       Short Term
                     </Tab>
                     <Tab
@@ -397,6 +412,28 @@ export function Courses() {
                     <TabPanel>
                       <div className='grid grid-cols-3 text-center'>
                         {courses.ultrasound.map((items) => (
+                          <Link
+                            href={items.href}
+                            key={items.name}
+                            className='group hover:bg-gray-200 rounded-md'
+                          >
+                            <div className='flex flex-col items-center justify-center p-2'>
+                              <img
+                                src={items.icon}
+                                alt={items.name}
+                                className='w-12 h-12 mx-auto transition-all duration-300 ease-linear'
+                              />
+                              <div className='font-content text-xs font-medium pt-2'>
+                                {items.name}
+                              </div>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </TabPanel>
+                    <TabPanel>
+                      <div className='grid grid-cols-3 gap-2 text-center'>
+                        {courses.embryology.map((items) => (
                           <Link
                             href={items.href}
                             key={items.name}
