@@ -84,7 +84,7 @@ const CoursePage = ({ course }) => {
           <div className='lg:grid lg:grid-cols-2 lg:gap-2 lg:items-start'>
             <div className='relative z-10'>
               <div className='text-brandDark mx-auto lg:max-w-none'>
-                <RichText content={course?.description?.raw.children} />
+                <RichText content={course?.description?.raw?.children} />
               </div>
               <div className='mt-10 flex text-base max-w-prose mx-auto lg:max-w-none space-x-3'>
                 <div className='rounded-md shadow'>
