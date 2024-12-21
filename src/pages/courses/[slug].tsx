@@ -87,7 +87,7 @@ const CoursePage = ({ course }) => {
                 {course?.description?.raw?.children ? (
                   <RichText content={course?.description?.raw?.children} />
                 ) : (
-                  <p>Description not available.</p>
+                  <p>Description not available</p>
                 )}
               </div>
               <div className='mt-10 flex text-base max-w-prose mx-auto lg:max-w-none space-x-3'>
