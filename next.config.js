@@ -7,6 +7,10 @@ const nextConfig = {
       'ap-south-1.graphassets.com',
     ],
   },
+  experimental: {
+    workerThreads: false,
+    cpus: 1,
+  },
   async rewrites() {
     return [
       {
