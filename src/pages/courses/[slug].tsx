@@ -10,6 +10,7 @@ import {
 import Head from 'next/head';
 import Link from 'next/link';
 import { throttledFetch } from 'lib/throttle';
+import Image from 'next/image';
 
 const CoursePage = ({ course }) => {
   return (
@@ -148,13 +149,44 @@ const CoursePage = ({ course }) => {
                   <div className='relative text-lg text-gray-700 font-medium'>
                     <table className='table bg-white rounded-lg mx-auto'>
                       <tbody>
-                        {course?.duration && (
+                        {course?.numberOfBatchesPerYear && (
                           <tr className='text-gray-700'>
-                            <td className='p-4 flex items-center'>
-                              <ClockIcon className='w-8 h-8 inline-block mr-3 text-brandBlue' />
-                              Duration:
+                            <td className='p-4 flex gap-x-3 items-start'>
+                              <Image
+                                src={
+                                  'https://res.cloudinary.com/garbhagudiivf/image/upload/v1736420828/Batches_mm1yad.svg'
+                                }
+                                alt={'Number_of_Batches_Per_Year_icon'}
+                                width={100}
+                                height={100}
+                                className='h-8 w-8 object-cover'
+                                priority
+                              />
+                              Number of Batches Per Year:
                             </td>
-                            <td className='p-4'>{course?.duration}</td>
+                            <td className='p-4 align-top'>
+                              {course?.numberOfBatchesPerYear}
+                            </td>
+                          </tr>
+                        )}
+                        {course?.numberOfStudentIntakePerBatch && (
+                          <tr className='text-gray-700'>
+                            <td className='p-4 flex gap-x-3 items-start'>
+                              <Image
+                                src={
+                                  'https://res.cloudinary.com/garbhagudiivf/image/upload/v1736420820/Students_z7bqek.svg'
+                                }
+                                alt={'Number_of_Student_Intake_Per_Batch_icon'}
+                                width={100}
+                                height={100}
+                                className='h-8 w-8 object-cover'
+                                priority
+                              />
+                              Number of Student Intake Per Batch:
+                            </td>
+                            <td className='p-4 align-top'>
+                              {course?.numberOfStudentIntakePerBatch}
+                            </td>
                           </tr>
                         )}
                         {course?.qualification && (
@@ -166,6 +198,16 @@ const CoursePage = ({ course }) => {
                             <td className='p-4'>{course?.qualification}</td>
                           </tr>
                         )}
+                        {course?.duration && (
+                          <tr className='text-gray-700'>
+                            <td className='p-4 flex items-center'>
+                              <ClockIcon className='w-8 h-8 inline-block mr-3 text-brandBlue' />
+                              Duration:
+                            </td>
+                            <td className='p-4'>{course?.duration}</td>
+                          </tr>
+                        )}
+
                         {course?.fees && (
                           <tr className='text-gray-700'>
                             <td className='p-4 flex items-center'>
@@ -173,28 +215,6 @@ const CoursePage = ({ course }) => {
                               Fee:
                             </td>
                             <td className='p-4'>{course?.fees}</td>
-                          </tr>
-                        )}
-                        {course?.numberOfBatchesPerYear && (
-                          <tr className='text-gray-700'>
-                            <td className='p-4 flex items-center'>
-                              <CurrencyRupeeIcon className='w-8 h-8 inline-block mr-3 text-brandBlue' />{' '}
-                              Number of Batches Per Year:
-                            </td>
-                            <td className='p-4'>
-                              {course?.numberOfBatchesPerYear}
-                            </td>
-                          </tr>
-                        )}
-                        {course?.numberOfStudentIntakePerBatch && (
-                          <tr className='text-gray-700'>
-                            <td className='p-4 flex items-center'>
-                              <CurrencyRupeeIcon className='w-8 h-8 inline-block mr-3 text-brandBlue' />{' '}
-                              Number of Student Intake Per Batch:
-                            </td>
-                            <td className='p-4'>
-                              {course?.numberOfStudentIntakePerBatch}
-                            </td>
                           </tr>
                         )}
                       </tbody>
