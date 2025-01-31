@@ -90,18 +90,6 @@ const Contact = () => {
                       </Link>
                     </dd>
                   </div>
-                  <div className='mt-1'>
-                    <dt className='sr-only'>Phone number</dt>
-                    <dd>
-                      <Link
-                        href='tel:+919606002999'
-                        className='text-brandBlue hover:underline'
-                      >
-                        <PhoneIcon className='inline-block w-5 h-5' /> +91 96060
-                        02999
-                      </Link>
-                    </dd>
-                  </div>
                 </dl>
               </div>
               <div>
