@@ -48,7 +48,7 @@ const AboutSection = [
   },
 ];
 
-const courses = {
+export const courses = {
   fellowships: [
     {
       name: 'IMA-AMS Fellowship in Infertility',
@@ -61,7 +61,7 @@ const courses = {
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/RGUHS_f22qpk.svg',
     },
     {
-      name: 'Institutional Fellowship in Reproductive Medicine',
+      name: 'Fellowship in Reproductive Medicine',
       href: '/courses/institutional-fellowship-in-reproductive-medicine',
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089736/GGIRHR/Icons/header%20icons%20svg/Ins_Fellowship_dhuxji.svg',
     },
@@ -90,7 +90,7 @@ const courses = {
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg',
     },
     {
-      name: 'Institutional Fellowship in Clinical Embryology',
+      name: 'Fellowship in Clinical Embryology',
       href: '/courses/institutional-fellowship-in-clinical-embryology',
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg',
     },
@@ -107,7 +107,7 @@ const courses = {
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/6_Months_-_Preceptor_drqlm8.svg',
     },
     {
-      name: 'Mastering Egg Pickup',
+      name: 'Mastering Egg Pickup (Oocyte Pickup or OPU)',
       href: '/courses/mastering-egg-pickup-oocyte-pickup-ovum-pickup-opu',
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1729924632/GGIRHR/Icons/header%20icons%20svg/Egg_Pick-up_1_rw6pho.svg',
     },
@@ -124,18 +124,6 @@ const courses = {
       name: 'Comprehensive Andrology Training Program',
       href: '/courses/comprehensive-andrology-training-program',
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg',
-    },
-  ],
-  others: [
-    {
-      name: 'Internship Programs',
-      href: '/courses/internship-programs',
-      icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/6_Months_-_Preceptor_drqlm8.svg',
-    },
-    {
-      name: 'GGIRHR Clinical Research Program',
-      href: '/courses/internship-programs',
-      icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/6_Months_-_Preceptor_drqlm8.svg',
     },
   ],
 };
@@ -314,7 +302,7 @@ export function Courses() {
                           'focus:outline-none',
                           selected
                             ? 'ring-2 ring-brandBlueLite1 text-gray-800 bg-white shadow'
-                            : 'text-gray-200 hover:bg-brandBlueDark3 ',
+                            : 'text-gray-200 hover:bg-brandBlueDark3 '
                         )
                       }
                     >
@@ -327,7 +315,7 @@ export function Courses() {
                           'focus:outline-none',
                           selected
                             ? 'ring-2 ring-brandBlueLite1 text-gray-800 bg-white shadow'
-                            : 'text-gray-200 hover:bg-brandBlueDark3 ',
+                            : 'text-gray-200 hover:bg-brandBlueDark3 '
                         )
                       }
                     >
@@ -340,7 +328,7 @@ export function Courses() {
                           'focus:outline-none',
                           selected
                             ? 'ring-2 ring-brandBlueLite1 text-gray-800 bg-white shadow'
-                            : 'text-gray-200 hover:bg-brandBlueDark3 ',
+                            : 'text-gray-200 hover:bg-brandBlueDark3 '
                         )
                       }
                     >
@@ -353,7 +341,7 @@ export function Courses() {
                           'focus:outline-none',
                           selected
                             ? 'ring-2 ring-brandBlueLite1 text-gray-800 bg-white shadow'
-                            : 'text-gray-200 hover:bg-brandBlueDark3 ',
+                            : 'text-gray-200 hover:bg-brandBlueDark3 '
                         )
                       }
                     >
@@ -366,7 +354,7 @@ export function Courses() {
                           'focus:outline-none',
                           selected
                             ? 'ring-2 ring-brandBlueLite1 text-gray-800 bg-white shadow'
-                            : 'text-gray-200 hover:bg-brandBlueDark3 ',
+                            : 'text-gray-200 hover:bg-brandBlueDark3 '
                         )
                       }
                     >
@@ -379,7 +367,7 @@ export function Courses() {
                           'focus:outline-none',
                           selected
                             ? 'ring-2 ring-brandBlueLite1 text-gray-800 bg-white shadow'
-                            : 'text-gray-200 hover:bg-brandBlueDark3 ',
+                            : 'text-gray-200 hover:bg-brandBlueDark3 '
                         )
                       }
                     >

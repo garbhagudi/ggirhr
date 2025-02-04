@@ -3,9 +3,9 @@ import { PhoneIcon } from '@heroicons/react/solid';
 
 const FloatPhone = () => {
   return (
-    <div className='fixed w-7 h-8 md:w-14 md:h-14 bottom-20 right-6 md:bottom-20 md:right-3.5 bg-brandBlueDark2 rounded-full flex items-center justify-center opacity-20 hover:opacity-100 transition-opacity duration-500 ease-linear'>
+    <div className='fixed bottom-2 left-2 lg:bottom-2 lg:left-2 w-[3.8em] h-[3.8em] lg:w-14 lg:h-14 bg-brandBlueDark2 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity duration-200 ease-linear z-[+9999]'>
       <a href='tel:+919108910852'>
-        <PhoneIcon className='w-3 h-4 md:w-8 md:h-8 text-white' />
+        <PhoneIcon className='w-8 h-8 lg:w-8 lg:h-8 text-white' />
       </a>
     </div>
   );
