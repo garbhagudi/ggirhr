@@ -11,8 +11,11 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { throttledFetch } from 'lib/throttle';
 import Image from 'next/image';
+import { courses } from 'components/header/popover';
+import { usePathname } from 'next/navigation';
 
 const CoursePage = ({ course }) => {
+  const courseSlug = usePathname();
   return (
     <div>
       <Head>
@@ -91,24 +94,6 @@ const CoursePage = ({ course }) => {
                   <p>Description not available</p>
                 )}
               </div>
-              <div className='mt-10 flex text-base max-w-prose mx-auto lg:max-w-none space-x-3'>
-                <div className='rounded-md shadow'>
-                  <Link
-                    href='/contact'
-                    className='w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brandBlue hover:bg-brandBlueDark3'
-                  >
-                    Contact Us
-                  </Link>
-                </div>
-                <div className='rounded-md shadow flex justify-center'>
-                  <a
-                    href='tel:+919108910852'
-                    className='w-full flex items-center justify-center px-5 py-3 bg-white border border-transparent text-base font-medium rounded-md text-brandBlue'
-                  >
-                    <PhoneIcon className='w-5 h-5 mr-2' /> Call Us
-                  </a>
-                </div>
-              </div>
             </div>
             <div className='mt-12 relative text-base max-w-prose mx-auto lg:mt-0 lg:max-w-none'>
               <svg
@@ -144,7 +129,8 @@ const CoursePage = ({ course }) => {
                   fill='url(#bedc54bc-7371-44a2-a2bc-dc68d819ae60)'
                 />
               </svg>
-              <blockquote className='relative bg-white rounded-lg shadow-lg'>
+
+              <blockquote className='relative bg-white rounded-lg shadow-lg mb-10'>
                 <div className='rounded-t-lg py-2 sm:px-4 sm:pt-4 sm:pb-8'>
                   <div className='relative text-lg text-gray-700 font-medium'>
                     <table className='table bg-white rounded-lg mx-auto'>
@@ -220,6 +206,44 @@ const CoursePage = ({ course }) => {
                       </tbody>
                     </table>
                   </div>
+                </div>
+              </blockquote>
+
+              <blockquote className='relative bg-white rounded-lg shadow-lg mb-10'>
+                <div className='rounded-t-lg py-2 sm:px-4 sm:pt-4 bg-brandBlue'>
+                  <div className=' text-base text-white font-bold tracking-wide text-center'>
+                    Training Courses and Programs
+                  </div>
+                </div>
+                <div className='py-2'>
+                  {courses && Object.values(courses)
+                    .flat()
+                    .map((course, index) => {
+                      return (
+                        <div
+                          className={`group hover:bg-gray-200 hover:text-brandBlue rounded-md px-4 py-1 ${
+                            courseSlug === course.href &&
+                            'bg-brandBlue font-semibold text-white'
+                          }`}
+                          key={index}
+                        >
+                          <Link href={course.href} key={course.name}>
+                            {index + 1}. {course.name}
+                          </Link>
+                        </div>
+                      );
+                    })}
+                </div>
+              </blockquote>
+
+              <blockquote className='relative bg-gray-200 rounded-lg shadow-lg mb-10'>
+                <div className='rounded-t-lg py-2 sm:px-4 sm:pt-4 sm:pb-8'>
+                  <iframe
+                    src='/contact2.html'
+                    className='max-w-5xl mt-5 lg:mt-0 mx-auto h-96 lg:h-[60vh]'
+                  >
+                    Loading...
+                  </iframe>
                 </div>
               </blockquote>
             </div>
