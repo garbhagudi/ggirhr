@@ -6,6 +6,7 @@ import { About, Courses, Contact } from 'components/header/popover';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isPopoverOpen, setIsPopoverOpen] = useState<boolean>(false);
   const router = useRouter();
   return (
     <div className='sticky top-0 z-50'>
@@ -36,10 +37,13 @@ const Header = () => {
                     </span>
                   </Link>
                   <span className='text-gray-900 hover:bg-brandBlue hover:text-white rounded-2xl px-3 py-2 text-sm'>
-                    <About />
+                    <About setIsPopoverOpen={setIsPopoverOpen} />
                   </span>
                   <span className='text-gray-900 hover:bg-brandBlue hover:text-white rounded-2xl px-3 py-2 text-sm'>
-                    <Courses />
+                    <Courses
+                      isPopoverOpen={isPopoverOpen}
+                      setIsPopoverOpen={setIsPopoverOpen}
+                    />
                   </span>
                   <Link href='/events' passHref>
                     <span
@@ -67,7 +71,7 @@ const Header = () => {
                     <Link href='/blogs/page/1'>Blogs</Link>
                   </span>
                   <span className='text-gray-900 hover:bg-brandBlue hover:text-white rounded-2xl px-3 py-2 text-sm'>
-                    <Contact />
+                    <Contact setIsPopoverOpen={setIsPopoverOpen} />
                   </span>
                 </div>
               </div>

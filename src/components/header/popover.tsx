@@ -9,7 +9,7 @@ import {
   Transition,
 } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Tab } from '@headlessui/react';
 import { MdContactPhone, MdContactSupport } from 'react-icons/md';
@@ -146,7 +146,11 @@ const contactInfo = [
   },
 ];
 
-export function About() {
+export function About({
+  setIsPopoverOpen,
+}: {
+  setIsPopoverOpen?: (value: boolean) => void;
+}) {
   return (
     <Popover className='relative'>
       {({ open }) => (
@@ -156,7 +160,10 @@ export function About() {
                 ${open ? '' : 'text-opacity-90'}
                 `}
           >
-            <span className='hover:text-white'>
+            <span
+              className='hover:text-white'
+              onClick={() => setIsPopoverOpen(false)}
+            >
               About
               <ChevronDownIcon
                 className={`${open ? '' : 'text-opacity-70'}
@@ -203,7 +210,11 @@ export function About() {
   );
 }
 
-export function Contact() {
+export function Contact({
+  setIsPopoverOpen,
+}: {
+  setIsPopoverOpen?: (value: boolean) => void;
+}) {
   return (
     <Popover className='relative'>
       {({ open }) => (
@@ -213,7 +224,10 @@ export function Contact() {
                 ${open ? '' : 'text-opacity-90'}
                 `}
           >
-            <span className='hover:text-white'>
+            <span
+              className='hover:text-white'
+              onClick={() => setIsPopoverOpen(false)}
+            >
               Contact
               <ChevronDownIcon
                 className={`${open ? '' : 'text-opacity-70'}
@@ -264,7 +278,47 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export function Courses() {
+export function Courses({
+  isPopoverOpen,
+  setIsPopoverOpen,
+}: {
+  isOpen?: boolean;
+  isPopoverOpen?: boolean;
+  setIsPopoverOpen?: (value: boolean) => void;
+}) {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const parsedUrl = new URL(window.location.href);
+      const queryParam = parsedUrl.searchParams.keys().next().value;
+
+      const tabMapping: Record<string, number> = {
+        fellowships: 0,
+        ultrasound: 1,
+        embryology: 2,
+        andrology: 3,
+        'short-term': 4,
+        'micro-certifications': 5,
+      };
+
+      if (queryParam && tabMapping[queryParam] !== undefined) {
+        setSelectedIndex(tabMapping[queryParam]);
+        setIsPopoverOpen(true);
+      }
+    }
+  }, []);
+
+  const routeHandler = (route: string, index: number) => {
+    window.history.pushState(
+      {},
+      '',
+      `/
+      `
+    );
+    setSelectedIndex(index);
+  };
+
   return (
     <Popover className='relative'>
       {({ close }) => (
@@ -276,13 +330,14 @@ export function Courses() {
                     ? 'w-screen text-left sm:w-full outline-none'
                     : 'text-opacity-90 outline-none'
                 }
-                 `}
+                `}
           >
-            <div className=''>
+            <div className='' onClick={() => setIsPopoverOpen(!isPopoverOpen)}>
               Courses <ChevronDownIcon className='inline-block w-5 h-5' />
             </div>
           </PopoverButton>
           <Transition
+            show={isPopoverOpen}
             as={Fragment}
             enter='transition ease-out duration-200'
             enterFrom='opacity-0 translate-y-1'
@@ -293,7 +348,7 @@ export function Courses() {
           >
             <PopoverPanel className='absolute z-10 px-4 mt-3 lg:mt-7 transform -translate-x-1/2 w-screen max-w-xl left-1/2 sm:px-0 lg:max-w-xl'>
               <div className='overflow-hidden shadow-lg rounded-lg ring-1 ring-opacity-5 dark:ring-opacity-100 bg-white bg-opacity-95 dark:bg-opacity-95 backdrop-blur-2xl'>
-                <TabGroup>
+                <TabGroup selectedIndex={selectedIndex}>
                   <TabList className='grid grid-cols-3 md:flex items-center justify-evenly bg-brandBlue text-white font-content font-bold px-3 lg:px-3 py-1.5 lg:py-2 rounded-t-lg'>
                     <Tab
                       className={({ selected }) =>
@@ -305,6 +360,7 @@ export function Courses() {
                             : 'text-gray-200 hover:bg-brandBlueDark3 '
                         )
                       }
+                      onClick={() => routeHandler('fellowships', 0)}
                     >
                       Fellowships
                     </Tab>
@@ -318,6 +374,7 @@ export function Courses() {
                             : 'text-gray-200 hover:bg-brandBlueDark3 '
                         )
                       }
+                      onClick={() => routeHandler('ultrasound', 1)}
                     >
                       Ultrasound
                     </Tab>
@@ -331,6 +388,7 @@ export function Courses() {
                             : 'text-gray-200 hover:bg-brandBlueDark3 '
                         )
                       }
+                      onClick={() => routeHandler('embryology', 2)}
                     >
                       Embryology
                     </Tab>
@@ -344,6 +402,7 @@ export function Courses() {
                             : 'text-gray-200 hover:bg-brandBlueDark3 '
                         )
                       }
+                      onClick={() => routeHandler('andrology', 3)}
                     >
                       Andrology
                     </Tab>
@@ -357,6 +416,7 @@ export function Courses() {
                             : 'text-gray-200 hover:bg-brandBlueDark3 '
                         )
                       }
+                      onClick={() => routeHandler('short-term', 4)}
                     >
                       Short Term
                     </Tab>
@@ -370,6 +430,7 @@ export function Courses() {
                             : 'text-gray-200 hover:bg-brandBlueDark3 '
                         )
                       }
+                      onClick={() => routeHandler('micro-certifications', 5)}
                     >
                       Micro Certifications
                     </Tab>
