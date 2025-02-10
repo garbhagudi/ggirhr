@@ -310,12 +310,22 @@ export function Courses({
   }, []);
 
   const routeHandler = (route: string, index: number) => {
-    window.history.pushState(
-      {},
-      '',
-      `/
-      `
-    );
+    if (route === 'micro-certifications') {
+      window.history.pushState(
+        {},
+        '',
+        `/?micro-certifications
+        `
+      );
+    } else {
+      window.history.pushState(
+        {},
+        '',
+        `/
+        `
+      );
+    }
+
     setSelectedIndex(index);
   };
 

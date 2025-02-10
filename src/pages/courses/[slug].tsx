@@ -216,31 +216,33 @@ const CoursePage = ({ course }) => {
                   </div>
                 </div>
                 <div className='py-2'>
-                  {courses && Object.values(courses)
-                    .flat()
-                    .map((course, index) => {
-                      return (
-                        <div
-                          className={`group hover:bg-gray-200 hover:text-brandBlue rounded-md px-4 py-1 ${
-                            courseSlug === course.href &&
-                            'bg-brandBlue font-semibold text-white'
-                          }`}
-                          key={index}
-                        >
-                          <Link href={course.href} key={course.name}>
-                            {index + 1}. {course.name}
-                          </Link>
-                        </div>
-                      );
-                    })}
+                  {courses &&
+                    Object.values(courses)
+                      .flat()
+                      .map((course, index) => {
+                        return (
+                          <div
+                            className={`group hover:bg-gray-200 hover:text-brandBlue rounded-md px-4 py-1 ${
+                              courseSlug === course.href &&
+                              'bg-brandBlue font-semibold text-white'
+                            }`}
+                            key={index}
+                          >
+                            <Link href={course.href} key={course.name}>
+                              {index + 1}. {course.name}
+                            </Link>
+                          </div>
+                        );
+                      })}
                 </div>
               </blockquote>
 
               <blockquote className='relative bg-gray-200 rounded-lg shadow-lg mb-10'>
-                <div className='rounded-t-lg py-2 sm:px-4 sm:pt-4 sm:pb-8'>
+                <div className='rounded-t-lg overflow-hidden'>
                   <iframe
                     src='/contact2.html'
-                    className='max-w-5xl mt-5 lg:mt-0 mx-auto h-96 lg:h-[60vh]'
+                    className='max-w-5xl mt-5 lg:mt-0 mx-auto 
+               h-96 sm:h-80 md:h-[100vh] lg:h-[90vh] xl:h-[70vh]'
                   >
                     Loading...
                   </iframe>
