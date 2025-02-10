@@ -287,13 +287,13 @@
             'First Name',
             'Last Name',
             'Email',
-            'Phone',
+            'Phone'
           );
           var fldLangVal = new Array(
             'Qualification',
             'Full\x20Name',
             'Email',
-            'Phone',
+            'Phone'
           );
           for (i = 0; i < mndFileds.length; i++) {
             var fieldObj =
@@ -367,6 +367,16 @@
             tooltip.style.display = 'none';
           }
         }
+      </script>
+      <!-- Script to redirect outside iframe after form submission -->
+      <script>
+        document.getElementById('webform6231628000000491597').onsubmit =
+          function () {
+            // Redirect outside of iframe
+            window.top.location.href =
+              document.forms['WebToLeads6231628000000491597'].returnURL.value;
+            return true;
+          };
       </script>
       <!-- Do not remove this --- Analytics Tracking code starts -->
       <script
