@@ -53,9 +53,9 @@ const CoursePage = ({ course }) => {
             <h2 className='text-base text-brandBlue font-semibold tracking-wide uppercase'>
               Courses
             </h2>
-            <p className='mt-2 text-3xl leading-8 font-extrabold tracking-tight text-brandDark sm:text-4xl font-heading'>
+            <h1 className='mt-2 text-3xl leading-8 font-extrabold tracking-tight text-brandDark sm:text-4xl font-heading'>
               {course?.title}
-            </p>
+            </h1>
           </div>
           <div className='flex justify-center'>
             <img
