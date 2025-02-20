@@ -126,6 +126,23 @@ export const courses = {
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg',
     },
   ],
+  artSimulationLab: [
+    {
+      name: 'Comprehensive TVS Ultrasound Scan Training',
+      href: '/courses/comprehensive-tvs-ultrasound-scan-course',
+      icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg',
+    },
+    {
+      name: 'Online Basic TVS Ultrasound Scan Training',
+      href: '/courses/online-basic-tvs-ultrasound-scan-course',
+      icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg',
+    },
+    {
+      name: 'Mastering Egg Pickup (Oocyte Pickup or OPU)',
+      href: '/courses/mastering-egg-pickup-oocyte-pickup-ovum-pickup-opu',
+      icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1729924632/GGIRHR/Icons/header%20icons%20svg/Egg_Pick-up_1_rw6pho.svg',
+    },
+  ],
 };
 
 const contactInfo = [
@@ -300,6 +317,7 @@ export function Courses({
         andrology: 3,
         'short-term': 4,
         'micro-certifications': 5,
+        'art-simulation-lab': 6,
       };
 
       if (queryParam && tabMapping[queryParam] !== undefined) {
@@ -310,11 +328,11 @@ export function Courses({
   }, []);
 
   const routeHandler = (route: string, index: number) => {
-    if (route === 'micro-certifications') {
+    if (route === 'micro-certifications' || route === 'art-simulation-lab') {
       window.history.pushState(
         {},
         '',
-        `/?micro-certifications
+        `/?${route}
         `
       );
     } else {
@@ -356,14 +374,14 @@ export function Courses({
             leaveFrom='opacity-100 translate-y-0'
             leaveTo='opacity-0 translate-y-1'
           >
-            <PopoverPanel className='absolute z-10 px-4 mt-3 lg:mt-7 transform -translate-x-1/2 w-screen max-w-xl left-1/2 sm:px-0 lg:max-w-xl'>
+            <PopoverPanel className='absolute z-10 px-4 mt-3 lg:mt-7 transform -translate-x-1/2 w-screen max-w-xl left-1/2 sm:px-0 lg:max-w-3xl'>
               <div className='overflow-hidden shadow-lg rounded-lg ring-1 ring-opacity-5 dark:ring-opacity-100 bg-white bg-opacity-95 dark:bg-opacity-95 backdrop-blur-2xl'>
                 <TabGroup selectedIndex={selectedIndex}>
                   <TabList className='grid grid-cols-3 md:flex items-center justify-evenly bg-brandBlue text-white font-content font-bold px-3 lg:px-3 py-1.5 lg:py-2 rounded-t-lg'>
                     <Tab
                       className={({ selected }) =>
                         classNames(
-                          'w-full py-1 text-sm rounded-lg',
+                          'w-full py-1 text-sm rounded-lg px-1',
                           'focus:outline-none',
                           selected
                             ? 'ring-2 ring-brandBlueLite1 text-gray-800 bg-white shadow'
@@ -377,7 +395,7 @@ export function Courses({
                     <Tab
                       className={({ selected }) =>
                         classNames(
-                          'w-full py-1 text-sm rounded-lg',
+                          'w-full py-1 text-sm rounded-lg px-1',
                           'focus:outline-none',
                           selected
                             ? 'ring-2 ring-brandBlueLite1 text-gray-800 bg-white shadow'
@@ -391,7 +409,7 @@ export function Courses({
                     <Tab
                       className={({ selected }) =>
                         classNames(
-                          'w-full py-1 text-sm rounded-lg',
+                          'w-full py-1 text-sm rounded-lg px-1',
                           'focus:outline-none',
                           selected
                             ? 'ring-2 ring-brandBlueLite1 text-gray-800 bg-white shadow'
@@ -405,7 +423,7 @@ export function Courses({
                     <Tab
                       className={({ selected }) =>
                         classNames(
-                          'w-full py-1 text-sm rounded-lg',
+                          'w-full py-1 text-sm rounded-lg px-1',
                           'focus:outline-none',
                           selected
                             ? 'ring-2 ring-brandBlueLite1 text-gray-800 bg-white shadow'
@@ -419,7 +437,7 @@ export function Courses({
                     <Tab
                       className={({ selected }) =>
                         classNames(
-                          'w-full py-1 text-sm rounded-lg',
+                          'w-full py-1 text-sm rounded-lg px-1',
                           'focus:outline-none',
                           selected
                             ? 'ring-2 ring-brandBlueLite1 text-gray-800 bg-white shadow'
@@ -433,7 +451,7 @@ export function Courses({
                     <Tab
                       className={({ selected }) =>
                         classNames(
-                          'w-full py-1 text-sm rounded-lg',
+                          'w-full py-1 text-sm rounded-lg px-1',
                           'focus:outline-none',
                           selected
                             ? 'ring-2 ring-brandBlueLite1 text-gray-800 bg-white shadow'
@@ -443,6 +461,20 @@ export function Courses({
                       onClick={() => routeHandler('micro-certifications', 5)}
                     >
                       Micro Certifications
+                    </Tab>
+                    <Tab
+                      className={({ selected }) =>
+                        classNames(
+                          'w-full py-1 text-sm rounded-lg px-1',
+                          'focus:outline-none',
+                          selected
+                            ? 'ring-2 ring-brandBlueLite1 text-gray-800 bg-white shadow'
+                            : 'text-gray-200 hover:bg-brandBlueDark3 '
+                        )
+                      }
+                      onClick={() => routeHandler('art-simulation-lab', 6)}
+                    >
+                      ART Simulation Lab
                     </Tab>
                   </TabList>
                   <TabPanels className='px-2 my-2 text-black transition-all ease-out duration-500'>
@@ -454,7 +486,7 @@ export function Courses({
                             key={items.name}
                             className='group hover:bg-gray-200 rounded-md'
                           >
-                            <div className='flex flex-col items-start justify-center p-2'>
+                            <div className='flex flex-col items-center justify-center p-2'>
                               <img
                                 src={items.icon}
                                 alt={items.name}
@@ -559,6 +591,28 @@ export function Courses({
                     <TabPanel>
                       <div className='grid grid-cols-3 gap-2 text-center'>
                         {courses.microCertifications.map((items) => (
+                          <Link
+                            href={items.href}
+                            key={items.name}
+                            className='group hover:bg-gray-200 rounded-md'
+                          >
+                            <div className='flex flex-col items-center justify-center p-2'>
+                              <img
+                                src={items.icon}
+                                alt={items.name}
+                                className='w-12 h-12 mx-auto transition-all duration-300 ease-linear'
+                              />
+                              <div className='font-content text-xs font-medium pt-2'>
+                                {items.name}
+                              </div>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </TabPanel>
+                    <TabPanel>
+                      <div className='grid grid-cols-3 gap-2 text-center'>
+                        {courses.artSimulationLab.map((items) => (
                           <Link
                             href={items.href}
                             key={items.name}
