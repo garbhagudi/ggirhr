@@ -53,8 +53,8 @@ const Awards = () => {
         </h1>
         <div className="px-3 sm:px-0">
           <img
-            src="https://media.graphassets.com/cZCpRhM0Snm4T5prE2EH"
-            alt="Award Banner"
+            src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1740119316/GGIRHR/Images/e_12_11zon_f9km0i.webp"
+            alt="GGIRHR Awards"
             className="rounded-2xl "
           />
         </div>

@@ -170,7 +170,7 @@ export async function getStaticProps({ params }) {
   } = await throttledFetch(
     fetchBlogs,
     limit,
-    Number((params.page - 1) * limit),
+    Number((params.page - 1) * limit)
   );
 
   return {

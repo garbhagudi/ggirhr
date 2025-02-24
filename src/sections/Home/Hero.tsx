@@ -32,8 +32,8 @@ const Hero = () => {
           </div>
           <img
             className='w-full mt-6 md:mt-0 object-cover md:w-2/3 lg:w-1/2 md:-ml-4 lg:-ml-4 xl:ml-0 rounded-xl'
-            src='https://media.graphassets.com/3gyLPQfGQcqlK1OegwGz'
-            alt='sample page'
+            src='https://res.cloudinary.com/garbhagudiivf/image/upload/v1740117190/GGIRHR/Images/c_10_11zon_w9303y.webp'
+            alt='GGRIHR'
             role='img'
           />
         </div>

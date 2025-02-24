@@ -34,7 +34,7 @@ export const getStaticProps = async ({ params }) => {
         }
       }
       `,
-      { slug },
+      { slug }
     );
   };
 
