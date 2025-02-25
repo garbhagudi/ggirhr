@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { About, Courses, Contact } from 'components/header/popover';
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isPopoverOpen, setIsPopoverOpen] = useState<boolean>(false);
   const router = useRouter();
   return (
@@ -43,6 +43,7 @@ const Header = () => {
                     <Courses
                       isPopoverOpen={isPopoverOpen}
                       setIsPopoverOpen={setIsPopoverOpen}
+                      setIsOpen={setIsOpen}
                     />
                   </span>
                   <Link href='/events' passHref>
@@ -151,6 +152,7 @@ const Header = () => {
                 <Courses
                   isPopoverOpen={isPopoverOpen}
                   setIsPopoverOpen={setIsPopoverOpen}
+                  setIsOpen={setIsOpen}
                 />
               </span>
               <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
