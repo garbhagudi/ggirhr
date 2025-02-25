@@ -1,16 +1,16 @@
-import React, { Fragment } from "react";
-import { Tab } from "@headlessui/react";
+import React, { Fragment } from 'react';
+import { Tab } from '@headlessui/react';
 
 const Team = () => {
   return (
-    <div className="max-w-7xl mx-auto py-10 lg:py-16">
-      <h3 className="py-10 lg:py-16 text-3xl lg:text-4xl font-heading font-bold text-center">
+    <div className='max-w-7xl mx-auto py-10 lg:py-16'>
+      <h3 className='py-10 lg:py-16 text-3xl lg:text-4xl font-heading font-bold text-center'>
         Ethical Committee Members
       </h3>
       <Tab.Group>
         <Tab.List
           className={
-            "flex items-center justify-center flex-wrap gap-3 lg:gap-5 px-3 border-b-2 border-brandPink pb-5"
+            'flex items-center justify-center flex-wrap gap-3 lg:gap-5 px-3 border-b-2 border-brandPink pb-5'
           }
         >
           {teams.map((member, index) => (
@@ -21,8 +21,8 @@ const Team = () => {
                   alt={member.name}
                   className={
                     selected
-                      ? "w-20 h-20 lg:w-24 lg:h-24 object-cover object-center rounded-full ring-4 lg:ring-4 outline-none ring-brandPink bg-brandPink scale-110 transisition-all duration-500 ease-in-out"
-                      : "w-20 h-20 lg:w-24 lg:h-24 object-cover object-center rounded-full ring-2 lg:ring-4 outline-none ring-brandBlue bg-brandBlue transisition-all duration-500 ease-in-out"
+                      ? 'w-20 h-20 lg:w-24 lg:h-24 object-cover object-center rounded-full ring-4 lg:ring-4 outline-none ring-brandPink bg-brandPink scale-110 transisition-all duration-500 ease-in-out'
+                      : 'w-20 h-20 lg:w-24 lg:h-24 object-cover object-center rounded-full ring-2 lg:ring-4 outline-none ring-brandBlue bg-brandBlue transisition-all duration-500 ease-in-out'
                   }
                 />
               )}
@@ -31,30 +31,30 @@ const Team = () => {
         </Tab.List>
         <Tab.Panels>
           {teams.map((member, index) => (
-            <Tab.Panel key={index} className={"max-w-xl mx-auto"}>
-              <div className="grid grid-cols-5 divide-x border-b py-6">
-                <div className="col-span-2 mx-auto">
-                  <div className="rounded-full border-4 border-brandBlue w-24 lg:w-32">
+            <Tab.Panel key={index} className={'max-w-xl mx-auto'}>
+              <div className='grid grid-cols-5 divide-x border-b py-6'>
+                <div className='col-span-2 mx-auto'>
+                  <div className='rounded-full border-4 border-brandBlue w-24 lg:w-32'>
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-24 lg:w-32 rounded-full object-cover object-center bg-brandPink3 border-2 border-brandBlue"
+                      className='w-24 lg:w-32 rounded-full object-cover object-center bg-brandPink3 border-2 border-brandBlue'
                     />
                   </div>
                 </div>
-                <div className="col-span-3 flex justify-center flex-col">
-                  <h3 className="text-xl lg:text-2xl font-heading font-bold pl-3">
+                <div className='col-span-3 flex justify-center flex-col'>
+                  <h3 className='text-xl lg:text-2xl font-heading font-bold pl-3'>
                     {member.name}
                   </h3>
-                  <p className="text-base lg:text-lg font-body font-medium pl-3">
+                  <p className='text-base lg:text-lg font-body font-medium pl-3'>
                     {member.qualification}
                   </p>
-                  <p className="text-base lg:text-lg font-body font-medium pl-3">
+                  <p className='text-base lg:text-lg font-body font-medium pl-3'>
                     {member.designation}
                   </p>
                 </div>
               </div>
-              <div className="border-b px-3 py-2 max-w-xl mx-auto">
+              <div className='border-b px-3 py-2 max-w-xl mx-auto'>
                 {member.description}
               </div>
             </Tab.Panel>
@@ -69,11 +69,11 @@ export default Team;
 
 const teams = [
   {
-    name: "Dr. Asha S Vijay",
-    designation: "Chairperson",
-    qualification: "MBBS, DGO/DNB, FRM",
+    name: 'Dr. Asha S Vijay',
+    designation: 'Chairperson',
+    qualification: 'MBBS, DGO/DNB, FRM',
     image:
-      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1740121070/GGIRHR/Images/m_21_11zon_mumf90.webp",
+      'https://res.cloudinary.com/garbhagudiivf/image/upload/v1740121070/GGIRHR/Images/m_21_11zon_mumf90.webp',
     description: (
       <div>
         Dr. Asha S Vijay is a pioneer in the field of Assisted Reproduction in
@@ -115,11 +115,11 @@ const teams = [
     ),
   },
   {
-    name: "Dr Chinmayie R",
-    designation: "Subject Matter Expert",
-    qualification: "MBBS,MS – OBG, FRM",
+    name: 'Dr Chinmayie R',
+    designation: 'Subject Matter Expert',
+    qualification: 'MBBS,MS – OBG, FRM',
     image:
-      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1740121360/GGIRHR/Images/o_23_11zon_krklyr.webp",
+      'https://res.cloudinary.com/garbhagudiivf/image/upload/v1740121360/GGIRHR/Images/o_23_11zon_krklyr.webp',
     description: (
       <div>
         Dr Chinmayie is a fertility expert with eight years of experience in
@@ -135,10 +135,10 @@ const teams = [
     ),
   },
   {
-    name: "Dr. Maheshwari M",
-    designation: "Subject Expert",
-    qualification: "MBBS, MS/OBG, FRM",
-    image: "https://media.graphassets.com/GyfBXwJQWm5NpDwnKj2X",
+    name: 'Dr. Maheshwari M',
+    designation: 'Subject Expert',
+    qualification: 'MBBS, MS/OBG, FRM',
+    image: 'https://media.graphassets.com/GyfBXwJQWm5NpDwnKj2X',
     description: (
       <div>
         Dr Maheshwari is a senior fertility consultant associated with
@@ -153,11 +153,11 @@ const teams = [
     ),
   },
   {
-    name: "Dr. M Asif",
-    designation: "Subject Expert",
-    qualification: "",
+    name: 'Dr. M Asif',
+    designation: 'Subject Expert',
+    qualification: '',
     image:
-      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1687344385/GGIRHR/Research%20Assets/asif_fvnafw.webp",
+      'https://res.cloudinary.com/garbhagudiivf/image/upload/v1687344385/GGIRHR/Research%20Assets/asif_fvnafw.webp',
     description: (
       <div>
         Working as Senior Embryologist at Garbhagudi IVF Center Pv, Added also
@@ -183,11 +183,11 @@ const teams = [
     ),
   },
   {
-    name: "Pandeshwara Suryanarayana Jagannatha",
-    designation: "Biostatistician",
-    qualification: "",
+    name: 'Pandeshwara Suryanarayana Jagannatha',
+    designation: 'Biostatistician',
+    qualification: '',
     image:
-      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1687355612/GGIRHR/Research%20Assets/jagannath_c5ttpe.webp",
+      'https://res.cloudinary.com/garbhagudiivf/image/upload/v1687355612/GGIRHR/Research%20Assets/jagannath_c5ttpe.webp',
     description: (
       <div>
         A personality of a challenging management position with the versatility
@@ -210,11 +210,11 @@ const teams = [
     ),
   },
   {
-    name: "Dr. S.V. Joga Rao",
-    designation: "Legal Expert",
-    qualification: "LLB, LLM",
+    name: 'Dr. S.V. Joga Rao',
+    designation: 'Legal Expert',
+    qualification: 'LLB, LLM',
     image:
-      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1687344462/GGIRHR/Research%20Assets/Joga_Rao_itjpsv.webp",
+      'https://res.cloudinary.com/garbhagudiivf/image/upload/v1687344462/GGIRHR/Research%20Assets/Joga_Rao_itjpsv.webp',
     description: (
       <div>
         Dr.S.V. Joga Presently anchoring the professional activities of Legal
@@ -230,11 +230,11 @@ const teams = [
     ),
   },
   {
-    name: "Dr. Govinda Raju",
-    designation: "Social Scientist",
-    qualification: "",
+    name: 'Dr. Govinda Raju',
+    designation: 'Social Scientist',
+    qualification: '',
     image:
-      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1687344384/GGIRHR/Research%20Assets/govind_Raaju_a0udjv.webp",
+      'https://res.cloudinary.com/garbhagudiivf/image/upload/v1687344384/GGIRHR/Research%20Assets/govind_Raaju_a0udjv.webp',
     description: (
       <div>
         Working as Associate Professor in the Department of Sociology at
@@ -251,11 +251,11 @@ const teams = [
     ),
   },
   {
-    name: "Dr. Prabhakar Adake",
-    designation: "Basic Medical Scientist",
-    qualification: "",
+    name: 'Dr. Prabhakar Adake',
+    designation: 'Basic Medical Scientist',
+    qualification: '',
     image:
-      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1687344384/GGIRHR/Research%20Assets/Prabhakar_qffapb.webp",
+      'https://res.cloudinary.com/garbhagudiivf/image/upload/v1687344384/GGIRHR/Research%20Assets/Prabhakar_qffapb.webp',
     description: (
       <div>
         Working as Associate Professor of Pharmacology at Yenepoya Medical
@@ -279,11 +279,11 @@ const teams = [
     ),
   },
   {
-    name: "Dr. Damodara Gowda KM",
-    designation: "Subject Expert",
-    qualification: "",
+    name: 'Dr. Damodara Gowda KM',
+    designation: 'Subject Expert',
+    qualification: '',
     image:
-      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1687344384/GGIRHR/Research%20Assets/Damodar_lutmch.webp",
+      'https://res.cloudinary.com/garbhagudiivf/image/upload/v1687344384/GGIRHR/Research%20Assets/Damodar_lutmch.webp',
     description: (
       <div>
         Dr. Damodara Gowda K M is an Associate Professor at Nitte University,
@@ -311,11 +311,11 @@ const teams = [
     ),
   },
   {
-    name: "Dr. MS Mustak",
-    designation: "External Member",
-    qualification: "",
+    name: 'Dr. MS Mustak',
+    designation: 'External Member',
+    qualification: '',
     image:
-      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1687344384/GGIRHR/Research%20Assets/mustak_sdlh8a.webp",
+      'https://res.cloudinary.com/garbhagudiivf/image/upload/v1687344384/GGIRHR/Research%20Assets/mustak_sdlh8a.webp',
     description: (
       <div>
         He pursues the Postdoctoral Fellow at Institute for Regenerative
