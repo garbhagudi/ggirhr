@@ -72,7 +72,8 @@ const teams = [
     name: 'Dr. Asha S Vijay',
     designation: 'Chairperson',
     qualification: 'MBBS, DGO/DNB, FRM',
-    image: 'https://media.graphassets.com/tEF3ZeEhSoeekeSEh47v',
+    image:
+      'https://res.cloudinary.com/garbhagudiivf/image/upload/v1740121070/GGIRHR/Images/m_21_11zon_mumf90.webp',
     description: (
       <div>
         Dr. Asha S Vijay is a pioneer in the field of Assisted Reproduction in
@@ -117,7 +118,8 @@ const teams = [
     name: 'Dr Chinmayie R',
     designation: 'Subject Matter Expert',
     qualification: 'MBBS,MS – OBG, FRM',
-    image: 'https://media.graphassets.com/WYwNXLz4QbCJUrbHOaM3',
+    image:
+      'https://res.cloudinary.com/garbhagudiivf/image/upload/v1740121360/GGIRHR/Images/o_23_11zon_krklyr.webp',
     description: (
       <div>
         Dr Chinmayie is a fertility expert with eight years of experience in

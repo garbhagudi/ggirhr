@@ -3,8 +3,8 @@ export default function Banner() {
     <div className="mx-auto">
       <img
         className="mb-4 object-cover object-center"
-        alt="hero"
-        src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006731/GGIRHR/Images/About_us-min_fofilh.jpg"
+        alt="Top infertility training organizations in india"
+        src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1740119156/GGIRHR/Images/About_us-min_fofilh.webp"
       />
       <section className="text-gray-600 body-font">
         <div className="flex pb-4 items-center justify-center flex-col">

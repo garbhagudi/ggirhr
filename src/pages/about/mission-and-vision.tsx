@@ -53,9 +53,10 @@ const VisionMission = () => {
               </h2>
               <div className="rounded-lg h-64 overflow-hidden">
                 <img
-                  alt="content"
-                  className="object-cover object-center h-full w-full mb-2"
-                  src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1643278927/About/1201x501_Vision_c6ds1h.jpg"
+                  alt="GGIRHR Vision"
+                  className="object-cover object-center h-full w-full 
+                  mb-2"
+                  src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1740119787/About/1201x501_Vision_c6ds1h.webp"
                 />
               </div>
 
@@ -76,9 +77,9 @@ const VisionMission = () => {
               </h2>
               <div className="rounded-lg h-64 overflow-hidden">
                 <img
-                  alt="content"
+                  alt="GGIRHR Mission"
                   className="object-cover object-center h-full w-full mb-2"
-                  src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1643278945/About/1201x501_Mission_wcctgt.jpg"
+                  src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1740119971/About/1201x501_Mission_wcctgt.webp"
                 />
               </div>
 
