@@ -47,7 +47,7 @@ const Steps = () => {
             </div>
             <img
               className='lg:w-2/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12'
-              src='https://res.cloudinary.com/garbhagudiivf/image/upload/v1687352781/GGIRHR/Research%20Assets/cdc-_N7I1JyPYJw-unsplash-min_1_fn5h13.webp'
+              src='https://res.cloudinary.com/garbhagudiivf/image/upload/v1740120267/GGIRHR/Research%20Assets/cdc-_N7I1JyPYJw-unsplash-min_1_fn5h13.webp'
               alt='step'
             />
           </div>
