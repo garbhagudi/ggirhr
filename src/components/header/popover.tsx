@@ -298,10 +298,12 @@ function classNames(...classes) {
 export function Courses({
   isPopoverOpen,
   setIsPopoverOpen,
+  setIsOpen,
 }: {
   isOpen?: boolean;
   isPopoverOpen?: boolean;
   setIsPopoverOpen?: (value: boolean) => void;
+  setIsOpen?: (value: boolean) => void;
 }) {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -323,6 +325,12 @@ export function Courses({
       if (queryParam && tabMapping[queryParam] !== undefined) {
         setSelectedIndex(tabMapping[queryParam]);
         setIsPopoverOpen(true);
+      }
+      if (
+        queryParam === 'micro-certifications' ||
+        queryParam === 'art-simulation-lab'
+      ) {
+        setIsOpen(true);
       }
     }
   }, []);
