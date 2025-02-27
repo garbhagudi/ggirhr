@@ -18,7 +18,11 @@ export const Home_2 = ({ testimonialPassthrough }) => {
   return (
     <div>
       {/* <Stats /> */}
-      <Video testimonials={testimonialPassthrough} />
+      {testimonialPassthrough?.error ? (
+        ''
+      ) : (
+        <Video testimonials={testimonialPassthrough} />
+      )}
       <Feartures />
       <Testimonial />
     </div>
