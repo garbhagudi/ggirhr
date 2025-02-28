@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Hero = () => {
   return (
@@ -30,11 +31,13 @@ const Hero = () => {
               </button>
             </div>
           </div>
-          <img
-            className="w-full mt-6 md:mt-0 object-cover md:w-2/3 lg:w-1/2 md:-ml-4 lg:-ml-4 xl:ml-0 rounded-xl"
+          <Image
             src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1740117190/GGIRHR/Images/c_10_11zon_w9303y.webp"
-            alt="GGRIHR"
-            role="img"
+            className="w-full mt-6 md:mt-0 object-cover md:w-2/3 lg:w-1/2 md:-ml-4 lg:-ml-4 xl:ml-0 rounded-xl"
+            alt="GGIRHR"
+            width={600}
+            height={400}
+            priority
           />
         </div>
       </div>

@@ -60,7 +60,7 @@ const Awards = () => {
             width={800}
             height={600}
             sizes="(max-width: 640px) 90vw, 50vw"
-            priority={false}
+            priority={true}
           />
         </div>
 

@@ -57,7 +57,7 @@ const values = () => {
                 width={1200}
                 height={800}
                 sizes="(max-width: 640px) 90vw, 50vw"
-                priority={false}
+                loading="lazy"
               />
             </div>
 

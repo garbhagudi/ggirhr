@@ -36,7 +36,7 @@ const CTA = (props: Props) => {
                   height={300}
                   quality={65}
                   sizes="(max-width: 768px) 66vw, 33vw"
-                  priority={false}
+                  loading="lazy"
                 />
               </div>
             </div>

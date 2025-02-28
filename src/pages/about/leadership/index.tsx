@@ -70,7 +70,7 @@ const Leadership = ({ leaders }) => {
                             width={300}
                             height={200}
                             sizes="(max-width: 640px) 75vw, 50vw"
-                            priority={false}
+                            loading="lazy"
                           />
                         </div>
                         <div className="sm:col-span-2">

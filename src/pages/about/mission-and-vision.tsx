@@ -60,7 +60,7 @@ const VisionMission = () => {
                   width={1201}
                   height={501}
                   sizes="(max-width: 640px) 90vw, 100vw"
-                  priority={false}
+                  priority={true}
                 />
               </div>
 
@@ -87,7 +87,7 @@ const VisionMission = () => {
                   width={1201}
                   height={501}
                   sizes="(max-width: 640px) 90vw, 100vw"
-                  priority={false}
+                  loading="lazy"
                 />
               </div>
 

@@ -10,7 +10,7 @@ export default function Banner() {
         width={800}
         height={500}
         sizes="(max-width: 640px) 90vw, 100vw"
-        priority={false}
+        priority={true}
       />
 
       <section className="text-gray-600 body-font">
@@ -70,7 +70,7 @@ export default function Banner() {
                         width={112}
                         height={112}
                         sizes="(max-width: 640px) 90vw, 100vw"
-                        priority={false}
+                        loading="lazy"
                       />
                     </div>
 
