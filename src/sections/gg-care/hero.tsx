@@ -1,4 +1,5 @@
 import { ChatAltIcon, PhoneIcon, CalendarIcon } from '@heroicons/react/solid';
+import Image from 'next/image';
 import Link from 'next/link';
 
 const supportLinks = [
@@ -38,11 +39,16 @@ const Hero = () => {
       {/* Header */}
       <div className='relative pb-32 bg-gray-800'>
         <div className='absolute inset-0'>
-          <img
+          <Image
             className='w-full h-full object-cover'
             src='https://res.cloudinary.com/garbhagudiivf/image/upload/v1740119459/GGIRHR/Images/GG_Care_Web_Banner-min_xh7g5u.webp'
             alt=''
+            width={1200}
+            height={600}
+            sizes='(max-width: 640px) 90vw, 100vw'
+            priority={false}
           />
+
           <div
             className='absolute inset-0 bg-blue-300 mix-blend-multiply'
             aria-hidden='true'

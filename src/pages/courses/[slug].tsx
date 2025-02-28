@@ -58,12 +58,17 @@ const CoursePage = ({ course }) => {
             </h1>
           </div>
           <div className='flex justify-center'>
-            <img
+            <Image
               src={course?.courseImage?.url}
               alt={course?.title}
-              className=''
+              className='w-screen'
+              width={800}
+              height={500}
+              sizes='(max-width: 640px) 90vw, 100vw'
+              priority={false}
             />
           </div>
+
           <div className='relative z-10 text-base mx-auto lg:max-w-6xl lg:mx-0'>
             <p className='text-lg text-brandDark'>{course?.objective}</p>
           </div>

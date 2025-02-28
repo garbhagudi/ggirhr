@@ -2,6 +2,7 @@ import React from "react";
 import { GraphQLClient, gql } from "graphql-request";
 import Link from "next/link";
 import Head from "next/head";
+import Image from "next/image";
 
 export const getServerSideProps = async () => {
   const url = process.env.ENDPOINT;
@@ -93,11 +94,16 @@ const Course = ({ courses }) => {
               <Link href={`/courses/${item?.slug}`} passHref key={item.id}>
                 <div className="hover:shadow-2xl rounded-3xl cursor-pointer">
                   <div className="overflow-hidden">
-                    <img
+                    <Image
                       className="rounded-t-3xl"
                       src={item.courseImage.url}
                       alt={item.title}
+                      width={800}
+                      height={500}
+                      sizes="(max-width: 640px) 90vw, 100vw"
+                      priority={false}
                     />
+
                     <div className="border-r-2 border-l-2 border-b-2 rounded-b-3xl bg-gray-50">
                       <h2 className="text-lg text-gray-900 font-medium title-font py-4 md:ml-2 text-center md:text-left">
                         {item.title}

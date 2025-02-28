@@ -3,6 +3,7 @@ import React from 'react';
 import graphcms from 'lib/graphcms';
 import { format } from 'date-fns';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const IndexPage = ({ events }) => {
   const [expandedCards, setExpandedCards] = React.useState<
@@ -76,11 +77,16 @@ const IndexPage = ({ events }) => {
             className='max-w-md rounded-2xl overflow-hidden shadow-lg mx-auto my-16'
             key={item?.id}
           >
-            <img
+            <Image
               className='w-full'
               src={item?.bannerImage?.url}
               alt='Sunset in the mountains'
+              width={800}
+              height={500}
+              sizes='(max-width: 640px) 90vw, 100vw'
+              priority={false}
             />
+
             <div className='px-6 pt-4'>
               <h1 className='font-bold text-xl mb-2'>{item?.title}</h1>
               <p className='text-gray-800 mb-2'>
@@ -101,7 +107,7 @@ const IndexPage = ({ events }) => {
                   Date:
                   {format(
                     new Date(item?.eventDateTime),
-                    ' dd MMMM yyyy',
+                    ' dd MMMM yyyy'
                   )} at {format(new Date(item?.eventDateTime), 'HH:mm')}
                 </div>
               </div>

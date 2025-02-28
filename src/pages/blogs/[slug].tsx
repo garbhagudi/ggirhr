@@ -6,6 +6,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Loading from 'components/loading';
 import { throttledFetch } from 'lib/throttle';
+import Image from 'next/image';
 
 export const getStaticProps = async ({ params }) => {
   const fetchBlog = async (slug) => {
@@ -34,7 +35,7 @@ export const getStaticProps = async ({ params }) => {
         }
       }
       `,
-      { slug },
+      { slug }
     );
   };
 
@@ -222,10 +223,14 @@ const BlogPage = ({ blog }) => {
                 </span>
               </h1>
               <figure>
-                <img
+                <Image
                   className='w-full rounded-lg mt-10 mb-5'
                   src={blog?.image?.url}
                   alt={blog?.title}
+                  width={800}
+                  height={500}
+                  sizes='(max-width: 640px) 90vw, 100vw'
+                  priority={false}
                 />
               </figure>
               <div>

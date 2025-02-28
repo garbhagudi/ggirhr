@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import graphcms from 'lib/graphcms';
 import Loading from 'components/loading';
 import { throttledFetch } from 'lib/throttle';
+import Image from 'next/image';
 
 const limit = 6;
 
@@ -81,10 +82,14 @@ const BlogList = ({
               >
                 <Link href={`/blogs/${item.node.slug}`} passHref>
                   <div className='flex-shrink-0'>
-                    <img
+                    <Image
                       className='h-38 w-full object-contain rounded-2xl cursor-pointer'
                       src={item?.node?.image?.url}
                       alt={item?.node?.title}
+                      width={500}
+                      height={300}
+                      sizes='(max-width: 640px) 90vw, 100vw'
+                      priority={false}
                     />
                   </div>
                 </Link>
@@ -170,7 +175,7 @@ export async function getStaticProps({ params }) {
   } = await throttledFetch(
     fetchBlogs,
     limit,
-    Number((params.page - 1) * limit),
+    Number((params.page - 1) * limit)
   );
 
   return {

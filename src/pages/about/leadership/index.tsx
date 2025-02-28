@@ -1,6 +1,7 @@
 import graphcms from "lib/graphcms";
 import Link from "next/link";
 import Head from "next/head";
+import Image from "next/image";
 
 const Leadership = ({ leaders }) => {
   return (
@@ -62,10 +63,14 @@ const Leadership = ({ leaders }) => {
                     <li className="sm:py-8 cursor-pointer">
                       <div className="space-y-4 sm:grid sm:grid-cols-3 sm:items-start sm:gap-6 sm:space-y-0">
                         <div className="aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-4">
-                          <img
+                          <Image
                             className="object-cover shadow-lg rounded-lg"
                             src={person.image.url}
                             alt={person.name}
+                            width={300}
+                            height={200}
+                            sizes="(max-width: 640px) 75vw, 50vw"
+                            priority={false}
                           />
                         </div>
                         <div className="sm:col-span-2">

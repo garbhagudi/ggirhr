@@ -1,5 +1,6 @@
 import CTA from "components/cta";
 import Head from "next/head";
+import Image from "next/image";
 import React from "react";
 
 const values = () => {
@@ -49,12 +50,17 @@ const values = () => {
         <section className="relative pt-12 max-w-7xl mx-auto">
           <div className="items-center flex flex-wrap">
             <div className="w-full md:w-6/12 lg:w-5/12 ml-auto mr-auto px-2 md:px-7 mt-4 sm:mt-16">
-              <img
+              <Image
                 alt="..."
                 className="max-w-full rounded-3xl shadow-lg mb-10"
                 src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006732/GGIRHR/Images/Our_Values-min_gccmfd.jpg"
+                width={1200}
+                height={800}
+                sizes="(max-width: 640px) 90vw, 50vw"
+                priority={false}
               />
             </div>
+
             <div className="w-full md:w-6/12 lg:w-6/12 ml-auto mr-auto px-4">
               <div className="md:pr-12">
                 <h3 className="text-4xl font-semibold font-heading mt-4 underline">

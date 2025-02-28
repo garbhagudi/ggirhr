@@ -14,6 +14,7 @@ import Link from 'next/link';
 import { Tab } from '@headlessui/react';
 import { MdContactPhone, MdContactSupport } from 'react-icons/md';
 import { CgOrganisation } from 'react-icons/cg';
+import Image from 'next/image';
 
 const AboutSection = [
   {
@@ -208,7 +209,15 @@ export function About({
                       className='flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-blue-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50'
                     >
                       <div className='flex items-center justify-center flex-shrink-0 w-10 h-10 text-white sm:h-12 sm:w-12'>
-                        <img src={item.icon} alt={item.name} />
+                        <Image
+                          src={item.icon}
+                          alt={item.name}
+                          width={48}
+                          height={48}
+                          className='w-full h-full'
+                          sizes='(max-width: 640px) 40px, 48px'
+                          priority={false}
+                        />
                       </div>
                       <div className='ml-4'>
                         <p className='text-sm font-medium text-gray-900'>
@@ -495,11 +504,16 @@ export function Courses({
                             className='group hover:bg-gray-200 rounded-md'
                           >
                             <div className='flex flex-col items-center justify-center p-2'>
-                              <img
+                              <Image
                                 src={items.icon}
                                 alt={items.name}
-                                className='w-12 h-12 mx-auto transition-all duration-300 ease-linear'
+                                width={48}
+                                height={48}
+                                className='mx-auto transition-all duration-300 ease-linear'
+                                sizes='48px'
+                                priority={false}
                               />
+
                               <div className='font-content text-xs pt-2'>
                                 {items.name}
                               </div>
@@ -517,10 +531,14 @@ export function Courses({
                             className='group hover:bg-gray-200 rounded-md'
                           >
                             <div className='flex flex-col items-center justify-center p-2'>
-                              <img
+                              <Image
                                 src={items.icon}
                                 alt={items.name}
+                                width={48}
+                                height={48}
                                 className='w-12 h-12 mx-auto transition-all duration-300 ease-linear'
+                                sizes='48px'
+                                priority={false}
                               />
                               <div className='font-content text-xs font-medium pt-2'>
                                 {items.name}
@@ -539,10 +557,14 @@ export function Courses({
                             className='group hover:bg-gray-200 rounded-md'
                           >
                             <div className='flex flex-col items-center justify-center p-2'>
-                              <img
+                              <Image
                                 src={items.icon}
                                 alt={items.name}
+                                width={48}
+                                height={48}
                                 className='w-12 h-12 mx-auto transition-all duration-300 ease-linear'
+                                sizes='48px'
+                                priority={false}
                               />
                               <div className='font-content text-xs font-medium pt-2'>
                                 {items.name}
@@ -561,10 +583,14 @@ export function Courses({
                             className='group hover:bg-gray-200 rounded-md'
                           >
                             <div className='flex flex-col items-center justify-center p-2'>
-                              <img
+                              <Image
                                 src={items.icon}
                                 alt={items.name}
+                                width={48}
+                                height={48}
                                 className='w-12 h-12 mx-auto transition-all duration-300 ease-linear'
+                                sizes='48px'
+                                priority={false}
                               />
                               <div className='font-content text-xs font-medium pt-2'>
                                 {items.name}
@@ -583,10 +609,14 @@ export function Courses({
                             className='group hover:bg-gray-200 rounded-md'
                           >
                             <div className='flex flex-col items-center justify-center p-2'>
-                              <img
+                              <Image
                                 src={items.icon}
                                 alt={items.name}
+                                width={48}
+                                height={48}
                                 className='w-12 h-12 mx-auto transition-all duration-300 ease-linear'
+                                sizes='48px'
+                                priority={false}
                               />
                               <div className='font-content text-xs font-medium pt-2'>
                                 {items.name}
@@ -605,10 +635,14 @@ export function Courses({
                             className='group hover:bg-gray-200 rounded-md'
                           >
                             <div className='flex flex-col items-center justify-center p-2'>
-                              <img
+                              <Image
                                 src={items.icon}
                                 alt={items.name}
+                                width={48}
+                                height={48}
                                 className='w-12 h-12 mx-auto transition-all duration-300 ease-linear'
+                                sizes='48px'
+                                priority={false}
                               />
                               <div className='font-content text-xs font-medium pt-2'>
                                 {items.name}
@@ -627,10 +661,14 @@ export function Courses({
                             className='group hover:bg-gray-200 rounded-md'
                           >
                             <div className='flex flex-col items-center justify-center p-2'>
-                              <img
+                              <Image
                                 src={items.icon}
                                 alt={items.name}
+                                width={48}
+                                height={48}
                                 className='w-12 h-12 mx-auto transition-all duration-300 ease-linear'
+                                sizes='48px'
+                                priority={false}
                               />
                               <div className='font-content text-xs font-medium pt-2'>
                                 {items.name}

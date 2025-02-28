@@ -3,6 +3,7 @@ import { Transition } from '@headlessui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { About, Courses, Contact } from 'components/header/popover';
+import Image from 'next/image';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -16,9 +17,13 @@ const Header = () => {
             <div className='flex items-center align-middle cursor-pointer'>
               <div className='flex-shrink-0 pt-4'>
                 <Link href='/'>
-                  <img
+                  <Image
                     src='https://res.cloudinary.com/garbhagudiivf/image/upload/v1644909568/logos/gg-logo_bg5gzc.png'
-                    alt='logo'
+                    alt='GarbhaGudi IVF logo'
+                    width={256}
+                    height={64}
+                    priority
+                    sizes='(max-width: 768px) 192px, 256px'
                     className='h-full w-48 xl:w-64'
                   />
                 </Link>

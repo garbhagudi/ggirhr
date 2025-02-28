@@ -3,6 +3,7 @@ import graphcms from 'lib/graphcms';
 import { useRouter } from 'next/router';
 import { RichText } from '@graphcms/rich-text-react-renderer';
 import Head from 'next/head';
+import Image from 'next/image';
 
 const LeaderPage = ({ leader }) => {
   const router = useRouter();
@@ -59,7 +60,15 @@ const LeaderPage = ({ leader }) => {
             <div className="w-full h-40 md:h-64 bg-cover bg-center md:rounded-t-3xl bg-[url('https://res.cloudinary.com/garbhagudiivf/image/upload/v1651043881/GGIRHR/Images/Faculty_lv9rz1.jpg')] blur-sm shadow-2xl"></div>
             <div className='absolute -mt-16 md:-mt-28 ml-5'>
               <div className='bg-gray-200 border h-32 w-32 md:h-52 md:w-52 rounded-full md:rounded-3xl shadow-2xl border-primary overflow-hidden'>
-                <img src={leader?.image?.url} alt={leader?.name} />
+                <Image
+                  src={leader?.image?.url}
+                  alt={leader?.name}
+                  width={208}
+                  height={208}
+                  className='object-cover'
+                  sizes='(max-width: 768px) 128px, 208px'
+                  priority={false}
+                />
               </div>
             </div>
           </div>
@@ -109,7 +118,7 @@ export const getStaticProps = async ({ params }) => {
     `,
     {
       slug: params.slug,
-    },
+    }
   );
 
   return {
@@ -128,7 +137,7 @@ export const getStaticPaths = async () => {
         name
       }
     }
-    `,
+    `
   );
 
   return {
