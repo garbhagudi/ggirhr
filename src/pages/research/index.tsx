@@ -4,7 +4,6 @@ import Hero from 'sections/Research/hero';
 import Ongoing from 'sections/Research/On-going';
 import Cta from 'sections/Research/cta';
 import Head from 'next/head';
-import Team from 'sections/Research/team';
 import Steps from 'sections/Research/steps';
 
 const IndexPage = () => {
@@ -45,7 +44,6 @@ const IndexPage = () => {
         <meta name='twitter:image' content='' />
       </Head>
       <Hero />
-      <Team />
       <Steps />
       <Ongoing />
       {/* <Affiliations /> */}
