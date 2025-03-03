@@ -128,7 +128,7 @@ const IndexPage = ({ HomeData, testimonials }) => {
           autoPlay={true}
           autoPlaySpeed={5000}
         >
-          {HomeData.banners.map((items: any) => (
+          {HomeData.banners.map((items: any, index: number) => (
             <div className="" key={items?.id}>
               <Link href={items?.url} passHref>
                 <Image
@@ -138,6 +138,7 @@ const IndexPage = ({ HomeData, testimonials }) => {
                   width={1200}
                   height={600}
                   className="w-screen h-full"
+                  quality={75}
                 />
               </Link>
             </div>

@@ -56,7 +56,7 @@ const Overview = () => {
           <div className="lg:flex items-center w-full lg:w-1/2 ">
             <img
               className="w-full rounded-xl"
-              src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006731/GGIRHR/Images/Our_Story-min_va1fno.jpg"
+              src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006731/GGIRHR/Images/Our_Story-min_va1fno.webp"
               alt="people discussing on board"
             />
           </div>
