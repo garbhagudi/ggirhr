@@ -10,7 +10,7 @@ import { HiDocument, HiClipboardCheck, HiDocumentReport } from 'react-icons/hi';
 
 const Steps = () => {
   return (
-    <div>
+    <div className='pt-10 pb-5'>
       <section className='text-gray-600 body-font'>
         <h2 className='text-xl lg:text-2xl text-center font-heading font-bold'>
           Review of research documents and handling research before publication
