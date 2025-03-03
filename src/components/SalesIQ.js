@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 //Zoho Sales Iq Script:
 const useScript = (url, widgetCode) => {
@@ -21,6 +20,9 @@ const useScript = (url, widgetCode) => {
 export default function SalesIQ() {
   return (
     <React.Fragment>
+      {/* Preconnect to the required origins for performance optimization */}
+      <link rel='preconnect' href='https://salesiq.zohopublic.com' />
+      <link rel='dns-prefetch' href='https://salesiq.zohopublic.com' />
       {useScript(
         'https://salesiq.zohopublic.com/widget',
         'siq9cb07e4f29c86a0622c4785734fcaba7b624414ff160b99492e8afeead60bd0a'
