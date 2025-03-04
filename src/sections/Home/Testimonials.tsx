@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -84,12 +85,17 @@ const Testimonial = () => {
                   <footer className="mt-8">
                     <div className="md:flex md:items-center md:justify-center">
                       <div className="md:flex-shrink-0">
-                        <img
+                        <Image
                           className="mx-auto h-14 w-14 rounded-full"
                           src={item.profile}
                           alt={item.name}
+                          width={56}
+                          height={56}
+                          loading="lazy"
+                          quality={75}
                         />
                       </div>
+
                       <div className="mt-3 text-center md:mt-0 md:ml-4 md:flex md:items-center">
                         <div className="font-qs font-semibold text-gray-900">
                           {item.name}

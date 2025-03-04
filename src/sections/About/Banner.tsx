@@ -1,11 +1,18 @@
+import Image from "next/image";
+
 export default function Banner() {
   return (
     <div className="mx-auto">
-      <img
-        className="mb-4 object-cover object-center"
+      <Image
+        className="mb-4 object-cover object-center w-screen"
         alt="Top infertility training organizations in india"
         src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1740119156/GGIRHR/Images/About_us-min_fofilh.webp"
+        width={800}
+        height={500}
+        sizes="(max-width: 640px) 90vw, 100vw"
+        priority={true}
       />
+
       <section className="text-gray-600 body-font">
         <div className="flex pb-4 items-center justify-center flex-col">
           <div className="max-w-7xl lg:w-2/3 w-full px-3 sm:px-0">
@@ -57,8 +64,16 @@ export default function Banner() {
                 <div className="flex rounded-2xl w-96 sm:w-auto bg-gray-100 p-8 flex-col h-44">
                   <div className="flex items-center mb-3">
                     <div className="w-28 h-28 mr-3 inline-flex items-center justify-center rounded-full bg-brandBlue text-white flex-shrink-0 overflow-hidden">
-                      <img src={items.icon} alt={items.organisation} />
+                      <Image
+                        src={items.icon}
+                        alt={items.organisation}
+                        width={112}
+                        height={112}
+                        sizes="(max-width: 640px) 90vw, 100vw"
+                        loading="lazy"
+                      />
                     </div>
+
                     <h2 className="text-gray-900 text-xl font-semibold">
                       {items.organisation}
                     </h2>

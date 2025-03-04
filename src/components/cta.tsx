@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 type Props = {};
 
@@ -28,9 +29,14 @@ const CTA = (props: Props) => {
                 </button>
               </div>
               <div className="md:w-4/12 w-2/3">
-                <img
+                <Image
                   src="https://res.cloudinary.com/garbhagudiivf/image/upload/q_65/v1649334670/GGIRHR/Images/sir_56_rk3ka9.webp"
                   alt="cartoon avatars"
+                  width={400}
+                  height={300}
+                  quality={65}
+                  sizes="(max-width: 768px) 66vw, 33vw"
+                  loading="lazy"
                 />
               </div>
             </div>

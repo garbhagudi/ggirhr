@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import React from "react";
 
 const Awards = () => {
@@ -52,12 +53,17 @@ const Awards = () => {
           Awarded as Best IVF and Infertility Training Centre in India
         </h1>
         <div className="px-3 sm:px-0">
-          <img
+          <Image
             src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1740119316/GGIRHR/Images/e_12_11zon_f9km0i.webp"
             alt="GGIRHR Awards"
-            className="rounded-2xl "
+            className="rounded-2xl"
+            width={800}
+            height={600}
+            sizes="(max-width: 640px) 90vw, 50vw"
+            priority={true}
           />
         </div>
+
         <div className="mx-auto my-8 px-4 sm:px-0">
           <div className="text-lg text-brandDark my-4 font-qs">
             Dr Asha S Vijay’s GarbhaGudi IVF Centre bagged the prestigious title
