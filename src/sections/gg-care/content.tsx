@@ -147,7 +147,7 @@ const Contact = () => {
                     ADDRESS
                   </div>
                   <p className='mt-1 font-content text-sm text-gray-800 dark:text-gray-200'>
-                    No. 41, 2nd Floor, Shubhashri Pride, S End Rd, next to
+                    1st Floor, Shubhashri Pride, No. 41, S End Rd, next to
                     Bharathi Nursing Home, Tata Silk Farm, Basavanagudi,
                     Bengaluru, Karnataka 560004
                   </p>
@@ -158,28 +158,28 @@ const Contact = () => {
                   </div>
                   <div className='leading-relaxed'>
                     <Link
-                      href='mailto:dreams@garbhagudi.com'
+                      href='mailto:training@ggirhr.com'
                       className='font-qs text-sm text-brandPink'
                     >
-                      dreams@garbhagudi.com
+                      training@ggirhr.com
                     </Link>
                   </div>
                   <div className='mt-4 font-qs text-xs font-semibold tracking-widest text-gray-800 dark:text-gray-200'>
                     PHONE
                   </div>
                   <p className='font-qs text-sm leading-relaxed text-gray-800 dark:text-gray-200'>
-                    <Link href='tel:+919108910832'>+91 9108 9108 32</Link>
+                    <Link href='tel:+919108910852'>+91 9108 9108 52</Link>
                   </p>
                   <div className='mt-4 font-qs text-xs font-semibold tracking-widest text-gray-800 dark:text-gray-200'>
                     WhatsApp
                   </div>
                   <p className='font-qs text-sm leading-relaxed text-gray-800 dark:text-gray-200'>
                     <Link
-                      href='https://wa.me/918884183338?text=Hi.'
+                      href='https://wa.me/918310145301?text=Hi.'
                       target='_blank'
                       rel='noreferrer'
                     >
-                      +91 888 418 3338
+                      +91 831 014 5301
                     </Link>
                   </p>
                 </div>

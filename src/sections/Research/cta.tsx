@@ -47,7 +47,7 @@ const Cta = () => {
                   Address:{' '}
                   <span className='text-gray-800 font-semibold hover:underline hover:text-brandBlue'>
                     <a href='https://goo.gl/maps/tsbje5ZQhEQyk89k8'>
-                      No. 41, 2nd Floor, Shubhashri Pride, S End Rd, next to
+                      1st Floor, Shubhashri Pride, No. 41, S End Rd, next to
                       Bharathi Nursing Home, Tata Silk Farm, Basavanagudi,
                       Bengaluru, Karnataka 560004
                     </a>
