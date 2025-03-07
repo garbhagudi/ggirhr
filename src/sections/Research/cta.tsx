@@ -42,12 +42,13 @@ const Cta = () => {
                 </p>
               </div>
               <div className='flex items-center'>
-                <LocationMarkerIcon className='w-10 mr-3' />
+                <LocationMarkerIcon className='w-1/4 md:w-14 md:h-14 mr-3' />
                 <p className='text-gray-600'>
                   Address:{' '}
                   <span className='text-gray-800 font-semibold hover:underline hover:text-brandBlue'>
                     <a href='https://goo.gl/maps/tsbje5ZQhEQyk89k8'>
-                      26, Pattalamma Temple Rd, South End Circle, Basavanagudi,
+                      1st Floor, Shubhashri Pride, No. 41, S End Rd, next to
+                      Bharathi Nursing Home, Tata Silk Farm, Basavanagudi,
                       Bengaluru, Karnataka 560004
                     </a>
                   </span>
