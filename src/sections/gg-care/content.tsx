@@ -129,149 +129,59 @@ const Contact = () => {
             <h2 className='text-2xl font-extrabold text-gray-900 sm:text-3xl font-heading'>
               Locations
             </h2>
-            <div className='mt-8 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:mt-0 lg:col-span-2 font-content'>
-              <div>
-                <h3 className='text-lg leading-6 font-medium text-gray-900'>
-                  Hanumanthanagar
-                </h3>
-                <div className='mt-2 text-base text-gray-500'>
-                  <p className='mt-1'>
-                    <Link
-                      href='tel:+919886915556'
-                      className='text-brandBlue hover:underline'
-                    >
-                      <PhoneIcon className='inline-block w-5 h-5' /> +91 98869
-                      15556
-                    </Link>
+            <div className='relative h-[36rem] w-full items-end justify-start overflow-hidden rounded-lg border-2 border-brandPurpleDark bg-gray-300 p-2 md:ml-auto lg:p-10 mt-8 lg:mt-0 lg:col-span-2 font-content flex'>
+              <iframe
+                width='100%'
+                height='100%'
+                className='absolute inset-0 dark:brightness-75 dark:contrast-150 dark:grayscale dark:invert border-0'
+                loading='lazy'
+                referrerPolicy='no-referrer-when-downgrade'
+                title='map'
+                src={
+                  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.548126617046!2d77.57422009999999!3d12.9367387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae156527450c35%3A0x617a33b43836856d!2sGGIRHR%20-%20GarbhaGudi%20Institute%20of%20Reproductive%20Health%20%26%20Research!5e0!3m2!1sen!2sin!4v1741251561868!5m2!1sen!2sin'
+                }
+              ></iframe>
+              <div className='shadow-3xl relative flex flex-wrap rounded-3xl bg-white py-6 dark:bg-gray-800'>
+                <div className='px-6 lg:w-1/2'>
+                  <div className='title-font font-qs text-xs font-semibold tracking-widest text-gray-800 dark:text-gray-200'>
+                    ADDRESS
+                  </div>
+                  <p className='mt-1 font-content text-sm text-gray-800 dark:text-gray-200'>
+                    1st Floor, Shubhashri Pride, No. 41, S End Rd, next to
+                    Bharathi Nursing Home, Tata Silk Farm, Basavanagudi,
+                    Bengaluru, Karnataka 560004
                   </p>
-                  <p>
-                    Subhasri Complex, 210/A, Kumaraswamy Temple Rd, 2nd Block,
-                    Phase 1, Banashankari Stage I, Banashankari,
-                  </p>
-                  <p className='mt-1 mb-5'>Bengaluru, Karnataka 560050</p>
-                  <Link
-                    href='https://g.page/GG1-HN?share'
-                    className='py-2 px-3 bg-brandBlue text-white font-semibold rounded-3xl hover:bg-bratext-brandBlue'
-                    target={'_blank'}
-                    rel='noreferrer'
-                  >
-                    Directions
-                  </Link>
                 </div>
-              </div>
-              <div>
-                <h3 className='text-lg leading-6 font-medium text-gray-900'>
-                  Kalyan Nagar
-                </h3>
-                <div className='mt-2 text-base text-gray-500'>
-                  <p className='mt-1'>
+                <div className='mt-4 px-6 lg:mt-0 lg:w-1/2'>
+                  <div className='font-qs text-xs font-semibold tracking-widest text-gray-800 dark:text-gray-200'>
+                    EMAIL
+                  </div>
+                  <div className='leading-relaxed'>
                     <Link
-                      href='tel:+918861433339'
-                      className='text-brandBlue hover:underline'
+                      href='mailto:training@ggirhr.com'
+                      className='font-qs text-sm text-brandPink'
                     >
-                      <PhoneIcon className='inline-block w-5 h-5' /> +91 88614
-                      33339
+                      training@ggirhr.com
+                    </Link>
+                  </div>
+                  <div className='mt-4 font-qs text-xs font-semibold tracking-widest text-gray-800 dark:text-gray-200'>
+                    PHONE
+                  </div>
+                  <p className='font-qs text-sm leading-relaxed text-gray-800 dark:text-gray-200'>
+                    <Link href='tel:+919108910852'>+91 9108 9108 52</Link>
+                  </p>
+                  <div className='mt-4 font-qs text-xs font-semibold tracking-widest text-gray-800 dark:text-gray-200'>
+                    WhatsApp
+                  </div>
+                  <p className='font-qs text-sm leading-relaxed text-gray-800 dark:text-gray-200'>
+                    <Link
+                      href='https://wa.me/918310145301?text=Hi.'
+                      target='_blank'
+                      rel='noreferrer'
+                    >
+                      +91 831 014 5301
                     </Link>
                   </p>
-                  <p>
-                    Park Landing, 5AC-709, Outer Ring Rd, Balachandra Layout,
-                    HRBR Layout 2nd Block, Chelekare, Extension,
-                  </p>
-                  <p className='mt-1 mb-5'>Bengaluru, Karnataka 560043</p>
-                  <a
-                    href='https://g.page/GarbhaGudi-IVF-Bangalore?share'
-                    className='py-2 px-3 bg-brandBlue text-white font-semibold rounded-3xl hover:bg-bratext-brandBlue'
-                    target={'_blank'}
-                    rel='noreferrer'
-                  >
-                    Directions
-                  </a>
-                </div>
-              </div>
-              <div>
-                <h3 className='text-lg leading-6 font-medium text-gray-900'>
-                  South End Circle
-                </h3>
-                <div className='mt-2 text-base text-gray-500'>
-                  <p className='mt-1'>
-                    <Link
-                      href='tel:+919972463355'
-                      className='text-brandBlue hover:underline'
-                    >
-                      <PhoneIcon className='inline-block w-5 h-5' /> +91 99724
-                      63355
-                    </Link>
-                  </p>
-                  <p>
-                    South End Circle, 26, Pattalamma Temple Rd, Basavanagudi,
-                  </p>
-                  <p className='mt-1 mb-5'>Bengaluru, Karnataka 560004</p>
-                  <Link
-                    href='https://g.page/ggivf?share'
-                    className='py-2 px-3 bg-brandBlue text-white font-semibold rounded-3xl hover:bg-bratext-brandBlue'
-                    target={'_blank'}
-                    rel='noreferrer'
-                  >
-                    Directions
-                  </Link>
-                </div>
-              </div>
-              <div>
-                <h3 className='text-lg leading-6 font-medium text-gray-900'>
-                  Electronic City
-                </h3>
-                <div className='mt-2 text-base text-gray-500'>
-                  <p className='mt-1'>
-                    <Link
-                      href='tel:+918861811116'
-                      className='text-brandBlue hover:underline'
-                    >
-                      <PhoneIcon className='inline-block w-5 h-5' /> +91 88618
-                      11116
-                    </Link>
-                  </p>
-                  <p>
-                    Ganesh Towers,3rd Floor, 60/5 and 60/6, NH 44, Beside Andhra
-                    Bank, Konappana Agrahara, Electronic City,
-                  </p>
-                  <p className='mt-1 mb-5'>Bengaluru, Karnataka 560100</p>
-                  <Link
-                    href='https://g.page/GG4-EC?share'
-                    className='py-2 px-3 bg-brandBlue text-white font-semibold rounded-3xl hover:bg-bratext-brandBlue'
-                    target={'_blank'}
-                    rel='noreferrer'
-                  >
-                    Directions
-                  </Link>
-                </div>
-              </div>
-              <div>
-                <h3 className='text-lg leading-6 font-medium text-gray-900'>
-                  Marathahalli
-                </h3>
-                <div className='mt-2 text-base text-gray-500'>
-                  <p className='mt-1'>
-                    <Link
-                      href='tel:+918105181515'
-                      className='text-brandBlue hover:underline'
-                    >
-                      <PhoneIcon className='inline-block w-5 h-5' /> +91 81051
-                      81515
-                    </Link>
-                  </p>
-                  <p>
-                    4TH floor, Chirag Towers, Born Babies Building, 24 & 64,
-                    Service Rd, next to कलामंदिर, Marathahalli,
-                  </p>
-                  <p className='mt-1 mb-5'>Bengaluru, Karnataka 560037</p>
-                  <Link
-                    href='https://goo.gl/maps/kxhfM5SCZuq6EDnE9'
-                    className='py-2 px-3 bg-brandBlue text-white font-semibold rounded-3xl hover:bg-bratext-brandBlue'
-                    target={'_blank'}
-                    rel='noreferrer'
-                  >
-                    Directions
-                  </Link>
                 </div>
               </div>
             </div>
