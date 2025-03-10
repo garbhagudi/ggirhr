@@ -125,13 +125,18 @@ const IndexPage = ({ HomeData, testimonials }) => {
           responsive={responsive}
           ssr={true}
           infinite={true}
-          autoPlay={true}
-          autoPlaySpeed={5000}
+          // autoPlay={true}
+          // autoPlaySpeed={5000}
         >
-          {HomeData.banners.map((items: any) => (
+          {HomeData.banners.map((items: any, index: number) => (
             <div className='' key={items?.id}>
-              <Link href={items?.url} passHref>
-                <img src={items?.image?.url} alt={items?.title} />
+              <Link href={items?.url} passHref rel='preload' as='image'>
+                <img
+                  src={items?.image?.url}
+                  alt={items?.title}
+                  className='w-screen h-full'
+                  loading='eager'
+                />
               </Link>
             </div>
           ))}
@@ -248,6 +253,7 @@ const IndexPage = ({ HomeData, testimonials }) => {
                                       width={500}
                                       height={500}
                                       className='rounded-md'
+                                      loading='lazy'
                                     />
                                   </Link>
                                 </div>
@@ -260,12 +266,12 @@ const IndexPage = ({ HomeData, testimonials }) => {
                                           Date:
                                           {format(
                                             new Date(items?.eventDateTime),
-                                            ' dd MMMM yyyy',
+                                            ' dd MMMM yyyy'
                                           )}{' '}
                                           at{' '}
                                           {format(
                                             new Date(items?.eventDateTime),
-                                            'HH:mm',
+                                            'HH:mm'
                                           )}
                                         </div>
                                       </div>
@@ -359,7 +365,7 @@ export const getServerSideProps = async () => {
   `;
 
   const testimonialsData = await fetch(
-    `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&playlistId=PLgpadr6SQ-GvgWStgrQnk5ZMXlcjoA-yC&maxResults=10&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`,
+    `${YOUTUBE_PLAYLIST_ITEMS_API}?part=snippet&playlistId=PLgpadr6SQ-GvgWStgrQnk5ZMXlcjoA-yC&maxResults=10&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
   );
 
   const testimonials = await testimonialsData.json();

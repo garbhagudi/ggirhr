@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Image from "next/image";
 
 const VisionMission = () => {
   return (
@@ -52,11 +53,14 @@ const VisionMission = () => {
                 Vision
               </h2>
               <div className="rounded-lg h-64 overflow-hidden">
-                <img
+                <Image
                   alt="GGIRHR Vision"
-                  className="object-cover object-center h-full w-full 
-                  mb-2"
+                  className="object-cover object-center mb-2"
                   src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1740119787/About/1201x501_Vision_c6ds1h.webp"
+                  width={1201}
+                  height={501}
+                  sizes="(max-width: 640px) 90vw, 100vw"
+                  priority={true}
                 />
               </div>
 
@@ -76,10 +80,14 @@ const VisionMission = () => {
                 Mission
               </h2>
               <div className="rounded-lg h-64 overflow-hidden">
-                <img
+                <Image
                   alt="GGIRHR Mission"
-                  className="object-cover object-center h-full w-full mb-2"
+                  className="object-cover object-center mb-2"
                   src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1740119971/About/1201x501_Mission_wcctgt.webp"
+                  width={1201}
+                  height={501}
+                  sizes="(max-width: 640px) 90vw, 100vw"
+                  loading="lazy"
                 />
               </div>
 
