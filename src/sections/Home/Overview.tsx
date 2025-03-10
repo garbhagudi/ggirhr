@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const Overview = () => {
@@ -22,10 +23,13 @@ const Overview = () => {
         </div>
 
         <div className="lg:mt-14 sm:mt-10 mt-12">
-          <img
-            className="w-full rounded-xl"
+          <Image
+            className="rounded-xl w-screen"
             src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006732/GGIRHR/Images/Why_GGIRHR-min_o7ir0f.webp"
             alt="Infertility Training Institute in India"
+            width={1200}
+            height={700}
+            priority={true}
           />
         </div>
 
@@ -52,7 +56,7 @@ const Overview = () => {
           <div className="lg:flex items-center w-full lg:w-1/2 ">
             <img
               className="w-full rounded-xl"
-              src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006731/GGIRHR/Images/Our_Story-min_va1fno.jpg"
+              src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006731/GGIRHR/Images/Our_Story-min_va1fno.webp"
               alt="people discussing on board"
             />
           </div>
