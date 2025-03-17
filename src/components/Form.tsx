@@ -40,11 +40,11 @@ const Form = () => {
 
   const onSubmit = async (data) => {
     setLoad(true);
-    if (!captchaVerified) {
-      setLoad(false);
-      setShowCaptchaError(true);
-      return;
-    }
+    // if (!captchaVerified) {
+    //   setLoad(false);
+    //   setShowCaptchaError(true);
+    //   return;
+    // }
 
     try {
       const response = await fetch('/api/createLeads', {
@@ -161,7 +161,7 @@ const Form = () => {
           </div>
         </div>
 
-        <div className='zcwf_row flex flex-col items-center justify-center pt-5'>
+        {/* <div className='zcwf_row flex flex-col items-center justify-center pt-5'>
           <ReCAPTCHA
             sitekey='6LfbI_cqAAAAANHCdjgcr0JWhqpyKT4vx4cZ5ppt'
             onChange={handleCaptchaChange}
@@ -171,7 +171,7 @@ const Form = () => {
               Please complete the captcha verification.
             </p>
           )}
-        </div>
+        </div> */}
 
         <div className='mb-6 mt-6 flex items-center justify-center space-x-4'>
           <button
