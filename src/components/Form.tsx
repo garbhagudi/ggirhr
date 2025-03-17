@@ -163,7 +163,7 @@ const Form = () => {
 
         <div className='zcwf_row flex flex-col items-center justify-center pt-5'>
           <ReCAPTCHA
-            sitekey='6LegDMIiAAAAAEdpZNW8tk7jSYoTFJu7-1smV3xB'
+            sitekey='6LfbI_cqAAAAANHCdjgcr0JWhqpyKT4vx4cZ5ppt'
             onChange={handleCaptchaChange}
           />
           {showCaptchaError && (
