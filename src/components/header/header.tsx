@@ -28,7 +28,7 @@ const Header = () => {
                   />
                 </Link>
               </div>
-              <div className="hidden xl:block">
+              <div className="hidden xl:flex items-center gap-1">
                 <div className="ml-16 flex items-baseline space-x-4 pt-4">
                   <Link href="/" passHref>
                     <span
@@ -80,6 +80,13 @@ const Header = () => {
                     <Contact setIsPopoverOpen={setIsPopoverOpen} />
                   </span>
                 </div>
+                <Link
+                  target="_blank"
+                  className="duration-2 cursor-pointer rounded-lg px-3 py-2 font-lexend text-xs text-white bg-brandBlue hover:bg-brandBlueDark1 sm:text-sm self-end"
+                  href="/contact"
+                >
+                  Apply Now
+                </Link>
               </div>
             </div>
             <div className="-mr-2 flex items-center justify-center xl:hidden">
@@ -172,6 +179,13 @@ const Header = () => {
               <span className="text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm cursor-pointer">
                 <Contact setIsPopoverOpen={setIsPopoverOpen} />
               </span>
+              <Link
+                target="_blank"
+                className="duration-2 cursor-pointer rounded-lg px-3 my-3 py-2 font-lexend text-xs text-white bg-brandBlue hover:bg-brandBlueDark1 sm:text-sm self-end"
+                href="/contact"
+              >
+                Apply Now
+              </Link>
             </div>
           </div>
         </Transition>
