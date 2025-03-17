@@ -95,7 +95,7 @@ const Header = () => {
                   href="/contact"
                   className="bg-brandBlue hover:bg-gray-800 text-white rounded-2xl px-3 py-2 text-xs font-bold"
                 >
-                  Contact Us
+                  Apply Now
                 </Link>
               </button>
               <button
@@ -179,13 +179,6 @@ const Header = () => {
               <span className="text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm cursor-pointer">
                 <Contact setIsPopoverOpen={setIsPopoverOpen} />
               </span>
-              <Link
-                target="_blank"
-                className="duration-2 cursor-pointer rounded-lg px-3 my-3 py-2 font-lexend text-xs text-white bg-brandBlue hover:bg-brandBlueDark1 sm:text-sm self-end"
-                href="/contact"
-              >
-                Apply Now
-              </Link>
             </div>
           </div>
         </Transition>
