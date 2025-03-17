@@ -58,7 +58,7 @@ const Cta = () => {
 
             <div>
               <button className='px-4 py-2 bg-brandBlue text-white font-semibold rounded-lg mt-4 hover:bg-brandBlueDark3'>
-                <Link href='/contact.html'>Contact us</Link>
+                <Link href='/contact'>Contact us</Link>
               </button>
             </div>
             <p className='font-sans text-sm md:text-lg my-2 md:my-4'>

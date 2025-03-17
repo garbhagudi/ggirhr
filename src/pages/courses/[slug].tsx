@@ -13,10 +13,10 @@ import { throttledFetch } from "lib/throttle";
 import Image from "next/image";
 import { courses } from "components/header/popover";
 import { usePathname } from "next/navigation";
+import Form from "components/Form";
 
 const CoursePage = ({ course }) => {
   const courseSlug = usePathname();
-  console.log(course);
 
   return (
     <div>
@@ -269,14 +269,8 @@ const CoursePage = ({ course }) => {
               </blockquote>
 
               <blockquote className="relative bg-gray-200 rounded-lg shadow-lg mb-10">
-                <div className="rounded-t-lg overflow-hidden">
-                  <iframe
-                    src="/contact2.html"
-                    className="max-w-5xl mt-5 lg:mt-0 mx-auto 
-               h-96 sm:h-80 md:h-[100vh] lg:h-[90vh] xl:h-[70vh]"
-                  >
-                    Loading...
-                  </iframe>
+                <div className="rounded-t-lg overflow-hidden w-full rounded-lg shadow-lg">
+                  <Form />
                 </div>
               </blockquote>
             </div>
