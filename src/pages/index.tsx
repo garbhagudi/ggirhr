@@ -130,7 +130,7 @@ const IndexPage = ({ HomeData, testimonials }) => {
         >
           {HomeData.banners.map((items: any, index: number) => (
             <div className='' key={items?.id}>
-              <Link href={items?.url} passHref rel='preload' as='image'>
+              <Link href={items?.url} passHref rel='preload'>
                 <img
                   src={items?.image?.url}
                   alt={items?.title}
