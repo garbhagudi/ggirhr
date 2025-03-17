@@ -16,34 +16,60 @@ import { usePathname } from "next/navigation";
 
 const CoursePage = ({ course }) => {
   const courseSlug = usePathname();
+  console.log(course);
+
   return (
     <div>
       <Head>
         {/* Primary Tags */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{`${course?.title} | GGIRHR`}</title>
-        <meta name="title" content={`${course?.title} | GGIRHR`} />
+        <title>{`${course?.metaTitle || course?.title} | GGIRHR`}</title>
+        <meta
+          name="title"
+          content={`${course?.metaTitle || course?.title} | GGIRHR`}
+        />
         <meta
           name="description"
-          content={course?.description?.text.slice(0, 180)}
+          content={
+            course?.metaDescription?.slice(0, 180) ||
+            course?.description?.text.slice(0, 180)
+          }
+        />
+        <meta
+          name="keywords"
+          content={
+            course?.metaKeywords || "GGIRHR, courses, healthcare, education"
+          }
         />
         {/* Open Graph / Facebook */}
-        <meta property="og:title" content={`${course?.title} | GGIRHR`} />
+        <meta
+          property="og:title"
+          content={`${course?.metaTitle || course?.title} | GGIRHR`}
+        />
         <meta property="og:site_name" content="GGIRHR" />
         <meta property="og:url" content="https://ggirhr.com" />
         <meta
           property="og:description"
-          content={course?.description?.text.slice(0, 180)}
+          content={
+            course?.metaDescription?.slice(0, 180) ||
+            course?.description?.text.slice(0, 180)
+          }
         />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={course?.courseImage?.url} />
         {/* Twitter*/}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@ggirhr" />
-        <meta name="twitter:title" content={`${course?.title} | GGIRHR`} />
+        <meta
+          name="twitter:title"
+          content={`${course?.metaTitle || course?.title} | GGIRHR`}
+        />
         <meta
           name="twitter:description"
-          content={course?.description?.text.slice(0, 180)}
+          content={
+            course?.metaDescription?.slice(0, 180) ||
+            course?.description?.text.slice(0, 180)
+          }
         />
         <meta name="twitter:image" content={course?.courseImage?.url} />
       </Head>
@@ -291,6 +317,9 @@ export const getStaticProps = async ({ params }: { params: any }) => {
           raw
           text
         }
+        metaDescription
+        metaKeywords
+        metaTitle
       }
     }
   `;
