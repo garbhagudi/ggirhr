@@ -11,7 +11,7 @@ const supportLinks = [
     icon: ChatAltIcon,
     ctaAction: "Chat Now",
     ctaLink:
-      "https://salesiq.zoho.com/signaturesupport.ls?widgetcode=201f3df74e42a63d69ee275e156a88ac916e6c465ec468ed92339a1ae4444508",
+      "https://salesiq.zoho.com/signaturesupport.ls?widgetcode=siq9cb07e4f29c86a0622c4785734fcaba7b624414ff160b99492e8afeead60bd0a",
   },
   {
     name: "Call Support",

@@ -35,8 +35,8 @@ const Contact = () => {
                         href='tel:+919108910852'
                         className='text-brandBlue hover:underline'
                       >
-                        <PhoneIcon className='inline-block w-5 h-5' />{' '}
-                        +919108910852
+                        <PhoneIcon className='inline-block w-5 h-5' /> +91 9108
+                        9108 52
                       </Link>
                     </dd>
                   </div>
@@ -66,8 +66,8 @@ const Contact = () => {
                         href='tel:+919108910852'
                         className='text-brandBlue hover:underline'
                       >
-                        <PhoneIcon className='inline-block w-5 h-5' />{' '}
-                        +919108910852
+                        <PhoneIcon className='inline-block w-5 h-5' /> +91 9108
+                        9108 52
                       </Link>
                     </dd>
                   </div>
@@ -116,8 +116,8 @@ const Contact = () => {
                         href='tel:+919980997111'
                         className='text-brandBlue hover:underline'
                       >
-                        <PhoneIcon className='inline-block w-5 h-5' /> +91 99809
-                        97111
+                        <PhoneIcon className='inline-block w-5 h-5' /> +91 9980
+                        9971 11
                       </Link>
                     </dd>
                   </div>
@@ -179,7 +179,7 @@ const Contact = () => {
                       target='_blank'
                       rel='noreferrer'
                     >
-                      +91 831 014 5301
+                      +91 8310 1453 01
                     </Link>
                   </p>
                 </div>
