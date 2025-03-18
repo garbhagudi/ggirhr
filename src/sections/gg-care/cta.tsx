@@ -1,4 +1,4 @@
-import { PhoneIcon } from '@heroicons/react/solid';
+import { BsWhatsapp } from 'react-icons/bs';
 import Link from 'next/link';
 const Cta = () => {
   return (
@@ -14,7 +14,7 @@ const Cta = () => {
           <div className='inline-flex rounded-md shadow'>
             <Link
               target='_blank'
-              href='/gg-care'
+              href='/contact'
               rel='noreferrer'
               className='inline-flex items-center justify-center px-5 py-3 border border-transparent font-content text-base font-medium rounded-md text-white bg-brandBlue hover:bg-brandBlueLite3'
             >
@@ -23,13 +23,13 @@ const Cta = () => {
           </div>
           <div className='ml-3 inline-flex rounded-md shadow'>
             <Link
-              href='https://wa.me/918884183338?text=Hi.'
+              href='https://wa.me/918310145301?text=Hi.'
               target='_blank'
               rel='noreferrer'
               className='inline-flex items-center justify-center px-5 py-3 border border-transparent font-content text-base font-medium rounded-md text-brandBlue bg-white hover:bg-pink-50'
             >
               <>
-                <PhoneIcon className='w-5 h-5' />{' '}
+                <BsWhatsapp className='w-5 h-5' />{' '}
                 <span className='ml-2'>WhatsApp</span>
               </>
             </Link>

@@ -28,7 +28,7 @@ const Cta = () => {
                 <p className='text-gray-600'>
                   Phone:{' '}
                   <span className='text-gray-800 font-semibold hover:underline hover:text-brandBlue'>
-                    <a href='tel:+919108910852'>+919108910852</a>
+                    <a href='tel:+919108910852'>+91 9108 9108 52</a>
                   </span>
                 </p>
               </div>
