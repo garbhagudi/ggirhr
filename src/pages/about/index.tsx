@@ -14,28 +14,29 @@ const IndexPage = () => {
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>
-          GGIRHR | Best IVF &amp; Infertility Training Institute in India
+          Reproductive Health & Research Institute | Top Infertility Training
+          Centre in India
         </title>
         <meta
           name="title"
-          content="GGIRHR | India's Best Fertility Training Institute"
+          content="Reproductive Health & Research Institute | Top Infertility Training Centre in India"
         />
         <meta
           name="description"
-          content="GarbhaGudi Institute of Reproductive Health & Research is a platform launched by a team of renowned specialists interested in training medical professionals and science students in reproductive medicine and infertility."
+          content="Leading Reproductive Health Research Institute, among Top Infertility Training Organizations in India, offering best-in-class training at our Infertility Training Centre."
         />
 
         {/* Open Graph / Facebook */}
 
         <meta
           property="og:title"
-          content="GGIRHR | Best IVF & Infertility Training Institute in India"
+          content="Reproductive Health & Research Institute | Top Infertility Training Centre in India"
         />
         <meta property="og:site_name" content="GGIRHR" />
         <meta property="og:url" content="https://ggirhr.com" />
         <meta
           property="og:description"
-          content="GarbhaGudi Institute of Reproductive Health & Research is a platform launched by a team of renowned specialists interested in training medical professionals and science students in reproductive medicine and infertility."
+          content="Leading Reproductive Health Research Institute, among Top Infertility Training Organizations in India, offering best-in-class training at our Infertility Training Centre."
         />
         <meta property="og:type" content="website" />
         <meta
@@ -49,11 +50,11 @@ const IndexPage = () => {
         <meta name="twitter:site" content="@ggirhr" />
         <meta
           name="twitter:title"
-          content="GGIRHR | Best IVF & Infertility Training Institute in India"
+          content="Reproductive Health & Research Institute | Top Infertility Training Centre in India"
         />
         <meta
           name="twitter:description"
-          content="GarbhaGudi Institute of Reproductive Health & Research is a platform launched by a team of renowned specialists interested in training medical professionals and science students in reproductive medicine and infertility."
+          content="Leading Reproductive Health Research Institute, among Top Infertility Training Organizations in India, offering best-in-class training at our Infertility Training Centre."
         />
         <meta
           name="twitter:image"
