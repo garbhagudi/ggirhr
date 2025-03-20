@@ -4,6 +4,7 @@ import graphcms from "lib/graphcms";
 import { format } from "date-fns";
 import Link from "next/link";
 import Image from "next/image";
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 
 const IndexPage = ({ events }) => {
   const [expandedCards, setExpandedCards] = React.useState<
@@ -66,62 +67,169 @@ const IndexPage = ({ events }) => {
           Check Our Upcoming and Events, CMEs and Webinars
         </h3>
       </div>
-      <div className="max-w-7xl mx-auto flex flex-wrap">
-        {events?.length === 0 && (
-          <div className="text-center py-24">
-            No Events Scheduled! Please, check back later{" "}
-          </div>
-        )}
-        {events?.map((item) => (
-          <div
-            className="max-w-md rounded-2xl overflow-hidden shadow-lg mx-auto my-16"
-            key={item?.id}
-          >
-            <Image
-              className="w-full"
-              src={item?.bannerImage?.url}
-              alt="Sunset in the mountains"
-              width={800}
-              height={500}
-              sizes="(max-width: 640px) 90vw, 100vw"
-              loading="lazy"
-            />
-
-            <div className="px-6 pt-4">
-              <h1 className="font-bold text-xl mb-2">{item?.title}</h1>
-              <p className="text-gray-800 mb-2">
-                {expandedCards[item?.id]
-                  ? item?.description
-                  : `${item?.description.slice(0, 180)}...`}{" "}
-                <span
-                  className="text-brandBlue text-sm cursor-pointer"
-                  onClick={() => handleSeeMore(item?.id)} // Pass the card's ID
-                >
-                  {expandedCards[item?.id] ? "see less" : "see more"}
-                </span>
-              </p>
-            </div>
-            {item?.eventDateTime && (
-              <div className="px-6 pb-2 text-brandBlue font-bold flex space-x-2">
-                <div>
-                  Date:
-                  {format(
-                    new Date(item?.eventDateTime),
-                    " dd MMMM yyyy"
-                  )} at {format(new Date(item?.eventDateTime), "HH:mm")}
-                </div>
-              </div>
-            )}
-
-            <Link
-              className="px-6 pb-2 bg-brandBlue hover:bg-brandBlueLite1 transition-all duration-300 py-2 w-full mx-auto text-center text-white font-bold flex items-center justify-center uppercase"
-              href={`/events/${item.slug}`}
+      <div className="px-2.5 md:px-8 pb-8">
+        <TabGroup>
+          <TabList className="mt-12 flex space-x-2 rounded-xl bg-gray-200 p-2">
+            <Tab
+              key="upcoming"
+              className={({ selected }) =>
+                `w-full rounded-lg py-2.5 text-base font-medium leading-5 focus:outline-none border shadow-sm  ${
+                  selected ? "bg-brandBlue text-white " : "bg-white text-black "
+                }`
+              }
             >
-              Learn more
-            </Link>
-          </div>
-        ))}
+              Upcoming Events
+            </Tab>
+            <Tab
+              key="completed"
+              className={({ selected }) =>
+                `w-full rounded-lg py-2.5 text-base font-medium leading-5 focus:outline-none border shadow-sm  ${
+                  selected ? "bg-brandBlue text-white" : "bg-white text-black "
+                }`
+              }
+            >
+              Completed Events
+            </Tab>
+          </TabList>
+          <TabPanels className="mt-8">
+            <TabPanel key="upcoming">
+              {events?.filter((item) => {
+                return new Date(item?.eventDateTime) >= new Date();
+              })?.length === 0 && (
+                <div className="text-center py-24">
+                  No Upcoming Events Scheduled! Please, check back later{" "}
+                </div>
+              )}
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+                {events
+                  ?.filter((item) => {
+                    return new Date(item?.eventDateTime) >= new Date();
+                  })
+                  ?.map((item) => (
+                    <div
+                      className="max-w-md h-fit rounded-2xl overflow-hidden shadow-lg mx-auto"
+                      key={item?.id}
+                    >
+                      <Image
+                        className="w-full h-60"
+                        src={item?.bannerImage?.url}
+                        alt="Sunset in the mountains"
+                        width={800}
+                        height={500}
+                        sizes="(max-width: 640px) 90vw, 100vw"
+                        loading="lazy"
+                      />
+
+                      <div className="px-6 pt-4">
+                        <h1 className="font-bold text-xl mb-2">
+                          {item?.title}
+                        </h1>
+                        <p className="text-gray-800 mb-2">
+                          {expandedCards[item?.id]
+                            ? item?.description
+                            : `${item?.description.slice(0, 180)}...`}{" "}
+                          <span
+                            className="text-brandBlue text-sm cursor-pointer"
+                            onClick={() => handleSeeMore(item?.id)} // Pass the card's ID
+                          >
+                            {expandedCards[item?.id] ? "see less" : "see more"}
+                          </span>
+                        </p>
+                      </div>
+                      {item?.eventDateTime && (
+                        <div className="px-6 pb-2 text-brandBlue font-bold flex space-x-2">
+                          <div>
+                            Date:
+                            {format(
+                              new Date(item?.eventDateTime),
+                              " dd MMMM yyyy"
+                            )}{" "}
+                            at {format(new Date(item?.eventDateTime), "HH:mm")}
+                          </div>
+                        </div>
+                      )}
+
+                      <Link
+                        className="px-6 pb-2 bg-brandBlue hover:bg-brandBlueLite1 transition-all duration-300 py-2 w-full mx-auto text-center text-white font-bold flex items-center justify-center uppercase"
+                        href={`/events/${item.slug}`}
+                      >
+                        Learn more
+                      </Link>
+                    </div>
+                  ))}
+              </div>
+            </TabPanel>
+            <TabPanel key="completed">
+              {events?.filter((item) => {
+                return new Date(item?.eventDateTime) < new Date();
+              })?.length === 0 && (
+                <div className="text-center py-24">
+                  No Completed Events here! Please, check back later{" "}
+                </div>
+              )}
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+                {events
+                  ?.filter((item) => {
+                    return new Date(item?.eventDateTime) < new Date();
+                  })
+                  ?.map((item) => (
+                    <div
+                      className="max-w-md h-fit rounded-2xl overflow-hidden shadow-lg mx-auto"
+                      key={item?.id}
+                    >
+                      <Image
+                        className="w-full h-60"
+                        src={item?.bannerImage?.url}
+                        alt="Sunset in the mountains"
+                        width={800}
+                        height={500}
+                        sizes="(max-width: 640px) 90vw, 100vw"
+                        loading="lazy"
+                      />
+
+                      <div className="px-6 pt-4">
+                        <h1 className="font-bold text-xl mb-2">
+                          {item?.title}
+                        </h1>
+                        <p className="text-gray-800 mb-2">
+                          {expandedCards[item?.id]
+                            ? item?.description
+                            : `${item?.description.slice(0, 180)}...`}{" "}
+                          <span
+                            className="text-brandBlue text-sm cursor-pointer"
+                            onClick={() => handleSeeMore(item?.id)} // Pass the card's ID
+                          >
+                            {expandedCards[item?.id] ? "see less" : "see more"}
+                          </span>
+                        </p>
+                      </div>
+                      {item?.eventDateTime && (
+                        <div className="px-6 pb-2 text-brandBlue font-bold flex space-x-2">
+                          <div>
+                            Date:
+                            {format(
+                              new Date(item?.eventDateTime),
+                              " dd MMMM yyyy"
+                            )}{" "}
+                            at {format(new Date(item?.eventDateTime), "HH:mm")}
+                          </div>
+                        </div>
+                      )}
+
+                      <Link
+                        className="px-6 pb-2 bg-brandBlue hover:bg-brandBlueLite1 transition-all duration-300 py-2 w-full mx-auto text-center text-white font-bold flex items-center justify-center uppercase"
+                        href={`/events/${item.slug}`}
+                      >
+                        Learn more
+                      </Link>
+                    </div>
+                  ))}
+              </div>
+            </TabPanel>
+          </TabPanels>
+        </TabGroup>
       </div>
+      <div className="max-w-7xl mx-auto flex flex-wrap"></div>
     </div>
   );
 };
