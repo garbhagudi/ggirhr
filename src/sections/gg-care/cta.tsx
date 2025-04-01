@@ -1,6 +1,8 @@
 import { BsWhatsapp } from 'react-icons/bs';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 const Cta = () => {
+  const path = usePathname();
   return (
     <div className='bg-gray-50'>
       <div className='max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between'>
@@ -13,8 +15,7 @@ const Cta = () => {
         <div className='mt-8 flex lg:mt-0 lg:flex-shrink-0'>
           <div className='inline-flex rounded-md shadow'>
             <Link
-              target='_blank'
-              href='/contact'
+              href={`/contact?pageVisit=${path}`}
               rel='noreferrer'
               className='inline-flex items-center justify-center px-5 py-3 border border-transparent font-content text-base font-medium rounded-md text-white bg-brandBlue hover:bg-brandBlueLite3'
             >

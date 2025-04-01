@@ -1,12 +1,13 @@
-import React from 'react';
 import {
   AtSymbolIcon,
   LocationMarkerIcon,
   PhoneIcon,
 } from '@heroicons/react/solid';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const Cta = () => {
+  const path = usePathname();
   return (
     <div>
       <div className='max-w-7xl mx-auto bg-white text-brandDark' id='cta'>
@@ -58,7 +59,7 @@ const Cta = () => {
 
             <div>
               <button className='px-4 py-2 bg-brandBlue text-white font-semibold rounded-lg mt-4 hover:bg-brandBlueDark3'>
-                <Link href='/contact'>Contact us</Link>
+                <Link href={`/contact?pageVisit=${path}`}>Contact us</Link>
               </button>
             </div>
             <p className='font-sans text-sm md:text-lg my-2 md:my-4'>

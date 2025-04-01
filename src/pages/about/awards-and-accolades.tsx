@@ -1,6 +1,6 @@
-import Head from "next/head";
-import Image from "next/image";
-import React from "react";
+import Head from 'next/head';
+import Image from 'next/image';
+import React from 'react';
 
 const Awards = () => {
   return (
@@ -8,64 +8,64 @@ const Awards = () => {
       <Head>
         {/* Primary Tags */}
 
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
         <title>Awards and Accolades | GGIRHR</title>
-        <meta name="title" content="Awards and Accolades | GGIRHR" />
+        <meta name='title' content='Awards and Accolades | GGIRHR' />
         <meta
-          name="description"
-          content="Awarded as Best IVF and Infertility Training Centre in India"
+          name='description'
+          content='Awarded as Best IVF and Infertility Training Centre in India'
         />
 
         {/* Open Graph / Facebook */}
 
         <meta
-          property="og:title"
-          content="Awarded as Best IVF and Infertility Training Centre in India"
+          property='og:title'
+          content='Awarded as Best IVF and Infertility Training Centre in India'
         />
-        <meta property="og:site_name" content="GGIRHR" />
-        <meta property="og:url" content="https://ggirhr.com" />
+        <meta property='og:site_name' content='GGIRHR' />
+        <meta property='og:url' content='https://ggirhr.com' />
         <meta
-          property="og:description"
-          content="Awarded as Best IVF and Infertility Training Centre in India"
+          property='og:description'
+          content='Awarded as Best IVF and Infertility Training Centre in India'
         />
-        <meta property="og:type" content="website" />
+        <meta property='og:type' content='website' />
         <meta
-          property="og:image"
-          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_Awards-min_nbnk68.jpg"
+          property='og:image'
+          content='https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_Awards-min_nbnk68.jpg'
         />
 
         {/* Twitter*/}
 
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@ggirhr" />
-        <meta name="twitter:title" content="Awards and Accolades | GGIRHR" />
+        <meta name='twitter:card' content='summary_large_image' />
+        <meta name='twitter:site' content='@ggirhr' />
+        <meta name='twitter:title' content='Awards and Accolades | GGIRHR' />
         <meta
-          name="twitter:description"
-          content="Awarded as Best IVF and Infertility Training Centre in India"
+          name='twitter:description'
+          content='Awarded as Best IVF and Infertility Training Centre in India'
         />
         <meta
-          name="twitter:image"
-          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_Awards-min_nbnk68.jpg"
+          name='twitter:image'
+          content='https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_Awards-min_nbnk68.jpg'
         />
       </Head>
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-center text-3xl my-8 font-heading font-bold">
+      <div className='max-w-7xl mx-auto'>
+        <h1 className='text-center text-3xl my-8 font-heading font-bold'>
           Awarded as Best IVF and Infertility Training Centre in India
         </h1>
-        <div className="px-3 sm:px-0">
+        <div className='px-3 sm:px-0'>
           <Image
-            src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1740119316/GGIRHR/Images/e_12_11zon_f9km0i.webp"
-            alt="GGIRHR Awards"
-            className="rounded-2xl"
+            src='https://res.cloudinary.com/garbhagudiivf/image/upload/v1740119316/GGIRHR/Images/e_12_11zon_f9km0i.webp'
+            alt='GGIRHR Awards'
+            className='rounded-2xl w-full'
             width={800}
             height={600}
-            sizes="(max-width: 640px) 90vw, 50vw"
+            sizes='(max-width: 640px) 90vw, 50vw'
             priority={true}
           />
         </div>
 
-        <div className="mx-auto my-8 px-4 sm:px-0">
-          <div className="text-lg text-brandDark my-4 font-qs">
+        <div className='mx-auto my-8 px-4 sm:px-0'>
+          <div className='text-lg text-brandDark my-4 font-qs'>
             Dr Asha S Vijay’s GarbhaGudi IVF Centre bagged the prestigious title
             - “Best IVF and Infertility Training Centre in India” by the
             National Quality Achievement Awards in 2021. This is truly an
@@ -77,7 +77,7 @@ const Awards = () => {
             the GarbhaGudi Institute of Reproductive Health nd Research (GGIRHR)
             – a learning and training initiative by GarbhaGudi IVF Centre.
           </div>
-          <div className="text-lg text-brandDark my-4 font-qs">
+          <div className='text-lg text-brandDark my-4 font-qs'>
             To bring a revolutionary change in infertility education, courses
             offered at GGIRHR provide broad exposure to complex cases to gain
             experience in treating various aspects of infertility. GGIRHR
@@ -89,7 +89,7 @@ const Awards = () => {
             cloud-based library provides access to a wide range of cases to
             enhance the knowledge and skills to treat infertility.
           </div>
-          <div className="text-lg text-brandDark my-4 font-qs">
+          <div className='text-lg text-brandDark my-4 font-qs'>
             Furthermore, during the pandemic outbreak, we adapted to the new
             norm of providing exceptional online training for a wide range of
             courses related to infertility and IVF. The courses include eligible
@@ -102,7 +102,7 @@ const Awards = () => {
             experience with hundreds of cases that may be difficult to encounter
             in daily practice.
           </div>
-          <div className="text-lg text-brandDark my-4 font-qs">
+          <div className='text-lg text-brandDark my-4 font-qs'>
             GGIRHR believes in quality education with limited intake in each
             batch, making it easier for our faculty to provide utmost attention
             to every person. The comprehensive training provided at GGIRHR
@@ -115,7 +115,7 @@ const Awards = () => {
             our recognition as India&apos;s Best IVF and Infertility Training
             Centre in India.
           </div>
-          <div className="text-lg text-brandDark my-4 font-qs">
+          <div className='text-lg text-brandDark my-4 font-qs'>
             We are humbled and extremely thankful to every individual who’s been
             a part of this journey and share the credibility of this success
             with the entire team of GGIRHR, whose relentless services made this

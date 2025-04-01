@@ -4,8 +4,12 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 const Form = () => {
   const router = useRouter();
+  const path = usePathname();
+  const pageVisit = router?.query?.pageVisit || path;
+
   const {
     register,
     handleSubmit,
@@ -20,9 +24,12 @@ const Form = () => {
       Lead_Source: 'Online',
       Lead_Sub_Source: 'GGIRHR',
       UTM_Campaign: '',
+      Page_Visited: pageVisit,
     },
   });
-
+  useEffect(() => {
+    setValue('Page_Visited', pageVisit);
+  }, [pageVisit]);
   const [captchaVerified, setCaptchaVerified] = useState(false);
   const [showCaptchaError, setShowCaptchaError] = useState(false);
   const [load, setLoad] = useState(false);
