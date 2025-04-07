@@ -28,8 +28,8 @@ const Form = () => {
     },
   });
   useEffect(() => {
-    setValue('Page_Visited', pageVisit);
-  }, [pageVisit]);
+    setValue('Page_Visited', `${window.location?.origin}${pageVisit}`);
+  }, [pageVisit, setValue]);
   const [captchaVerified, setCaptchaVerified] = useState(false);
   const [showCaptchaError, setShowCaptchaError] = useState(false);
   const [load, setLoad] = useState(false);
