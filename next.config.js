@@ -33,6 +33,13 @@ const nextConfig = {
         destination: '/courses/comprehensive-tvs-ultrasound-scan-course',
         permanent: true,
       },
+      {
+        source:
+          '/courses/post-graduate-diploma-in-clinical-embryology-pgdce-program',
+        destination:
+          '/courses/post-graduate-certificate-in-clinical-embryology-pgcce-program',
+        permanent: true,
+      },
     ];
   },
 };
