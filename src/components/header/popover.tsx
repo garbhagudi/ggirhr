@@ -83,6 +83,11 @@ export const courses = {
       href: '/courses/online-basic-tvs-ultrasound-scan-course',
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg',
     },
+    {
+      name: '3D Gyn USG',
+      href: '/courses/3d-gyn-usg',
+      icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1745390774/GGIRHR/Icons/header%20icons%20svg/3G_Gyn_USG_ICON_mpozy4.svg',
+    },
   ],
   embryology: [
     {
@@ -142,6 +147,11 @@ export const courses = {
       name: 'Mastering Egg Pickup (Oocyte Pickup or OPU)',
       href: '/courses/mastering-egg-pickup-oocyte-pickup-ovum-pickup-opu',
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1729924632/GGIRHR/Icons/header%20icons%20svg/Egg_Pick-up_1_rw6pho.svg',
+    },
+    {
+      name: '3D Gyn USG',
+      href: '/courses/3d-gyn-usg',
+      icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1745390774/GGIRHR/Icons/header%20icons%20svg/3G_Gyn_USG_ICON_mpozy4.svg',
     },
   ],
 };
