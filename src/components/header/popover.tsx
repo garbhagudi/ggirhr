@@ -124,6 +124,11 @@ export const courses = {
       href: '/courses/fundamentals-of-scientific-writing',
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1724493733/GGIRHR/Icons/header%20icons%20svg/Scientific_Writing_Career-_Icon_acvwud.svg',
     },
+    {
+      name: 'Executive Diploma in Medical Writing (Online)',
+      href: '/courses/executive-diploma-in-medical-writing',
+      icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1745918223/GGIRHR/Medical_Writing_Icon_myzip3.svg',
+    },
   ],
   andrology: [
     {
