@@ -250,23 +250,25 @@ const CoursePage = ({ course }) => {
                 </div>
                 <div className='py-2'>
                   {courses &&
-                    Object.values(courses)
-                      .flat()
-                      .map((course, index) => {
-                        return (
-                          <div
-                            className={`group hover:bg-gray-200 hover:text-brandBlue rounded-md px-4 py-1 ${
-                              courseSlug === course.href &&
-                              'bg-brandBlue font-semibold text-white'
-                            }`}
-                            key={index}
-                          >
-                            <Link href={course.href} key={course.name}>
-                              {index + 1}. {course.name}
-                            </Link>
-                          </div>
-                        );
-                      })}
+                    Array.from(
+                      new Map(
+                        Object.values(courses)
+                          .flat()
+                          .map((course) => [course.href, course])
+                      ).values()
+                    ).map((course, index) => (
+                      <div
+                        className={`group hover:bg-gray-200 hover:text-brandBlue rounded-md px-4 py-1 ${
+                          courseSlug === course.href &&
+                          'bg-brandBlue font-semibold text-white'
+                        }`}
+                        key={course.href}
+                      >
+                        <Link href={course.href} key={course.name}>
+                          {index + 1}. {course.name}
+                        </Link>
+                      </div>
+                    ))}
                 </div>
               </blockquote>
 
