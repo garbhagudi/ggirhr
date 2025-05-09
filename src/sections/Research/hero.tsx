@@ -94,7 +94,7 @@ const Hero = () => {
           <div className='pt-4 lg:pt-12 space-y-3 px-4'>
             <div>
               In addition, GGIRHR works in close collaboration with NITTE
-              University- Mangalore and BBC- Bangalore Bio innovation Center
+              University- Mangalore and BBC- Bangalore Bio innovation Centre
               which works closely with Karnataka Innovation & Technology Society
               (KITS), providing interdisciplinary support across the
               organization by interfacing with the clinical and embryology
