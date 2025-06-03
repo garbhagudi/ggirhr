@@ -30,7 +30,17 @@ const nextConfig = {
     return [
       {
         source: '/courses/comprehensive-untrasound-scan-course',
-        destination: '/courses/comprehensive-tvs-ultrasound-scan-course',
+        destination: '/courses/comprehensive-tvs-ultrasound-scan-program',
+        permanent: true,
+      },
+      {
+        source: '/courses/comprehensive-tvs-ultrasound-scan-course',
+        destination: '/courses/comprehensive-tvs-ultrasound-scan-program',
+        permanent: true,
+      },
+      {
+        source: '/courses/online-basic-tvs-ultrasound-scan-course',
+        destination: '/courses/online-basic-tvs-ultrasound-scan-program',
         permanent: true,
       },
       {
