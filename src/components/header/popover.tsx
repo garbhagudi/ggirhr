@@ -74,13 +74,13 @@ export const courses = {
   ],
   ultrasound: [
     {
-      name: 'Comprehensive TVS Ultrasound Scan Training',
-      href: '/courses/comprehensive-tvs-ultrasound-scan-course',
+      name: 'Comprehensive TVS Ultrasound Scan Program',
+      href: '/courses/comprehensive-tvs-ultrasound-scan-program',
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg',
     },
     {
-      name: 'Online Basic TVS Ultrasound Scan Training',
-      href: '/courses/online-basic-tvs-ultrasound-scan-course',
+      name: 'Online Basic TVS Ultrasound Scan Program',
+      href: '/courses/online-basic-tvs-ultrasound-scan-program',
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg',
     },
     {
@@ -139,13 +139,13 @@ export const courses = {
   ],
   artSimulationLab: [
     {
-      name: 'Comprehensive TVS Ultrasound Scan Training',
-      href: '/courses/comprehensive-tvs-ultrasound-scan-course',
+      name: 'Comprehensive TVS Ultrasound Scan Program',
+      href: '/courses/comprehensive-tvs-ultrasound-scan-program',
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg',
     },
     {
-      name: 'Online Basic TVS Ultrasound Scan Training',
-      href: '/courses/online-basic-tvs-ultrasound-scan-course',
+      name: 'Online Basic TVS Ultrasound Scan Program',
+      href: '/courses/online-basic-tvs-ultrasound-scan-program',
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg',
     },
     {
