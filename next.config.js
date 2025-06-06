@@ -50,6 +50,11 @@ const nextConfig = {
           '/courses/post-graduate-certificate-in-clinical-embryology-pgcce-program',
         permanent: true,
       },
+      {
+        source: '/courses/institutional-fellowship-in-clinical-embryology',
+        destination: '/courses/fellowship-in-clinical-embryology',
+        permanent: true,
+      },
     ];
   },
 };
