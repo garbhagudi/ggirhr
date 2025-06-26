@@ -97,7 +97,7 @@ export const courses = {
     },
     {
       name: 'Fellowship in Clinical Embryology',
-      href: '/courses/institutional-fellowship-in-clinical-embryology',
+      href: '/courses/fellowship-in-clinical-embryology',
       icon: 'https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg',
     },
   ],
