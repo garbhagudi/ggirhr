@@ -11,7 +11,7 @@ const Video = () => {
                 <span className="block text-brandPink3">Mission </span>
               </span>
             </h1>
-            <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl font-content">
+            <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl font-content text-justify">
               &quot;To provide learners with a specialized reproductive health
               and infertility education of exceptional quality and prepare every
               individual to serve the underserved. Special attention is directed
