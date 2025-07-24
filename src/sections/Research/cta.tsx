@@ -12,7 +12,7 @@ const Cta = () => {
     <div>
       <div className='max-w-7xl mx-auto bg-white text-brandDark' id='cta'>
         <div className='container mx-auto flex flex-col md:flex-row'>
-          <div className='flex flex-col w-full lg:w-2/5 p-8'>
+          <div className='flex flex-col w-full lg:w-2/5 p-8 text-start'>
             <p className='text-3xl md:text-4xl text-brandBlueDark2 my-4 font-heading'>
               Be a part of the most advanced studies and research program in
               infertility

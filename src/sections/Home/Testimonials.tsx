@@ -79,8 +79,8 @@ const Testimonial = () => {
               <div className="relative" key={item.id}>
                 <img className="mx-auto h-8" src={item.logo} alt={item.name} />
                 <blockquote className="mt-10">
-                  <div className="max-w-3xl mx-auto text-center text-xl tracking-tight leading-9 font-medium text-gray-900 font-content">
-                    <p>{item.quote}</p>
+                  <div className="max-w-3xl mx-auto text-center text-xl tracking-tight leading-9 font-medium text-gray-900 font-content ">
+                    <p className="text-justify">{item.quote}</p>
                   </div>
                   <footer className="mt-8">
                     <div className="md:flex md:items-center md:justify-center">

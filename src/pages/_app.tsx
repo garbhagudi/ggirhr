@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps }) {
       ) : (
         <div className="selection:bg-brandBlue selection:text-white">
           <Header />
-          <main className="min-h-screen">
+          <main className="min-h-screen text-justify">
             <Component {...pageProps} />
           </main>
           <SalesIQ />
