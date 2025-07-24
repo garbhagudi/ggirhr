@@ -75,7 +75,7 @@ const CoursePage = ({ course }) => {
         />
         <meta name='twitter:image' content={course?.courseImage?.url} />
       </Head>
-      <div className='py-16 overflow-hidden mx-auto'>
+      <div className='py-16 overflow-hidden mx-auto text-start'>
         <div className='max-w-7xl mx-auto px-3 space-y-8 sm:px-6 lg:px-11'>
           <div className='mx-auto'>
             <h2 className='text-base text-brandBlue font-semibold tracking-wide uppercase'>

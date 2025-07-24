@@ -9,7 +9,7 @@ const Overview = () => {
           <h2 className="xl:w-8/12 lg:w-10/12 w-full font-bold text-gray-800 lg:text-4xl text-4xl lg:leading-10 leading-9 mt-2 font-heading">
             Why GGIRHR
           </h2>
-          <p className="font-normal text-base leading-6 text-gray-600 mt-6">
+          <p className="font-normal text-base leading-6 text-gray-600 mt-6 text-justify">
             At GGIRHR, we have realized a severe shortage of trained clinicians,
             embryologists, and support staff in infertility, leading to
             compromised treatment for many infertile couples worldwide.
@@ -38,7 +38,7 @@ const Overview = () => {
             <h2 className="font-bold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 font-heading">
               Our Story
             </h2>
-            <p className="font-normal text-base leading-6 text-gray-600 mt-4">
+            <p className="font-normal text-base leading-6 text-gray-600 mt-4 text-justify">
               GarbhaGudi Institute of Reproductive Health & Research (GGIRHR)
               was established to provide premier quality reproductive medicine
               and infertility training to clinicians, embryologists,

@@ -64,7 +64,7 @@ const VisionMission = () => {
                 />
               </div>
 
-              <p className="leading-relaxed text-lg font-content text-left text-brandDark mt-2">
+              <p className="leading-relaxed text-lg font-content  text-brandDark mt-2 text-justify">
                 GGIRHR’s mission is to provide learners with a specialized
                 reproductive health and infertility education of exceptional
                 quality and prepare every individual to serve the underserved.
@@ -91,7 +91,7 @@ const VisionMission = () => {
                 />
               </div>
 
-              <p className="leading-relaxed font-content text-lg text-left text-brandDark mt-2">
+              <p className="leading-relaxed font-content text-lg text-justify text-brandDark mt-2">
                 The goal of GGIRHR is to enhance our global credit as a
                 reproductive health university, recognized for the excellence of
                 our teaching, research, and service. We will endeavour to be a

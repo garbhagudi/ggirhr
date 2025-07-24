@@ -12,7 +12,7 @@ const Hero = () => {
               Welcome to GGIRHR
             </h1>
             <div className='text-base lg:text-base pb-10 sm:pb-0 pt-10 xl:pt-6'>
-              <h2>
+              <h2 className='text-justify'>
                 GarbhaGudi Institute of Reproductive Health & Research is a
                 platform launched by a team of renowned specialists interested
                 in training medical professionals and science students in
