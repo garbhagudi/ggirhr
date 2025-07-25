@@ -50,6 +50,10 @@ const CoursePage = ({ course }) => {
         />
         <meta property="og:site_name" content="GGIRHR" />
         <meta property="og:url" content="https://ggirhr.com" />
+        <meta
+          property="og:description"
+          content={`${course?.metaTitle || course?.title} | GGIRHR`}
+        />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={course?.courseImage?.url} />
         {/* Twitter*/}
