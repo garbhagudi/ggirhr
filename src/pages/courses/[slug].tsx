@@ -44,10 +44,7 @@ const CoursePage = ({ course }) => {
           }
         />
         {/* Open Graph / Facebook */}
-        <meta
-          property="og:title"
-          content={`${course?.metaTitle || course?.title} | GGIRHR`}
-        />
+        <meta property="og:title" content={`${course?.title} | GGIRHR`} />
         <meta property="og:site_name" content="GGIRHR" />
         <meta property="og:url" content="https://ggirhr.com" />
         <meta property="og:type" content="website" />
@@ -55,10 +52,7 @@ const CoursePage = ({ course }) => {
         {/* Twitter*/}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@ggirhr" />
-        <meta
-          name="twitter:title"
-          content={`${course?.metaTitle || course?.title} | GGIRHR`}
-        />
+        <meta name="twitter:title" content={`${course?.title} | GGIRHR`} />
         <meta name="twitter:image" content={course?.courseImage?.url} />
       </Head>
       <div className="py-16 overflow-hidden mx-auto">
