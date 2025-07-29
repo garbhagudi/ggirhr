@@ -31,6 +31,13 @@ const CoursePage = ({ course }) => {
           content={`${course?.metaTitle || course?.title} | GGIRHR`}
         />
         <meta
+          name="description"
+          content={
+            course?.metaDescription?.slice(0, 180) ||
+            course?.description?.text.slice(0, 180)
+          }
+        />
+        <meta
           name="keywords"
           content={
             course?.metaKeywords || "GGIRHR, courses, healthcare, education"
@@ -43,7 +50,6 @@ const CoursePage = ({ course }) => {
         />
         <meta property="og:site_name" content="GGIRHR" />
         <meta property="og:url" content="https://ggirhr.com" />
-        <meta property="og:description" content={" "} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={course?.courseImage?.url} />
         {/* Twitter*/}
@@ -296,6 +302,7 @@ export const getStaticProps = async ({ params }: { params: any }) => {
           raw
           text
         }
+        metaDescription
         metaKeywords
         metaTitle
       }
@@ -349,6 +356,6 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: "blocking", // Pages not generated at build time will be server-rendered
+    fallback: true, // Pages not generated at build time will be server-rendered
   };
 };
