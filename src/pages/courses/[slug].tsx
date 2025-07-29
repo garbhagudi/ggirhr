@@ -31,13 +31,6 @@ const CoursePage = ({ course }) => {
           content={`${course?.metaTitle || course?.title} | GGIRHR`}
         />
         <meta
-          name="description"
-          content={
-            course?.metaDescription?.slice(0, 180) ||
-            course?.description?.text.slice(0, 180)
-          }
-        />
-        <meta
           name="keywords"
           content={
             course?.metaKeywords || "GGIRHR, courses, healthcare, education"
