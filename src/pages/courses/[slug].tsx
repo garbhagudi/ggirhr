@@ -44,7 +44,10 @@ const CoursePage = ({ course }) => {
           }
         />
         {/* Open Graph / Facebook */}
-        <meta property="og:title" content={`${course?.title} | GGIRHR`} />
+        <meta
+          property="og:title"
+          content={`${course?.title} | GGIRHR | India 🇮🇳`}
+        />
         <meta property="og:site_name" content="GGIRHR" />
         <meta property="og:url" content="https://ggirhr.com" />
         <meta property="og:description" content={" "} />
