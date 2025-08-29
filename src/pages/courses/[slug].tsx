@@ -152,75 +152,123 @@ const CoursePage = ({ course }) => {
 
               <blockquote className="relative bg-white rounded-lg shadow-lg mb-10">
                 <div className="rounded-t-lg py-2 sm:px-4 sm:pt-4 sm:pb-8">
-                  <div className="relative text-lg text-gray-700 font-medium">
-                    <table className="table bg-white rounded-lg mx-auto">
-                      <tbody>
+                  <div className="overflow-x-auto ">
+                    <table className="w-full table-auto">
+                      <tbody className="divide-y divide-pink-100 text-lg font-medium dark:divide-gray-500">
                         {course?.numberOfBatchesPerYear && (
-                          <tr className="text-gray-700">
-                            <td className="p-4 flex gap-x-3 items-start">
-                              <Image
-                                src={
-                                  "https://res.cloudinary.com/garbhagudiivf/image/upload/v1736420828/Batches_mm1yad.svg"
-                                }
-                                alt={"Number_of_Batches_Per_Year_icon"}
-                                width={100}
-                                height={100}
-                                className="h-8 w-8 object-cover"
-                                loading="lazy"
-                              />
-                              Number of Batches Per Year:
+                          <tr className="flex justify-between">
+                            <td className="whitespace-nowrap p-2">
+                              <div className="flex items-center justify-center font-medium text-gray-800">
+                                <div className="mr-2 h-10 w-10   text-gray-700 sm:mr-3 flex gap-x-3 items-start">
+                                  <Image
+                                    src={
+                                      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1736420820/Students_z7bqek.svg"
+                                    }
+                                    alt={
+                                      "Number_of_Student_Intake_Per_Batch_icon"
+                                    }
+                                    width={100}
+                                    height={100}
+                                    className="h-8 w-8 object-cover"
+                                    loading="lazy"
+                                  />
+                                  Number of Student Intake Per Batch:
+                                </div>
+                              </div>
                             </td>
-                            <td className="p-4 align-top">
-                              {course?.numberOfBatchesPerYear}
+
+                            <td className="whitespace-nowrap p-2">
+                              <div className="text-left font-medium text-gg-500 dark:text-gg-400">
+                                {course?.numberOfBatchesPerYear}
+                              </div>
                             </td>
                           </tr>
                         )}
                         {course?.numberOfStudentIntakePerBatch && (
-                          <tr className="text-gray-700">
-                            <td className="p-4 flex gap-x-3 items-start">
-                              <Image
-                                src={
-                                  "https://res.cloudinary.com/garbhagudiivf/image/upload/v1736420820/Students_z7bqek.svg"
-                                }
-                                alt={"Number_of_Student_Intake_Per_Batch_icon"}
-                                width={100}
-                                height={100}
-                                className="h-8 w-8 object-cover"
-                                loading="lazy"
-                              />
-                              Number of Student Intake Per Batch:
+                          <tr className="flex justify-between">
+                            <td className="whitespace-nowrap p-2">
+                              <div className="font-medium text-gray-800">
+                                <div className="flex items-center justify-center font-medium text-gray-800">
+                                  <div className="mr-2 h-10 w-10   text-gray-700 sm:mr-3 flex gap-x-3 items-start">
+                                    <Image
+                                      src={
+                                        "https://res.cloudinary.com/garbhagudiivf/image/upload/v1736420828/Batches_mm1yad.svg"
+                                      }
+                                      alt={"Number_of_Batches_Per_Year_icon"}
+                                      width={100}
+                                      height={100}
+                                      className="h-8 w-8 object-cover"
+                                      loading="lazy"
+                                    />
+                                    Number of Batches Per Year:
+                                  </div>
+                                </div>
+                              </div>
                             </td>
-                            <td className="p-4 align-top">
-                              {course?.numberOfStudentIntakePerBatch}
+
+                            <td className="whitespace-nowrap p-2">
+                              <div className="text-left font-medium text-gg-500 dark:text-gg-400">
+                                {course?.numberOfStudentIntakePerBatch}
+                              </div>
                             </td>
                           </tr>
                         )}
                         {course?.qualification && (
-                          <tr className="text-gray-700">
-                            <td className="p-4 flex items-center">
-                              <AcademicCapIcon className="w-8 h-8 inline-block mr-3 text-brandBlue" />{" "}
-                              Qualification:
+                          <tr className="flex justify-between">
+                            <td className="whitespace-nowrap p-2">
+                              <div className="font-medium text-gray-800">
+                                <div className="flex items-center justify-center font-medium text-gray-800">
+                                  <div className="mr-2 h-10  text-gray-700 sm:mr-3 flex gap-x-3 items-start">
+                                    <AcademicCapIcon className="w-8 h-8 inline-block text-brandBlue" />
+                                    Qualification:
+                                  </div>
+                                </div>
+                              </div>
                             </td>
-                            <td className="p-4">{course?.qualification}</td>
+
+                            <td className="whitespace-nowrap p-2">
+                              <div className="text-left font-medium text-gg-500 dark:text-gg-400">
+                                {course?.qualification}
+                              </div>
+                            </td>
                           </tr>
                         )}
                         {course?.duration && (
-                          <tr className="text-gray-700">
-                            <td className="p-4 flex items-center">
-                              <ClockIcon className="w-8 h-8 inline-block mr-3 text-brandBlue" />
-                              Duration:
+                          <tr className="flex justify-between">
+                            <td className="whitespace-nowrap p-2">
+                              <div className="font-medium">
+                                <div className="flex items-center justify-center font-medium">
+                                  <div className="mr-2 h-10   text-gray-700 sm:mr-3 flex gap-x-3 items-start">
+                                    <ClockIcon className="w-8 h-8 inline-block text-brandBlue" />
+                                    Duration:
+                                  </div>
+                                </div>
+                              </div>
                             </td>
-                            <td className="p-4">{course?.duration}</td>
+
+                            <td className="whitespace-nowrap p-2">
+                              <div className="text-left font-medium text-gg-500 dark:text-gg-400">
+                                {course?.duration}
+                              </div>
+                            </td>
                           </tr>
                         )}
-
                         {course?.fees && (
-                          <tr className="text-gray-700">
-                            <td className="p-4 flex items-center">
-                              <CurrencyRupeeIcon className="w-8 h-8 inline-block mr-3 text-brandBlue" />{" "}
-                              Fee:
+                          <tr className="flex justify-between">
+                            <td className="whitespace-nowrap p-2">
+                              <div className="flex items-center justify-center font-medium">
+                                <div className="mr-2 h-10    text-gray-700 sm:mr-3 flex gap-x-3 items-start">
+                                  <CurrencyRupeeIcon className="w-8 h-8 inline-block text-brandBlue" />{" "}
+                                  Fee:
+                                </div>
+                              </div>
                             </td>
-                            <td className="p-4">{course?.fees}</td>
+
+                            <td className="whitespace-nowrap p-2">
+                              <div className="text-left font-medium text-gg-500 dark:text-gg-400">
+                                {course?.fees}
+                              </div>
+                            </td>
                           </tr>
                         )}
                       </tbody>
