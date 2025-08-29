@@ -177,7 +177,7 @@ const CoursePage = ({ course }) => {
                               </div>
                             </td>
 
-                            <td className="whitespace-nowrap p-2">
+                            <td className=" p-2">
                               <div className="text-left font-medium text-gg-500 dark:text-gg-400">
                                 {course?.numberOfBatchesPerYear}
                               </div>
@@ -206,7 +206,7 @@ const CoursePage = ({ course }) => {
                               </div>
                             </td>
 
-                            <td className="whitespace-nowrap p-2">
+                            <td className=" p-2">
                               <div className="text-left font-medium text-gg-500 dark:text-gg-400">
                                 {course?.numberOfStudentIntakePerBatch}
                               </div>
@@ -226,7 +226,7 @@ const CoursePage = ({ course }) => {
                               </div>
                             </td>
 
-                            <td className="whitespace-nowrap p-2">
+                            <td className=" p-2">
                               <div className="text-left font-medium text-gg-500 dark:text-gg-400">
                                 {course?.qualification}
                               </div>
@@ -246,7 +246,7 @@ const CoursePage = ({ course }) => {
                               </div>
                             </td>
 
-                            <td className="whitespace-nowrap p-2">
+                            <td className=" p-2">
                               <div className="text-left font-medium text-gg-500 dark:text-gg-400">
                                 {course?.duration}
                               </div>
@@ -264,7 +264,7 @@ const CoursePage = ({ course }) => {
                               </div>
                             </td>
 
-                            <td className="whitespace-nowrap p-2">
+                            <td className=" p-2">
                               <div className="text-left font-medium text-gg-500 dark:text-gg-400">
                                 {course?.fees}
                               </div>
