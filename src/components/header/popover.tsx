@@ -63,7 +63,7 @@ export const courses = {
     },
     {
       name: "Fellowship in Reproductive Medicine",
-      href: "/courses/institutional-fellowship-in-reproductive-medicine",
+      href: "/courses/fellowship-in-reproductive-medicine",
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089736/GGIRHR/Icons/header%20icons%20svg/Ins_Fellowship_dhuxji.svg",
     },
     {
