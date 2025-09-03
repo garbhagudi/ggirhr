@@ -179,7 +179,7 @@ const CoursePage = ({ course }) => {
 
                             <td className=" p-2">
                               <div className="text-left font-medium text-gg-500 dark:text-gg-400">
-                                {course?.numberOfBatchesPerYear}
+                                {course?.numberOfStudentIntakePerBatch}
                               </div>
                             </td>
                           </tr>
@@ -208,7 +208,7 @@ const CoursePage = ({ course }) => {
 
                             <td className=" p-2">
                               <div className="text-left font-medium text-gg-500 dark:text-gg-400">
-                                {course?.numberOfStudentIntakePerBatch}
+                                {course?.numberOfBatchesPerYear}
                               </div>
                             </td>
                           </tr>
@@ -408,3 +408,4 @@ export const getStaticPaths = async () => {
     fallback: true, // Pages not generated at build time will be server-rendered
   };
 };
+
