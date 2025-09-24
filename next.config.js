@@ -60,6 +60,11 @@ const nextConfig = {
         destination: "/courses/fellowship-in-reproductive-medicine",
         permanent: true,
       },
+      {
+        source: "/contact2.html",
+        destination: "/contact",
+        permanent: true,
+      },
     ];
   },
 };
