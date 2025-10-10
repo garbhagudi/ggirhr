@@ -1,5 +1,8 @@
+"use client";
 import Form from "components/Form";
+import { usePathname } from "next/navigation";
 const Video = () => {
+  const path = usePathname();
   return (
     <div>
       <main className="mx-auto max-w-7xl px-4 sm:px-6 mb-16 ">
@@ -24,7 +27,7 @@ const Video = () => {
           </div>
           <div className="mt-12 relative sm:max-w-xl sm:mx-auto lg:mt-0 lg:max-w-xl lg:mx-0 lg:col-span-6">
             <div className="mx-auto w-full shadow-lg rounded-lg py-2">
-              <Form />
+              <Form refPath={path} />
             </div>
           </div>
         </div>

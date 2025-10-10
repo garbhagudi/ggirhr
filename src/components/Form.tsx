@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-const Form = () => {
+const Form = ({ refPath = "" }) => {
   const router = useRouter();
   const path = usePathname();
-  const pageVisit = router?.query?.pageVisit || path;
+  const pageVisit = router?.query?.pageVisit || refPath || path;
   const utmCampaign = router.query?.utm_campaign || "";
   const {
     register,

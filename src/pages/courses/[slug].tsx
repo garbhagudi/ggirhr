@@ -18,8 +18,7 @@ import Cta from "sections/gg-care/cta";
 
 const CoursePage = ({ course }) => {
   const courseSlug = usePathname();
-  const path = usePathname();
-
+  
   return (
     <div>
       <Head>
@@ -90,7 +89,7 @@ const CoursePage = ({ course }) => {
           <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none space-x-3">
             <div className="rounded-md shadow">
               <Link
-                href={`/contact?pageVisit=${path}`}
+                href={`/contact?pageVisit=${courseSlug}`}
                 className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brandBlue hover:bg-brandBlueDark3"
               >
                 Contact Us
@@ -309,7 +308,7 @@ const CoursePage = ({ course }) => {
 
               <blockquote className="relative bg-gray-200 rounded-lg shadow-lg mb-10">
                 <div className="rounded-t-lg overflow-hidden w-full rounded-lg shadow-lg">
-                  <Form />
+                  <Form refPath={courseSlug} />
                 </div>
               </blockquote>
             </div>
