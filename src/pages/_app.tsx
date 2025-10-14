@@ -43,6 +43,20 @@ function MyApp({ Component, pageProps }) {
           name="google-site-verification"
           content="hNa9hsmI-YwrJiMxo0FR7-5PWn2ku2yqn3OD6VoVFms"
         />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-681967532"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-681967532');
+            `,
+          }}
+        />
       </Head>
       {loading ? (
         <Loading />
