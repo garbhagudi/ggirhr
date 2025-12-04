@@ -35,7 +35,7 @@ const Hero = () => {
             src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1740117190/GGIRHR/Images/c_10_11zon_w9303y.webp"
             width={600}
             height={400}
-            className="w-full mt-6 md:mt-0 object-cover md:w-2/3 lg:w-1/2 md:-ml-4 lg:-ml-4 xl:ml-0 rounded-xl"
+            className="w-full mt-6 md:mt-0 h-80 object-cover md:w-2/3 lg:w-1/2 md:-ml-4 lg:-ml-4 xl:ml-0 rounded-xl"
             alt="GGIRHR"
             sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 33vw"
             loading="eager"
