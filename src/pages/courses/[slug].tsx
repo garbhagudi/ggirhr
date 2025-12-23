@@ -18,7 +18,7 @@ import Cta from "sections/gg-care/cta";
 
 const CoursePage = ({ course }) => {
   const courseSlug = usePathname();
-  
+
   return (
     <div>
       <Head>
@@ -108,7 +108,40 @@ const CoursePage = ({ course }) => {
             <div className="relative z-10">
               <div className="text-brandDark mx-auto lg:max-w-none">
                 {course?.description?.raw?.children ? (
-                  <RichText content={course?.description?.raw?.children} />
+                  <RichText
+                    content={course?.description?.raw}
+                    renderers={{
+                      h1: ({ children }) => (
+                        <h1 className="text-3xl font-extrabold text-brandDark my-4">
+                          {children}
+                        </h1>
+                      ),
+                      h2: ({ children }) => (
+                        <h2 className="text-2xl font-bold text-brandDark my-3">
+                          {children}
+                        </h2>
+                      ),
+                      h3: ({ children }) => (
+                        <h3 className="text-xl font-bold text-brandDark my-2">
+                          {children}
+                        </h3>
+                      ),
+                      p: ({ children }) => (
+                        <p className="text-base text-gray-700 my-2 leading-relaxed">
+                          {children}
+                        </p>
+                      ),
+                      ul: ({ children }) => (
+                        <ul className="list-disc pl-6 my-3">{children}</ul>
+                      ),
+                      ol: ({ children }) => (
+                        <ol className="list-decimal pl-6 my-3">{children}</ol>
+                      ),
+                      li: ({ children }) => (
+                        <li className="mb-1">{children}</li>
+                      ),
+                    }}
+                  />
                 ) : (
                   <p>Description not available</p>
                 )}
@@ -276,6 +309,12 @@ const CoursePage = ({ course }) => {
                 </div>
               </blockquote>
 
+              <blockquote className="relative bg-gray-200 rounded-lg shadow-lg mb-10">
+                <div className="rounded-t-lg overflow-hidden w-full rounded-lg shadow-lg">
+                  <Form refPath={courseSlug} />
+                </div>
+              </blockquote>
+
               <blockquote className="relative bg-white rounded-lg shadow-lg mb-10">
                 <div className="rounded-t-lg py-2 sm:px-4 sm:pt-4 bg-brandBlue">
                   <div className=" text-base text-white font-bold tracking-wide text-center">
@@ -303,12 +342,6 @@ const CoursePage = ({ course }) => {
                         </Link>
                       </div>
                     ))}
-                </div>
-              </blockquote>
-
-              <blockquote className="relative bg-gray-200 rounded-lg shadow-lg mb-10">
-                <div className="rounded-t-lg overflow-hidden w-full rounded-lg shadow-lg">
-                  <Form refPath={courseSlug} />
                 </div>
               </blockquote>
             </div>
@@ -407,4 +440,3 @@ export const getStaticPaths = async () => {
     fallback: true, // Pages not generated at build time will be server-rendered
   };
 };
-
