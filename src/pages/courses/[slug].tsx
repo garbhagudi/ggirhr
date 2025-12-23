@@ -19,6 +19,51 @@ import Cta from "sections/gg-care/cta";
 const CoursePage = ({ course }) => {
   const courseSlug = usePathname();
 
+  function addCourseJsonLd() {
+    if (!course?.courseJson) return { __html: "" };
+    const jsonLD =
+      typeof course.courseJson === "string"
+        ? JSON.parse(course.courseJson)
+        : course.courseJson;
+    return {
+      __html: JSON.stringify(jsonLD, null, 2),
+    };
+  }
+
+  function addFAQJsonLd() {
+    if (!course?.faqJson) return { __html: "" };
+    const jsonLD =
+      typeof course.faqJson === "string"
+        ? JSON.parse(course.faqJson)
+        : course.faqJson;
+    return {
+      __html: JSON.stringify(jsonLD, null, 2),
+    };
+  }
+
+  function addBreadcrumbsJsonLd() {
+    return {
+      __html: `{
+          "@context": "https://schema.org/",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": "1",
+              "name": "Home",
+              "item": "https://www.ggirhr.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": "3",
+              "name": "${course?.title}",
+              "item": "https://www.ggirhr.com/courses/${course?.slug}"
+            }
+          ]
+        }`,
+    };
+  }
+
   return (
     <div>
       <Head>
@@ -60,6 +105,18 @@ const CoursePage = ({ course }) => {
           content={`${course?.metaTitle || course?.title} | GGIRHR`}
         />
         <meta name="twitter:image" content={course?.courseImage?.url} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={addCourseJsonLd()}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={addBreadcrumbsJsonLd()}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={addFAQJsonLd()}
+        />
       </Head>
       <div className="py-16 overflow-hidden mx-auto">
         <div className="max-w-7xl mx-auto px-3 space-y-8 sm:px-6 lg:px-11">
@@ -84,7 +141,10 @@ const CoursePage = ({ course }) => {
           </div>
 
           <div className="relative z-10 text-base mx-auto lg:max-w-6xl lg:mx-0">
-            <p className="text-lg text-brandDark">{course?.objective}</p>
+            <p
+              className="text-lg text-brandDark"
+              dangerouslySetInnerHTML={{ __html: course?.objective }}
+            ></p>
           </div>
           <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none space-x-3">
             <div className="rounded-md shadow">
@@ -188,17 +248,13 @@ const CoursePage = ({ course }) => {
                     <table className="w-full table-auto">
                       <tbody className="divide-y divide-pink-100 text-lg font-medium dark:divide-gray-500">
                         {course?.numberOfBatchesPerYear && (
-                          <tr className="flex justify-between">
+                          <tr className="flex">
                             <td className="whitespace-nowrap p-2">
                               <div className="flex items-center justify-center font-medium text-gray-800">
-                                <div className="mr-2 h-10 w-10   text-gray-700 sm:mr-3 flex gap-x-3 items-start">
+                                <div className="mr-2  w-[300px] md:w-fit overflow-hidden text-wrap  text-gray-700 sm:mr-3 flex gap-x-3 items-start">
                                   <Image
-                                    src={
-                                      "https://res.cloudinary.com/garbhagudiivf/image/upload/v1736420820/Students_z7bqek.svg"
-                                    }
-                                    alt={
-                                      "Number_of_Student_Intake_Per_Batch_icon"
-                                    }
+                                    src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1736420820/Students_z7bqek.svg"
+                                    alt="Number_of_Student_Intake_Per_Batch_icon"
                                     width={100}
                                     height={100}
                                     className="h-8 w-8 object-cover"
@@ -217,11 +273,11 @@ const CoursePage = ({ course }) => {
                           </tr>
                         )}
                         {course?.numberOfStudentIntakePerBatch && (
-                          <tr className="flex justify-between">
+                          <tr className="flex">
                             <td className="whitespace-nowrap p-2">
                               <div className="font-medium text-gray-800">
                                 <div className="flex items-center justify-center font-medium text-gray-800">
-                                  <div className="mr-2 h-10 w-10   text-gray-700 sm:mr-3 flex gap-x-3 items-start">
+                                  <div className="mr-2 h-10    text-gray-700 sm:mr-3 flex gap-x-3 items-start">
                                     <Image
                                       src={
                                         "https://res.cloudinary.com/garbhagudiivf/image/upload/v1736420828/Batches_mm1yad.svg"
@@ -246,7 +302,7 @@ const CoursePage = ({ course }) => {
                           </tr>
                         )}
                         {course?.qualification && (
-                          <tr className="flex justify-between">
+                          <tr className="flex">
                             <td className="whitespace-nowrap p-2">
                               <div className="font-medium text-gray-800">
                                 <div className="flex items-center justify-center font-medium text-gray-800">
@@ -266,7 +322,7 @@ const CoursePage = ({ course }) => {
                           </tr>
                         )}
                         {course?.duration && (
-                          <tr className="flex justify-between">
+                          <tr className="flex">
                             <td className="whitespace-nowrap p-2">
                               <div className="font-medium">
                                 <div className="flex items-center justify-center font-medium">
@@ -286,7 +342,7 @@ const CoursePage = ({ course }) => {
                           </tr>
                         )}
                         {course?.fees && (
-                          <tr className="flex justify-between">
+                          <tr className="flex">
                             <td className="whitespace-nowrap p-2">
                               <div className="flex items-center justify-center font-medium">
                                 <div className="mr-2 h-10    text-gray-700 sm:mr-3 flex gap-x-3 items-start">
@@ -386,6 +442,8 @@ export const getStaticProps = async ({ params }: { params: any }) => {
         metaDescription
         metaKeywords
         metaTitle
+        faqJson
+        courseJson
       }
     }
   `;
