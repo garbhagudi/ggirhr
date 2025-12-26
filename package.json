@@ -15,7 +15,7 @@
     "@heroicons/react": "v1",
     "date-fns": "^4.1.0",
     "eslint-config-react": "^1.1.7",
-    "graphql": "^16.9.0",
+    "graphql": "^16.10.0",
     "graphql-request": "5.0.0",
     "next": "15.1.9",
     "p-throttle": "^7.0.0",
