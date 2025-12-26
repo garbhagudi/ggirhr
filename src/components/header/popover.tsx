@@ -137,7 +137,7 @@ export const courses = {
   ],
   andrology: [
     {
-      name: "Comprehensive Andrology Training Program",
+      name: "Comprehensive Course in Andrology",
       href: "/courses/comprehensive-andrology-training-program",
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg",
     },
