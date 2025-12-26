@@ -15,6 +15,7 @@ import { courses } from "components/header/popover";
 import { usePathname } from "next/navigation";
 import Form from "components/Form";
 import Cta from "sections/gg-care/cta";
+import { BsYoutube } from "react-icons/bs";
 
 const CoursePage = ({ course }) => {
   const courseSlug = usePathname();
@@ -141,10 +142,40 @@ const CoursePage = ({ course }) => {
           </div>
 
           <div className="relative z-10 text-base mx-auto lg:max-w-6xl lg:mx-0">
-            <p
-              className="text-lg text-brandDark"
-              dangerouslySetInnerHTML={{ __html: course?.objective }}
-            ></p>
+            {course?.objective?.raw?.children && (
+              <RichText
+                content={course?.objective?.raw}
+                renderers={{
+                  h1: ({ children }) => (
+                    <h1 className="text-3xl font-extrabold text-brandDark my-4">
+                      {children}
+                    </h1>
+                  ),
+                  h2: ({ children }) => (
+                    <h2 className="text-2xl font-bold text-brandDark my-3">
+                      {children}
+                    </h2>
+                  ),
+                  h3: ({ children }) => (
+                    <h3 className="text-xl font-bold text-brandDark my-2">
+                      {children}
+                    </h3>
+                  ),
+                  p: ({ children }) => (
+                    <p className="text-base text-gray-700 my-2 leading-relaxed">
+                      {children}
+                    </p>
+                  ),
+                  ul: ({ children }) => (
+                    <ul className="list-disc pl-6 my-3">{children}</ul>
+                  ),
+                  ol: ({ children }) => (
+                    <ol className="list-decimal pl-6 my-3">{children}</ol>
+                  ),
+                  li: ({ children }) => <li className="mb-1">{children}</li>,
+                }}
+              />
+            )}
           </div>
           <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none space-x-3">
             <div className="rounded-md shadow">
@@ -158,9 +189,18 @@ const CoursePage = ({ course }) => {
             <div className="rounded-md shadow flex justify-center">
               <a
                 href="tel:+919108910852"
-                className="w-full flex items-center justify-center px-5 py-3 bg-white border border-transparent text-base font-medium rounded-md text-brandBlue"
+                className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brandBlue hover:bg-brandBlueDark3"
               >
                 <PhoneIcon className="w-5 h-5 mr-2" /> Call Us
+              </a>
+            </div>
+            <div className="rounded-md shadow flex justify-center">
+              <a
+                href="https://www.youtube.com/channel/UCPWVap8s4REIDwqYpHq0pew"
+                className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brandBlue hover:bg-brandBlueDark3"
+                target="_blank"
+              >
+                <BsYoutube className="w-6 h-6 mr-2 " /> GGIRHR
               </a>
             </div>
           </div>
@@ -251,7 +291,7 @@ const CoursePage = ({ course }) => {
                           <tr className="flex">
                             <td className="whitespace-nowrap p-2">
                               <div className="flex items-center justify-center font-medium text-gray-800">
-                                <div className="mr-2  w-[300px] md:w-fit overflow-hidden text-wrap  text-gray-700 sm:mr-3 flex gap-x-3 items-start">
+                                <div className=" w-[300px] md:w-fit overflow-hidden text-wrap  text-gray-700 flex gap-x-3 items-start">
                                   <Image
                                     src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1736420820/Students_z7bqek.svg"
                                     alt="Number_of_Student_Intake_Per_Batch_icon"
@@ -265,7 +305,7 @@ const CoursePage = ({ course }) => {
                               </div>
                             </td>
 
-                            <td className=" p-2">
+                            <td className=" p-2 px-0">
                               <div className="text-left font-medium text-gg-500 dark:text-gg-400">
                                 {course?.numberOfStudentIntakePerBatch}
                               </div>
@@ -277,7 +317,7 @@ const CoursePage = ({ course }) => {
                             <td className="whitespace-nowrap p-2">
                               <div className="font-medium text-gray-800">
                                 <div className="flex items-center justify-center font-medium text-gray-800">
-                                  <div className="mr-2 h-10    text-gray-700 sm:mr-3 flex gap-x-3 items-start">
+                                  <div className="h-10  text-gray-700 flex gap-x-3 items-start">
                                     <Image
                                       src={
                                         "https://res.cloudinary.com/garbhagudiivf/image/upload/v1736420828/Batches_mm1yad.svg"
@@ -294,7 +334,7 @@ const CoursePage = ({ course }) => {
                               </div>
                             </td>
 
-                            <td className=" p-2">
+                            <td className=" p-2 px-0">
                               <div className="text-left font-medium text-gg-500 dark:text-gg-400">
                                 {course?.numberOfBatchesPerYear}
                               </div>
@@ -306,7 +346,7 @@ const CoursePage = ({ course }) => {
                             <td className="whitespace-nowrap p-2">
                               <div className="font-medium text-gray-800">
                                 <div className="flex items-center justify-center font-medium text-gray-800">
-                                  <div className="mr-2 h-10  text-gray-700 sm:mr-3 flex gap-x-3 items-start">
+                                  <div className="h-10  text-gray-700  flex gap-x-3 items-start">
                                     <AcademicCapIcon className="w-8 h-8 inline-block text-brandBlue" />
                                     Qualification:
                                   </div>
@@ -314,7 +354,7 @@ const CoursePage = ({ course }) => {
                               </div>
                             </td>
 
-                            <td className=" p-2">
+                            <td className=" p-2 px-0">
                               <div className="text-left font-medium text-gg-500 dark:text-gg-400">
                                 {course?.qualification}
                               </div>
@@ -326,7 +366,7 @@ const CoursePage = ({ course }) => {
                             <td className="whitespace-nowrap p-2">
                               <div className="font-medium">
                                 <div className="flex items-center justify-center font-medium">
-                                  <div className="mr-2 h-10   text-gray-700 sm:mr-3 flex gap-x-3 items-start">
+                                  <div className="h-10   text-gray-700 flex gap-x-3 items-start">
                                     <ClockIcon className="w-8 h-8 inline-block text-brandBlue" />
                                     Duration:
                                   </div>
@@ -334,7 +374,7 @@ const CoursePage = ({ course }) => {
                               </div>
                             </td>
 
-                            <td className=" p-2">
+                            <td className="p-2 px-0">
                               <div className="text-left font-medium text-gg-500 dark:text-gg-400">
                                 {course?.duration}
                               </div>
@@ -345,14 +385,14 @@ const CoursePage = ({ course }) => {
                           <tr className="flex">
                             <td className="whitespace-nowrap p-2">
                               <div className="flex items-center justify-center font-medium">
-                                <div className="mr-2 h-10    text-gray-700 sm:mr-3 flex gap-x-3 items-start">
+                                <div className="h-10  text-gray-700 flex gap-x-3 items-start">
                                   <CurrencyRupeeIcon className="w-8 h-8 inline-block text-brandBlue" />{" "}
                                   Fee:
                                 </div>
                               </div>
                             </td>
 
-                            <td className=" p-2">
+                            <td className="p-2 px-0">
                               <div className="text-left font-medium text-gg-500 dark:text-gg-400">
                                 {course?.fees}
                               </div>
@@ -426,7 +466,10 @@ export const getStaticProps = async ({ params }: { params: any }) => {
       course(where: { slug: $pageSlug }) {
         id
         title
-        objective
+        objective {
+          raw
+          text
+        }
         numberOfBatchesPerYear
         numberOfStudentIntakePerBatch
         duration
