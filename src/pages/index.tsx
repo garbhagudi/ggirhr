@@ -349,7 +349,6 @@ export const getServerSideProps = async () => {
         courseImage {
           url
         }
-        objective
       }
       events(orderBy: eventDateTime_DESC, first: 1) {
         id

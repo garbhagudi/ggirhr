@@ -27,7 +27,7 @@ const Courses = ({ Data }) => {
               <div className="hover:shadow-2xl rounded-lg cursor-pointer">
                 <div className="overflow-hidden">
                   <Image
-                    className="rounded-t-lg"
+                    className="rounded-t-lg h-52"
                     src={item?.courseImage?.url}
                     alt={item?.title}
                     width={500}
