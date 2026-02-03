@@ -15,7 +15,9 @@ import { courses } from "components/header/popover";
 import { usePathname } from "next/navigation";
 import Form from "components/Form";
 import Cta from "sections/gg-care/cta";
-import { BsYoutube } from "react-icons/bs";
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import { YouTubeIcon } from "lib/svg";
 
 const CoursePage = ({ course }) => {
   const courseSlug = usePathname();
@@ -194,18 +196,30 @@ const CoursePage = ({ course }) => {
                 <PhoneIcon className="w-5 h-5 mr-2" /> Call Us
               </a>
             </div>
-            <div className="rounded-md shadow flex justify-center">
-              <a
-                href="https://www.youtube.com/channel/UCPWVap8s4REIDwqYpHq0pew"
-                className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brandBlue hover:bg-brandBlueDark3"
-                target="_blank"
-              >
-                <BsYoutube className="w-6 h-6 mr-2 " /> GGIRHR
-              </a>
-            </div>
+            {!course?.videoId && (
+              <div className="rounded-md shadow flex justify-center">
+                <a
+                  href="https://www.youtube.com/channel/UCPWVap8s4REIDwqYpHq0pew"
+                  className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brandBlue hover:bg-brandBlueDark3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <YouTubeIcon className="w-6 h-6 mr-2" /> Videos
+                </a>
+              </div>
+            )}
           </div>
           <div className="lg:grid lg:grid-cols-2 lg:gap-10 lg:items-start">
             <div className="relative z-10">
+              {course?.videoId && (
+                <LiteYouTubeEmbed
+                  id={course.videoId}
+                  title={course?.title}
+                  poster="maxresdefault"
+                  thumbnail={""}
+                  params="fs=1&modestbranding=1&rel=0"
+                />
+              )}
               <div className="text-brandDark mx-auto lg:max-w-none">
                 {course?.description?.raw?.children ? (
                   <RichText
@@ -423,8 +437,8 @@ const CoursePage = ({ course }) => {
                       new Map(
                         Object.values(courses)
                           .flat()
-                          .map((course) => [course.href, course])
-                      ).values()
+                          .map((course) => [course.href, course]),
+                      ).values(),
                     ).map((course, index) => (
                       <div
                         className={`group hover:bg-gray-200 hover:text-brandBlue rounded-md px-4 py-1 ${
@@ -487,6 +501,7 @@ export const getStaticProps = async ({ params }: { params: any }) => {
         metaTitle
         faqJson
         courseJson
+        videoId
       }
     }
   `;
