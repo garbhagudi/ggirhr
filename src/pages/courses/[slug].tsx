@@ -254,6 +254,11 @@ const CoursePage = ({ course }) => {
                       li: ({ children }) => (
                         <li className="mb-1">{children}</li>
                       ),
+                      a: ({ children, ...props }) => (
+                        <a className="text-brandBlue underline" {...props}>
+                          {children}
+                        </a>
+                      ),
                     }}
                   />
                 ) : (
