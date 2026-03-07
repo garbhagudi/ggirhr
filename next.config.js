@@ -65,6 +65,11 @@ const nextConfig = {
         destination: "/contact",
         permanent: true,
       },
+      {
+        source: "/faculty/dr-nikitha-murthy-bs",
+        destination: "/about/faculty",
+        permanent: true,
+      },
     ];
   },
 };
