@@ -189,7 +189,7 @@ const YouTubeVideoCarousel: React.FC<YouTubeVideoCarouselProps> = ({
                   }}>
                     <LiteYouTubeEmbed
                       id={videoId}
-                      title={`Course Video ${index + 1}`}
+                      title={`Testimonial Video ${index + 1}`}
                       poster="maxresdefault"
                       webp={true}
                     />
