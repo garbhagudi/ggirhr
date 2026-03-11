@@ -18,6 +18,7 @@ import Cta from "sections/gg-care/cta";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import { YouTubeIcon } from "lib/svg";
+import YouTubeVideoCarousel from "components/courses/YouTubeVideoCarousel";
 
 const CoursePage = ({ course }) => {
   const courseSlug = usePathname();
@@ -430,6 +431,13 @@ const CoursePage = ({ course }) => {
                 </div>
               </blockquote>
 
+              {course?.youtubeVideos && course.youtubeVideos.length > 0 && (
+                <YouTubeVideoCarousel 
+                  videos={course.youtubeVideos} 
+                  title="Course Videos"
+                />
+              )}
+
               <blockquote className="relative bg-white rounded-lg shadow-lg mb-10">
                 <div className="rounded-t-lg py-2 sm:px-4 sm:pt-4 bg-brandBlue">
                   <div className=" text-base text-white font-bold tracking-wide text-center">
@@ -472,13 +480,27 @@ export default CoursePage;
 export const getStaticProps = async ({ params }: { params: any }) => {
   const url = process.env.ENDPOINT;
 
+  if (!url || typeof url !== 'string' || !url.startsWith('http')) {
+    console.error('ENDPOINT environment variable is not set or is invalid');
+    return {
+      notFound: true,
+    };
+  }
+
   // Create a GraphQL client
-  const createGraphQLClient = () =>
-    new GraphQLClient(url, {
+  let graphQLClient: GraphQLClient;
+  try {
+    graphQLClient = new GraphQLClient(url, {
       headers: {
         Authorization: `Bearer ${process.env.GRAPH_CMS_TOKEN}`,
       },
     });
+  } catch (error) {
+    console.error('Error creating GraphQL client:', error);
+    return {
+      notFound: true,
+    };
+  }
 
   const query = gql`
     query ($pageSlug: String!) {
@@ -507,6 +529,7 @@ export const getStaticProps = async ({ params }: { params: any }) => {
         faqJson
         courseJson
         videoId
+        youtubeVideos
       }
     }
   `;
@@ -516,11 +539,73 @@ export const getStaticProps = async ({ params }: { params: any }) => {
   };
 
   // Fetch the data with throttling
-  const graphQLClient = createGraphQLClient();
-  const fetchCourse = async () => graphQLClient.request(query, variables);
+  let course = null;
+  try {
+    const fetchCourse = async () => graphQLClient.request(query, variables);
+    const data = await throttledFetch(fetchCourse);
+    course = data?.course;
+  } catch (error: any) {
+    // Check if error is about missing youtubeVideos field
+    if (error?.response?.errors?.some((e: any) => e.message?.includes('youtubeVideos'))) {
+      console.warn('youtubeVideos field not found in Course model. Please add it to Hygraph.');
+      // Try fetching without youtubeVideos field
+      const queryWithoutVideos = gql`
+        query ($pageSlug: String!) {
+          course(where: { slug: $pageSlug }) {
+            id
+            title
+            objective {
+              raw
+              text
+            }
+            numberOfBatchesPerYear
+            numberOfStudentIntakePerBatch
+            duration
+            qualification
+            fees
+            courseImage {
+              url
+            }
+            description {
+              raw
+              text
+            }
+            metaDescription
+            metaKeywords
+            metaTitle
+            faqJson
+            courseJson
+            videoId
+          }
+        }
+      `;
+      try {
+        const fetchCourseWithoutVideos = async () => graphQLClient.request(queryWithoutVideos, variables);
+        const data = await throttledFetch(fetchCourseWithoutVideos);
+        course = data?.course;
+        // Set youtubeVideos to empty array if field doesn't exist
+        if (course) {
+          course.youtubeVideos = [];
+        }
+      } catch (retryError) {
+        console.error('Error fetching course data:', retryError);
+        return {
+          notFound: true,
+        };
+      }
+    } else {
+      console.error('Error fetching course data:', error);
+      return {
+        notFound: true,
+      };
+    }
+  }
 
-  const data = await throttledFetch(fetchCourse);
-  const course = data?.course;
+  if (!course) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
@@ -533,12 +618,29 @@ export const getStaticProps = async ({ params }: { params: any }) => {
 export const getStaticPaths = async () => {
   const url = process.env.ENDPOINT;
 
+  if (!url || typeof url !== 'string' || !url.startsWith('http')) {
+    console.error('ENDPOINT environment variable is not set or is invalid');
+    return {
+      paths: [],
+      fallback: 'blocking',
+    };
+  }
+
   // Create a GraphQL client
-  const graphQLClient = new GraphQLClient(url, {
-    headers: {
-      Authorization: `Bearer ${process.env.GRAPH_CMS_TOKEN}`,
-    },
-  });
+  let graphQLClient: GraphQLClient;
+  try {
+    graphQLClient = new GraphQLClient(url, {
+      headers: {
+        Authorization: `Bearer ${process.env.GRAPH_CMS_TOKEN}`,
+      },
+    });
+  } catch (error) {
+    console.error('Error creating GraphQL client:', error);
+    return {
+      paths: [],
+      fallback: 'blocking',
+    };
+  }
 
   const query = gql`
     query {
@@ -549,8 +651,18 @@ export const getStaticPaths = async () => {
   `;
 
   // Fetch all slugs with throttling
-  const fetchCourses = async () => graphQLClient.request(query);
-  const { courses } = await throttledFetch(fetchCourses);
+  let courses = [];
+  try {
+    const fetchCourses = async () => graphQLClient.request(query);
+    const data = await throttledFetch(fetchCourses);
+    courses = data?.courses || [];
+  } catch (error) {
+    console.error('Error fetching courses:', error);
+    return {
+      paths: [],
+      fallback: 'blocking',
+    };
+  }
 
   const paths = courses.map((course: { slug: string }) => ({
     params: { slug: course.slug },
@@ -558,6 +670,6 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true, // Pages not generated at build time will be server-rendered
+    fallback: 'blocking', // Pages not generated at build time will be server-rendered
   };
 };
