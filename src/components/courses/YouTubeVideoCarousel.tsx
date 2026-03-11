@@ -44,21 +44,6 @@ const YouTubeVideoCarousel: React.FC<YouTubeVideoCarouselProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
-  
-  // Ensure videos is an array and filter out invalid video IDs
-  if (!videos || !Array.isArray(videos) || videos.length === 0) {
-    return null;
-  }
-
-  const validVideos = videos
-    .filter((video) => video && typeof video === 'string')
-    .map((video) => extractVideoId(video))
-    .filter((id): id is string => id !== null);
-
-  // Don't render if no valid videos
-  if (!validVideos || validVideos.length === 0) {
-    return null;
-  }
 
   // Determine items per view based on screen size
   const getItemsPerView = () => {
@@ -75,6 +60,21 @@ const YouTubeVideoCarousel: React.FC<YouTubeVideoCarouselProps> = ({
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // Ensure videos is an array and filter out invalid video IDs
+  if (!videos || !Array.isArray(videos) || videos.length === 0) {
+    return null;
+  }
+
+  const validVideos = videos
+    .filter((video) => video && typeof video === 'string')
+    .map((video) => extractVideoId(video))
+    .filter((id): id is string => id !== null);
+
+  // Don't render if no valid videos
+  if (!validVideos || validVideos.length === 0) {
+    return null;
+  }
 
   const maxIndex = Math.max(0, validVideos.length - itemsPerView);
   const canGoNext = currentIndex < maxIndex;
