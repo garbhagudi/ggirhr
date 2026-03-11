@@ -6,11 +6,32 @@ import Image from "next/image";
 
 export const getServerSideProps = async ({ res }) => {
   const url = process.env.ENDPOINT;
-  const graphQLClient = new GraphQLClient(url, {
-    headers: {
-      Authorization: `Bearer ${process.env.GRAPH_CMS_TOKEN}`,
-    },
-  });
+
+  if (!url || typeof url !== 'string' || !url.startsWith('http')) {
+    console.error('ENDPOINT environment variable is not set or is invalid');
+    return {
+      props: {
+        courses: [],
+      },
+    };
+  }
+
+  let graphQLClient: GraphQLClient;
+  try {
+    graphQLClient = new GraphQLClient(url, {
+      headers: {
+        Authorization: `Bearer ${process.env.GRAPH_CMS_TOKEN}`,
+      },
+    });
+  } catch (error) {
+    console.error('Error creating GraphQL client:', error);
+    return {
+      props: {
+        courses: [],
+      },
+    };
+  }
+
   // Add caching headers to improve response time for repeated requests
   res.setHeader("Cache-Control", "s-maxage=3600, stale-while-revalidate");
   const query = gql`
@@ -29,8 +50,16 @@ export const getServerSideProps = async ({ res }) => {
       }
     }
   `;
-  const data = await graphQLClient.request(query);
-  const courses = data.courses;
+
+  let courses = [];
+  try {
+    const data = await graphQLClient.request(query);
+    courses = data?.courses || [];
+  } catch (error) {
+    console.error('Error fetching courses:', error);
+    courses = [];
+  }
+
   return {
     props: {
       courses,
