@@ -39,16 +39,15 @@ const extractVideoId = (url: string): string | null => {
 
 const YouTubeVideoCarousel: React.FC<YouTubeVideoCarouselProps> = ({ 
   videos, 
-  title = 'Course Videos' 
+  title = 'Testimonial Videos' 
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
 
-  // Determine items per view based on screen size
+  // Always show 1 video at a time
   const getItemsPerView = () => {
-    if (typeof window === 'undefined') return 2;
-    return window.innerWidth >= 1024 ? 2 : 1;
+    return 1;
   };
 
   const [itemsPerView, setItemsPerView] = useState(getItemsPerView());
@@ -190,7 +189,7 @@ const YouTubeVideoCarousel: React.FC<YouTubeVideoCarouselProps> = ({
                   }}>
                     <LiteYouTubeEmbed
                       id={videoId}
-                      title={`Course Video ${index + 1}`}
+                      title={`Testimonial Video ${index + 1}`}
                       poster="maxresdefault"
                       webp={true}
                     />

@@ -434,7 +434,7 @@ const CoursePage = ({ course }) => {
               {course?.youtubeVideos && course.youtubeVideos.length > 0 && (
                 <YouTubeVideoCarousel 
                   videos={course.youtubeVideos} 
-                  title="Course Videos"
+                  title="Testimonial Videos"
                 />
               )}
 
