@@ -208,7 +208,7 @@ const CoursePage = ({ course }) => {
                   <YouTubeIcon className="w-6 h-6 mr-2" /> Videos
                 </a>
               </div>
-            )}
+            )}  
           </div>
           <div className="lg:grid lg:grid-cols-2 lg:gap-10 lg:items-start">
             <div className="relative z-10">
@@ -267,9 +267,21 @@ const CoursePage = ({ course }) => {
                 )}
               </div>
             </div>
-            <div className="mt-12 relative text-base max-w-prose mx-auto lg:mt-0 lg:max-w-none">
+            <div className="mt-12 relative isolate text-base max-w-prose mx-auto lg:mt-0 lg:max-w-none">
+              {courseSlug ===
+                "/courses/comprehensive-andrology-training-program" && (
+                  <div className="relative z-10">
+                    <LiteYouTubeEmbed
+                      id={"sDiR0gx3nfs"}
+                      title={"Comprehensive Course in Andrology — short video"}
+                      poster="maxresdefault"
+                      thumbnail={""}
+                      params="fs=1&modestbranding=1&rel=0"
+                    />
+                  </div>
+                )}
               <svg
-                className="absolute top-0 right-0 -mt-20 -mr-20 lg:top-auto lg:right-auto lg:bottom-1/2 lg:left-1/2 lg:mt-0 lg:mr-0 xl:top-0 xl:right-0 xl:-mt-20 xl:-mr-20"
+                className="pointer-events-none absolute top-0 right-0 z-0 -mt-20 -mr-20 lg:top-auto lg:right-auto lg:bottom-1/2 lg:left-1/2 lg:mt-0 lg:mr-0 xl:top-0 xl:right-0 xl:-mt-20 xl:-mr-20"
                 width={404}
                 height={384}
                 fill="none"
