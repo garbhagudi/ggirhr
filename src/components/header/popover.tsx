@@ -113,8 +113,13 @@ export const courses = {
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089736/GGIRHR/Icons/header%20icons%20svg/IUI_-_Workshop_yvaxxh.svg",
     },
     {
-      name: "Certified Fertility Specialist",
+      name: "Certified Fertility Specialist (3-Month Program)",
       href: "/courses/certified-fertility-specialist",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089736/GGIRHR/Icons/header%20icons%20svg/IUI_-_Workshop_yvaxxh.svg",
+    },
+    {
+      name: "Certified Fertility Specialist (6-Month Program)",
+      href: "/courses/certified-fertility-specialist-6-month-program",
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/6_Months_-_Preceptor_drqlm8.svg",
     },
     {
