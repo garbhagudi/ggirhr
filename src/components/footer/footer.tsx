@@ -19,12 +19,12 @@ const navigation = {
     { name: 'Contact Us', href: '/gg-care' },
     { name: 'Career', href: 'https://www.garbhagudi.com/careers' },
   ],
-  company: [
-    { name: 'GGIRHR', href: '/' },
-    { name: 'GarbhaGudi IVF', href: 'https://www.garbhagudi.com' },
-    { name: 'GarbhaGnan Foundation', href: 'https://garbhagnan.org' },
-    { name: 'GarbhaGudi Pharma', href: 'https://www.garbhagudi.com' },
-  ],
+  // company: [
+  //   { name: 'GGIRHR', href: '/' },
+  //   { name: 'GarbhaGudi IVF', href: 'https://www.garbhagudi.com' },
+  //   { name: 'GarbhaGnan Foundation', href: 'https://garbhagnan.org' },
+  //   { name: 'GarbhaGudi Pharma', href: 'https://www.garbhagudi.com' },
+  // ],
   legal: [{ name: 'Privacy Policy', href: '/legal/privacy-policy' }],
 };
 
@@ -40,7 +40,7 @@ export default function Footer() {
       </h2>
       <div className='max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:py-8 lg:px-8 border-t'>
         <div className='xl:grid xl:grid-cols-3 xl:gap-8'>
-          <div className='mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-full text-center antialiased'>
+          <div className='mt-12 flex flex-wrap justify-center gap-8 xl:mt-0 xl:col-span-full text-center antialiased'>
             <div className='md:grid md:grid-cols-2 md:gap-8'>
               <div>
                 <h3 className='text-sm font-semibold text-brandliteGray tracking-wider uppercase'>
@@ -75,8 +75,8 @@ export default function Footer() {
                 </ul>
               </div>
             </div>
-            <div className='md:grid md:grid-cols-2 md:gap-8'>
-              <div>
+            <div>
+              {/* <div>
                 <h3 className='text-sm font-semibold text-brandliteGray tracking-wider uppercase'>
                   Organisation
                 </h3>
@@ -91,8 +91,8 @@ export default function Footer() {
                     </li>
                   ))}
                 </ul>
-              </div>
-              <div className='mt-12 md:mt-0'>
+              </div> */}
+              <div>
                 <h3 className='text-sm font-semibold text-brandliteGray tracking-wider uppercase'>
                   Legal
                 </h3>
