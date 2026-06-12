@@ -105,6 +105,41 @@ export const courses = {
       href: "/courses/fellowship-in-clinical-embryology",
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
     },
+    {
+      name: "Thawing and Embryo Transfer Techniques",
+      href: "/courses/thawing-and-embryo-transfer-techniques",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+    },
+    {
+      name: "Vitrification (Hands-On) Training",
+      href: "/courses/vitrification-hands-on-training",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+    },
+    {
+      name: "stART your IVF Clinic",
+      href: "/courses/start-your-ivf-clinic",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+    },
+    {
+      name: "Quality Control in IVF laboratory",
+      href: "/courses/quality-control-in-ivf-laboratory",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+    },
+    {
+      name: "Laser Hatching & Embryo Biopsy",
+      href: "/courses/laser-hatching-and-embryo-biopsy",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+    },
+    {
+      name: "Fundamentals of Clinical ART Laboratory",
+      href: "/courses/fundamentals-of-clinical-art-laboratory",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+    },
+    {
+      name: "Advanced Intracytoplasmic Sperm Injection (ICSI) Training",
+      href: "/courses/advanced-intracytoplasmic-sperm-injection-icsi-training",
+      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+    },
   ],
   shortTermCourses: [
     {
@@ -113,8 +148,13 @@ export const courses = {
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089736/GGIRHR/Icons/header%20icons%20svg/IUI_-_Workshop_yvaxxh.svg",
     },
     {
-      name: "Certified Fertility Specialist",
+      name: "Certified Fertility Specialist (3-Month Program)",
       href: "/courses/certified-fertility-specialist",
+      icon: "/icons/3-months-preceptor.svg",
+    },
+    {
+      name: "Certified Fertility Specialist (6-Month Program)",
+      href: "/courses/certified-fertility-specialist-6-months",
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/6_Months_-_Preceptor_drqlm8.svg",
     },
     {
