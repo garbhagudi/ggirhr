@@ -116,7 +116,7 @@ export const courses = {
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
     },
     {
-      name: "Start Your IVF Clinic",
+      name: "stART your IVF Clinic",
       href: "/courses/start-your-ivf-clinic",
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
     },
