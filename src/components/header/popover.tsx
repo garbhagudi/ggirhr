@@ -89,7 +89,7 @@ export const courses = {
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg",
     },
     {
-      name: "3D Gyn USG",
+      name: "3D Gyn USG Workshop",
       href: "/courses/3d-gyn-usg",
       icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1745390774/GGIRHR/Icons/header%20icons%20svg/3G_Gyn_USG_ICON_mpozy4.svg",
     },
