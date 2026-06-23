@@ -111,3 +111,17 @@
     overflow: visible !important;
   }
 }
+
+/* "Meet our Experts" carousel only (containerClass="experts-carousel").
+   Vertically center the arrows and pull them to the outer edges so they sit
+   clear of the centered expert photos. */
+.experts-carousel .react-multiple-carousel__arrow {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.experts-carousel .react-multiple-carousel__arrow--left {
+  left: 0;
+}
+.experts-carousel .react-multiple-carousel__arrow--right {
+  right: 0;
+}
