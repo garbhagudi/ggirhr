@@ -161,6 +161,7 @@ const IndexPage = ({ HomeData, testimonials }) => {
             ssr={true}
             autoPlaySpeed={5000}
             infinite={true}
+            containerClass='experts-carousel'
           >
             {HomeData?.teachers?.map((item: any) => (
               <div
