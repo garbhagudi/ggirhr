@@ -41,7 +41,7 @@ const Hero = () => {
         <div className='absolute inset-0'>
           <Image
             className='w-full h-full object-cover'
-            src='https://res.cloudinary.com/garbhagudiivf/image/upload/v1740119459/GGIRHR/Images/GG_Care_Web_Banner-min_xh7g5u.webp'
+            src='https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegu8ot01qn06prkft548fu'
             alt=''
             width={1200}
             height={600}

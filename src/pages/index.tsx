@@ -100,7 +100,7 @@ const IndexPage = ({ HomeData, testimonials }) => {
         <meta property='og:type' content='website' />
         <meta
           property='og:image'
-          content='https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_About-min_jifn0w.jpg'
+          content='https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegs19a01gx06pr749twdyd'
         />
 
         {/* Twitter*/}
@@ -117,7 +117,7 @@ const IndexPage = ({ HomeData, testimonials }) => {
         />
         <meta
           name='twitter:image'
-          content='https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_About-min_jifn0w.jpg'
+          content='https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegs19a01gx06pr749twdyd'
         />
       </Head>
       <div className='shadow-2xl drop-shadow-2xl'>

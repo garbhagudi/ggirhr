@@ -20,32 +20,32 @@ const AboutSection = [
   {
     name: "About Us",
     href: "/about",
-    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/About_Us_copqsk.svg",
+    icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsp3v01jv06prxnf0ftof",
   },
   {
     name: "Our Values",
     href: "/about/values",
-    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Our_Values_kqjt58.svg",
+    icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegt5o001lg06prx5l8yp71",
   },
   {
     name: "Vision and Mission",
     href: "/about/mission-and-vision",
-    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Vision_Mission_ez6ate.svg",
+    icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegta1501m006prpbbg7f00",
   },
   {
     name: "Leadership",
     href: "/about/leadership",
-    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089736/GGIRHR/Icons/header%20icons%20svg/Leadership_psjunm.svg",
+    icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsu9k01j306pn02qhsxr9",
   },
   {
     name: "Our Faculty",
     href: "/about/faculty",
-    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Our_Faculty_pvz6gk.svg",
+    icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegt5ni01lc06prj9yyjnlq",
   },
   {
     name: "Awards and Accolades",
     href: "/about/awards-and-accolades",
-    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Awards_Accrolades_gz6spo.svg",
+    icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsp5401k306prlodsjbbq",
   },
 ];
 
@@ -54,98 +54,98 @@ export const courses = {
     {
       name: "IMA-AMS Fellowship in Infertility",
       href: "/courses/ima-ams-fellowship-in-infertility",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089736/GGIRHR/Icons/header%20icons%20svg/IMA_-_AMS_xoysuq.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsu7z01ir06pnsamxs2s7",
     },
     {
       name: "RGUHS Fellowship in Reproductive Medicine",
       href: "/courses/rguhs-fellowship-in-reproductive-medicine",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/RGUHS_f22qpk.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegt5p601lo06prkw6fy2i3",
     },
     {
       name: "Fellowship in Reproductive Medicine",
       href: "/courses/fellowship-in-reproductive-medicine",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089736/GGIRHR/Icons/header%20icons%20svg/Ins_Fellowship_dhuxji.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsu8i01iv06pn0fvnvrt4",
     },
     {
       name: "Non-Resident Fellowship in Infertility",
       href: "/courses/non-resident-fellowship-in-infertility",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Non_-_Resi_Fellowship_tbyizb.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegt5my01l806prwprys6cb",
     },
     {
       name: "Fellowship in Clinical Embryology",
       href: "/courses/fellowship-in-clinical-embryology",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegt5ok01lk06prz8m2rn82",
     },
   ],
   ultrasound: [
     {
       name: "Comprehensive TVS Ultrasound Scan Program",
       href: "/courses/comprehensive-tvs-ultrasound-scan-program",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsp4f01jz06prawie1ruv",
     },
     {
       name: "Online Basic TVS Ultrasound Scan Program",
       href: "/courses/online-basic-tvs-ultrasound-scan-program",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsp4f01jz06prawie1ruv",
     },
     {
       name: "3D Gyn USG Workshop",
       href: "/courses/3d-gyn-usg",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1745390774/GGIRHR/Icons/header%20icons%20svg/3G_Gyn_USG_ICON_mpozy4.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsboi01iz06prmmauokor",
     },
   ],
   embryology: [
     {
       name: "Post Graduate Certificate in Clinical Embryology (PGCCE)",
       href: "/courses/post-graduate-certificate-in-clinical-embryology-pgcce-program",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegt5ok01lk06prz8m2rn82",
     },
     {
       name: "Fellowship in Clinical Embryology",
       href: "/courses/fellowship-in-clinical-embryology",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegt5ok01lk06prz8m2rn82",
     },
     {
       name: "Thawing and Embryo Transfer Techniques",
       href: "/courses/thawing-and-embryo-transfer-techniques",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegt5ok01lk06prz8m2rn82",
     },
     {
       name: "Vitrification (Hands-On) Training",
       href: "/courses/vitrification-hands-on-training",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegt5ok01lk06prz8m2rn82",
     },
     {
       name: "stART your IVF Clinic",
       href: "/courses/start-your-ivf-clinic",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegt5ok01lk06prz8m2rn82",
     },
     {
       name: "Quality Control in IVF laboratory",
       href: "/courses/quality-control-in-ivf-laboratory",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegt5ok01lk06prz8m2rn82",
     },
     {
       name: "Laser Hatching & Embryo Biopsy",
       href: "/courses/laser-hatching-and-embryo-biopsy",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegt5ok01lk06prz8m2rn82",
     },
     {
       name: "Fundamentals of Clinical ART Laboratory",
       href: "/courses/fundamentals-of-clinical-art-laboratory",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegt5ok01lk06prz8m2rn82",
     },
     {
       name: "Advanced Intracytoplasmic Sperm Injection (ICSI) Training",
       href: "/courses/advanced-intracytoplasmic-sperm-injection-icsi-training",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089738/GGIRHR/Icons/header%20icons%20svg/Regular_Embryology_sp4qqq.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegt5ok01lk06prz8m2rn82",
     },
   ],
   shortTermCourses: [
     {
       name: "IUI Workshop",
       href: "/courses/iui-workshop",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089736/GGIRHR/Icons/header%20icons%20svg/IUI_-_Workshop_yvaxxh.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsu9001iz06pnddpsej6p",
     },
     {
       name: "Certified Fertility Specialist (3-Month Program)",
@@ -155,53 +155,53 @@ export const courses = {
     {
       name: "Certified Fertility Specialist (6-Month Program)",
       href: "/courses/certified-fertility-specialist-6-months",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/6_Months_-_Preceptor_drqlm8.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsp3b01jr06prmnl9eu4g",
     },
     {
       name: "Mastering Egg Pickup (Oocyte Pickup or OPU)",
       href: "/courses/mastering-egg-pickup-oocyte-pickup-ovum-pickup-opu",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1729924632/GGIRHR/Icons/header%20icons%20svg/Egg_Pick-up_1_rw6pho.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsp5o01k706prvxjtalpa",
     },
   ],
   microCertifications: [
     {
       name: "Fundamentals of Scientific Writing",
       href: "/courses/fundamentals-of-scientific-writing",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1724493733/GGIRHR/Icons/header%20icons%20svg/Scientific_Writing_Career-_Icon_acvwud.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegta0k01lw06pr1o3i3in1",
     },
     {
       name: "Executive Diploma in Medical Writing (Online)",
       href: "/courses/executive-diploma-in-medical-writing",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1745918223/GGIRHR/Medical_Writing_Icon_myzip3.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsua601j706pnzbhvxhsb",
     },
   ],
   andrology: [
     {
       name: "Comprehensive Course in Andrology",
       href: "/courses/comprehensive-andrology-training-program",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsp4f01jz06prawie1ruv",
     },
   ],
   artSimulationLab: [
     {
       name: "Comprehensive TVS Ultrasound Scan Program",
       href: "/courses/comprehensive-tvs-ultrasound-scan-program",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsp4f01jz06prawie1ruv",
     },
     {
       name: "Online Basic TVS Ultrasound Scan Program",
       href: "/courses/online-basic-tvs-ultrasound-scan-program",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650089740/GGIRHR/Icons/header%20icons%20svg/Andrology_Workshop_nmz0mu.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsp4f01jz06prawie1ruv",
     },
     {
       name: "Mastering Egg Pickup (Oocyte Pickup or OPU)",
       href: "/courses/mastering-egg-pickup-oocyte-pickup-ovum-pickup-opu",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1729924632/GGIRHR/Icons/header%20icons%20svg/Egg_Pick-up_1_rw6pho.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsp5o01k706prvxjtalpa",
     },
     {
       name: "3D Gyn USG",
       href: "/courses/3d-gyn-usg",
-      icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1745390774/GGIRHR/Icons/header%20icons%20svg/3G_Gyn_USG_ICON_mpozy4.svg",
+      icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsboi01iz06prmmauokor",
     },
   ],
 };

@@ -6,7 +6,7 @@ export default function Banner() {
       <Image
         className="mb-4 object-cover object-center w-screen"
         alt="Top infertility training organizations in india"
-        src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1740119156/GGIRHR/Images/About_us-min_fofilh.webp"
+        src="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegu2g801pf06prsgnwsafv"
         width={800}
         height={500}
         sizes="(max-width: 640px) 90vw, 100vw"
@@ -97,28 +97,28 @@ const Data = [
   {
     id: 1,
     organisation: "IMA - Academy of Medical Specialities",
-    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650091609/GGIRHR/Icons/header%20icons%20svg/IMA_Logo_dhyw55.svg",
+    icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegta2901m806pr0hy0gdjz",
     description: "IMA-AMS Fellowship in Infertility",
     // link: "/about/affiliations/ima-ams",
   },
   {
     id: 2,
     organisation: "Rajiv Gandhi University of Health Sciences",
-    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650091609/GGIRHR/Icons/header%20icons%20svg/RGUHS_Logo_xix5k6.svg",
+    icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegtkhp01kl06pngex8ubkk",
     description: "RGUHS Fellowship in Reproductive Medicine",
     // link: "/about/affiliations/rguhs",
   },
   {
     id: 3,
     organisation: "NITTE (Deemed to be University)",
-    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650091609/GGIRHR/Icons/header%20icons%20svg/NITTE_Logo_iy1djy.svg",
+    icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegta2s01mc06prx0b64ijo",
     description: "PG Diploma in clinical Embryology ",
     // link: "/about/affiliations/nitte",
   },
   {
     id: 4,
     organisation: "Bangalore Bio Innovation Centre",
-    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1650091609/GGIRHR/Icons/header%20icons%20svg/Bnglr_Bio_Inn_Logo_luugz3.svg",
+    icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegta1q01m406prg8y1xt5o",
     description: "PG Diploma in clinical Embryology",
     // link: "/about/affiliations/bbc",
   },

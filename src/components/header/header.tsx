@@ -20,7 +20,7 @@ const Header = () => {
               <div className='flex-shrink-0 pt-4'>
                 <Link href='/'>
                   <Image
-                    src='https://res.cloudinary.com/garbhagudiivf/image/upload/v1644909568/logos/gg-logo_bg5gzc.png'
+                    src='https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegtq5201oe06pryy2gzwdk'
                     alt='GarbhaGudi IVF logo'
                     width={256}
                     height={64}

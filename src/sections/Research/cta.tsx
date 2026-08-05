@@ -72,7 +72,7 @@ const Cta = () => {
               <div className='relative flex flex-col min-w-0 break-words w-full'>
                 <div className='flex-auto p-5 lg:p-10'>
                   <img
-                    src='https://res.cloudinary.com/garbhagudiivf/image/upload/v1651130045/GGIRHR/Images/152731049-cc744a56-1d6f-4945-9566-0fa3b7ad1d24_ltrmhf.png'
+                    src='https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegv30j01ox06pnximhmp9d'
                     alt='contact image'
                   />
                 </div>

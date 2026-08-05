@@ -329,7 +329,7 @@ const CoursePage = ({ course }) => {
                               <div className="flex items-center justify-center font-medium text-gray-800">
                                 <div className=" w-[300px] md:w-fit overflow-hidden text-wrap  text-gray-700 flex gap-x-3 items-start">
                                   <Image
-                                    src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1736420820/Students_z7bqek.svg"
+                                    src="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegtq2x01o206pr08oi9nuj"
                                     alt="Number_of_Student_Intake_Per_Batch_icon"
                                     width={100}
                                     height={100}
@@ -356,7 +356,7 @@ const CoursePage = ({ course }) => {
                                   <div className="h-10  text-gray-700 flex gap-x-3 items-start">
                                     <Image
                                       src={
-                                        "https://res.cloudinary.com/garbhagudiivf/image/upload/v1736420828/Batches_mm1yad.svg"
+                                        "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegtq3m01o606prdzzf48ee"
                                       }
                                       alt={"Number_of_Batches_Per_Year_icon"}
                                       width={100}
