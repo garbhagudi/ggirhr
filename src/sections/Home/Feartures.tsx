@@ -5,27 +5,27 @@ const Data = [
     id: 1,
     feature: "Internal Ethics Comittee",
     describe: "Made of eminent and well-qualified members",
-    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1651126722/GGIRHR/Icons/header%20icons%20svg/Internal_Ethics_Comittee_noe6ku.svg",
+    icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegtkjg01kx06pns4zf3bme",
   },
   {
     id: 2,
     feature: "Full-fledged Research Lab",
     describe: "To work on innovative and path-breaking technologies",
-    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1651126722/GGIRHR/Icons/header%20icons%20svg/Full-fledged_Research_Lab_fzjbvw.svg",
+    icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegtkiv01kt06pn1l3vxz1i",
   },
   {
     id: 3,
     feature: "Expert Team",
     describe:
       "To help guide and ensure the research is headed in the right direction",
-    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1651126722/GGIRHR/Icons/header%20icons%20svg/Expert_Team_uv6xei.svg",
+    icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegtkib01kp06pnfi8oos89",
   },
   {
     id: 4,
     feature: "Support Staff",
     describe:
       "To ensure the documentation, approvals, checks, audits and verifications",
-    icon: "https://res.cloudinary.com/garbhagudiivf/image/upload/v1651126722/GGIRHR/Icons/header%20icons%20svg/Support_Staff_ic3gaa.svg",
+    icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegtkk301l106pne58pn5td",
   },
 ];
 

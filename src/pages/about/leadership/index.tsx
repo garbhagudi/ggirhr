@@ -26,7 +26,7 @@ const Leadership = ({ leaders }) => {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_Leader-min_rnxwx5.jpg"
+          content="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsbms01in06pr37d12rz4"
         />
 
         {/* Twitter*/}
@@ -40,7 +40,7 @@ const Leadership = ({ leaders }) => {
         />
         <meta
           name="twitter:image"
-          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_Leader-min_rnxwx5.jpg"
+          content="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsbms01in06pr37d12rz4"
         />
       </Head>
       <div className="bg-white">

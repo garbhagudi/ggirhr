@@ -29,7 +29,7 @@ const values = () => {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644127/GGIRHR/SEO/SEO_Value-min_bhe13y.jpg"
+          content="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsbnc01ir06pr33zxynx3"
         />
 
         {/* Twitter*/}
@@ -43,7 +43,7 @@ const values = () => {
         />
         <meta
           name="twitter:image"
-          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644127/GGIRHR/SEO/SEO_Value-min_bhe13y.jpg"
+          content="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsbnc01ir06pr33zxynx3"
         />
       </Head>
       <div className="w-full">
@@ -53,7 +53,7 @@ const values = () => {
               <Image
                 alt="..."
                 className="max-w-full rounded-3xl shadow-lg mb-10"
-                src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006732/GGIRHR/Images/Our_Values-min_gccmfd.jpg"
+                src="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegu2i801pr06przac1ssza"
                 width={1200}
                 height={800}
                 sizes="(max-width: 640px) 90vw, 50vw"

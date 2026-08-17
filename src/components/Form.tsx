@@ -61,7 +61,7 @@ const Form = ({ refPath = "" }) => {
   return (
     <div className="zcwf_lblLeft crmWebToEntityForm mx-auto h-auto w-full rounded-lg bg-transparent ">
       <Image
-        src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1742208282/GGIRHR/Images/Web_Babnner_GGIRHR-01_ycjf95.webp"
+        src="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegu8pg01qr06pr7etitksc"
         width={1920}
         height={1080}
         alt="book an appointment form"

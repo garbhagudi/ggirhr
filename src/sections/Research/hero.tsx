@@ -36,7 +36,7 @@ const Hero = () => {
           <div className='lg:text-right lg:ml-auto'>
             <div className='relative inline-block z-10 pt-4 lg:pt-0'>
               <img
-                src='https://res.cloudinary.com/garbhagudiivf/image/upload/v1740117190/GGIRHR/Images/c_10_11zon_w9303y.webp'
+                src='https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegu2fk01pb06prbr1r269r'
                 alt='GGRIHR'
                 className='max-w-full lg:ml-auto rounded-lg rounded-tl-[48px] shadow-2xl drop-shadow-2xl'
               />
@@ -60,7 +60,7 @@ const Hero = () => {
               <div className='lg:text-right mx-auto'>
                 <div className='relative inline-block z-10 pt-4 lg:pt-0'>
                   <img
-                    src='https://res.cloudinary.com/garbhagudiivf/image/upload/v1740120465/GGIRHR/Research%20Assets/cdc-IFpQtennlj8-unsplash-min_ksx5qc.webp'
+                    src='https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegvbwq01q506pnwzxsn6s1'
                     alt='hero'
                     className='max-w-full mx-auto rounded-lg rounded-br-[48px] shadow-2xl drop-shadow-2xl'
                   />

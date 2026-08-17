@@ -37,7 +37,7 @@ const LeaderPage = ({ leader }) => {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1643802154/SEO/OG_images_Directors_jbvcep.jpg"
+          content="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegv30401ot06pnqniak2wj"
         />
 
         {/* Twitter*/}
@@ -51,13 +51,13 @@ const LeaderPage = ({ leader }) => {
         />
         <meta
           name="twitter:image"
-          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1643802154/SEO/OG_images_Directors_jbvcep.jpg"
+          content="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegv30401ot06pnqniak2wj"
         />
       </Head>
       <div className="bg-white py-0 sm:py-8">
         <div className="max-w-3xl mx-auto">
           <div className="w-full">
-            <div className="w-full h-40 md:h-64 bg-cover bg-center md:rounded-t-3xl bg-[url('https://res.cloudinary.com/garbhagudiivf/image/upload/v1651043881/GGIRHR/Images/Faculty_lv9rz1.jpg')] blur-sm shadow-2xl"></div>
+            <div className="w-full h-40 md:h-64 bg-cover bg-center md:rounded-t-3xl bg-[url('https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegv2z101ol06pn4bkryhha')] blur-sm shadow-2xl"></div>
             <div className="absolute -mt-16 md:-mt-28 ml-5">
               <div className="bg-gray-200 border h-32 w-32 md:h-52 md:w-52 rounded-full md:rounded-3xl shadow-2xl border-primary overflow-hidden">
                 <Image

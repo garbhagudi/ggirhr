@@ -93,7 +93,7 @@ const Course = ({ courses }) => {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644125/GGIRHR/SEO/SEO_Course_Tree-min_z4timn.jpg"
+          content="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegs1bt01hd06prp3r533b6"
         />
 
         {/* Twitter*/}
@@ -107,7 +107,7 @@ const Course = ({ courses }) => {
         />
         <meta
           name="twitter:image"
-          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644125/GGIRHR/SEO/SEO_Course_Tree-min_z4timn.jpg"
+          content="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegs1bt01hd06prp3r533b6"
         />
       </Head>
       <section className="text-gray-600 body-font mb-10">

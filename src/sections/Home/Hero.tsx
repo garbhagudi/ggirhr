@@ -32,7 +32,7 @@ const Hero = () => {
             </div>
           </div>
           <Image
-            src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1740117190/GGIRHR/Images/c_10_11zon_w9303y.webp"
+            src="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegu2fk01pb06prbr1r269r"
             width={600}
             height={400}
             className="w-full mt-6 md:mt-0 h-80 object-cover md:w-2/3 lg:w-1/2 md:-ml-4 lg:-ml-4 xl:ml-0 rounded-xl"

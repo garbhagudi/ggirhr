@@ -30,7 +30,7 @@ const CTA = (props: Props) => {
               </div>
               <div className="md:w-4/12 w-2/3">
                 <Image
-                  src="https://res.cloudinary.com/garbhagudiivf/image/upload/q_65/v1649334670/GGIRHR/Images/sir_56_rk3ka9.webp"
+                  src="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegv2ym01oh06pncy0unqxc"
                   alt="cartoon avatars"
                   width={400}
                   height={300}

@@ -28,7 +28,7 @@ const VisionMission = () => {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644127/GGIRHR/SEO/SEO_Vision_Mission-min_kdnnsz.jpg"
+          content="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsbnv01iv06prtemklr4a"
         />
 
         {/* Twitter*/}
@@ -42,7 +42,7 @@ const VisionMission = () => {
         />
         <meta
           name="twitter:image"
-          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644127/GGIRHR/SEO/SEO_Vision_Mission-min_kdnnsz.jpg"
+          content="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsbnv01iv06prtemklr4a"
         />
       </Head>
       <section className="text-gray-600 body-font">
@@ -56,7 +56,7 @@ const VisionMission = () => {
                 <Image
                   alt="GGIRHR Vision"
                   className="object-cover object-center mb-2"
-                  src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1740119787/About/1201x501_Vision_c6ds1h.webp"
+                  src="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegu8mz01qb06prid0hhksc"
                   width={1201}
                   height={501}
                   sizes="(max-width: 640px) 90vw, 100vw"
@@ -83,7 +83,7 @@ const VisionMission = () => {
                 <Image
                   alt="GGIRHR Mission"
                   className="object-cover object-center mb-2"
-                  src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1740119971/About/1201x501_Mission_wcctgt.webp"
+                  src="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegu8no01qf06prwlncdely"
                   width={1201}
                   height={501}
                   sizes="(max-width: 640px) 90vw, 100vw"

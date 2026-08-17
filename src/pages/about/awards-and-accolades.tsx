@@ -31,7 +31,7 @@ const Awards = () => {
         <meta property='og:type' content='website' />
         <meta
           property='og:image'
-          content='https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_Awards-min_nbnk68.jpg'
+          content='https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegs1a101h106pr3h5me9rp'
         />
 
         {/* Twitter*/}
@@ -45,7 +45,7 @@ const Awards = () => {
         />
         <meta
           name='twitter:image'
-          content='https://res.cloudinary.com/garbhagudiivf/image/upload/v1651644126/GGIRHR/SEO/SEO_Awards-min_nbnk68.jpg'
+          content='https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegs1a101h106pr3h5me9rp'
         />
       </Head>
       <div className='max-w-7xl mx-auto'>
@@ -54,7 +54,7 @@ const Awards = () => {
         </h1>
         <div className='px-3 sm:px-0'>
           <Image
-            src='https://res.cloudinary.com/garbhagudiivf/image/upload/v1740119316/GGIRHR/Images/e_12_11zon_f9km0i.webp'
+            src='https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegu8o901qj06prxjqp7ktw'
             alt='GGIRHR Awards'
             className='rounded-2xl w-full'
             width={800}

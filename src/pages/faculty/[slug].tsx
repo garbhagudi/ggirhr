@@ -51,7 +51,7 @@ const FacultyPage = ({ teacher }) => {
       <div className='bg-white py-0 sm:py-8'>
         <div className='max-w-3xl mx-auto'>
           <div className='w-full'>
-            <div className="w-full h-40 md:h-64 bg-cover bg-center md:rounded-t-3xl bg-[url('https://res.cloudinary.com/garbhagudiivf/image/upload/v1651043881/GGIRHR/Images/Faculty_lv9rz1.jpg')] shadow-2xl blur-sm"></div>
+            <div className="w-full h-40 md:h-64 bg-cover bg-center md:rounded-t-3xl bg-[url('https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegv2z101ol06pn4bkryhha')] shadow-2xl blur-sm"></div>
             <div className='absolute -mt-16 md:-mt-28 ml-5'>
               <div className='relative h-44 w-44 mx-auto'>
                 <div className='h-full w-full absolute rounded-lg bg-gradient-to-br from-brandPink to-brandBlue animate-rotate bg-[length: 400%]'></div>

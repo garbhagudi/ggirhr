@@ -42,7 +42,7 @@ const IndexPage = ({ events }) => {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651043879/GGIRHR/Images/Webinar_wjquhx.jpg"
+          content="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegv2zj01op06pnzzs66n51"
         />
 
         {/* Twitter*/}
@@ -56,7 +56,7 @@ const IndexPage = ({ events }) => {
         />
         <meta
           name="twitter:image"
-          content="https://res.cloudinary.com/garbhagudiivf/image/upload/v1651043879/GGIRHR/Images/Webinar_wjquhx.jpg"
+          content="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegv2zj01op06pnzzs66n51"
         />
       </Head>
       <div className="w-full mt-10 mb-6 lg:mb-0">

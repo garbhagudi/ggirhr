@@ -4,7 +4,6 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     unoptimized: true,
     domains: [
-      "res.cloudinary.com",
       "media.graphassets.com",
       "ap-south-1.graphassets.com",
       "avatars.dicebear.com",

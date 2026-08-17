@@ -25,7 +25,7 @@ const Overview = () => {
         <div className="lg:mt-14 sm:mt-10 mt-12">
           <Image
             className="rounded-xl w-screen"
-            src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006732/GGIRHR/Images/Why_GGIRHR-min_o7ir0f.webp"
+            src="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegu2hk01pn06prle28d6bc"
             alt="Infertility Training Institute in India"
             width={1200}
             height={700}
@@ -56,7 +56,7 @@ const Overview = () => {
           <div className="lg:flex items-center w-full lg:w-1/2 ">
             <img
               className="w-full rounded-xl"
-              src="https://res.cloudinary.com/garbhagudiivf/image/upload/v1650006731/GGIRHR/Images/Our_Story-min_va1fno.webp"
+              src="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegu2gt01pj06prktxjoff1"
               alt="people discussing on board"
             />
           </div>
