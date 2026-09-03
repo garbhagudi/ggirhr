@@ -51,44 +51,6 @@ export default function Banner() {
           </div>
         </div>
       </section>
-      <section className="text-brandDark">
-        <div className="container px-5 mx-auto">
-          <div className="w-full mb-8">
-            <h1 className="text-center text-4xl font-heading font-bold text-brandDark">
-              Affiliations
-            </h1>
-          </div>
-          <div className="flex flex-wrap m-4 max-w-4xl mx-auto">
-            {Data.map((items) => (
-              <div className="p-4 md:w-2/4 lg:w-2/4 mx-auto" key={items.id}>
-                <div className="flex rounded-2xl w-96 sm:w-auto bg-gray-100 p-8 flex-col h-44">
-                  <div className="flex items-center mb-3">
-                    <div className="w-28 h-28 mr-3 inline-flex items-center justify-center rounded-full bg-brandBlue text-white flex-shrink-0 overflow-hidden">
-                      <Image
-                        src={items.icon}
-                        alt={items.organisation}
-                        width={112}
-                        height={112}
-                        sizes="(max-width: 640px) 90vw, 100vw"
-                        loading="lazy"
-                      />
-                    </div>
-
-                    <h2 className="text-gray-900 text-xl font-semibold">
-                      {items.organisation}
-                    </h2>
-                  </div>
-                  {/* <div className="flex-grow">
-                    <p className="text-center font-semibold text-sm">
-                      {items.description}
-                    </p>
-                  </div> */}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
