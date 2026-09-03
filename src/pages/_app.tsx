@@ -3,6 +3,7 @@ import "../styles/globals.css";
 import "../styles/caoursel.css";
 import Header from "components/header/header";
 import Footer from "components/footer/footer";
+import ReadyToGetStarted from "sections/Home/ReadyToGetStarted";
 import SalesIQ from "components/SalesIQ";
 import FloatPhone from "components/floatPhone";
 import TagManager from "react-gtm-module";
@@ -14,6 +15,9 @@ import Loading from "components/loading";
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [loading, setLoading] = React.useState(false);
+  // Home page renders its own "Ready to get started?" footer section
+  // (sections/Home/ReadyToGetStarted) in place of the global Footer.
+  const isHome = router.pathname === "/";
 
   useEffect(() => {
     TagManager.initialize({ gtmId: "GTM-5462HX7" });
@@ -68,7 +72,7 @@ function MyApp({ Component, pageProps }) {
           </main>
           <SalesIQ />
           <FloatPhone />
-          <Footer />
+          {isHome ? <ReadyToGetStarted /> : <Footer />}
         </div>
       )}
     </div>
