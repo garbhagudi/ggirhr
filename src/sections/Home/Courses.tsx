@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import Button from "components/ui/Button";
 import {
@@ -7,55 +7,42 @@ import {
   ClockIcon,
   UsersIcon,
 } from "@heroicons/react/solid";
+import SectionShell from "components/ui/SectionShell";
+import useFitCarousel from "components/ui/useFitCarousel";
 
 const ACCENT = "#1DA8E1";
-const CARD_WIDTH = 560;
+// Desktop card width. Cards never exceed this, but they shrink to fit a
+// narrower container — a fixed 560px card left mobile showing a ~7% sliver
+// of card one, and an inline width can't be overridden by a breakpoint.
+const MAX_CARD_WIDTH = 560;
 const CARD_GAP = 16;
-const CARD_STEP = CARD_WIDTH + CARD_GAP;
 const CARD_HEIGHT = 440;
-const IMAGE_WIDTH = 540;
 const IMAGE_HEIGHT = 260;
-const RESIZE_DEBOUNCE_MS = 150;
 
-const Courses = ({ Data }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsPerView, setItemsPerView] = useState(1);
-  const trackRef = useRef<HTMLDivElement>(null);
+type Course = {
+  id: string;
+  title?: string;
+  slug?: string;
+  courseImage?: { url?: string };
+};
 
-  React.useEffect(() => {
-    let debounceTimer: ReturnType<typeof setTimeout>;
-    const handleResize = () => {
-      clearTimeout(debounceTimer);
-      debounceTimer = setTimeout(() => {
-        const containerWidth =
-          trackRef.current?.parentElement?.clientWidth ?? 0;
-        const visible = Math.max(
-          1,
-          Math.floor((containerWidth + CARD_GAP) / CARD_STEP),
-        );
-        setItemsPerView((prev) =>
-          Math.floor(prev) === visible ? prev : visible,
-        );
-      }, RESIZE_DEBOUNCE_MS);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      clearTimeout(debounceTimer);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+const Courses = ({ courses }: { courses?: Course[] }) => {
+  const {
+    trackRef,
+    currentIndex,
+    cardWidth,
+    maxIndex,
+    canGoNext,
+    canGoPrev,
+    goToNext,
+    goToPrev,
+  } = useFitCarousel({
+    itemCount: courses?.length ?? 0,
+    maxCardWidth: MAX_CARD_WIDTH,
+    gap: CARD_GAP,
+  });
 
-  if (!Data || Data.length === 0) return null;
-
-  const maxIndex = Math.max(0, Data.length - Math.floor(itemsPerView));
-  const canGoNext = currentIndex < maxIndex;
-  const canGoPrev = currentIndex > 0;
-
-  const goToNext = () =>
-    canGoNext && setCurrentIndex((i) => Math.min(i + 1, maxIndex));
-  const goToPrev = () =>
-    canGoPrev && setCurrentIndex((i) => Math.max(i - 1, 0));
+  if (!courses || courses.length === 0) return null;
 
   // Progress-bar thumb: width is one "page" worth of the track, sliding
   // from the left edge to the right edge as currentIndex advances.
@@ -64,17 +51,19 @@ const Courses = ({ Data }) => {
     (currentIndex / (maxIndex || 1)) * (100 - progressWidthPct);
 
   return (
-    <section className="bg-[rgba(210,238,249,1)] py-20 px-40">
-      <div className="px-4 xl:px-0 mx-auto flex flex-col gap-7">
-        <div className="flex items-center justify-between">
+    <SectionShell as="section" className="bg-[#D2EEF9] py-14 lg:py-20">
+      <div className="flex flex-col gap-7">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
           <div className="text-black">
-            <h1 className="text-[46px] leading-[65px] sm:text-4xl font-bold">
+            {/* The `sm:` here used to be inverted — mobile got 46px and
+                desktop shrank to text-4xl. */}
+            <h1 className="text-[26px] leading-tight sm:text-4xl lg:text-[46px] lg:leading-[65px] font-bold">
               Courses and{" "}
-              <span className="text-[rgba(29,_168,_225,_1)] font-bold">
+              <span className="text-[#1DA8E1] font-bold">
                 Programs
               </span>
             </h1>
-            <p className="text-[18px] leading-6 font-semibold">
+            <p className="text-sm lg:text-[18px] leading-6 font-semibold">
               Check out our most popular courses below
             </p>
           </div>
@@ -82,7 +71,7 @@ const Courses = ({ Data }) => {
             href="/courses"
             variant="link"
             size="inline"
-            className="!text-[18px] !font-semibold whitespace-nowrap"
+            className="!text-base lg:!text-[18px] !font-semibold whitespace-nowrap self-start sm:self-auto"
           >
             See All Courses
           </Button>
@@ -92,17 +81,19 @@ const Courses = ({ Data }) => {
           <div
             ref={trackRef}
             className="flex gap-4 transition-transform duration-300 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * CARD_STEP}px)` }}
+            style={{
+              transform: `translateX(-${currentIndex * (cardWidth + CARD_GAP)}px)`,
+            }}
           >
-            {Data.map((item) => (
+            {courses.map((item) => (
               <div
                 key={item.id}
                 className="flex-shrink-0"
-                style={{ width: `${CARD_WIDTH}px` }}
+                style={{ width: `${cardWidth}px` }}
               >
                 <div
-                  className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col p-1"
-                  style={{ height: `${CARD_HEIGHT}px` }}
+                  className="bg-white rounded-2xl shadow-md overflow-hidden flex flex-col p-1 h-auto lg:h-[440px]"
+                  style={{ minHeight: `${CARD_HEIGHT}px` }}
                 >
                   <div
                     className="relative mx-auto flex-shrink-0"
@@ -112,13 +103,13 @@ const Courses = ({ Data }) => {
                       src={item?.courseImage?.url}
                       alt={item?.title}
                       fill
-                      sizes={`${IMAGE_WIDTH}px`}
+                      sizes={`(min-width: 1024px) ${MAX_CARD_WIDTH}px, 100vw`}
                       className="object-cover rounded-t-2xl"
                     />
                   </div>
                   <div className="p-4 flex-1 flex flex-col justify-between overflow-hidden leading-7">
                     <div className="flex flex-col gap-5">
-                      <div className="flex items-center gap-2.5 text-sm text-[rgba(29,168,225,1)]">
+                      <div className="flex items-center gap-2.5 text-sm text-[#1DA8E1]">
                         <span className="flex items-center gap-1.5">
                           <ClockIcon
                             className="w-4 h-4"
@@ -171,7 +162,7 @@ const Courses = ({ Data }) => {
               size="icon-sm"
               className="disabled:!opacity-40"
             >
-              <ChevronLeftIcon className="w-5 h-5" />
+              <ChevronLeftIcon className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
             </Button>
             <Button
               onClick={goToNext}
@@ -181,12 +172,12 @@ const Courses = ({ Data }) => {
               size="icon-sm"
               className="disabled:!opacity-40"
             >
-              <ChevronRightIcon className="w-5 h-5" />
+              <ChevronRightIcon className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
             </Button>
           </div>
         </div>
       </div>
-    </section>
+    </SectionShell>
   );
 };
 

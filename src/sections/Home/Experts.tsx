@@ -4,8 +4,8 @@ import Link from "next/link";
 import { SocialIcon } from "react-social-icons";
 import { UserIcon } from "@heroicons/react/solid";
 import Chip from "components/ui/Chip";
+import SectionShell from "components/ui/SectionShell";
 
-const ACCENT = "#1DA8E1";
 const CARD_GAP = 16;
 const CARD_HEIGHT = 445;
 const DESCRIPTION_HEIGHT = 120;
@@ -16,14 +16,14 @@ const COMPANY_LINKEDIN_URL =
   "https://www.linkedin.com/company/garbhagudi-institute-of-reproductive-health-research/";
 
 const AvatarGroup = () => (
-  <span className="inline-flex items-center align-middle mx-2">
+  <span className="inline-flex items-center align-middle mx-1.5 lg:mx-2">
     {[0, 1, 2, 3].map((i) => (
       <span
         key={i}
-        className="w-12 h-12 rounded-full bg-[#1DA8E1] ring-1 ring-white flex items-center justify-center overflow-hidden"
+        className="w-8 h-8 lg:w-12 lg:h-12 rounded-full bg-[#1DA8E1] ring-1 ring-white flex items-center justify-center overflow-hidden"
         style={{ marginLeft: i === 0 ? 0 : -12, zIndex: 3 - i }}
       >
-        <UserIcon className="w-5 h-5 text-white" />
+        <UserIcon className="w-3.5 h-3.5 lg:w-5 lg:h-5 text-white" />
       </span>
     ))}
   </span>
@@ -50,13 +50,15 @@ const Experts = ({ teachers }: { teachers: Teacher[] }) => {
     const handleResize = () => {
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(() => {
-        const width = window.innerWidth;
-        const visible = width < 640 ? 1 : width < 1024 ? 2 : 3;
+        const viewportWidth = window.innerWidth;
+        const visible =
+          viewportWidth < 640 ? 1 : viewportWidth < 1024 ? 2 : 3;
         const containerWidth =
           trackRef.current?.parentElement?.clientWidth ?? 0;
-        const width_ = (containerWidth - CARD_GAP * (visible - 1)) / visible;
+        const fluidCardWidth =
+          (containerWidth - CARD_GAP * (visible - 1)) / visible;
         setItemsPerView((prev) => (prev === visible ? prev : visible));
-        setCardWidth(width_);
+        setCardWidth(fluidCardWidth);
       }, RESIZE_DEBOUNCE_MS);
     };
     handleResize();
@@ -83,18 +85,17 @@ const Experts = ({ teachers }: { teachers: Teacher[] }) => {
   if (!teachers || teachers.length === 0) return null;
 
   const step = cardWidth + CARD_GAP;
-  const centerOffset = Math.floor((itemsPerView - 1) / 2);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 xl:px-0 py-16">
+    <SectionShell as="section" className="py-16">
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
         <div>
-          <Chip variant="pink" size="sm" className="shadow[0px_4px_14px_0px_#0000001A] filter-blur-[4px]">
+          <Chip variant="pink" size="sm">
             Experts
           </Chip>
-          <h1 className="text-[46px] font-heading text-black mt-4 flex items-center flex-wrap leading-[65px]">
+          <h1 className="text-[26px] sm:text-[36px] lg:text-[46px] font-heading text-black mt-4 flex items-center flex-wrap leading-tight lg:leading-[65px]">
             Meet Our <AvatarGroup />{" "}
-            <span className="text-[#249DC1] font-bold">Experts</span>
+            <span className="text-brandBlue font-bold">Experts</span>
           </h1>
         </div>
         <p className="text-black font-semibold max-w-md leading-7">
@@ -118,8 +119,7 @@ const Experts = ({ teachers }: { teachers: Teacher[] }) => {
             transition: "transform 500ms ease-in-out",
           }}
         >
-          {teachers.map((item, index) => {
-            const active = index === currentIndex + centerOffset;
+          {teachers.map((item) => {
             return (
               <div
                 key={item.id}
@@ -135,7 +135,7 @@ const Experts = ({ teachers }: { teachers: Teacher[] }) => {
                 />
                 <Link href={`/faculty/${item?.slug}`} passHref>
                   <div
-                    className={`relative rounded-2xl overflow-hidden`}
+                    className="relative rounded-2xl overflow-hidden"
                     style={{
                       height: `${CARD_HEIGHT}px`,
                     }}
@@ -184,7 +184,7 @@ const Experts = ({ teachers }: { teachers: Teacher[] }) => {
           ))}
         </div>
       )}
-    </section>
+    </SectionShell>
   );
 };
 

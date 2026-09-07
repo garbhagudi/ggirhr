@@ -1,9 +1,10 @@
-import React from "react";
 import { gql, GraphQLClient } from "graphql-request";
-import Carousel from "react-multi-carousel";
-import { Home_2 } from "sections/Home";
 import Link from "next/link";
 import Head from "next/head";
+import Hero from "sections/Home/Hero";
+import AffiliationsAlumni from "sections/Home/AffiliationsAlumni";
+import AboutUs from "sections/Home/AboutUs";
+import WhyGgirhr from "sections/Home/WhyGgirhr";
 import Courses from "sections/Home/Courses";
 import Workshops from "sections/Home/Workshops";
 import Voices from "sections/Home/Voices";
@@ -12,7 +13,8 @@ import ResearchWing from "sections/Home/ResearchWing";
 import Blogs from "sections/Home/Blogs";
 import Journey from "sections/Home/Journey";
 import Image from "next/image";
-import Chip from "components/ui/Chip";
+import { ContentContainer } from "components/ui/SectionShell";
+import { HOME_FEATURE_IMAGE } from "sections/Home/assets";
 import {
   Dialog,
   DialogPanel,
@@ -26,35 +28,11 @@ import { format } from "date-fns";
 const YOUTUBE_PLAYLIST_ITEMS_API =
   "https://www.googleapis.com/youtube/v3/playlistItems";
 
-const responsive = {
-  superLargeDesktop: {
-    breakpoint: { max: 4000, min: 3000 },
-    items: 1,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 1,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 1,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
-
-// Rounded blur blob peeking out from behind an image group; `position`
-// supplies the corner-offset utility classes (e.g. "-top-4 -left-6").
-const DecorativeBlob = ({ position }: { position: string }) => (
-  <div
-    className={`absolute ${position} w-24 h-24 rounded-3xl bg-[rgba(255,255,255,0.16)] -z-1`}
-  />
-);
-
+// NOTE: `testimonials` (from the YouTube playlist API below) and
+// `HomeData.banners` are both fetched but not rendered — kept deliberately so
+// they're ready to wire up.
 const IndexPage = ({ HomeData, testimonials }) => {
-  let [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(true);
 
   function closeModal() {
     setIsOpen(false);
@@ -96,7 +74,7 @@ const IndexPage = ({ HomeData, testimonials }) => {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegs19a01gx06pr749twdyd"
+          content={HOME_FEATURE_IMAGE}
         />
 
         {/* Twitter*/}
@@ -113,157 +91,20 @@ const IndexPage = ({ HomeData, testimonials }) => {
         />
         <meta
           name="twitter:image"
-          content="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegs19a01gx06pr749twdyd"
+          content={HOME_FEATURE_IMAGE}
         />
       </Head>
-      <div className="shadow-2xl drop-shadow-2xl">
-        <Carousel
-          responsive={responsive}
-          ssr={true}
-          infinite={true}
-          // autoPlay={true}
-          // autoPlaySpeed={5000}
-        >
-          {HomeData.banners.map((items: any, index: number) => (
-            <div className="" key={items?.id}>
-              <Link href={items?.url} passHref rel="preload">
-                <img
-                  src={items?.image?.url}
-                  alt={items?.title}
-                  className="w-screen h-full"
-                  loading="eager"
-                />
-              </Link>
-            </div>
-          ))}
-        </Carousel>
-      </div>
-      <div className="py-24 px-40 flex gap-12">
-        <Image
-          src="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegs19a01gx06pr749twdyd"
-          width={306}
-          height={226}
-          alt="Home"
-        />
-        <div className="space-y-5 flex flex-col">
-          <div>
-            <Chip variant="pink">ABOUT US</Chip>
-          </div>
-          <p className="text-[32px] leading-11">
-            <span className="font-bold">
-              GarbhaGudi Institute of Reproductive Health and Research (GGIRHR)
-              is one of India’s premier infertility training organizations.{" "}
-            </span>
-            <span className="font-normal">
-              It started in 2018 and is headed by Dr. Asha S Vijay, the
-              honorable dean and scientific director of GGIRHR.
-            </span>
-          </p>
-        </div>
-      </div>
-      <div className="px-40 py-12 bg-[rgba(26,151,202,1)] flex gap-24 flex-col">
-        <div className="flex gap-16">
-          <div className="relative w-1/2 flex flex-col gap-4">
-            <div className="flex gap-4 w-full">
-              <div className="relative top-[-2px] left-[-3px] flex-1 h-[251px]">
-                <DecorativeBlob position="-top-4 -left-6" />
-                <Image
-                  src="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegs19a01gx06pr749twdyd"
-                  alt="Home"
-                  fill
-                  sizes="(min-width: 1024px) 25vw, 50vw"
-                  className="object-cover rounded-2xl overflow-hidden"
-                />
-              </div>
-              <div className="relative top-[-2px] left-[-3px] flex-1 h-[251px]">
-                <Image
-                  src="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegs19a01gx06pr749twdyd"
-                  alt="Home"
-                  fill
-                  sizes="(min-width: 1024px) 25vw, 50vw"
-                  className="object-cover rounded-2xl overflow-hidden"
-                />
-              </div>
-            </div>
-
-            <div className="relative w-full h-[251px]">
-              <DecorativeBlob position="-bottom-4 -right-6" />
-              <Image
-                src="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegs19a01gx06pr749twdyd"
-                alt="Home"
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover rounded-2xl overflow-hidden"
-              />
-            </div>
-          </div>
-          <div className="relative w-1/2 flex flex-col justify-center gap-4">
-            <Image
-              src="/ribbon-wave-icon.svg"
-              alt=""
-              width={160}
-              height={96}
-              className="absolute -top-6 right-0"
-            />
-
-            <h1 className="text-[46px] leading-tight text-white">
-              Why <span className="font-bold">GGIRHR</span>
-            </h1>
-            <p className="text-white font-semibold leading-7 text-justify text-[18px]">
-              At GGIRHR, we have realized a severe shortage of trained
-              clinicians, embryologists, and support staff in infertility,
-              leading to compromised treatment for many infertile couples
-              worldwide. GarbhaGudi Institute of Reproductive Health & Research
-              (GGIRHR) is our venture to address this lacuna by offering
-              advanced fellowship courses and short-term training courses,
-              recognized by Rajiv Gandhi Institute of Health Sciences and Indian
-              Medical Association, in Clinical ART, Embryology, and Obstetric
-              Ultrasound that cater to the needs of a busy practitioner.
-            </p>
-          </div>
-        </div>
-        <div className="flex gap-16 items-center">
-          <div className="w-1/2 flex flex-col gap-4">
-            <h1 className="text-[46px] leading-tight text-white">
-              Our <span className="font-bold">Story</span>
-            </h1>
-            <p className="text-white font-semibold leading-7 text-justify text-[18px]">
-              GarbhaGudi Institute of Reproductive Health & Research (GGIRHR)
-              was established to provide premier quality reproductive medicine
-              and infertility training to clinicians, embryologists,
-              sonologists, and students with a science background, to name a
-              few. We believe in training enthusiastic minds to excel in their
-              desired field. Our infertility courses aim to impart systematic
-              elucidation of all facets of the ART treatments, such as IVF,
-              featuring hands-on IVF training and fellowship programs in
-              Reproductive Medicine for postgraduate doctors. Moreover, GGIRHR’s
-              courses are beneficial in providing insights into the ethical and
-              economic implications of the treatment to equip every individual
-              with full-fledged knowledge.
-            </p>
-          </div>
-          <div className="relative w-1/2">
-            <div className="relative w-full max-w-[484px] aspect-[484/364] rounded-[20px]">
-              <DecorativeBlob position="-top-6 -right-6" />
-              <DecorativeBlob position="-bottom-6 -left-6" />
-              <Image
-                src="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegs19a01gx06pr749twdyd"
-                alt="Our Story"
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover rounded-[20px] overflow-hidden"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <Courses Data={HomeData?.courses} />
+      <Hero />
+      <AffiliationsAlumni />
+      <AboutUs />
+      <WhyGgirhr />
+      <Courses courses={HomeData?.courses} />
       <Workshops />
       <Experts teachers={HomeData?.teachers} />
       <Voices />
       <ResearchWing />
       <Blogs />
-      <section className="max-w-6xl mx-auto px-4 xl:px-0 sm:px-6">
+      <ContentContainer as="section">
         <div>
           {HomeData?.events && HomeData.events.length > 0 && (
             <>
@@ -374,7 +215,7 @@ const IndexPage = ({ HomeData, testimonials }) => {
             </>
           )}
         </div>
-      </section>
+      </ContentContainer>
       <Journey />
     </div>
   );

@@ -3,17 +3,15 @@ import Image from "next/image";
 import Chip from "components/ui/Chip";
 import Button from "components/ui/Button";
 import { HiOutlineCalendar } from "react-icons/hi";
+import SectionShell from "components/ui/SectionShell";
 
 const PLACEHOLDER_IMAGE =
   "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegs19a01gx06pr749twdyd";
 
-// Featured card (Frame 2131330195): shadow only, no border.
-const FEATURED_CARD_CLASSES =
-  "shadow-[0px_4px_54px_0px_#57D1F563] backdrop-blur-[134px]";
+const FEATURED_CARD_CLASSES = "shadow-[0px_4px_54px_0px_#57D1F563]";
 
-// Stacked cards (Frame 2131330229): border + drop-shadow.
 const STACKED_CARD_CLASSES =
-  "border border-[#C2C2C2] shadow-[0px_4px_54px_0px_#57D1F563] backdrop-blur-[134px]";
+  "border border-[#C2C2C2] shadow-[0px_4px_54px_0px_#57D1F563]";
 
 type BlogPost = {
   id: number;
@@ -64,25 +62,25 @@ const Blogs = () => {
         className="pointer-events-none absolute -bottom-40 -left-52 -z-10"
       />
 
-      <div className="px-40 mx-auto">
+      <SectionShell className="mx-auto leading-[20px] lg:leading-[24px]">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-10">
           <div className="flex flex-col gap-4">
             <Chip variant="pink" size="sm">
               INSIGHTS
             </Chip>
-            <h1 className="font-heading text-4xl lg:text-[46px] leading-tight text-brandDark">
+            <h1 className="font-heading text-[23px] lg:text-[46px] text-brandDark">
               Our <span className="text-brandBlue font-bold">Blogs</span>
             </h1>
           </div>
-          <p className="text-black text-lg font-semibold leading-7 max-w-2xl">
+          <p className="text-black text-[13px] lg:text-lg font-semibold lg:leading-7 max-w-2xl">
             There&apos;s always something new to learn. Explore our latest
             articles for expert insights and advances in reproductive medicine.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
           <article
-            className={`relative rounded-[20px] bg-white overflow-hidden h-[440px] flex flex-col p-2 ${FEATURED_CARD_CLASSES}`}
+            className={`relative rounded-xl lg:rounded-[20px] bg-white overflow-hidden h-auto lg:h-[440px] flex flex-col p-2 ${FEATURED_CARD_CLASSES}`}
           >
             <div className="relative w-full h-[220px] shrink-0">
               <Image
@@ -90,19 +88,19 @@ const Blogs = () => {
                 alt={featured.title}
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover rounded-[10px]"
+                className="object-cover rounded-[6px] lg:rounded-[10px]"
               />
             </div>
-            <div className="flex flex-col gap-3 p-6 flex-1">
-              <div className="flex items-center gap-[7px] text-brandBlue text-sm font-semibold">
+            <div className="flex flex-col gap-2 lg:gap-3 p-3 lg:p-6 flex-1">
+              <div className="flex items-center gap-1 lg:gap-[7px] text-brandBlue text-xs lg:text-sm font-semibold">
                 <HiOutlineCalendar className="w-4 h-4" />
                 <span>{featured.date}</span>
               </div>
-              <h2 className="font-bold text-xl text-brandDark leading-snug">
+              <h2 className="font-bold text-[15px] lg:text-xl text-brandDark">
                 {featured.title}
               </h2>
               {featured.excerpt && (
-                <p className="text-black leading-6 line-clamp-2">
+                <p className="text-[13px] lg:text-[15px] text-black leading-6 line-clamp-2">
                   {featured.excerpt}
                 </p>
               )}
@@ -118,13 +116,13 @@ const Blogs = () => {
             </div>
           </article>
 
-          <div className="flex flex-col gap-6 h-[440px]">
+          <div className="flex flex-col gap-6 h-auto lg:h-[440px]">
             {rest.map((post) => (
               <article
                 key={post.id}
-                className={`relative flex-1 rounded-[20px] bg-white overflow-hidden flex items-center gap-6 pl-1 pr-6 py-2 border border-[#C2C2C2] ${STACKED_CARD_CLASSES}`}
+                className={`relative flex-1 rounded-[20px] bg-white overflow-hidden flex flex-col lg:flex-row items-stretch lg:items-center gap-4 lg:gap-6 p-2 lg:pl-1 lg:pr-6 lg:py-2 border border-[#C2C2C2] ${STACKED_CARD_CLASSES}`}
               >
-                <div className="relative w-[140px] sm:w-[160px] h-full shrink-0 rounded-2xl overflow-hidden">
+                <div className="relative w-full h-[180px] lg:w-[160px] lg:h-full shrink-0 rounded-2xl overflow-hidden">
                   <Image
                     src={post.image}
                     alt={post.title}
@@ -133,12 +131,12 @@ const Blogs = () => {
                     className="object-cover"
                   />
                 </div>
-                <div className="flex flex-col gap-4 min-w-0">
+                <div className="flex flex-col gap-3 lg:gap-4 min-w-0 px-3 pb-3 lg:p-0">
                   <div className="flex items-center gap-2 text-brandBlue text-sm font-semibold">
                     <HiOutlineCalendar className="w-4 h-4" />
                     <span>{post.date}</span>
                   </div>
-                  <h2 className="font-semibold text-lg text-black leading-[29px]">
+                  <h2 className="font-semibold text-lg text-black">
                     {post.title}
                   </h2>
                   <Button
@@ -161,7 +159,7 @@ const Blogs = () => {
             View All Blogs
           </Button>
         </div>
-      </div>
+      </SectionShell>
     </section>
   );
 };

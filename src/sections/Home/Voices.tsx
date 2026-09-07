@@ -1,16 +1,16 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import Button from "components/ui/Button";
 import Chip from "components/ui/Chip";
 import QuoteIcon from "components/ui/QuoteIcon";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import { FaStar } from "react-icons/fa";
+import SectionShell from "components/ui/SectionShell";
+import useFitCarousel from "components/ui/useFitCarousel";
 
-const CARD_WIDTH = 360;
+// Design card width; cards shrink below it to fit a narrow container.
+const MAX_CARD_WIDTH = 360;
 const CARD_GAP = 16;
-const CARD_STEP = CARD_WIDTH + CARD_GAP;
-const CARD_HEIGHT = 290;
-const RESIZE_DEBOUNCE_MS = 150;
 
 const AVATAR_COLORS = ["#1DA8E1", "#4A90E2", "#F5A623", "#50B1CD"];
 
@@ -48,86 +48,79 @@ const VOICES: Voice[] = [
 ];
 
 const Voices = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsPerView, setItemsPerView] = useState(1);
-  const trackRef = useRef<HTMLDivElement>(null);
+  const {
+    trackRef,
+    currentIndex,
+    cardWidth,
+    maxIndex,
+    canGoNext,
+    canGoPrev,
+    goToNext,
+    goToPrev,
+  } = useFitCarousel({
+    itemCount: VOICES.length,
+    maxCardWidth: MAX_CARD_WIDTH,
+    gap: CARD_GAP,
+  });
 
-  React.useEffect(() => {
-    let debounceTimer: ReturnType<typeof setTimeout>;
-    const handleResize = () => {
-      clearTimeout(debounceTimer);
-      debounceTimer = setTimeout(() => {
-        const containerWidth =
-          trackRef.current?.parentElement?.clientWidth ?? 0;
-        const visible = Math.max(
-          1,
-          Math.floor((containerWidth + CARD_GAP) / CARD_STEP),
-        );
-        setItemsPerView((prev) =>
-          Math.floor(prev) === visible ? prev : visible,
-        );
-      }, RESIZE_DEBOUNCE_MS);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      clearTimeout(debounceTimer);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const progressWidthPct = 100 / (maxIndex + 1);
+  const progressLeftPct =
+    (currentIndex / (maxIndex || 1)) * (100 - progressWidthPct);
 
-  const maxIndex = Math.max(0, VOICES.length - Math.floor(itemsPerView));
-  const canGoNext = currentIndex < maxIndex;
-  const canGoPrev = currentIndex > 0;
-
-  const goToNext = () =>
-    canGoNext && setCurrentIndex((i) => Math.min(i + 1, maxIndex));
-  const goToPrev = () =>
-    canGoPrev && setCurrentIndex((i) => Math.max(i - 1, 0));
+  // Rendered twice: in the heading row on desktop, and in the progress row on
+  // mobile, where the design moves the arrows below the card.
+  const navButtons = (
+    <>
+      <Button
+        onClick={goToPrev}
+        disabled={!canGoPrev}
+        aria-label="Previous testimonials"
+        variant="ghost"
+        size="icon-sm"
+        className="!bg-white/10 !text-white hover:!bg-white/20 disabled:!opacity-40"
+      >
+        <ChevronLeftIcon className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
+      </Button>
+      <Button
+        onClick={goToNext}
+        disabled={!canGoNext}
+        aria-label="Next testimonials"
+        variant="light"
+        size="icon-sm"
+        className="disabled:!opacity-40"
+      >
+        <ChevronRightIcon className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
+      </Button>
+    </>
+  );
 
   return (
-    <section className="relative overflow-hidden bg-[#1A97CA] py-20 px-40">
+    <SectionShell
+      as="section"
+      className="relative overflow-hidden bg-[#1A97CA] py-14 lg:py-20"
+    >
       <div className="mx-auto flex flex-col">
         <Chip
           variant="blue"
           size="sm"
-          className="uppercase tracking-widest !bg-[#FFFFFF1A] text-white shadow[#0000001A] filter-blur-[47.9px] font-bold"
+          className="uppercase tracking-widest !bg-[#FFFFFF1A] text-white font-bold"
         >
           Testimonial
         </Chip>
-        <div className="flex items-center justify-between mt-6 mb-10">
-          <h1 className="text-white text-[46px] leading-[65px] mx-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-6 mt-4 mb-5 sm:mt-6 sm:mb-8 lg:mb-10">
+          <h1 className="text-white text-[23px] sm:text-[36px] lg:text-[46px] leading-tight lg:leading-[65px] lg:mx-6">
             Fellows and <span className="font-bold">Student Voices</span>
           </h1>
-          <div className="flex items-center gap-3">
-            <Button
-              onClick={goToPrev}
-              disabled={!canGoPrev}
-              aria-label="Previous testimonials"
-              variant="ghost"
-              size="icon-sm"
-              className="!bg-white/10 !text-white hover:!bg-white/20 disabled:!opacity-40"
-            >
-              <ChevronLeftIcon className="w-5 h-5" />
-            </Button>
-            <Button
-              onClick={goToNext}
-              disabled={!canGoNext}
-              aria-label="Next testimonials"
-              variant="light"
-              size="icon-sm"
-              className="disabled:!opacity-40"
-            >
-              <ChevronRightIcon className="w-5 h-5" />
-            </Button>
-          </div>
+          <div className="hidden sm:flex items-center gap-3">{navButtons}</div>
         </div>
 
         <div className="overflow-hidden">
           <div
             ref={trackRef}
             className="flex gap-4 transition-transform duration-300 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * CARD_STEP}px)` }}
+            style={{
+              transform: `translateX(-${currentIndex * (cardWidth + CARD_GAP)}px)`,
+            }}
           >
             {VOICES.map((voice, index) => {
               const isActive = index === currentIndex;
@@ -135,15 +128,14 @@ const Voices = () => {
                 <div
                   key={voice.name}
                   className="flex-shrink-0"
-                  style={{ width: `${CARD_WIDTH}px` }}
+                  style={{ width: `${cardWidth}px` }}
                 >
                   <div
-                    className={`relative rounded-2xl px-5 py-6 flex flex-col justify-between overflow-hidden shadow-[#00000017] ${
+                    className={`relative rounded-xl sm:rounded-2xl px-5 py-5 sm:py-6 flex flex-col justify-between overflow-hidden min-h-[254px] sm:min-h-[290px] ${
                       isActive
-                        ? "bg-white shadow-md"
-                        : "bg-[#FFFFFF1A] filter-blur-[47.9px]"
+                        ? "bg-white shadow-[0px_3.72px_41px_rgba(0,0,0,0.09)] sm:shadow-md sm:shadow-[#00000017]"
+                        : "bg-[#FFFFFF1A]"
                     }`}
-                    style={{ height: `${CARD_HEIGHT}px` }}
                   >
                     <QuoteIcon
                       size={31}
@@ -152,7 +144,7 @@ const Voices = () => {
                       aria-hidden="true"
                     />
 
-                    <div className="flex flex-col gap-4 pt-6 leading-6">
+                    <div className="flex flex-col gap-4 pt-6">
                       <div className="flex items-center gap-1">
                         {Array.from({ length: 5 }).map((_, starIndex) => (
                           <FaStar
@@ -162,7 +154,7 @@ const Voices = () => {
                         ))}
                       </div>
                       <p
-                        className={`${
+                        className={`text-[13px] leading-5 text-justify sm:text-base sm:leading-6 sm:text-left ${
                           isActive ? "text-gray-900" : "text-[#DEDEDE]"
                         }`}
                       >
@@ -172,7 +164,7 @@ const Voices = () => {
 
                     <div className="flex items-center gap-3 mt-4">
                       <div
-                        className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0"
+                        className="w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-white font-semibold text-xl shrink-0"
                         style={{
                           backgroundColor:
                             AVATAR_COLORS[index % AVATAR_COLORS.length],
@@ -182,7 +174,7 @@ const Voices = () => {
                       </div>
                       <div className="flex flex-col gap-1">
                         <span
-                          className={`font-semibold text-xl leading-7 ${
+                          className={`font-semibold text-[15px] leading-5 sm:text-xl sm:leading-7 ${
                             isActive ? "text-black" : "text-white"
                           }`}
                         >
@@ -193,7 +185,9 @@ const Voices = () => {
                           alt="Google"
                           width={61}
                           height={21}
-                          className={isActive ? "" : "brightness-0 invert"}
+                          className={`w-[49px] h-auto sm:w-[61px] ${
+                            isActive ? "" : "brightness-0 invert"
+                          }`}
                         />
                       </div>
                     </div>
@@ -203,8 +197,21 @@ const Voices = () => {
             })}
           </div>
         </div>
+
+        <div className="flex sm:hidden items-center gap-5 mt-4">
+          <div className="relative flex-1 h-[3px] rounded-full bg-[#89C7E0]">
+            <div
+              className="absolute top-0 h-[3px] rounded-full bg-white transition-all duration-300"
+              style={{
+                width: `${progressWidthPct}%`,
+                left: `${progressLeftPct}%`,
+              }}
+            />
+          </div>
+          <div className="flex items-center gap-3">{navButtons}</div>
+        </div>
       </div>
-    </section>
+    </SectionShell>
   );
 };
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Button from "components/ui/Button";
 import Tabs, { TabOption } from "components/ui/Tabs";
+import SectionShell from "components/ui/SectionShell";
 
 const PLACEHOLDER_IMAGE =
   "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegs19a01gx06pr749twdyd";
@@ -21,6 +22,10 @@ type WorkshopCard = {
   // (tall-left / two-stacked-middle / tall-right), so leaving this to the
   // browser's default auto-placement puts cards in the wrong cells and
   // forces an extra implicit row. Each card names its own cell instead.
+  //
+  // Gated to `lg:` because the bento only exists from lg up: unprefixed
+  // `col-start-*` would keep pinning cards to columns 1-3 even after the
+  // grid collapses to a single column on mobile.
   placement: string;
 };
 
@@ -30,18 +35,22 @@ const WORKSHOP_CARDS: WorkshopCard[] = [
     description:
       "Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers",
     span: "tall-left",
-    placement: "col-start-1 row-start-1 row-span-2",
+    placement: "lg:col-start-1 lg:row-start-1 lg:row-span-2",
   },
-  { title: "3D GYN USG", span: "short", placement: "col-start-2 row-start-1" },
+  {
+    title: "3D GYN USG",
+    span: "short",
+    placement: "lg:col-start-2 lg:row-start-1",
+  },
   {
     title: "Comprehensive TVS (Transvaginal Ultrasound) Scan",
     span: "short",
-    placement: "col-start-2 row-start-2",
+    placement: "lg:col-start-2 lg:row-start-2",
   },
   {
     title: "Mastering Egg Pickup",
     span: "tall-right",
-    placement: "col-start-3 row-start-1 row-span-2",
+    placement: "lg:col-start-3 lg:row-start-1 lg:row-span-2",
   },
 ];
 
@@ -49,9 +58,12 @@ const Workshops = () => {
   const [activeTab, setActiveTab] = useState<WorkshopTab>("workshop");
 
   return (
-    <section className="relative overflow-hidden bg-[#1A97CA] py-20 px-40">
+    <SectionShell
+      as="section"
+      className="relative overflow-hidden bg-[#1A97CA] py-14 lg:py-20"
+    >
       <div
-        className="absolute w-[700px] h-[700px] rounded-full bg-[#50C8F9] blur-[160px] -z-10"
+        className="absolute w-[360px] h-[360px] sm:w-[700px] sm:h-[700px] rounded-full bg-[#50C8F9] blur-[160px] -z-10"
         style={{ top: "20%", right: "-10%" }}
       />
       <Image
@@ -59,17 +71,17 @@ const Workshops = () => {
         alt=""
         width={140}
         height={84}
-        className="absolute top-8 left-16 opacity-70"
+        className="absolute top-6 left-4 w-[90px] h-auto opacity-70 lg:top-8 lg:left-16 lg:w-[140px]"
       />
 
-      <div className="flex flex-col items-center gap-5 mb-12">
-        <span className="bg-white/10 backdrop-blur-md rounded-full px-4 py-2 text-white text-[15px] font-bold tracking-widest uppercase leading-7">
+      <div className="flex flex-col items-center gap-4 lg:gap-5 mb-10 lg:mb-12">
+        <span className="bg-white/10 backdrop-blur-md rounded-full px-4 py-2 text-white text-[11px] sm:text-[15px] font-bold tracking-wider sm:tracking-widest uppercase leading-7 text-center">
           Research and Workshops
         </span>
-        <h1 className="text-white text-[46px] text-center leading-[50px]">
+        <h1 className="text-white text-[26px] sm:text-[36px] lg:text-[46px] text-center leading-tight lg:leading-[50px]">
           Workshops & Professional <span className="font-bold">Training</span>
         </h1>
-        <p className="text-[#DEDEDE] font-semibold max-w-3xl mx-auto text-center text-lg">
+        <p className="text-[#DEDEDE] font-semibold max-w-3xl mx-auto text-center text-base lg:text-lg">
           Looking to stay ahead in reproductive medicine and ART? Explore our
           upcoming conferences, workshops, and educational events to keep your
           knowledge current and your skills evolving.
@@ -83,11 +95,16 @@ const Workshops = () => {
         />
       </div>
 
-      <div className="grid grid-cols-[1.3fr_1fr_0.75fr] grid-rows-2 gap-4 h-[472px] max-w-7xl mx-auto">
+      {/* No inner max-width: the grid shares the section's content box so the
+          cards stay aligned with the heading above them at any viewport. */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr_0.75fr] lg:grid-rows-2 gap-4 h-auto lg:h-[472px]">
         {WORKSHOP_CARDS.map((card) => (
           <div
             key={card.title}
-            className={`relative rounded-[20px] overflow-hidden ${card.placement}`}
+            /* Every child of a card is absolutely positioned, so with the
+               grid's fixed height gone the card has no intrinsic height —
+               hence the explicit mobile height. */
+            className={`relative rounded-[20px] overflow-hidden h-[240px] lg:h-auto ${card.placement}`}
           >
             <Image
               src={PLACEHOLDER_IMAGE}
@@ -120,7 +137,7 @@ const Workshops = () => {
           </div>
         ))}
       </div>
-    </section>
+    </SectionShell>
   );
 };
 

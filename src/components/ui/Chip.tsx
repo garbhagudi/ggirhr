@@ -42,8 +42,15 @@ const VARIANT_CLASSES: Record<ChipVariant, string> = {
 
 const SIZE_CLASSES: Record<ChipSize, string> = {
   sm: 'text-xs px-3 py-1.5 gap-1.5',
-  // md matches the original: p-4, text-[15px].
-  md: 'text-[15px] px-4 py-4 gap-2',
+  // Mobile-first; `sm:` restores the desktop values (p-4, text-[15px]).
+  //
+  // Sizing is padding-driven — the height is whatever the content plus
+  // padding comes to, deliberately not pinned to the mock's stated box.
+  // `tracking-widest` is exactly the spec's 0.1em, and is kept mobile-only.
+  // `sm:leading-normal` is load-bearing: `text-[15px]` is arbitrary and emits
+  // no line-height, so without it the inherited 1.5 would be lost and the
+  // desktop chip would silently change height.
+  md: 'text-xs px-4 py-1.5 gap-2 tracking-widest sm:text-[15px] sm:leading-normal sm:py-4 sm:tracking-normal',
   lg: 'text-base px-5 py-4 gap-2.5',
 };
 
