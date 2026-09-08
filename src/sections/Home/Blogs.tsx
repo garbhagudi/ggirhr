@@ -4,9 +4,7 @@ import Chip from "components/ui/Chip";
 import Button from "components/ui/Button";
 import { HiOutlineCalendar } from "react-icons/hi";
 import SectionShell from "components/ui/SectionShell";
-
-const PLACEHOLDER_IMAGE =
-  "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegs19a01gx06pr749twdyd";
+import { format } from "date-fns";
 
 const FEATURED_CARD_CLASSES = "shadow-[0px_4px_54px_0px_#57D1F563]";
 
@@ -14,43 +12,25 @@ const STACKED_CARD_CLASSES =
   "border border-[#C2C2C2] shadow-[0px_4px_54px_0px_#57D1F563]";
 
 type BlogPost = {
-  id: number;
-  title: string;
-  excerpt?: string;
-  date: string;
-  image: string;
-  href: string;
+  id: string;
+  title?: string;
+  slug?: string;
+  publishedOn?: string;
+  image?: { url?: string };
+  // Derived in the home page's getServerSideProps from `content.text`; the
+  // Hygraph model has no excerpt field of its own.
+  excerpt?: string | null;
 };
 
-const BLOG_POSTS: BlogPost[] = [
-  {
-    id: 1,
-    title: "Latest Protocol for IVF stimulation",
-    excerpt:
-      "We need a large number of good-quality eggs from the female in order to maximize success rates with in vitro fertilization...",
-    date: "26th November 2025",
-    image: PLACEHOLDER_IMAGE,
-    href: "/blogs",
-  },
-  {
-    id: 2,
-    title: "Is online learning effective for doctors?",
-    date: "26th November 2025",
-    image: PLACEHOLDER_IMAGE,
-    href: "/blogs",
-  },
-  {
-    id: 3,
-    title:
-      "Why is GGIRHR considered a premier fertility training institute of India?",
-    date: "26th November 2025",
-    image: PLACEHOLDER_IMAGE,
-    href: "/blogs",
-  },
-];
+// "26th November 2025" — `do` supplies the ordinal in the mock.
+const formatDate = (publishedOn?: string) =>
+  publishedOn ? format(new Date(publishedOn), "do MMMM yyyy") : null;
 
-const Blogs = () => {
-  const [featured, ...rest] = BLOG_POSTS;
+const Blogs = ({ blogs }: { blogs?: BlogPost[] }) => {
+  if (!blogs || blogs.length === 0) return null;
+
+  const [featured, ...rest] = blogs;
+  const featuredDate = formatDate(featured.publishedOn);
 
   return (
     <section className="relative overflow-hidden bg-white py-20">
@@ -84,7 +64,7 @@ const Blogs = () => {
           >
             <div className="relative w-full h-[220px] shrink-0">
               <Image
-                src={featured.image}
+                src={featured.image?.url}
                 alt={featured.title}
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
@@ -92,10 +72,12 @@ const Blogs = () => {
               />
             </div>
             <div className="flex flex-col gap-2 lg:gap-3 p-3 lg:p-6 flex-1">
-              <div className="flex items-center gap-1 lg:gap-[7px] text-brandBlue text-xs lg:text-sm font-semibold">
-                <HiOutlineCalendar className="w-4 h-4" />
-                <span>{featured.date}</span>
-              </div>
+              {featuredDate && (
+                <div className="flex items-center gap-1 lg:gap-[7px] text-brandBlue text-xs lg:text-sm font-semibold">
+                  <HiOutlineCalendar className="w-4 h-4" />
+                  <span>{featuredDate}</span>
+                </div>
+              )}
               <h2 className="font-bold text-[15px] lg:text-xl text-brandDark">
                 {featured.title}
               </h2>
@@ -105,7 +87,7 @@ const Blogs = () => {
                 </p>
               )}
               <Button
-                href={featured.href}
+                href={`/blogs/${featured.slug}`}
                 variant="link"
                 size="inline"
                 rounded="md"
@@ -124,7 +106,7 @@ const Blogs = () => {
               >
                 <div className="relative w-full h-[180px] lg:w-[160px] lg:h-full shrink-0 rounded-2xl overflow-hidden">
                   <Image
-                    src={post.image}
+                    src={post.image?.url}
                     alt={post.title}
                     fill
                     sizes="160px"
@@ -132,15 +114,17 @@ const Blogs = () => {
                   />
                 </div>
                 <div className="flex flex-col gap-3 lg:gap-4 min-w-0 px-3 pb-3 lg:p-0">
-                  <div className="flex items-center gap-2 text-brandBlue text-sm font-semibold">
-                    <HiOutlineCalendar className="w-4 h-4" />
-                    <span>{post.date}</span>
-                  </div>
+                  {formatDate(post.publishedOn) && (
+                    <div className="flex items-center gap-2 text-brandBlue text-sm font-semibold">
+                      <HiOutlineCalendar className="w-4 h-4" />
+                      <span>{formatDate(post.publishedOn)}</span>
+                    </div>
+                  )}
                   <h2 className="font-semibold text-lg text-black">
                     {post.title}
                   </h2>
                   <Button
-                    href={post.href}
+                    href={`/blogs/${post.slug}`}
                     variant="link"
                     size="inline"
                     rounded="md"
@@ -155,7 +139,7 @@ const Blogs = () => {
         </div>
 
         <div className="flex justify-center mt-12">
-          <Button href="/blogs" variant="primary" size="md" rounded="md">
+          <Button href="/blogs/page/1" variant="primary" size="md" rounded="md">
             View All Blogs
           </Button>
         </div>

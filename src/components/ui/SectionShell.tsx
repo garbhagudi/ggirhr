@@ -3,8 +3,8 @@ import React from 'react';
 const cx = (...classes: Array<string | false | undefined>) =>
   classes.filter(Boolean).join(' ');
 
-/** Full-bleed section gutters: 16px → 24px → 160px. */
-export const SECTION_GUTTERS = 'px-4 sm:px-6 lg:px-40';
+/** Full-bleed section gutters: 20px → 24px → 160px. */
+export const SECTION_GUTTERS = 'px-5 sm:px-6 lg:px-40';
 
 /** Centred, width-clamped content column. */
 export const CONTENT_GUTTERS = 'px-4 sm:px-6 xl:px-0';

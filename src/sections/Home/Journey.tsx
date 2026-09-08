@@ -2,12 +2,13 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Glow from "components/ui/Glow";
+import RibbonWave from "components/ui/RibbonWave";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
 import Button from "components/ui/Button";
 
-const MICROSCOPE_IMAGE = "/research-microscope.png";
+const MICROSCOPE_IMAGE = "/journey.png";
 
 const PROGRAMS = [
   "Clinical ART",
@@ -161,12 +162,10 @@ const Journey = () => {
           className="object-cover"
         />
       </div>
-      <Image
-        src="/ribbon-wave-icon.svg"
-        alt=""
+      <RibbonWave
         width={300}
         height={138}
-        className="absolute top-10 right-4 opacity-80 hidden sm:block"
+        className="absolute top-10 right-4 w-[300px] opacity-80 hidden sm:block"
       />
       <div className="relative flex flex-col lg:flex-row gap-8 lg:gap-0 ">
         <div className="hidden lg:block relative w-1/2"></div>

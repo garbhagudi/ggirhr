@@ -94,16 +94,19 @@ const IndexPage = ({ HomeData, testimonials }) => {
           content={HOME_FEATURE_IMAGE}
         />
       </Head>
-      <Hero />
-      <AffiliationsAlumni />
+      <Hero alumniCountries={HomeData?.alumniCountries} />
+      <AffiliationsAlumni
+        affiliations={HomeData?.affiliations}
+        alumniCountries={HomeData?.alumniCountries}
+      />
       <AboutUs />
       <WhyGgirhr />
       <Courses courses={HomeData?.courses} />
-      <Workshops />
+      <Workshops workshops={HomeData?.workshops} />
       <Experts teachers={HomeData?.teachers} />
       <Voices />
       <ResearchWing />
-      <Blogs />
+      <Blogs blogs={HomeData?.blogs} />
       <ContentContainer as="section">
         <div>
           {HomeData?.events && HomeData.events.length > 0 && (
@@ -259,6 +262,18 @@ export const getServerSideProps = async () => {
           url
         }
       }
+      blogs(orderBy: publishedOn_DESC, first: 3) {
+        id
+        title
+        slug
+        publishedOn
+        image {
+          url
+        }
+        content {
+          text
+        }
+      }
       events(orderBy: eventDateTime_DESC, first: 1) {
         id
         title
@@ -266,6 +281,23 @@ export const getServerSideProps = async () => {
         eventDateTime
         link
         squareImage {
+          url
+        }
+      }
+      affilationalumni(orderBy: name_ASC, first: 100) {
+        id
+        name
+        types
+        image {
+          url
+        }
+      }
+      workshops(orderBy: order_ASC, first: 4) {
+        id
+        title
+        subTitle
+        slug
+        image {
           url
         }
       }
@@ -279,7 +311,44 @@ export const getServerSideProps = async () => {
   const testimonials = await testimonialsData.json();
 
   const data = await graphQLClient.request(query);
-  const HomeData = data;
+
+  // `affilationalumni` is one Hygraph model holding both the partner logos and the
+  // alumni countries, told apart by its `types` field. Rest-destructure it out of the
+  // payload rather than spreading `data` and blanking the key: the raw list is replaced
+  // by the two partitioned lists below, and a key set to `undefined` would make Next
+  // throw "Error serializing .HomeData.affilationalumni" — it rejects `undefined`
+  // anywhere in the props tree.
+  const { affilationalumni = [], ...rest } = data;
+
+  // `types` is a free-text String in Hygraph, not an enumeration, and the live entries
+  // are spelled "Affilations" (one "i") / "Alumni". Match on a prefix so a corrected
+  // spelling or a stray case/whitespace difference doesn't silently drop a whole row.
+  const byType = (pattern) =>
+    affilationalumni
+      .filter(
+        (item) => pattern.test((item.types ?? "").trim()) && item.image?.url,
+      )
+      .map(({ id, name, image }) => ({ id, name, image: { url: image.url } }));
+
+  const HomeData = {
+    ...rest,
+    affiliations: byType(/^affil/i),
+    alumniCountries: byType(/^alumni/i),
+    // Only a two-line teaser is rendered, so trim `content.text` here rather
+    // than in the component — everything returned from getServerSideProps is
+    // serialized into __NEXT_DATA__ on every request.
+    blogs: data.blogs?.map(({ content, ...blog }) => ({
+      ...blog,
+      // `content.text` carries the article's line breaks as literal "\n"
+      // sequences; flatten them so the teaser reads as one paragraph.
+      excerpt:
+        content?.text
+          ?.replace(/\\n/g, " ")
+          .replace(/\s+/g, " ")
+          .trim()
+          .slice(0, 180) ?? null,
+    })),
+  };
 
   return {
     props: {

@@ -15,20 +15,6 @@ const RESIZE_DEBOUNCE_MS = 150;
 const COMPANY_LINKEDIN_URL =
   "https://www.linkedin.com/company/garbhagudi-institute-of-reproductive-health-research/";
 
-const AvatarGroup = () => (
-  <span className="inline-flex items-center align-middle mx-1.5 lg:mx-2">
-    {[0, 1, 2, 3].map((i) => (
-      <span
-        key={i}
-        className="w-8 h-8 lg:w-12 lg:h-12 rounded-full bg-[#1DA8E1] ring-1 ring-white flex items-center justify-center overflow-hidden"
-        style={{ marginLeft: i === 0 ? 0 : -12, zIndex: 3 - i }}
-      >
-        <UserIcon className="w-3.5 h-3.5 lg:w-5 lg:h-5 text-white" />
-      </span>
-    ))}
-  </span>
-);
-
 type Teacher = {
   id: string;
   name: string;
@@ -37,6 +23,37 @@ type Teacher = {
   image?: { url?: string };
   imageAlt?: string;
 };
+
+// The overlapping faces in the "Meet Our ... Experts" heading. Fed the first
+// few `teachers`, so the heading shows the same people as the carousel below
+// rather than generic silhouettes. `object-cover` needs no `object-position`
+// nudge: the CMS portraits are square (1500x1500) and so is each circle, so
+// nothing is cropped.
+const AvatarGroup = ({ avatars }: { avatars: Teacher[] }) => (
+  <span className="inline-flex items-center align-middle mx-1.5 lg:mx-2">
+    {avatars.map((teacher, i) => (
+      <span
+        key={teacher.id}
+        className="relative w-[22px] h-[22px] lg:w-12 lg:h-12 rounded-full bg-[#1DA8E1] ring-1 ring-white flex items-center justify-center overflow-hidden"
+        style={{ marginLeft: i === 0 ? 0 : -10, zIndex: avatars.length - 1 - i }}
+      >
+        {teacher.image?.url ? (
+          <Image
+            src={teacher.image.url}
+            alt={teacher.imageAlt || teacher.name}
+            fill
+            sizes="(min-width: 1024px) 48px, 22px"
+            className="object-cover"
+          />
+        ) : (
+          // A teacher published without a photo keeps the old silhouette
+          // rather than rendering a broken image.
+          <UserIcon className="w-3.5 h-3.5 lg:w-5 lg:h-5 text-white" />
+        )}
+      </span>
+    ))}
+  </span>
+);
 
 const Experts = ({ teachers }: { teachers: Teacher[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -93,8 +110,8 @@ const Experts = ({ teachers }: { teachers: Teacher[] }) => {
           <Chip variant="pink" size="sm">
             Experts
           </Chip>
-          <h1 className="text-[26px] sm:text-[36px] lg:text-[46px] font-heading text-black mt-4 flex items-center flex-wrap leading-tight lg:leading-[65px]">
-            Meet Our <AvatarGroup />{" "}
+          <h1 className="text-[23px] sm:text-[36px] lg:text-[46px] font-heading text-black mt-4 flex items-center flex-wrap leading-tight lg:leading-[65px]">
+            Meet Our <AvatarGroup avatars={teachers.slice(0, 4)} />{" "}
             <span className="text-brandBlue font-bold">Experts</span>
           </h1>
         </div>

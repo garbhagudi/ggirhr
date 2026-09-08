@@ -1,7 +1,14 @@
 import React, { forwardRef } from 'react';
 import Link from 'next/link';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'light';
+export type ButtonVariant =
+  | 'primary'
+  | 'secondary'
+  | 'outline'
+  | 'ghost'
+  | 'link'
+  | 'light'
+  | 'muted';
 export type ButtonSize = 'sm' | 'md' | 'lg' | 'inline' | 'icon-sm' | 'icon-md';
 export type ButtonRounded = 'full' | 'md' | 'sm';
 
@@ -39,9 +46,6 @@ const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   secondary:
     'bg-brandDark text-white shadow-[0px_4px_14px_rgba(0,0,0,0.1)] hover:bg-black active:bg-black',
   outline:
-    // 1px on mobile (per the footer CTA spec), 2px from sm up as before. The
-    // `sm:` variant sits in a media query so it beats the unprefixed base
-    // regardless of emit order.
     'bg-transparent text-[#1DA8E1] border sm:border-2 border-[#1DA8E1] hover:bg-[#1DA8E1]/10 active:bg-[#1DA8E1]/20',
   ghost:
     'bg-transparent text-[#1DA8E1] hover:bg-[#1DA8E1]/10 active:bg-[#1DA8E1]/20 shadow-none',
@@ -49,16 +53,11 @@ const VARIANT_CLASSES: Record<ButtonVariant, string> = {
     'bg-transparent text-[#1DA8E1] underline shadow-none hover:opacity-70 active:opacity-80',
   light:
     'bg-white text-[#1DA8E1] shadow-[0px_4px_14px_rgba(0,0,0,0.1)] hover:bg-gray-50 active:bg-gray-100',
+  // The grey secondary CTA from the About Us mock — same at every breakpoint.
+  muted:
+    'bg-[#E0E0E0] text-black border border-[#BEB5B5] hover:bg-[#D5D5D5] active:bg-[#CACACA]',
 };
 
-// Mobile-first: the base classes carry the small-screen sizing and the `sm:`
-// variants restore the desktop values.
-//
-// `text-[13px]` is an arbitrary value, so it emits font-size *only* — no
-// line-height — and would otherwise inherit 1.5 (19.5px). The explicit
-// `leading-5` pins the line box at 20px, which with `py-2.5` gives the
-// intended 10px/16px padding box. Radius is deliberately not set here: it's
-// the `rounded` prop, and the icon sizes rely on the default `rounded-full`.
 const SIZE_CLASSES: Record<ButtonSize, string> = {
   sm: 'text-[13px] leading-5 px-4 py-2 gap-2 sm:text-sm',
   md: 'text-[13px] leading-5 px-4 py-2.5 gap-2 sm:text-base sm:px-6 sm:py-3.5 sm:gap-2.5',
@@ -71,8 +70,6 @@ const SIZE_CLASSES: Record<ButtonSize, string> = {
 const ROUNDED_CLASSES: Record<ButtonRounded, string> = {
   full: 'rounded-full',
   md: 'rounded-md',
-  // 4px on mobile, 6px from sm up. Kept separate from `md` because the hero's
-  // Contact Us button specs 6px while the footer CTAs spec 4px.
   sm: 'rounded sm:rounded-md',
 };
 

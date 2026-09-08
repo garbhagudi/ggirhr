@@ -1,31 +1,11 @@
 "use client";
 import React, { useEffect, useRef } from "react";
+import Image from "next/image";
 import SectionShell from "components/ui/SectionShell";
 
-type LogoItem = { id: string; name: string };
-type CountryItem = { id: string; name: string; flag: string };
-
-// TODO: replace with real logo assets (upload to Hygraph or public/icons and
-// swap the placeholder box below for an <Image src={item.logo} .../>).
-const AFFILIATIONS: LogoItem[] = [
-  { id: "bbc", name: "Bangalore Bioinnovation Centre" },
-  { id: "gcu", name: "Garden City University" },
-  { id: "jain", name: "JAIN (Deemed-to-be University)" },
-  { id: "jnc", name: "Jyoti Nivas College Autonomous" },
-  { id: "mlac", name: "mLAC" },
-  { id: "nu", name: "Nitte University" },
-];
-
-const ALUMNI_COUNTRIES: CountryItem[] = [
-  { id: "bd", name: "Bangladesh", flag: "/icons/flags/bangladesh.png" },
-  { id: "in", name: "India", flag: "/icons/flags/india.png" },
-  { id: "ke", name: "Kenya", flag: "/icons/flags/kenya.png" },
-  { id: "mv", name: "Maldives", flag: "/icons/flags/maldives.png" },
-  { id: "np", name: "Nepal", flag: "/icons/flags/nepal.png" },
-  { id: "rw", name: "Rwanda", flag: "/icons/flags/rwanda.png" },
-  { id: "sa", name: "Saudi Arabia", flag: "/icons/flags/saudi-arabia.png" },
-  { id: "so", name: "Somalia", flag: "/icons/flags/somalia.png" },
-];
+// Both rows come from the single Hygraph `AffilationAlumni` model, split by its
+// `types` field in getServerSideProps — so they share one shape here.
+type LogoItem = { id: string; name: string; image?: { url?: string } };
 
 const Pill = ({ children }: { children: React.ReactNode }) => (
   <span className="inline-block rounded-full bg-brandBlue px-6 py-2.5 text-xs sm:text-sm font-bold tracking-wide text-white shadow-sm">
@@ -123,82 +103,114 @@ const ArrowButton = ({
   </button>
 );
 
-const AffiliationsAlumni = () => {
+const AffiliationsAlumni = ({
+  affiliations: affiliationItems = [],
+  alumniCountries = [],
+}: {
+  affiliations?: LogoItem[];
+  alumniCountries?: LogoItem[];
+}) => {
   const affiliations = useMarquee("left", 35);
   const alumni = useMarquee("right", 35);
+
+  // Nothing published in either group — render no section at all rather than an
+  // empty white band, matching the guards in Courses and Blogs.
+  if (affiliationItems.length === 0 && alumniCountries.length === 0)
+    return null;
 
   return (
     <section className="bg-white py-14 lg:py-24">
       {/* Our Affiliations and Alliances — pill stays centered, unpadded; the
           logo row itself bleeds full width, unlike the rest of the section. */}
-      <div className="flex justify-center mb-8">
-        <Pill>Our Affiliations and Alliances</Pill>
-      </div>
-      <div
-        className="w-full overflow-hidden"
-        onMouseEnter={() => affiliations.setPaused(true)}
-        onMouseLeave={() => affiliations.setPaused(false)}
-      >
-        <div
-          ref={affiliations.trackRef}
-          className="flex w-max items-center gap-20 will-change-transform"
-        >
-          {[...AFFILIATIONS, ...AFFILIATIONS].map((item, i) => (
-            <div
-              key={`${item.id}-${i}`}
-              className="flex h-[70px] w-44 shrink-0 items-center justify-center rounded-md border border-dashed border-gray-300 bg-gray-50 px-3 grayscale opacity-70 transition-opacity hover:opacity-100"
-            >
-              <span className="text-center text-[11px] font-semibold leading-tight text-gray-500">
-                {item.name}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-      <SectionShell>
-        <div className="flex justify-center mt-10 lg:mt-16 mb-8">
-          <Pill>Alumni Countries</Pill>
-        </div>
-        <div className="relative">
-          <ArrowButton
-            direction="left"
-            onClick={() => alumni.nudge("left")}
-            className="hidden lg:flex absolute -left-14 top-1/2 -translate-y-1/2"
-          />
+      {affiliationItems.length > 0 && (
+        <>
+          <div className="flex justify-center mb-8">
+            <Pill>Our Affiliations and Alliances</Pill>
+          </div>
           <div
-            className="overflow-hidden"
-            onMouseEnter={() => alumni.setPaused(true)}
-            onMouseLeave={() => alumni.setPaused(false)}
+            className="w-full overflow-hidden"
+            onMouseEnter={() => affiliations.setPaused(true)}
+            onMouseLeave={() => affiliations.setPaused(false)}
           >
             <div
-              ref={alumni.trackRef}
-              className="flex w-max items-center gap-3 lg:gap-6 will-change-transform"
+              ref={affiliations.trackRef}
+              className="flex w-max items-center gap-20 will-change-transform"
             >
-              {[...ALUMNI_COUNTRIES, ...ALUMNI_COUNTRIES].map((country, i) => (
+              {[...affiliationItems, ...affiliationItems].map((item, i) => (
+                /* The box keeps a fixed width/height and the logo fills it with
+                   `object-contain`: the CMS logos range from 71x84 to 218x54, and
+                   sizing the box from a logo's intrinsic dimensions would change
+                   `scrollWidth` once the images decode — which useMarquee caches
+                   once and never re-reads. See the note on `measure` below. */
                 <div
-                  key={`${country.id}-${i}`}
-                  className="flex h-16 w-16 sm:h-28 sm:w-28 lg:h-32 lg:w-32 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-brandBlue bg-gray-100"
-                  title={country.name}
+                  key={`${item.id}-${i}`}
+                  className="relative h-[70px] w-44 shrink-0 overflow-hidden"
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={country.flag}
-                    alt={`${country.name} flag`}
-                    className="h-full w-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none";
-                    }}
+                  <Image
+                    src={item.image.url}
+                    alt={item.name}
+                    fill
+                    sizes="176px"
+                    className="object-contain"
                   />
                 </div>
               ))}
             </div>
           </div>
-          <ArrowButton
-            direction="right"
-            onClick={() => alumni.nudge("right")}
-            className="hidden lg:flex absolute -right-14 top-1/2 -translate-y-1/2"
-          />
-        </div>
+        </>
+      )}
+      <SectionShell>
+        {alumniCountries.length > 0 && (
+          <>
+            <div className="flex justify-center mt-10 lg:mt-16 mb-8">
+              <Pill>Alumni Countries</Pill>
+            </div>
+            <div className="relative">
+              <ArrowButton
+                direction="left"
+                onClick={() => alumni.nudge("left")}
+                className="hidden lg:flex absolute -left-14 top-1/2 -translate-y-1/2"
+              />
+              <div
+                className="overflow-hidden"
+                onMouseEnter={() => alumni.setPaused(true)}
+                onMouseLeave={() => alumni.setPaused(false)}
+              >
+                <div
+                  ref={alumni.trackRef}
+                  className="flex w-max items-center gap-3 lg:gap-6 will-change-transform"
+                >
+                  {[...alumniCountries, ...alumniCountries].map(
+                    (country, i) => (
+                      /* `relative` is load-bearing: without it `fill` would resolve to
+                   the ArrowButton wrapper above (the nearest positioned ancestor)
+                   and stack every flag across the whole row — and because that
+                   ancestor exists, Next emits no warning about it. */
+                      <div
+                        key={`${country.id}-${i}`}
+                        className="relative h-16 w-16 sm:h-28 sm:w-28 lg:h-32 lg:w-32 shrink-0 overflow-hidden rounded-full border-2 border-brandBlue bg-gray-100"
+                        title={country.name}
+                      >
+                        <Image
+                          src={country.image.url}
+                          alt={`${country.name} flag`}
+                          fill
+                          sizes="(min-width: 1024px) 128px, (min-width: 640px) 112px, 64px"
+                          className="object-cover"
+                        />
+                      </div>
+                    ),
+                  )}
+                </div>
+              </div>
+              <ArrowButton
+                direction="right"
+                onClick={() => alumni.nudge("right")}
+                className="hidden lg:flex absolute -right-14 top-1/2 -translate-y-1/2"
+              />
+            </div>
+          </>
+        )}
       </SectionShell>
     </section>
   );

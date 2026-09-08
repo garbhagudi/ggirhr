@@ -115,12 +115,18 @@ const ReadyToGetStarted = () => {
               variant="outline"
               size="md"
               rounded="sm"
-              className="h-10 !border-black !text-black hover:!bg-black/5 sm:h-auto"
+              // On desktop this button pays 2px of border per side that
+              // `primary` doesn't, and `size="md"` keeps a 20px line box
+              // (`leading-5`) even at `sm:text-base` — so the old 26px icon
+              // dictated the flex cross-size and left WhatsApp 10px taller
+              // than Call Us. A 20px icon fits the line box and `sm:py-3`
+              // gives back the border's 4px: 20 + 24 + 4 = 48px, matching.
+              className="h-10 !border-black !text-black hover:!bg-black/5 sm:h-auto sm:py-3"
               leftIcon={
                 <WhatsAppIcon
                   size={26}
                   color="#4CAF50"
-                  className="w-[21px] h-[21px] sm:w-[26px] sm:h-[26px]"
+                  className="w-[21px] h-[21px] sm:w-5 sm:h-5"
                 />
               }
             >

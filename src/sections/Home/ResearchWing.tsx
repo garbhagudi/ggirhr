@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Chip from "components/ui/Chip";
 import Glow from "components/ui/Glow";
+import RibbonWave from "components/ui/RibbonWave";
 import { HiUserGroup } from "react-icons/hi";
 import { GiFizzingFlask } from "react-icons/gi";
 
@@ -19,7 +20,6 @@ const COMMITTEES = [
 
 const ResearchContent = () => (
   <>
-    {/* px-4 (not the `sm` size's px-3) is the mock's 16px side padding. */}
     <Chip variant="pink" size="sm" className="px-4 tracking-widest">
       RESEARCH
     </Chip>
@@ -27,14 +27,10 @@ const ResearchContent = () => (
       <h1 className="font-heading text-[28px] sm:text-[36px] lg:text-[46px] xl:leading-[50px] leading-tight text-black mt-6">
         Research <span className="text-[#1DA8E1] font-bold">Wing</span>
       </h1>
-      {/* On mobile the ribbon sits beside the heading; from lg up the
-          absolutely-positioned copy in the section below takes over. */}
-      <Image
-        src="/ribbon-wave-icon.svg"
-        alt=""
+      <RibbonWave
         width={214}
         height={84}
-        className="lg:hidden w-[90px] h-auto shrink-0 mt-6 opacity-80"
+        className="lg:hidden w-[90px] shrink-0 mt-6 opacity-80"
       />
     </div>
     <p className="text-black font-semibold leading-[27px] text-left sm:text-justify mt-2.5 text-base lg:text-lg">
@@ -62,8 +58,6 @@ const ResearchContent = () => (
 const ResearchWing = () => {
   return (
     <section className="relative bg-[#FAFEFF] lg:bg-white overflow-hidden">
-      {/* The fade masks the right-hand photo horizontally, which only makes
-          sense once the layout is side by side. */}
       <div className="hidden lg:block absolute left-0 top-0 w-[80%] h-full z-10">
         <Image
           src="/research-fade-overlay.svg"
@@ -74,10 +68,6 @@ const ResearchWing = () => {
         />
       </div>
       <div className="w-full lg:h-[735px] lg:overflow-hidden lg:py-20 lg:px-40 flex flex-col lg:flex-row">
-        {/* Below lg a full-width banner above the copy; from lg up the right
-            half-bleed panel. Ordered first so it leads on mobile. */}
-        {/* The mock hangs the banner 21px above the frame and lets the frame
-            clip it, which the section's overflow-hidden reproduces. */}
         <div className="order-first lg:order-none relative w-full h-[244px] -mt-[21px] sm:h-[280px] lg:mt-0 lg:absolute lg:right-0 lg:top-0 lg:w-1/2 lg:h-full lg:z-0">
           <Image
             src={RESEARCH_IMAGE}
@@ -92,21 +82,12 @@ const ResearchWing = () => {
         </div>
         <div className="hidden lg:block relative flex-1"></div>
 
-        <Image
-          src="/ribbon-wave-icon.svg"
-          alt=""
+        <RibbonWave
           width={214}
           height={84}
-          className="hidden lg:block absolute top-8 left-[40%] opacity-80 z-20 rotate-[-9.93deg]"
+          className="hidden lg:block absolute top-8 left-[40%] w-[214px] opacity-80 z-20 rotate-[-9.93deg]"
         />
-
-        {/* Stacked layout only: fades the bottom of the banner into white.
-            The stops are pinned in px (not the mock's 1% / 8.59%) so the fade
-            still finishes ~48px in however tall the section ends up. */}
         <div className="lg:hidden absolute inset-x-0 top-[183px] sm:top-[219px] bottom-0 z-10 bg-[linear-gradient(180deg,rgba(255,255,255,0)_6px,#FFFFFF_48px)]" />
-
-        {/* Painted after the fade (same z) because the mock stacks the blue
-            ellipse above the white rectangle. */}
         <Glow className="lg:hidden z-10 w-[680px] h-[680px] -left-[273px] top-[439px] bg-[rgba(142,230,255,0.22)] blur-[102px]" />
 
         <div className="hidden lg:block absolute left-0 bottom-0 lg:z-30 w-[680px] h-[680px]">
