@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
 import Button from "components/ui/Button";
 
-const MICROSCOPE_IMAGE = "/journey.png";
+const MICROSCOPE_IMAGE = "/Journey.png";
 
 const PROGRAMS = [
   "Clinical ART",
