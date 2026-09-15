@@ -52,20 +52,18 @@ const Voices = () => {
     trackRef,
     currentIndex,
     cardWidth,
-    maxIndex,
     canGoNext,
     canGoPrev,
     goToNext,
     goToPrev,
+    progressWidthPct,
+    progressLeftPct,
   } = useFitCarousel({
     itemCount: VOICES.length,
     maxCardWidth: MAX_CARD_WIDTH,
     gap: CARD_GAP,
   });
 
-  const progressWidthPct = 100 / (maxIndex + 1);
-  const progressLeftPct =
-    (currentIndex / (maxIndex || 1)) * (100 - progressWidthPct);
 
   // Rendered twice: in the heading row on desktop, and in the progress row on
   // mobile, where the design moves the arrows below the card.

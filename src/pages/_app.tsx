@@ -12,12 +12,16 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Loading from "components/loading";
 
+// Redesigned pages render the "Ready to get started?" footer section
+// (sections/Home/ReadyToGetStarted) in place of the global Footer.
+const REDESIGNED_FOOTER_ROUTES = ["/", "/about"];
+
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [loading, setLoading] = React.useState(false);
-  // Home page renders its own "Ready to get started?" footer section
-  // (sections/Home/ReadyToGetStarted) in place of the global Footer.
-  const isHome = router.pathname === "/";
+  const usesRedesignedFooter = REDESIGNED_FOOTER_ROUTES.includes(
+    router.pathname
+  );
 
   useEffect(() => {
     TagManager.initialize({ gtmId: "GTM-5462HX7" });
@@ -72,7 +76,7 @@ function MyApp({ Component, pageProps }) {
           </main>
           <SalesIQ />
           <FloatPhone />
-          {isHome ? <ReadyToGetStarted /> : <Footer />}
+          {usesRedesignedFooter ? <ReadyToGetStarted /> : <Footer />}
         </div>
       )}
     </div>

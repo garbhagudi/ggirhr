@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 
-export type ChipVariant = 'pink' | 'blue' | 'dark' | 'outline';
+export type ChipVariant = 'pink' | 'blue' | 'dark' | 'glass' | 'outline';
 export type ChipSize = 'sm' | 'md' | 'lg';
 
 export type ChipProps = Omit<
@@ -22,6 +22,9 @@ const VARIANT_CLASSES: Record<ChipVariant, string> = {
   pink: 'bg-white text-[#BB2649] shadow-[0px_4px_14px_rgba(0,0,0,0.1)]',
   blue: 'bg-white text-[#1DA8E1] shadow-[0px_4px_14px_rgba(0,0,0,0.1)]',
   dark: 'bg-brandDark text-white shadow-[0px_4px_14px_rgba(0,0,0,0.1)]',
+  // The translucent pill the blue section bands use. Owning it here is what
+  // lets callers drop the `!bg-` override they needed to beat `bg-white`.
+  glass: 'bg-[#FFFFFF1A] text-white backdrop-blur-[24px]',
   outline: 'bg-transparent text-brandDark border border-brandDark/20',
 };
 

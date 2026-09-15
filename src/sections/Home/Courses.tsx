@@ -27,11 +27,12 @@ const Courses = ({ courses }: { courses?: Course[] }) => {
     trackRef,
     currentIndex,
     cardWidth,
-    maxIndex,
     canGoNext,
     canGoPrev,
     goToNext,
     goToPrev,
+    progressWidthPct,
+    progressLeftPct,
   } = useFitCarousel({
     itemCount: courses?.length ?? 0,
     maxCardWidth: MAX_CARD_WIDTH,
@@ -40,9 +41,6 @@ const Courses = ({ courses }: { courses?: Course[] }) => {
 
   if (!courses || courses.length === 0) return null;
 
-  const progressWidthPct = 100 / (maxIndex + 1);
-  const progressLeftPct =
-    (currentIndex / (maxIndex || 1)) * (100 - progressWidthPct);
 
   return (
     <SectionShell as="section" className="bg-[#D2EEF9] py-14 lg:py-20">

@@ -21,20 +21,13 @@ const SUPPORT_LINKS = [
 ];
 
 const LEGAL_LINKS = [{ name: "Privacy Policy", href: "/legal/privacy-policy" }];
-
-// Underlined column heading, mirroring the "Line 10" rule under each label
-// in the Figma frame.
 const ColumnHeading = ({ children }: { children: React.ReactNode }) => (
   <h3 className="relative inline-block text-[15px] font-semibold text-black pb-2.5 sm:text-lg">
     {children}
-    {/* Fixed 32px on mobile so all three columns' rules match; the desktop
-        60%-of-label width is unchanged. */}
     <span className="absolute bottom-0 left-0 h-[2px] w-8 bg-black rounded-[2px] sm:w-3/5" />
   </h3>
 );
 
-// Thin heartbeat/pulse squiggle flanking the copyright line
-// (public/icons/footer-pulse-line-left.svg & -right.svg, ex "Vector 29/30").
 const PulseLine = ({
   side,
   className = "",
@@ -42,10 +35,6 @@ const PulseLine = ({
   side: "left" | "right";
   className?: string;
 }) => (
-  // Height is pinned to the source SVGs' native 38px: the flat portion of
-  // the line is a ~0.8px-thin filled shape, so scaling the box down (e.g.
-  // to h-4) forces the browser to downsample it well under 1px and it
-  // nearly disappears. Only the width stretches, via `fill` + `object-fill`.
   <div className={`relative h-[38px] w-full ${className}`} aria-hidden="true">
     <Image
       src={`/icons/footer-pulse-line-${side}.svg`}
@@ -76,8 +65,6 @@ const FooterLinkList = ({
   </ul>
 );
 
-// "Ready to get started?" CTA banner + footer. Rendered only on the Home
-// page in place of the global <Footer /> (see _app.tsx).
 const ReadyToGetStarted = () => {
   return (
     <footer className="relative overflow-hidden bg-white pt-16 pb-10">
@@ -115,18 +102,11 @@ const ReadyToGetStarted = () => {
               variant="outline"
               size="md"
               rounded="sm"
-              // On desktop this button pays 2px of border per side that
-              // `primary` doesn't, and `size="md"` keeps a 20px line box
-              // (`leading-5`) even at `sm:text-base` — so the old 26px icon
-              // dictated the flex cross-size and left WhatsApp 10px taller
-              // than Call Us. A 20px icon fits the line box and `sm:py-3`
-              // gives back the border's 4px: 20 + 24 + 4 = 48px, matching.
-              className="h-10 !border-black !text-black hover:!bg-black/5 sm:h-auto sm:py-3"
+              className="h-10 !border-[#374151] !text-black hover:!bg-black/5 sm:h-auto"
               leftIcon={
                 <WhatsAppIcon
-                  size={26}
+                  size={20}
                   color="#4CAF50"
-                  className="w-[21px] h-[21px] sm:w-5 sm:h-5"
                 />
               }
             >

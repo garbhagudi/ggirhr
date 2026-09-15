@@ -1,125 +1,34 @@
+import React from "react";
 import Image from "next/image";
+import Glow from "components/ui/Glow";
 
+const BANNER_IMAGE = "/research-microscope.png";
 export default function Banner() {
   return (
-    <div className="mx-auto">
-      <Image
-        className="mb-4 object-cover object-center w-screen"
-        alt="Top infertility training organizations in india"
-        src="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegu2g801pf06prsgnwsafv"
-        width={800}
-        height={500}
-        sizes="(max-width: 640px) 90vw, 100vw"
-        priority={true}
-      />
-
-      <section className="text-gray-600 body-font">
-        <div className="flex pb-4 items-center justify-center flex-col">
-          <div className="max-w-7xl lg:w-2/3 w-full px-3 sm:px-0">
-            <h1 className="py-8 text-center text-4xl font-heading font-bold text-brandDark">
-              About GGIRHR
-            </h1>
-            <p className="mb-8 leading-relaxed text-lg ">
-              GarbhaGudi Institute of Reproductive Health and Research (GGIRHR)
-              is one of India’s premier infertility training organizations. It
-              started in 2018 and is headed by Dr. Asha S Vijay, the honorable
-              dean and scientific director of GGIRHR.
-            </p>
-            <p className="mb-8 leading-relaxed text-lg">
-              GGIRHR intends to create a renaissance in training doctors and
-              embryologists in the field of fertility. Since it is a part of the
-              GarbhaGudi group, it has many advantages that are not available to
-              other training organizations. GarbhaGudi IVF Centre, the mother
-              company of GGIRHR, is known for its great success rates, ethical
-              treatment, affordable costs, world-class infrastructure, and
-              humane touch. With the backing of such a capable and robust
-              organization, GGIRHR is well prepared to provide the best-in-class
-              training to clinicians, embryologists andrology technicians, and
-              paramedical staff to prepare them for the challenges of
-              infertility treatment.
-            </p>
-            <p className="mb-8 leading-relaxed text-lg">
-              Students at GGIRHR can get to learn the tips, tricks, processes,
-              protocols, and treatment approaches followed at GarbhaGudi IVF,
-              which has given such unbelievable success rates. Training will be
-              provided by senior faculties who are well versed in their field of
-              specialization. Teaching staff at GGIRHR possess profound
-              knowledge and are not just academicians. So the knowledge they
-              share will be efficient, practical, and something that can be
-              implemented immediately.
-            </p>
-          </div>
+    <div className="px-5 xl:px-[30px] my-4 md:my-8">
+      <div className="relative overflow-hidden rounded-xl xl:rounded-[30px] bg-white flex flex-col lg:flex-row lg:items-center lg:h-[550px]">
+        <Glow className="hidden lg:block z-0 w-[454px] h-[454px] -left-[75px] -top-[163px] bg-[rgba(142,230,255,0.99)] blur-[102px]" />
+        <Glow className="hidden lg:block z-0 w-[400px] h-[298px] -left-[76px] top-[404px] bg-[rgba(122,220,249,0.58)] blur-[202px]" />
+        <div className="relative z-20 px-5 py-8 sm:px-8 sm:py-10 lg:w-1/2 lg:px-[89px] lg:py-0">
+          <h1 className="text-center lg:text-left font-heading font-normal text-[32px] sm:text-[44px] lg:text-5xl xl:text-[61px] xl:leading-[58px] text-[#374151] lg:absolute top-12 left-1/4 backdrop-filter-[184px]">
+            About <span className="font-bold text-[#1DA8E1]">GGIRHR</span>
+          </h1>
         </div>
-      </section>
-      <section className="text-brandDark">
-        <div className="container px-5 mx-auto">
-          <div className="w-full mb-8">
-            <h1 className="text-center text-4xl font-heading font-bold text-brandDark">
-              Affiliations
-            </h1>
-          </div>
-          <div className="flex flex-wrap m-4 max-w-4xl mx-auto">
-            {Data.map((items) => (
-              <div className="p-4 md:w-2/4 lg:w-2/4 mx-auto" key={items.id}>
-                <div className="flex rounded-2xl w-96 sm:w-auto bg-gray-100 p-8 flex-col h-44">
-                  <div className="flex items-center mb-3">
-                    <div className="w-28 h-28 mr-3 inline-flex items-center justify-center rounded-full bg-brandBlue text-white flex-shrink-0 overflow-hidden">
-                      <Image
-                        src={items.icon}
-                        alt={items.organisation}
-                        width={112}
-                        height={112}
-                        sizes="(max-width: 640px) 90vw, 100vw"
-                        loading="lazy"
-                      />
-                    </div>
-
-                    <h2 className="text-gray-900 text-xl font-semibold">
-                      {items.organisation}
-                    </h2>
-                  </div>
-                  {/* <div className="flex-grow">
-                    <p className="text-center font-semibold text-sm">
-                      {items.description}
-                    </p>
-                  </div> */}
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="relative z-0 w-full h-[220px] sm:h-[300px] lg:absolute lg:inset-y-0 lg:right-0 lg:w-[70%] lg:h-full">
+          <Image
+            src={BANNER_IMAGE}
+            alt="Microscope and lab equipment at the GarbhaGudi research facility"
+            fill
+            sizes="(min-width: 1024px) 70vw, 100vw"
+            className="object-cover lg:object-[30%_50%]"
+            priority
+          />
         </div>
-      </section>
+        <div className="hidden lg:block absolute inset-y-0 left-0 z-10 w-[68.9%] bg-[linear-gradient(270deg,rgba(255,255,255,0)_33.96%,#FFFFFF_53.42%)]" />
+        <div className="hidden lg:block absolute inset-y-0 left-0 z-10 w-[54.8%] bg-[linear-gradient(270deg,rgba(255,255,255,0)_0%,#FFFFFF_100%)]" />
+        <div className="hidden lg:block absolute inset-y-0 left-0 z-10 w-[50%] bg-[linear-gradient(270deg,rgba(210,238,249,0)_0%,#D2EEF9_60.68%,#D2EEF9_100%)]" />
+        <Glow className="hidden lg:block z-10 w-[557px] h-[228px] left-[53px] top-[272px] bg-[rgba(255,255,255,0.42)] blur-[92px]" />
+      </div>
     </div>
   );
 }
-
-const Data = [
-  {
-    id: 1,
-    organisation: "IMA - Academy of Medical Specialities",
-    icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegta2901m806pr0hy0gdjz",
-    description: "IMA-AMS Fellowship in Infertility",
-    // link: "/about/affiliations/ima-ams",
-  },
-  {
-    id: 2,
-    organisation: "Rajiv Gandhi University of Health Sciences",
-    icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegtkhp01kl06pngex8ubkk",
-    description: "RGUHS Fellowship in Reproductive Medicine",
-    // link: "/about/affiliations/rguhs",
-  },
-  {
-    id: 3,
-    organisation: "NITTE (Deemed to be University)",
-    icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegta2s01mc06prx0b64ijo",
-    description: "PG Diploma in clinical Embryology ",
-    // link: "/about/affiliations/nitte",
-  },
-  {
-    id: 4,
-    organisation: "Bangalore Bio Innovation Centre",
-    icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegta1q01m406prg8y1xt5o",
-    description: "PG Diploma in clinical Embryology",
-    // link: "/about/affiliations/bbc",
-  },
-];

@@ -45,6 +45,10 @@ export type FitCarousel = {
   canGoPrev: boolean;
   goToNext: () => void;
   goToPrev: () => void;
+  /** Width of the progress-bar thumb, as a percentage of the track. */
+  progressWidthPct: number;
+  /** Left offset of the thumb, as a percentage of the track. */
+  progressLeftPct: number;
 };
 
 export function useFitCarousel({
@@ -96,6 +100,13 @@ export function useFitCarousel({
   const goToPrev = () =>
     canGoPrev && setCurrentIndex((i) => Math.max(i - 1, 0));
 
+  // Every consumer renders the same progress bar, so the geometry lives here
+  // rather than being re-derived at each call site. `maxIndex || 1` guards the
+  // single-page case, where the thumb fills the track and never moves.
+  const progressWidthPct = 100 / (maxIndex + 1);
+  const progressLeftPct =
+    (currentIndex / (maxIndex || 1)) * (100 - progressWidthPct);
+
   return {
     trackRef,
     currentIndex,
@@ -106,6 +117,8 @@ export function useFitCarousel({
     canGoPrev,
     goToNext,
     goToPrev,
+    progressWidthPct,
+    progressLeftPct,
   };
 }
 
