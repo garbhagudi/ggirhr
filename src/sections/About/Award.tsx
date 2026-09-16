@@ -20,13 +20,13 @@ const PARAGRAPHS = [
 const Award = () => (
   <SectionShell as="section" className="bg-white py-[60px] sm:py-12 lg:py-24">
     <div className="bg-[#D2EEF9] rounded-[20px] px-5 py-8 sm:px-8 sm:py-10 lg:px-[45px] lg:py-10">
-      <Chip variant="pink" size="sm" className="px-4 tracking-widest">
+      <Chip variant="pink" className="px-4">
         AWARD
       </Chip>
 
       <h2 className="font-heading text-[28px] sm:text-[36px] lg:text-[46px] leading-tight lg:leading-[49px] text-black mt-5 lg:mt-6">
         Awarded as Best IVF and{" "}
-        <span className="text-[#1DA8E1] font-bold">
+        <span className="text-primaryBlue font-bold">
           Infertility Training Centre in India
         </span>
       </h2>

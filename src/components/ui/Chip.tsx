@@ -22,15 +22,13 @@ const VARIANT_CLASSES: Record<ChipVariant, string> = {
   pink: 'bg-white text-[#BB2649] shadow-[0px_4px_14px_rgba(0,0,0,0.1)]',
   blue: 'bg-white text-[#1DA8E1] shadow-[0px_4px_14px_rgba(0,0,0,0.1)]',
   dark: 'bg-brandDark text-white shadow-[0px_4px_14px_rgba(0,0,0,0.1)]',
-  // The translucent pill the blue section bands use. Owning it here is what
-  // lets callers drop the `!bg-` override they needed to beat `bg-white`.
   glass: 'bg-[#FFFFFF1A] text-white backdrop-blur-[24px]',
   outline: 'bg-transparent text-brandDark border border-brandDark/20',
 };
 
 const SIZE_CLASSES: Record<ChipSize, string> = {
   sm: 'text-xs px-3 py-1.5 gap-1.5',
-  md: 'text-xs px-4 py-1.5 gap-2 tracking-widest sm:text-[15px] sm:leading-normal sm:py-2 sm:tracking-normal',
+  md: 'text-xs px-4 py-1.5 gap-2 tracking-widest sm:text-[15px] sm:leading-[29px] sm:py-2 sm:tracking-[10%]',
   lg: 'text-base px-5 py-4 gap-2.5',
 };
 

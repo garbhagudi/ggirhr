@@ -88,11 +88,9 @@ export default function VisionMission() {
                 </div>
               </div>
 
-              {/* Copy column tracks the image edge. */}
               <div className={`mt-5 lg:mt-6 lg:w-[78%] ${frameOffset}`}>
                 <Chip
                   variant="glass"
-                  size="sm"
                   className="px-4 uppercase tracking-widest"
                 >
                   {block.badge}

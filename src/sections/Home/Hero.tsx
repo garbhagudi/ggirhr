@@ -58,7 +58,7 @@ const StatsCard = ({
       )}
     </div>
     <div>
-      <p className="text-xl lg:text-[30px] leading-none font-bold text-[#1DA8E1] tracking-widest">
+      <p className="text-xl lg:text-[30px] leading-none font-bold text-primaryBlue tracking-widest">
         15+{" "}
         <span className="text-[11px] lg:text-[13px] uppercase">Countries</span>
       </p>
@@ -135,10 +135,10 @@ const Hero = ({
             </Chip>
             <div className="flex flex-col gap-3.5 lg:gap-6">
               <h1 className="text-[30px] sm:text-4xl lg:text-5xl xl:text-[60px] xl:leading-[58px] font-bold text-black">
-                Welcome to <span className="text-[#1DA8E1]">GGIRHR</span>
+                Welcome to <span className="text-primaryBlue">GGIRHR</span>
               </h1>
 
-              <p className="max-w-[536px] text-center lg:text-justify text-[13px] sm:text-base leading-6 lg:leading-[27px] font-semibold text-black">
+              <p className="max-w-[536px] text-center lg:text-justify text-[13px] sm:text-lg leading-6 lg:leading-[27px] font-semibold text-black">
                 GarbhaGudi Institute of Reproductive Health &amp; Research is a
                 platform launched by a team of renowned specialists interested
                 in training medical professionals and science students in
@@ -164,7 +164,7 @@ const Hero = ({
                 onClick={() => setActiveIndex(i)}
                 className={
                   i === activeIndex
-                    ? "h-2 w-9 rounded-full bg-[#1DA8E1]"
+                    ? "h-2 w-9 rounded-full bg-primaryBlue"
                     : "h-2 w-2 rounded-full bg-[#CFCFCF]"
                 }
               />

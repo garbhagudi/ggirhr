@@ -31,7 +31,7 @@ type ValuePhotoProps = {
 };
 
 const ValuePhoto = ({ src, alt, accent, className = "" }: ValuePhotoProps) => (
-  <div className={`relative aspect-[260/310] w-full ${className}`}>
+  <div className={`relative aspect-[407/476] w-full ${className}`}>
     <FrameAccent position={accent} />
     <Image
       src={src}
@@ -47,11 +47,11 @@ const Values = () => (
   <section className="bg-white py-14 lg:py-20">
     <SectionShell>
       <div className="text-center">
-        <Chip variant="pink" size="sm" className="px-4 tracking-widest">
+        <Chip variant="pink" className="px-4 tracking-widest">
           VALUES
         </Chip>
         <h2 className="font-heading text-[28px] sm:text-[36px] lg:text-[46px] leading-tight text-black mt-1 sm:mt-2 mb-8 lg:mb-10">
-          Our <span className="text-[#1DA8E1] font-bold">Values</span>
+          Our <span className="text-primaryBlue font-bold">Values</span>
         </h2>
       </div>
       <div className="grid grid-cols-2 gap-6 lg:grid-cols-3 lg:gap-10 lg:items-start">
@@ -68,10 +68,10 @@ const Values = () => (
           className="order-2 lg:order-3"
         />
 
-        <ul className="order-3 col-span-2 flex flex-col gap-3 lg:order-2 lg:col-span-1">
+        <ul className="order-3 col-span-2 flex flex-col gap-3 lg:gap-[22px] lg:order-2 lg:col-span-1">
           {VALUES.map((value) => (
             <li key={value} className="flex items-start gap-3">
-              <CheckCircleIcon className="mt-1 h-5 w-5 shrink-0 text-[#1DA8E1]" />
+              <CheckCircleIcon className="mt-1 h-5 w-5 shrink-0 text-primaryBlue" />
               <p className="text-justify text-base font-semibold leading-6 text-[#374151] lg:text-[18px]">
                 {value}
               </p>

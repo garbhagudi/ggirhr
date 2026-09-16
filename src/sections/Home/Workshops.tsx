@@ -51,7 +51,7 @@ const Workshops = ({ workshops }: { workshops?: Workshop[] }) => {
   return (
     <SectionShell
       as="section"
-      className="relative overflow-hidden bg-[#1D9ACD] py-[60px] sm:py-14 lg:bg-[#1A97CA] lg:py-20"
+      className="relative overflow-hidden bg-[#1D9ACD] py-[60px] sm:py-14 lg:bg-primaryBlue-600 lg:py-20"
     >
       <div
         aria-hidden
@@ -125,7 +125,7 @@ const Workshops = ({ workshops }: { workshops?: Workshop[] }) => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     aria-hidden="true"
-                    className="block w-4 h-4 sm:w-[18px] sm:h-[18px]"
+                    className="block w-4 h-4 sm:w-[18px] sm:h-[20px]"
                   >
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>

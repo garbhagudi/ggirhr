@@ -20,7 +20,7 @@ const PAGE_DESCRIPTION =
   "GarbhaGudi Institute of Reproductive Health & Research is a platform launched by a team of renowned specialists interested in training medical professionals and science students in reproductive medicine and infertility.";
 
 const HomePage = ({ homeData }) => (
-  <div>
+  <div className="font-primary">
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title>{PAGE_TITLE}</title>

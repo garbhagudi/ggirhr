@@ -49,7 +49,7 @@ const Courses = ({ courses }: { courses?: Course[] }) => {
           <div className="text-black">
             <h1 className="text-[23px] leading-tight sm:text-4xl lg:text-[46px] lg:leading-[65px] font-bold">
               Courses and{" "}
-              <span className="text-[#1DA8E1] font-bold">
+              <span className="text-primaryBlue font-bold">
                 Programs
               </span>
             </h1>
@@ -98,14 +98,14 @@ const Courses = ({ courses }: { courses?: Course[] }) => {
                   </div>
                   <div className="p-4 flex-1 flex flex-col justify-between overflow-hidden leading-7">
                     <div className="flex flex-col gap-5">
-                      <div className="flex items-center gap-[9px] sm:gap-2.5 text-xs sm:text-sm text-[#1DA8E1]">
+                      <div className="flex items-center gap-[9px] sm:gap-2.5 text-xs sm:text-sm text-primaryBlue">
                         <span className="flex items-center gap-1.5">
                           <ClockIcon
                             className="w-4 h-4"
                           />
                           5 days
                         </span>
-                        <span className="flex items-center gap-1.5 border-l sm:border-l-0 border-[#1DA8E1]/40 pl-[9px] sm:pl-0">
+                        <span className="flex items-center gap-1.5 border-l sm:border-l-0 border-primaryBlue/40 pl-[9px] sm:pl-0">
                           <UsersIcon
                             className="w-4 h-4"
                           />

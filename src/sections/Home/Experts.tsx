@@ -28,7 +28,7 @@ const AvatarGroup = ({ avatars }: { avatars: Teacher[] }) => (
     {avatars.map((teacher, i) => (
       <span
         key={teacher.id}
-        className="relative w-[22px] h-[22px] lg:w-12 lg:h-12 rounded-full bg-[#1DA8E1] ring-1 ring-white flex items-center justify-center overflow-hidden"
+        className="relative w-[22px] h-[22px] lg:w-12 lg:h-12 rounded-full bg-primaryBlue ring-1 ring-white flex items-center justify-center overflow-hidden"
         style={{ marginLeft: i === 0 ? 0 : -10, zIndex: avatars.length - 1 - i }}
       >
         {teacher.image?.url ? (
@@ -48,11 +48,6 @@ const AvatarGroup = ({ avatars }: { avatars: Teacher[] }) => (
 );
 
 const Experts = ({ teachers }: { teachers: Teacher[] }) => {
-  // Paging is shared with About/Faculty via useAutoCarousel. Only the hook is
-  // shared: the two cards differ in inset, panel treatment, glow and icon, so
-  // folding the JSX together would take a theme flag per difference.
-  //
-  // `teachers` is typed as required but guarded below, so keep the fallback.
   const { trackRef, currentIndex, setCurrentIndex, cardWidth, pageCount, setPaused } =
     useAutoCarousel({ itemCount: teachers?.length ?? 0, gap: CARD_GAP });
 
@@ -64,7 +59,7 @@ const Experts = ({ teachers }: { teachers: Teacher[] }) => {
     <SectionShell as="section" className="py-16">
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
         <div>
-          <Chip variant="pink" size="sm">
+          <Chip variant="pink">
             Experts
           </Chip>
           <h1 className="text-[23px] sm:text-[36px] lg:text-[46px] font-heading text-black mt-4 flex items-center flex-wrap leading-tight lg:leading-[65px]">

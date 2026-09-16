@@ -10,8 +10,7 @@ const AboutUs = () => (
   <section className="relative overflow-hidden bg-white py-10 sm:py-12 lg:py-[60px]">
     <div className="relative z-10 mx-auto max-w-[940px] px-5 text-center sm:px-6 lg:px-0">
       <Chip
-        size="sm"
-        className="px-4 uppercase tracking-widest !bg-[#1DA8E1] text-white"
+        className="px-4 uppercase tracking-widest !bg-primaryBlue text-white"
       >
         About Us
       </Chip>

@@ -26,7 +26,7 @@ const LeaderCard = ({ leader }: { leader: Leader }) => (
     </div>
 
     <div className="flex flex-1 flex-col px-1.5 pt-5 lg:px-2.5 lg:pt-6 text-[#374151]">
-      <h3 className="text-2xl sm:text-[28px] lg:text-[32px] font-bold leading-tight text-[#1DA8E1]">
+      <h3 className="text-2xl sm:text-[28px] lg:text-[32px] font-bold leading-tight text-primaryBlue">
         {leader.name}
       </h3>
       {leader.designation && (
@@ -58,11 +58,11 @@ const Leadership = ({ leaders = [] }: { leaders?: Leader[] }) => {
   return (
     <section className="bg-white py-14 lg:py-20">
       <SectionShell>
-        <Chip variant="pink" size="sm" className="px-4 tracking-widest">
+        <Chip variant="pink" className="px-4">
           OUR LEADER
         </Chip>
         <h2 className="font-heading text-black text-[23px] sm:text-[36px] lg:text-[46px] leading-tight mt-4 sm:mt-4 mb-8 lg:mb-10">
-          Leadership <span className="text-[#1DA8E1] font-bold">Team</span>
+          Leadership <span className="text-primaryBlue font-bold">Team</span>
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-[30px]">
           {leaders.map((leader) => (

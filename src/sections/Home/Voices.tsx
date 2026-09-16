@@ -95,12 +95,11 @@ const Voices = () => {
   return (
     <SectionShell
       as="section"
-      className="relative overflow-hidden bg-[#1A97CA] py-14 lg:py-20"
+      className="relative overflow-hidden bg-primaryBlue-600 py-14 lg:py-20"
     >
       <div className="mx-auto flex flex-col">
         <Chip
           variant="blue"
-          size="sm"
           className="uppercase tracking-widest !bg-[#FFFFFF1A] text-white font-bold"
         >
           Testimonial

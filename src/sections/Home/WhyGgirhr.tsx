@@ -109,7 +109,7 @@ const OurStoryRow = () => (
   </div>
 );
 const WhyGgirhr = () => (
-  <SectionShell className="py-12 px-5 bg-[#1A97CA] overflow-hidden flex gap-12 lg:gap-24 flex-col">
+  <SectionShell className="py-12 px-5 bg-primaryBlue-600 overflow-hidden flex gap-12 lg:gap-24 flex-col">
     <WhyGgirhrRow />
     <OurStoryRow />
   </SectionShell>

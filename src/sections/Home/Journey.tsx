@@ -71,7 +71,7 @@ const FieldGroup = ({
   className?: string;
   children: React.ReactNode;
 }) => (
-  <div className={`group flex flex-col gap-1.5 sm:gap-3 ${className}`}>
+  <div className={`group flex flex-col ${className}`}>
     <label htmlFor={htmlFor}>
       <FieldLabel>{label}</FieldLabel>
     </label>

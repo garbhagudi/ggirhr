@@ -8,7 +8,7 @@ import SectionShell from "components/ui/SectionShell";
 type LogoItem = { id: string; name: string; image?: { url?: string } };
 
 const Pill = ({ children }: { children: React.ReactNode }) => (
-  <span className="inline-block rounded-full bg-brandBlue px-6 py-2.5 text-xs sm:text-sm font-bold tracking-wide text-white shadow-sm">
+  <span className="inline-block rounded-full bg-brandBlue px-6 py-2.5 text-xs sm:text-[15px] font-bold tracking-wide text-white shadow-sm">
     {children}
   </span>
 );

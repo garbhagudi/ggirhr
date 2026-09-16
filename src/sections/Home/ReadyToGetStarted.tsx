@@ -56,7 +56,7 @@ const FooterLinkList = ({
       <li key={item.name}>
         <Link
           href={item.href}
-          className="text-black/80 text-[13px] leading-10 hover:text-[#1DA8E1] transition-colors sm:text-sm sm:leading-normal"
+          className="text-black/80 text-[13px] leading-10 hover:text-primaryBlue transition-colors sm:text-sm sm:leading-normal"
         >
           {item.name}
         </Link>
@@ -79,7 +79,7 @@ const ReadyToGetStarted = () => {
           <div>
             <h2 className="text-[23px] sm:text-[46px] leading-tight font-normal text-black">
               Ready to get{" "}
-              <span className="font-bold text-[#1DA8E1]">started?</span>
+              <span className="font-bold text-primaryBlue">started?</span>
             </h2>
             <p className="mt-2 text-black text-[13px] leading-6 sm:text-lg">
               We&apos;re here to provide information, advice, support.
@@ -136,7 +136,7 @@ const ReadyToGetStarted = () => {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={name}
-                  className="w-[29px] h-[29px] flex items-center justify-center rounded-full bg-[#1DA8E1] shadow-[inset_0px_1px_11px_#1587A9] hover:bg-[#1998cd] transition-colors sm:w-[43px] sm:h-[43px]"
+                  className="w-[29px] h-[29px] flex items-center justify-center rounded-full bg-primaryBlue shadow-[inset_0px_1px_11px_#1587A9] hover:bg-[#1998cd] transition-colors sm:w-[43px] sm:h-[43px]"
                 >
                   <Icon
                     size={19}
@@ -172,7 +172,7 @@ const ReadyToGetStarted = () => {
         />
         <p className="text-xs text-gray-700 text-center flex-1 max-w-[250px] sm:text-sm sm:text-gray-600 whitespace-nowrap">
           &copy; {new Date().getFullYear()}{" "}
-          <span className="text-[#BB2649]"> GGIRHR </span>, Inc. All rights
+          <span className="text-secondaryMagenta"> GGIRHR </span>, Inc. All rights
           reserved.
         </p>
         <PulseLine

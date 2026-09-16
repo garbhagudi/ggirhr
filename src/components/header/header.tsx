@@ -6,6 +6,50 @@ import { About, Courses, Contact } from 'components/header/popover';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import MenuIcon from 'components/ui/icons/MenuIcon';
+import Button from 'components/ui/Button';
+
+const NAV_LINKS = [
+  { href: '/', label: 'Home', mobileLabel: 'Home' },
+  { href: '/events', label: 'Events & Webinars', mobileLabel: 'Events', activeFontContent: true },
+  {
+    href: '/research',
+    label: 'Research & Journals',
+    mobileLabel: 'Research and Journals',
+    activeFontContent: true,
+  },
+  { href: '/blogs/page/1', label: 'Blogs', mobileLabel: 'Blogs' },
+];
+
+const renderNavLink = (
+  { href, label, activeFontContent }: (typeof NAV_LINKS)[number],
+  pathname: string
+) => (
+  <Link key={href} href={href} passHref>
+    <span
+      className={
+        pathname == href
+          ? `bg-primaryBlue text-white px-3 py-2 rounded-2xl text-sm ${
+              activeFontContent ? ' font-content' : ''
+            }`
+          : 'text-[#374151] hover:bg-primaryBlue px-3 py-2 rounded-2xl hover:text-white text-sm lg:text-base cursor-pointer'
+      }
+    >
+      {label}
+    </span>
+  </Link>
+);
+
+const renderMobileNavLink = ({ href, mobileLabel }: (typeof NAV_LINKS)[number]) => (
+  <Link
+    key={href}
+    href={href}
+    className='text-[#374151] hover:bg-primaryBlue hover:text-white block px-3 py-2 rounded-md text-sm'
+  >
+    {mobileLabel}
+  </Link>
+);
+
+const [HOME_LINK, ...OTHER_NAV_LINKS] = NAV_LINKS;
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -14,10 +58,10 @@ const Header = () => {
   const path = usePathname();
   return (
     <div className='sticky top-0 z-50'>
-      <nav className='border-b pb-4 bg-white shadow-2xl'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+      <nav className='font-primary border-b pb-4 bg-white shadow-2xl'>
+        <div className='px-5 xl:px-[30px]'>
           <div className='flex items-center justify-between h-16'>
-            <div className='flex items-center align-middle cursor-pointer'>
+            <div className='flex items-center align-middle cursor-pointer gap-8 justify-between w-full'>
               <div className='flex-shrink-0 pt-4'>
                 <Link href='/'>
                   <Image
@@ -31,79 +75,51 @@ const Header = () => {
                   />
                 </Link>
               </div>
-              <div className='hidden xl:flex items-center gap-1'>
-                <div className='ml-16 flex items-baseline space-x-4 pt-4'>
-                  <Link href='/' passHref>
-                    <span
-                      className={
-                        router.pathname == '/'
-                          ? 'bg-brandBlue text-white px-3 py-2 rounded-2xl text-sm'
-                          : 'text-gray-700 hover:bg-brandBlue px-3 py-2 rounded-2xl hover:text-white text-sm cursor-pointer'
-                      }
-                    >
-                      Home
-                    </span>
-                  </Link>
-                  <span className='text-gray-900 hover:bg-brandBlue hover:text-white rounded-2xl px-3 py-2 text-sm'>
+              <div className='hidden xl:flex items-center gap-[25px]'>
+                <div className='flex items-baseline space-x-4 pt-4 flex-1 gap:8 2xl:gap-11'>
+                  {renderNavLink(HOME_LINK, router.pathname)}
+                  <span className='text-gray-900 hover:bg-primaryBlue hover:text-white rounded-2xl px-3 py-2 text-sm'>
                     <About setIsPopoverOpen={setIsPopoverOpen} />
                   </span>
-                  <span className='text-gray-900 hover:bg-brandBlue hover:text-white rounded-2xl px-3 py-2 text-sm'>
+                  <span className='text-gray-900 hover:bg-primaryBlue hover:text-white rounded-2xl px-3 py-2 text-sm'>
                     <Courses
                       isPopoverOpen={isPopoverOpen}
                       setIsPopoverOpen={setIsPopoverOpen}
                       setIsOpen={setIsOpen}
                     />
                   </span>
-                  <Link href='/events' passHref>
-                    <span
-                      className={
-                        router.pathname == '/events'
-                          ? 'bg-brandBlue text-white px-3 py-2 rounded-2xl text-sm font-content'
-                          : 'text-gray-700 hover:bg-brandBlue px-3 py-2 rounded-2xl hover:text-white text-sm cursor-pointer'
-                      }
-                    >
-                      Events & Webinars
-                    </span>
-                  </Link>
-                  <Link href='/research' passHref>
-                    <span
-                      className={
-                        router.pathname == '/research'
-                          ? 'bg-brandBlue text-white px-3 py-2 rounded-2xl text-sm font-content'
-                          : 'text-gray-700 hover:bg-brandBlue px-3 py-2 rounded-2xl hover:text-white text-sm cursor-pointer'
-                      }
-                    >
-                      Research & Journals
-                    </span>
-                  </Link>
-                  <span className='text-gray-900 hover:bg-brandBlue hover:text-white rounded-2xl px-3 py-2 text-sm'>
-                    <Link href='/blogs/page/1'>Blogs</Link>
-                  </span>
-                  <span className='text-gray-900 hover:bg-brandBlue hover:text-white rounded-2xl px-3 py-2 text-sm'>
+                  {OTHER_NAV_LINKS.map((link) => renderNavLink(link, router.pathname))}
+                  <span className='text-gray-900 hover:bg-primaryBlue hover:text-white rounded-2xl px-3 py-2 text-sm'>
                     <Contact setIsPopoverOpen={setIsPopoverOpen} />
                   </span>
                 </div>
-                <Link
-                  target='_blank'
-                  className='duration-2 cursor-pointer rounded-lg px-3 py-2 font-lexend text-xs text-white bg-brandBlue hover:bg-brandBlueDark1 sm:text-sm self-end'
+                <Button
                   href={`/contact?pageVisit=${path}`}
+                  target='_blank'
+                  variant='primary'
+                  rounded='sm'
+                  size='sm'
+                  className='self-end font-lexend'
                 >
                   Apply Now
-                </Link>
+                </Button>
               </div>
             </div>
             <div className='-mr-2 flex items-center justify-center xl:hidden'>
-              <button className='hidden sm:block mt-4 mr-4'>
-                <Link
+              <div className='hidden sm:block mt-4 mr-4 whitespace-nowrap'>
+                <Button
                   href={`/contact?pageVisit=${path}`}
-                  className='bg-brandBlue hover:bg-gray-800 text-white rounded-2xl px-3 py-2 text-xs font-bold'
+                  variant='primary'
+                  rounded='full'
+                  size='sm'
+                  className='font-bold'
                 >
                   Contact Us
-                </Link>
-              </button>
+                </Button>
+              </div>
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className='inline-flex items-center justify-center p-2 mt-4 rounded-full text-[#374151] focus:outline-none focus:ring-2 focus:ring-brandBlue'
+                className='inline-flex items-center justify-center p-2 mt-4 rounded-full text-[#374151] focus:outline-none focus:ring-2 focus:ring-primaryBlue'
               >
                 <span className='sr-only'>Open main menu</span>
                 {!isOpen ? (
@@ -140,32 +156,19 @@ const Header = () => {
         >
           <div className='xl:hidden' id='mobile-menu'>
             <div className='px-2 pt-2 pb-3 space-y-1 sm:px-3'>
-              <Link
-                href={'/'}
-                className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'
-              >
-                Home
-              </Link>
-              <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
+              {renderMobileNavLink(HOME_LINK)}
+              <span className='text-gray-800 hover:bg-primaryBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
                 <About setIsPopoverOpen={setIsPopoverOpen} />
               </span>
-              <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
+              <span className='text-gray-800 hover:bg-primaryBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
                 <Courses
                   isPopoverOpen={isPopoverOpen}
                   setIsPopoverOpen={setIsPopoverOpen}
                   setIsOpen={setIsOpen}
                 />
               </span>
-              <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
-                <Link href='/events'>Events</Link>
-              </span>
-              <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
-                <Link href='/research'>Research and Journals</Link>
-              </span>
-              <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm'>
-                <Link href='/blogs/page/1'>Blogs</Link>
-              </span>
-              <span className='text-gray-800 hover:bg-brandBlue hover:text-white block px-3 py-2 rounded-md text-sm cursor-pointer'>
+              {OTHER_NAV_LINKS.map(renderMobileNavLink)}
+              <span className='text-gray-800 hover:bg-primaryBlue hover:text-white block px-3 py-2 rounded-md text-sm cursor-pointer'>
                 <Contact setIsPopoverOpen={setIsPopoverOpen} />
               </span>
             </div>

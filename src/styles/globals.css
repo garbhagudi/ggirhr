@@ -6,6 +6,86 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("/fonts/myriad-pro/MyriadPro-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("/fonts/myriad-pro/MYRIADPRO-REGULAR.OTF") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("/fonts/myriad-pro/MYRIADPRO-SEMIBOLD.OTF") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("/fonts/myriad-pro/MYRIADPRO-SEMIBOLDIT.OTF") format("opentype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("/fonts/myriad-pro/MYRIADPRO-BOLD.OTF") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("/fonts/myriad-pro/MYRIADPRO-BOLDIT.OTF") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Myriad Pro Condensed";
+  src: url("/fonts/myriad-pro/MYRIADPRO-COND.OTF") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Myriad Pro Condensed";
+  src: url("/fonts/myriad-pro/MYRIADPRO-CONDIT.OTF") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Myriad Pro Condensed";
+  src: url("/fonts/myriad-pro/MYRIADPRO-BOLDCOND.OTF") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Myriad Pro Condensed";
+  src: url("/fonts/myriad-pro/MYRIADPRO-BOLDCONDIT.OTF") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 html,
 body {
   scroll-behavior: smooth;

@@ -30,7 +30,7 @@ const IndexPage = ({
   teachers?: Teacher[];
 }) => {
   return (
-    <div>
+    <div className="font-primary">
       <Head>
         {/* Primary Tags */}
 
@@ -61,7 +61,6 @@ const IndexPage = ({
       <Alliances />
       <ResearchTeam />
       <Values />
-      {/* <Cta /> */}
       <VisionMission />
       <Leadership leaders={leaders} />
       <Faculty teachers={teachers} />

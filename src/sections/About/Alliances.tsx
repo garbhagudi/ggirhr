@@ -119,16 +119,13 @@ const Alliances = () => {
   );
 
   return (
-    <section className="relative overflow-hidden bg-[#1A97CA] py-14 lg:py-20">
+    <section className="relative overflow-hidden bg-primaryBlue-600 py-14 lg:py-20">
       <Glow className="-z-0 w-[320px] h-[320px] sm:w-[700px] sm:h-[700px] bg-[rgba(47,126,188,0.65)] blur-[150px] left-1/2 -translate-x-1/2 top-1/4" />
 
       <div className="relative lg:flex lg:items-center lg:gap-10">
-        {/* Copy column. `lg:pr-0` drops SectionShell's right gutter so the card
-            track can start closer and still bleed off the right edge. */}
         <SectionShell className="lg:w-[570px] lg:shrink-0 lg:pr-0">
           <Chip
             variant="blue"
-            size="sm"
             className="uppercase tracking-widest !bg-[#FFFFFF1A] text-white font-bold"
           >
             Alliance Partner

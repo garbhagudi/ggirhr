@@ -43,19 +43,18 @@ const Blogs = ({ blogs }: { blogs?: BlogPost[] }) => {
       />
 
       <SectionShell className="mx-auto leading-[20px] lg:leading-[24px]">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-10">
-          <div className="flex flex-col gap-4">
-            <Chip variant="pink" size="sm">
-              INSIGHTS
-            </Chip>
+        <div className="flex flex-col gap-4">
+          <Chip variant="pink">INSIGHTS</Chip>
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-10">
             <h1 className="font-heading text-[23px] lg:text-[46px] text-brandDark">
               Our <span className="text-brandBlue font-bold">Blogs</span>
             </h1>
+            <p className="text-[#374151] text-[13px] lg:text-lg font-semibold lg:leading-7 max-w-2xl">
+              There&apos;s always something new to learn. Explore our latest
+              articles for expert insights and advances in reproductive
+              medicine.
+            </p>
           </div>
-          <p className="text-black text-[13px] lg:text-lg font-semibold lg:leading-7 max-w-2xl">
-            There&apos;s always something new to learn. Explore our latest
-            articles for expert insights and advances in reproductive medicine.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
@@ -82,7 +81,7 @@ const Blogs = ({ blogs }: { blogs?: BlogPost[] }) => {
                 {featured.title}
               </h2>
               {featured.excerpt && (
-                <p className="text-[13px] lg:text-[15px] text-black leading-6 line-clamp-2">
+                <p className="text-[13px] lg:text-[15px] text-[#374151] leading-6 line-clamp-2">
                   {featured.excerpt}
                 </p>
               )}

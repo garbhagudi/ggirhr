@@ -31,12 +31,12 @@ const ResearchTeam = () => {
           />
         </div>
         <div className="relative z-20 flex-1 px-4 sm:px-6 lg:px-0 pt-2.5 pb-12 lg:py-0">
-          <Chip variant="pink" size="sm" className="px-4 tracking-widest">
+          <Chip variant="pink" className="px-4">
             RESEARCH
           </Chip>
           <div className="flex items-start justify-between gap-4">
             <h2 className="font-heading text-[28px] sm:text-[36px] lg:text-[46px] xl:leading-[50px] leading-tight text-black mt-2 sm:mt-4">
-              Our <span className="text-[#1DA8E1] font-bold">Research Team</span>
+              Our <span className="text-primaryBlue font-bold">Research Team</span>
             </h2>
           </div>
 

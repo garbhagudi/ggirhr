@@ -60,7 +60,7 @@ const VARIANT_CLASSES: Record<ButtonVariant, string> = {
 
 const SIZE_CLASSES: Record<ButtonSize, string> = {
   sm: 'text-[13px] leading-5 px-4 py-2 gap-2 sm:text-sm',
-  md: 'text-[13px] leading-5 px-4 py-2.5 gap-2 sm:text-base sm:px-6 sm:py-3.5 sm:gap-2.5',
+  md: 'text-[13px] leading-5 px-4 py-2.5 gap-2 sm:text-lg sm:gap-2.5',
   lg: 'text-lg px-8 py-4 gap-3',
   inline: 'p-0 gap-1',
   'icon-sm': 'w-[31px] h-[31px] p-0 gap-0 shrink-0 sm:w-9 sm:h-9',

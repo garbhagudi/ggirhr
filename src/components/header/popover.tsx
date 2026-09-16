@@ -8,7 +8,7 @@ import {
   TabPanels,
   Transition,
 } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/solid";
+import ChevronDownIcon from "components/ui/icons/ChevronDownIcon";
 import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import { Tab } from "@headlessui/react";
@@ -245,7 +245,7 @@ export function About({
               About
               <ChevronDownIcon
                 className={`${open ? "" : "text-opacity-70"}
-                  ml-1 h-5 w-5 inline-block`}
+                  ml-1 inline-block`}
                 aria-hidden="true"
               />
             </span>
@@ -317,7 +317,7 @@ export function Contact({
               Contact
               <ChevronDownIcon
                 className={`${open ? "" : "text-opacity-70"}
-                  ml-1 h-5 w-5 inline-block`}
+                  ml-1 inline-block`}
                 aria-hidden="true"
               />
             </span>
@@ -454,7 +454,7 @@ export function Courses({
                 className=""
                 onClick={() => setIsPopoverOpen(!isPopoverOpen)}
               >
-                Courses <ChevronDownIcon className="inline-block w-5 h-5" />
+                Courses <ChevronDownIcon className="inline-block ml-1" />
               </div>
             </PopoverButton>
             <Transition

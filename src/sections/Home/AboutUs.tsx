@@ -17,7 +17,7 @@ const AboutUs = () => (
     />
     <div className="space-y-5 flex flex-col">
         <Chip variant="pink">ABOUT US</Chip>
-      <p className="text-lg sm:text-2xl lg:text-[32px]">
+      <p className="text-lg sm:text-2xl lg:text-[32px] !leading-[47px]">
         <span className="font-bold">
           GarbhaGudi Institute of Reproductive Health and Research (GGIRHR) is
           one of India’s premier infertility training organizations.{" "}

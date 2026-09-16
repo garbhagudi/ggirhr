@@ -38,7 +38,7 @@ const FacultyCard = ({ teacher }: { teacher: Teacher }) => (
             {teacher.designation}
           </p>
         )}
-        <span className="flex h-[30px] w-[30px] items-center justify-center rounded-full bg-[#1DA8E1] shadow-[inset_0px_1px_11px_#1587A9]">
+        <span className="flex h-[30px] w-[30px] items-center justify-center rounded-full bg-primaryBlue shadow-[inset_0px_1px_11px_#1587A9]">
           <LinkedInIcon size={16} color="#fff" />
         </span>
       </div>
@@ -70,8 +70,7 @@ const Faculty = ({ teachers = [] }: { teachers?: Teacher[] }) => {
       <SectionShell className="relative z-10 text-center">
         <Chip
           variant="glass"
-          size="sm"
-          className="px-4 uppercase tracking-widest"
+          className="px-4 uppercase"
         >
           Faculty
         </Chip>

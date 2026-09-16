@@ -20,12 +20,12 @@ const COMMITTEES = [
 
 const ResearchContent = () => (
   <>
-    <Chip variant="pink" size="sm" className="px-4 tracking-widest">
+    <Chip variant="pink" className="px-4 tracking-widest">
       RESEARCH
     </Chip>
     <div className="flex items-start justify-between gap-4">
       <h1 className="font-heading text-[28px] sm:text-[36px] lg:text-[46px] xl:leading-[50px] leading-tight text-black mt-6">
-        Research <span className="text-[#1DA8E1] font-bold">Wing</span>
+        Research <span className="text-primaryBlue font-bold">Wing</span>
       </h1>
       <RibbonWave
         width={214}
@@ -43,7 +43,7 @@ const ResearchContent = () => (
     <div className="flex flex-col gap-5 lg:gap-6 xl:gap-[34px] mt-6">
       {COMMITTEES.map((item) => (
         <div className="flex items-center gap-4 lg:gap-5" key={item.id}>
-          <div className="flex-shrink-0 w-11 h-11 lg:w-[60px] lg:h-[60px] rounded-full bg-[#1DA8E1] inline-flex items-center justify-center text-white">
+          <div className="flex-shrink-0 w-11 h-11 lg:w-[60px] lg:h-[60px] rounded-full bg-primaryBlue inline-flex items-center justify-center text-white">
             <item.icon className="w-6 h-6 lg:w-8 lg:h-8" />
           </div>
           <span className="font-semibold text-black text-base lg:text-xl">

@@ -11,7 +11,7 @@ export default function Banner() {
         <Glow className="hidden lg:block z-0 w-[400px] h-[298px] -left-[76px] top-[404px] bg-[rgba(122,220,249,0.58)] blur-[202px]" />
         <div className="relative z-20 px-5 py-8 sm:px-8 sm:py-10 lg:w-1/2 lg:px-[89px] lg:py-0">
           <h1 className="text-center lg:text-left font-heading font-normal text-[32px] sm:text-[44px] lg:text-5xl xl:text-[61px] xl:leading-[58px] text-[#374151] lg:absolute top-12 left-1/4 backdrop-filter-[184px]">
-            About <span className="font-bold text-[#1DA8E1]">GGIRHR</span>
+            About <span className="font-bold text-primaryBlue">GGIRHR</span>
           </h1>
         </div>
         <div className="relative z-0 w-full h-[220px] sm:h-[300px] lg:absolute lg:inset-y-0 lg:right-0 lg:w-[70%] lg:h-full">
