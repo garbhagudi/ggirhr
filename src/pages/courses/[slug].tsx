@@ -19,9 +19,13 @@ import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import { YouTubeIcon } from "lib/svg";
 import YouTubeVideoCarousel from "components/courses/YouTubeVideoCarousel";
+import FellowshipBanner from "sections/courses/FellowshipBanner";
+import CourseContent from "sections/courses/CourseContent";
+import KeyBenefits from "sections/courses/KeyBenefits";
 
 const CoursePage = ({ course }) => {
   const courseSlug = usePathname();
+  const isFellowship = courseSlug === "/courses/fellowship-in-clinical-embryology";
 
   function addCourseJsonLd() {
     if (!course?.courseJson) return { __html: "" };
@@ -126,27 +130,34 @@ const CoursePage = ({ course }) => {
           dangerouslySetInnerHTML={addFAQJsonLd()}
         />
       </Head>
+      {isFellowship && <FellowshipBanner course={course} />}
+      {isFellowship && <CourseContent />}
+      {isFellowship && <KeyBenefits />}
       <div className="py-16 overflow-hidden mx-auto">
         <div className="max-w-7xl mx-auto px-3 space-y-8 sm:px-6 lg:px-11">
-          <div className="mx-auto">
-            <h2 className="text-base text-brandBlue font-semibold tracking-wide uppercase">
-              Courses
-            </h2>
-            <h1 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-brandDark sm:text-4xl font-heading">
-              {course?.title}
-            </h1>
-          </div>
-          <div className="flex justify-center">
-            <Image
-              src={course?.courseImage?.url}
-              alt={course?.title}
-              className="w-screen"
-              width={800}
-              height={500}
-              sizes="(max-width: 640px) 90vw, 100vw"
-              priority={true}
-            />
-          </div>
+          {!isFellowship && (
+            <>
+              <div className="mx-auto">
+                <h2 className="text-base text-brandBlue font-semibold tracking-wide uppercase">
+                  Courses
+                </h2>
+                <h1 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-brandDark sm:text-4xl font-heading">
+                  {course?.title}
+                </h1>
+              </div>
+              <div className="flex justify-center">
+                <Image
+                  src={course?.courseImage?.url}
+                  alt={course?.title}
+                  className="w-screen"
+                  width={800}
+                  height={500}
+                  sizes="(max-width: 640px) 90vw, 100vw"
+                  priority={true}
+                />
+              </div>
+            </>
+          )}
 
           <div className="relative z-10 text-base mx-auto lg:max-w-6xl lg:mx-0">
             {course?.objective?.raw?.children && (
@@ -184,36 +195,38 @@ const CoursePage = ({ course }) => {
               />
             )}
           </div>
-          <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none space-x-3">
-            <div className="rounded-md shadow">
-              <Link
-                href={`/contact?pageVisit=${courseSlug}`}
-                className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brandBlue hover:bg-brandBlueDark3"
-              >
-                Contact Us
-              </Link>
-            </div>
-            <div className="rounded-md shadow flex justify-center">
-              <a
-                href="tel:+919108910852"
-                className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brandBlue hover:bg-brandBlueDark3"
-              >
-                <PhoneIcon className="w-5 h-5 mr-2" /> Call Us
-              </a>
-            </div>
-            {!course?.videoId && (
+          {!isFellowship && (
+            <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none space-x-3">
+              <div className="rounded-md shadow">
+                <Link
+                  href={`/contact?pageVisit=${courseSlug}`}
+                  className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brandBlue hover:bg-brandBlueDark3"
+                >
+                  Contact Us
+                </Link>
+              </div>
               <div className="rounded-md shadow flex justify-center">
                 <a
-                  href="https://www.youtube.com/channel/UCPWVap8s4REIDwqYpHq0pew"
+                  href="tel:+919108910852"
                   className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brandBlue hover:bg-brandBlueDark3"
-                  target="_blank"
-                  rel="noopener noreferrer"
                 >
-                  <YouTubeIcon className="w-6 h-6 mr-2" /> Videos
+                  <PhoneIcon className="w-5 h-5 mr-2" /> Call Us
                 </a>
               </div>
-            )}  
-          </div>
+              {!course?.videoId && (
+                <div className="rounded-md shadow flex justify-center">
+                  <a
+                    href="https://www.youtube.com/channel/UCPWVap8s4REIDwqYpHq0pew"
+                    className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brandBlue hover:bg-brandBlueDark3"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <YouTubeIcon className="w-6 h-6 mr-2" /> Videos
+                  </a>
+                </div>
+              )}
+            </div>
+          )}
           <div className="lg:grid lg:grid-cols-2 lg:gap-10 lg:items-start">
             <div className="relative z-10">
               {course?.videoId && (

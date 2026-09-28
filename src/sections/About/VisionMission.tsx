@@ -42,9 +42,9 @@ export default function VisionMission() {
     <section className="relative overflow-hidden bg-[#1D99CC] py-14 lg:py-24">
       <Glow className="z-0 left-1/2 top-[20%] h-[420px] w-[420px] -translate-x-1/2 bg-[rgba(47,126,188,0.65)] blur-[150px] sm:h-[900px] sm:w-[900px] lg:h-[1083px] lg:w-[1083px]" />
       <RibbonWave
-        width={300}
-        height={140}
-        className="absolute right-4 top-6 z-0 w-[110px] rotate-[8.65deg] lg:right-16 lg:top-9 lg:w-[300px]"
+        width={100}
+        height={50}
+        className="absolute right-2 top-1 z-0 w-[80px] rotate-[-5.94deg] lg:right-16 lg:top-9 lg:w-[300px]"
       />
 
       <SectionShell className="relative z-10">
@@ -89,13 +89,23 @@ export default function VisionMission() {
               </div>
 
               <div className={`mt-5 lg:mt-6 lg:w-[78%] ${frameOffset}`}>
-                <Chip
-                  variant="glass"
-                  className="px-4 uppercase tracking-widest"
+                <div className={`w-full flex sm:block ${alignRight ? "justify-end" : "justify-start"}`}>
+                  <Chip
+                    variant="glass"
+                    className={`px-4 uppercase tracking-widest`}
+                  >
+                    {block.badge}
+                  </Chip>
+                </div>
+                <p
+                  className={`${BODY_CLASSES} ${
+                    alignRight
+                      ? "text-right sm:text-left"
+                      : "text-left sm:text-left"
+                  }`}
                 >
-                  {block.badge}
-                </Chip>
-                <p className={BODY_CLASSES}>{block.body}</p>
+                  {block.body}
+                </p>
               </div>
             </div>
           );

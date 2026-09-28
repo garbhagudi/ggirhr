@@ -46,6 +46,34 @@ const FacultyCard = ({ teacher }: { teacher: Teacher }) => (
   </Link>
 );
 
+const MOBILE_GROUP_SIZE = 3;
+
+const FacultyDots = ({
+  pageCount,
+  currentIndex,
+  setCurrentIndex,
+}: {
+  pageCount: number;
+  currentIndex: number;
+  setCurrentIndex: (index: number) => void;
+}) =>
+  pageCount > 1 ? (
+    <div className="mt-8 flex items-center justify-center gap-1.5">
+      {Array.from({ length: pageCount }).map((_, i) => (
+        <button
+          key={i}
+          aria-label={`Go to slide ${i + 1}`}
+          onClick={() => setCurrentIndex(i)}
+          className={`h-2 rounded-full transition-all ${
+            i === currentIndex
+              ? "w-[36px] bg-white"
+              : "w-2 bg-[rgba(255,255,255,0.17)] backdrop-blur-[12.25px]"
+          }`}
+        />
+      ))}
+    </div>
+  ) : null;
+
 const Faculty = ({ teachers = [] }: { teachers?: Teacher[] }) => {
   const {
     trackRef,
@@ -55,6 +83,17 @@ const Faculty = ({ teachers = [] }: { teachers?: Teacher[] }) => {
     pageCount,
     setPaused,
   } = useAutoCarousel({ itemCount: teachers.length, gap: CARD_GAP });
+
+  const {
+    currentIndex: mobileIndex,
+    setCurrentIndex: setMobileIndex,
+    pageCount: mobilePageCount,
+    setPaused: setMobilePaused,
+  } = useAutoCarousel({
+    itemCount: teachers.length,
+    gap: CARD_GAP,
+    groupSize: MOBILE_GROUP_SIZE,
+  });
 
   if (teachers.length === 0) return null;
 
@@ -78,50 +117,64 @@ const Faculty = ({ teachers = [] }: { teachers?: Teacher[] }) => {
           Our <span className="font-bold">Faculty</span>
         </h2>
 
-        <div
-          className="overflow-hidden"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
+        <div className="hidden sm:block">
           <div
-            ref={trackRef}
-            className="flex"
-            style={{
-              gap: `${CARD_GAP}px`,
-              transform: `translateX(-${
-                currentIndex * (cardWidth + CARD_GAP)
-              }px)`,
-              transition: "transform 500ms ease-in-out",
-            }}
+            className="overflow-hidden"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
           >
-            {teachers.map((teacher) => (
-              <div
-                key={teacher.id}
-                className="flex-shrink-0"
-                style={{ width: `${cardWidth}px` }}
-              >
-                <FacultyCard teacher={teacher} />
-              </div>
-            ))}
+            <div
+              ref={trackRef}
+              className="flex"
+              style={{
+                gap: `${CARD_GAP}px`,
+                transform: `translateX(-${
+                  currentIndex * (cardWidth + CARD_GAP)
+                }px)`,
+                transition: "transform 500ms ease-in-out",
+              }}
+            >
+              {teachers.map((teacher) => (
+                <div
+                  key={teacher.id}
+                  className="flex-shrink-0"
+                  style={{ width: `${cardWidth}px` }}
+                >
+                  <FacultyCard teacher={teacher} />
+                </div>
+              ))}
+            </div>
           </div>
+
+          <FacultyDots
+            pageCount={pageCount}
+            currentIndex={currentIndex}
+            setCurrentIndex={setCurrentIndex}
+          />
         </div>
 
-        {pageCount > 1 && (
-          <div className="mt-8 flex items-center justify-center gap-1.5">
-            {Array.from({ length: pageCount }).map((_, i) => (
-              <button
-                key={i}
-                aria-label={`Go to slide ${i + 1}`}
-                onClick={() => setCurrentIndex(i)}
-                className={`h-2 rounded-full transition-all ${
-                  i === currentIndex
-                    ? "w-[36px] bg-white"
-                    : "w-2 bg-[rgba(255,255,255,0.17)] backdrop-blur-[12.25px]"
-                }`}
-              />
-            ))}
+        <div
+          className="block sm:hidden"
+          onTouchStart={() => setMobilePaused(true)}
+          onTouchEnd={() => setMobilePaused(false)}
+        >
+          <div className="flex flex-col gap-4">
+            {teachers
+              .slice(
+                mobileIndex * MOBILE_GROUP_SIZE,
+                mobileIndex * MOBILE_GROUP_SIZE + MOBILE_GROUP_SIZE
+              )
+              .map((teacher) => (
+                <FacultyCard key={teacher.id} teacher={teacher} />
+              ))}
           </div>
-        )}
+
+          <FacultyDots
+            pageCount={mobilePageCount}
+            currentIndex={mobileIndex}
+            setCurrentIndex={setMobileIndex}
+          />
+        </div>
       </SectionShell>
     </section>
   );

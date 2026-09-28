@@ -1,15 +1,224 @@
 import React from "react";
 import Image from "next/image";
 import Glow from "components/ui/Glow";
+import RibbonWave from "components/ui/RibbonWave";
 
 const BANNER_IMAGE = "/research-microscope.png";
 export default function Banner() {
   return (
     <div className="px-5 xl:px-[30px] my-4 md:my-8">
       <div className="relative overflow-hidden rounded-xl xl:rounded-[30px] bg-white flex flex-col lg:flex-row lg:items-center lg:h-[550px]">
-        <Glow className="hidden lg:block z-0 w-[454px] h-[454px] -left-[75px] -top-[163px] bg-[rgba(142,230,255,0.99)] blur-[102px]" />
-        <Glow className="hidden lg:block z-0 w-[400px] h-[298px] -left-[76px] top-[404px] bg-[rgba(122,220,249,0.58)] blur-[202px]" />
+        <div className="absolute inset-0 z-0 w-full h-full"> 
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="335"
+            height="182"
+            viewBox="0 0 335 182"
+            fill="none"
+          >
+            <g filter="url(#filter0_f_1132_31)">
+              <circle cx="308" cy="119" r="40" fill="#D1EDF9" />
+            </g>
+            <g filter="url(#filter1_f_1132_31)">
+              <circle cx="308.5" cy="43" r="40" fill="#D1EDF9" />
+            </g>
+            <g filter="url(#filter2_f_1132_31)">
+              <circle cx="246.5" cy="48" r="40" fill="#D1EDF9" />
+            </g>
+            <g filter="url(#filter3_f_1132_31)">
+              <circle cx="254" cy="119" r="40" fill="#D1EDF9" />
+            </g>
+            <g filter="url(#filter4_f_1132_31)">
+              <circle cx="201" cy="119" r="40" fill="#D2EEF9" />
+            </g>
+            <g filter="url(#filter5_f_1132_31)">
+              <circle cx="151" cy="119" r="40" fill="#D2EEF9" />
+            </g>
+            <g filter="url(#filter6_f_1132_31)">
+              <circle cx="94" cy="119" r="40" fill="#D2EEF9" />
+            </g>
+            <g filter="url(#filter7_f_1132_31)">
+              <circle cx="28" cy="119" r="40" fill="#D2EEF9" />
+            </g>
+            <defs>
+              <filter
+                id="filter0_f_1132_31"
+                x="245"
+                y="56"
+                width="126"
+                height="126"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="11.5"
+                  result="effect1_foregroundBlur_1132_31"
+                />
+              </filter>
+              <filter
+                id="filter1_f_1132_31"
+                x="245.5"
+                y="-20"
+                width="126"
+                height="126"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="11.5"
+                  result="effect1_foregroundBlur_1132_31"
+                />
+              </filter>
+              <filter
+                id="filter2_f_1132_31"
+                x="183.5"
+                y="-15"
+                width="126"
+                height="126"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="11.5"
+                  result="effect1_foregroundBlur_1132_31"
+                />
+              </filter>
+              <filter
+                id="filter3_f_1132_31"
+                x="191"
+                y="56"
+                width="126"
+                height="126"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="11.5"
+                  result="effect1_foregroundBlur_1132_31"
+                />
+              </filter>
+              <filter
+                id="filter4_f_1132_31"
+                x="138"
+                y="56"
+                width="126"
+                height="126"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="11.5"
+                  result="effect1_foregroundBlur_1132_31"
+                />
+              </filter>
+              <filter
+                id="filter5_f_1132_31"
+                x="88"
+                y="56"
+                width="126"
+                height="126"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="11.5"
+                  result="effect1_foregroundBlur_1132_31"
+                />
+              </filter>
+              <filter
+                id="filter6_f_1132_31"
+                x="31"
+                y="56"
+                width="126"
+                height="126"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="11.5"
+                  result="effect1_foregroundBlur_1132_31"
+                />
+              </filter>
+              <filter
+                id="filter7_f_1132_31"
+                x="-35"
+                y="56"
+                width="126"
+                height="126"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  stdDeviation="11.5"
+                  result="effect1_foregroundBlur_1132_31"
+                />
+              </filter>
+            </defs>
+          </svg>
+        </div>
         <div className="relative z-20 px-5 py-8 sm:px-8 sm:py-10 lg:w-1/2 lg:px-[89px] lg:py-0">
+          <RibbonWave
+            width={100}
+            height={45}
+            color="#FFFFFF"
+            className="block lg:hidden absolute -top-1 left-5 w-[100px] h-[45px] rotate-[-12.21deg] "
+          />
           <h1 className="text-center lg:text-left font-heading font-normal text-[32px] sm:text-[44px] lg:text-5xl xl:text-[61px] xl:leading-[58px] text-[#374151] lg:absolute top-12 left-1/4 backdrop-filter-[184px]">
             About <span className="font-bold text-primaryBlue">GGIRHR</span>
           </h1>

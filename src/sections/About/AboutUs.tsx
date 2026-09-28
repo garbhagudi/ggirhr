@@ -10,12 +10,12 @@ const AboutUs = () => (
   <section className="relative overflow-hidden bg-white py-10 sm:py-12 lg:py-[60px]">
     <div className="relative z-10 mx-auto max-w-[940px] px-5 text-center sm:px-6 lg:px-0">
       <Chip
-        className="px-4 uppercase tracking-widest !bg-primaryBlue text-white"
+        className="px-4 uppercase tracking-widest !bg-white text-[#EF3E66]"
       >
         About Us
       </Chip>
 
-      <p className="mt-5 text-lg sm:mt-6 sm:text-2xl lg:text-[32px] lg:leading-[42px]">
+      <p className="mt-5 text-lg sm:mt-6 sm:text-2xl lg:text-[32px] lg:leading-[42px] text-[#374151] sm:text-black text-left">
         <span className="font-bold">
           GarbhaGudi Institute of Reproductive Health and Research (GGIRHR) is
           one of India’s premier infertility training organizations. It started
@@ -27,11 +27,11 @@ const AboutUs = () => (
         </span>
       </p>
 
-      <div className="mt-6 flex flex-col gap-5">
+      <div className="mt-6 flex flex-col gap-4 sm:gap-5">
         {PARAGRAPHS.map((paragraph) => (
           <p
             key={paragraph.slice(0, 32)}
-            className="text-base font-semibold leading-6 text-[#374151]"
+            className="text-[13px] sm:text-base font-semibold leading-6 text-[#374151]"
           >
             {paragraph}
           </p>

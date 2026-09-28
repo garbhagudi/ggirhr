@@ -3,7 +3,6 @@ import Image from "next/image";
 import Chip from "components/ui/Chip";
 import Glow from "components/ui/Glow";
 import RibbonWave from "components/ui/RibbonWave";
-import { BODY_PARAGRAPH_CLASSES } from "sections/About/typography";
 
 const RESEARCH_IMAGE = "/research-microscope.png";
 
@@ -35,14 +34,14 @@ const ResearchTeam = () => {
             RESEARCH
           </Chip>
           <div className="flex items-start justify-between gap-4">
-            <h2 className="font-heading text-[28px] sm:text-[36px] lg:text-[46px] xl:leading-[50px] leading-tight text-black mt-2 sm:mt-4">
+            <h2 className="font-heading text-[23px] sm:text-[36px] lg:text-[46px] xl:leading-[50px] leading-tight text-black mt-2 sm:mt-4">
               Our <span className="text-primaryBlue font-bold">Research Team</span>
             </h2>
           </div>
 
-          <div className="flex flex-col gap-4 mt-6">
+          <div className="flex flex-col gap-3 sm:gap-4 mt-[10px] sm:mt-6">
             {RESEARCH_TEAM_POINTS.map((point) => (
-              <p key={point.slice(0, 32)} className={BODY_PARAGRAPH_CLASSES}>
+              <p key={point.slice(0, 32)} className="text-black sm:text-[#374151] font-semibold leading-6 text-[13px] sm:text-base text-left sm:text-justify">
                 {point}
               </p>
             ))}

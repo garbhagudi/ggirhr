@@ -39,6 +39,12 @@ export type AutoCarouselParams = {
   gap: number;
   autoAdvanceMs?: number;
   debounceMs?: number;
+  /**
+   * Page by groups of this many items instead of one item at a time.
+   * Defaults to 1, which reproduces the exact pageCount formula every
+   * existing caller relies on (`itemCount - itemsPerView + 1`).
+   */
+  groupSize?: number;
 };
 
 export type AutoCarousel = {
@@ -57,6 +63,7 @@ export function useAutoCarousel({
   gap,
   autoAdvanceMs = 3500,
   debounceMs = 150,
+  groupSize = 1,
 }: AutoCarouselParams): AutoCarousel {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(1);
@@ -85,8 +92,10 @@ export function useAutoCarousel({
     };
   }, [gap, debounceMs]);
 
-  const maxIndex = itemCount ? Math.max(0, itemCount - itemsPerView) : 0;
-  const pageCount = maxIndex + 1;
+  const pageCount =
+    groupSize > 1
+      ? Math.max(1, Math.ceil(itemCount / groupSize))
+      : (itemCount ? Math.max(0, itemCount - itemsPerView) : 0) + 1;
 
   useEffect(() => {
     if (paused || pageCount <= 1) return;

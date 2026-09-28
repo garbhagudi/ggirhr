@@ -26,16 +26,16 @@ const LeaderCard = ({ leader }: { leader: Leader }) => (
     </div>
 
     <div className="flex flex-1 flex-col px-1.5 pt-5 lg:px-2.5 lg:pt-6 text-[#374151]">
-      <h3 className="text-2xl sm:text-[28px] lg:text-[32px] font-bold leading-tight text-primaryBlue">
+      <h3 className="text-lg sm:text-[28px] lg:text-[32px] font-bold leading-tight text-primaryBlue">
         {leader.name}
       </h3>
       {leader.designation && (
-        <p className="mt-1.5 text-base sm:text-lg lg:text-xl lg:leading-6">
+        <p className="mt-1.5 text-[15px] sm:text-lg lg:text-xl lg:leading-6 text-black sm:text-[#374151]">
           {leader.designation}
         </p>
       )}
       {leader.bioPreview && (
-        <p className="mt-4 text-left text-[13px] leading-5 font-semibold sm:text-base sm:leading-6 lg:text-lg lg:leading-[27px]">
+        <p className="mt-2 sm:mt-4 text-left text-[13px] leading-5 font-semibold sm:text-base sm:leading-6 lg:text-lg lg:leading-[27px]">
           {leader.bioPreview}
         </p>
       )}
@@ -44,7 +44,7 @@ const LeaderCard = ({ leader }: { leader: Leader }) => (
         variant="link"
         size="inline"
         rounded="md"
-        className="mt-auto self-start pt-6 font-bold !text-base lg:!text-lg"
+        className="mt-auto self-start pt-4 sm:pt-6 font-bold !text-base lg:!text-lg"
       >
         Read More
       </Button>

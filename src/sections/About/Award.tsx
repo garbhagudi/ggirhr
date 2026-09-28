@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import Chip from "components/ui/Chip";
 import SectionShell from "components/ui/SectionShell";
-import { BODY_PARAGRAPH_CLASSES } from "sections/About/typography";
 
 const AWARD_IMAGE =
   "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegu8o901qj06prxjqp7ktw";
@@ -24,28 +23,28 @@ const Award = () => (
         AWARD
       </Chip>
 
-      <h2 className="font-heading text-[28px] sm:text-[36px] lg:text-[46px] leading-tight lg:leading-[49px] text-black mt-5 lg:mt-6">
+      <h2 className="font-heading text-[23px] sm:text-[36px] lg:text-[46px] leading-tight lg:leading-[49px] text-black mt-5 lg:mt-6">
         Awarded as Best IVF and{" "}
         <span className="text-primaryBlue font-bold">
           Infertility Training Centre in India
         </span>
       </h2>
 
-      <div className="mt-6 flex flex-col lg:flex-row lg:items-start gap-5 lg:gap-[35px]">
+      <div className="mt-4 sm:mt-6 flex flex-col lg:flex-row lg:items-start gap-5 lg:gap-[35px]">
         <Image
           src={AWARD_IMAGE}
           alt="GGIRHR awarded Best IVF and Infertility Training Centre in India"
           width={355}
           height={179}
           sizes="(min-width: 1024px) 355px, 100vw"
-          className="w-full h-auto aspect-[335/161] object-cover rounded-[20px] sm:aspect-[355/179] lg:w-[355px] lg:shrink-0 lg:rounded-[19px]"
+          className="w-full h-auto aspect-[335/161] object-cover rounded-2xl sm:rounded-[20px] sm:aspect-[355/179] lg:w-[355px] lg:shrink-0 lg:rounded-[19px]"
         />
-        <p className={BODY_PARAGRAPH_CLASSES}>{LEAD_PARAGRAPH}</p>
+        <p className="text-[#374151] font-semibold leading-6 text-base text-left sm:text-justify">{LEAD_PARAGRAPH}</p>
       </div>
 
       <div className="flex flex-col gap-5 mt-5">
         {PARAGRAPHS.map((paragraph) => (
-          <p key={paragraph.slice(0, 32)} className={BODY_PARAGRAPH_CLASSES}>
+          <p key={paragraph.slice(0, 32)} className="text-[#374151] font-semibold  leading-5 sm:leading-6 text-[13px] sm:text-base text-left sm:text-justify">
             {paragraph}
           </p>
         ))}
