@@ -24,27 +24,27 @@ const AboutSection = [
   },
   {
     name: "Our Values",
-    href: "/about/values",
+    href: "/about#values",
     icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegt5o001lg06prx5l8yp71",
   },
   {
     name: "Vision and Mission",
-    href: "/about/mission-and-vision",
+    href: "/about#mission-and-vision",
     icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegta1501m006prpbbg7f00",
   },
   {
     name: "Leadership",
-    href: "/about/leadership",
+    href: "/about#leadership",
     icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsu9k01j306pn02qhsxr9",
   },
   {
     name: "Our Faculty",
-    href: "/about/faculty",
+    href: "/about#faculty",
     icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegt5ni01lc06prj9yyjnlq",
   },
   {
     name: "Awards and Accolades",
-    href: "/about/awards-and-accolades",
+    href: "/about#awards-and-accolades",
     icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsp5401k306prlodsjbbq",
   },
 ];

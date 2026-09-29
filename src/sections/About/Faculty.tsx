@@ -98,7 +98,7 @@ const Faculty = ({ teachers = [] }: { teachers?: Teacher[] }) => {
   if (teachers.length === 0) return null;
 
   return (
-    <section className="relative overflow-hidden bg-[#1F95CA] py-14 lg:py-20">
+    <section id="faculty" className="relative overflow-hidden bg-[#1F95CA] py-14 lg:py-20 scroll-mt-24">
       <Glow className="-z-0 left-1/2 top-1/4 h-[420px] w-[420px] -translate-x-1/2 bg-[rgba(47,126,188,0.65)] blur-[150px] sm:h-[900px] sm:w-[900px] lg:h-[1083px] lg:w-[1083px]" />
       <RibbonWave
         color="#FFFFFF"

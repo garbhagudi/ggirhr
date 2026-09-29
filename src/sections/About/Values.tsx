@@ -44,7 +44,7 @@ const ValuePhoto = ({ src, alt, accent, className = "" }: ValuePhotoProps) => (
 );
 
 const Values = () => (
-  <section className="bg-white py-14 lg:py-20">
+  <section id="values" className="bg-white py-14 lg:py-20 scroll-mt-24">
     <SectionShell>
       <div className="block sm:hidden">
         <div className="flex flex-col gap-3">

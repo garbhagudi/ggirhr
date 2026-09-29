@@ -17,7 +17,7 @@ const PARAGRAPHS = [
 ];
 
 const Award = () => (
-  <SectionShell as="section" className="bg-white py-[60px] sm:py-12 lg:py-24">
+  <SectionShell as="section" id="awards-and-accolades" className="bg-white py-[60px] sm:py-12 lg:py-24 scroll-mt-24">
     <div className="bg-[#D2EEF9] rounded-[20px] px-5 py-8 sm:px-8 sm:py-10 lg:px-[45px] lg:py-10">
       <Chip variant="pink" className="px-4">
         AWARD

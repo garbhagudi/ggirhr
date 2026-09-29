@@ -56,7 +56,7 @@ const Leadership = ({ leaders = [] }: { leaders?: Leader[] }) => {
   if (leaders.length === 0) return null;
 
   return (
-    <section className="bg-white py-14 lg:py-20">
+    <section id="leadership" className="bg-white py-14 lg:py-20 scroll-mt-24">
       <SectionShell>
         <Chip variant="pink" className="px-4">
           OUR LEADER
