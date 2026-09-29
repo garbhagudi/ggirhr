@@ -17,7 +17,7 @@ const WhyGgirhrRow = () => (
         <div className="relative top-[-2px] left-[-3px] flex-none sm:flex-1 aspect-[333/248] sm:aspect-auto sm:h-[200px] lg:h-[251px]">
           <DecorativeBlob position="-top-4 -left-6" />
           <Image
-            src="/images/why-ggirhr-1.webp"
+            src="/images/home/why-ggirhr-1.webp"
             alt="A GGIRHR trainer leading a classroom session for fellowship candidates"
             fill
             sizes="(min-width: 1024px) 25vw, 50vw"
@@ -26,7 +26,7 @@ const WhyGgirhrRow = () => (
         </div>
         <div className="relative top-[-2px] left-[-3px] flex-none sm:flex-1 aspect-[333/248] sm:aspect-auto sm:h-[200px] lg:h-[251px]">
           <Image
-            src="/images/why-ggirhr-2.webp"
+            src="/images/home/why-ggirhr-2.webp"
             alt="Embryologists at work in the GGIRHR IUI laminar flow lab"
             fill
             sizes="(min-width: 1024px) 25vw, 50vw"
@@ -38,7 +38,7 @@ const WhyGgirhrRow = () => (
       <div className="relative w-full aspect-[333/248] sm:aspect-auto sm:h-[200px] lg:h-[251px]">
         <DecorativeBlob position="-bottom-4 -right-6" />
         <Image
-          src="/images/why-ggirhr-3.webp"
+          src="/images/home/why-ggirhr-3.webp"
           alt="Graduating GGIRHR fellows and faculty at a valediction ceremony"
           fill
           sizes="(min-width: 1024px) 50vw, 100vw"

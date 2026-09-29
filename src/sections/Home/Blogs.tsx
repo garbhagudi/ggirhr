@@ -35,7 +35,7 @@ const Blogs = ({ blogs }: { blogs?: BlogPost[] }) => {
   return (
     <section className="relative overflow-hidden bg-white py-20">
       <Image
-        src="/blogs-glow-ellipse.svg"
+        src="/images/shared/glow-ellipse.svg"
         alt=""
         width={612}
         height={565}

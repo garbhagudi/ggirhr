@@ -7,7 +7,7 @@ import Glow from "components/ui/Glow";
 // Placeholder — the Figma spec references a lab/embryologist photo
 // (`image 785` / `63985.jpg`) that doesn't exist in this repo. Swap for the
 // real asset once supplied.
-const BENEFITS_IMAGE = "/research-microscope.png";
+const BENEFITS_IMAGE = "/images/home/research-microscope.png";
 
 const BENEFITS = [
   "Develop proficiency in handling gametes and embryos through advanced ART techniques.",

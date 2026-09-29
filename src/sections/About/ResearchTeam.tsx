@@ -4,7 +4,9 @@ import Chip from "components/ui/Chip";
 import Glow from "components/ui/Glow";
 import RibbonWave from "components/ui/RibbonWave";
 
-const RESEARCH_IMAGE = "/research-microscope.png";
+const RESEARCH_IMAGE = "/images/about/research-team.png";
+const RESEARCH_IMAGE_MOBILE = "/images/about/research-team-mobile.png";
+const RESEARCH_ALT = "Researchers at a microscope and computer in the GarbhaGudi laboratory";
 
 const RESEARCH_TEAM_POINTS = [
   "Expert team of clinicians trained in reproductive medicine from reputed institutions. They follow standard treatment protocols in ART coupled with innovative process improvements to improve success rates in all aspects of ART. They are committed to conducting prospective and retrospective studies to help improve treatment and ART outcomes.",
@@ -22,11 +24,18 @@ const ResearchTeam = () => {
       <div className="w-full lg:min-h-[735px] lg:py-20 lg:px-40 flex flex-col lg:flex-row">
         <div className="order-first lg:order-none relative w-full h-[244px] -mt-[21px] sm:h-[280px] lg:mt-0 lg:absolute lg:right-0 lg:top-0 lg:w-1/2 lg:h-full lg:z-0">
           <Image
-            src={RESEARCH_IMAGE}
-            alt="Researchers working in the GarbhaGudi laboratory"
+            src={RESEARCH_IMAGE_MOBILE}
+            alt={RESEARCH_ALT}
             fill
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="object-cover"
+            sizes="(min-width: 1024px) 0px, 100vw"
+            className="object-cover lg:hidden"
+          />
+          <Image
+            src={RESEARCH_IMAGE}
+            alt={RESEARCH_ALT}
+            fill
+            sizes="(min-width: 1024px) 50vw, 0px"
+            className="hidden object-cover lg:block"
           />
         </div>
         <div className="relative z-20 flex-1 px-4 sm:px-6 lg:px-0 pt-2.5 pb-12 lg:py-0">
@@ -53,7 +62,7 @@ const ResearchTeam = () => {
 
         <div className="hidden lg:block absolute left-0 bottom-0 lg:z-30 w-[680px] h-[680px]">
           <Image
-            src="/blogs-glow-ellipse.svg"
+            src="/images/shared/glow-ellipse.svg"
             alt=""
             fill
             sizes="100vw"

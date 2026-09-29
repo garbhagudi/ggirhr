@@ -7,7 +7,7 @@ import { SOCIAL_NETWORKS } from "components/ui/icons/socialNetworks";
 
 type Slide = { image: string; alt: string };
 const DEFAULT_SLIDES: Slide[] = [
-  { image: "/Desktop_Banner.svg", alt: "GGIRHR" },
+  { image: "/images/home/hero-banner.svg", alt: "GGIRHR" },
 ];
 
 const RailLine = ({ side }: { side: "top" | "bottom" }) => (

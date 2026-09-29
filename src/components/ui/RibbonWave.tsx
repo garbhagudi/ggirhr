@@ -12,8 +12,8 @@ export type RibbonWaveProps = Omit<
 export const DEFAULT_RIBBON_COLOR = '#4AB4E8';
 
 const MASK = {
-  WebkitMaskImage: 'url(/ribbon-wave-icon.svg)',
-  maskImage: 'url(/ribbon-wave-icon.svg)',
+  WebkitMaskImage: 'url(/icons/ribbon-wave.svg)',
+  maskImage: 'url(/icons/ribbon-wave.svg)',
   WebkitMaskSize: '100% 100%',
   maskSize: '100% 100%',
   WebkitMaskRepeat: 'no-repeat',

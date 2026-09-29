@@ -20,9 +20,9 @@ import {
 // Placeholders — the Figma spec references a DNA-strand background image and
 // two award/certificate images that don't exist in this repo. Swap these for
 // the real assets once supplied.
-const DNA_BACKGROUND_IMAGE = "/research-microscope.png";
-const AWARD_IMAGE_ONE = "/images/why-ggirhr-1.webp";
-const AWARD_IMAGE_TWO = "/images/why-ggirhr-2.webp";
+const DNA_BACKGROUND_IMAGE = "/images/home/research-microscope.png";
+const AWARD_IMAGE_ONE = "/images/home/why-ggirhr-1.webp";
+const AWARD_IMAGE_TWO = "/images/home/why-ggirhr-2.webp";
 
 const StatBadge = () => (
   <div className="flex items-center gap-2.5 rounded-[130px] bg-white px-2.5 py-2 sm:px-3 sm:py-2.5 shadow-[0px_4px_14px_rgba(0,0,0,0.08)]">

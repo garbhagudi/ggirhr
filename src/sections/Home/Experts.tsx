@@ -97,7 +97,7 @@ const Experts = ({ teachers }: { teachers: Teacher[] }) => {
               >
                 {/* Soft glow backdrop peeking out from behind the card */}
                 <Image
-                  src="/card-glow-backdrop.svg"
+                  src="/images/home/card-glow-backdrop.svg"
                   alt=""
                   fill
                   className="absolute top-2 left-2 -z-10 rounded-2xl"

@@ -67,7 +67,7 @@ const FooterLinkList = ({
 
 const ReadyToGetStarted = () => {
   return (
-    <footer className="relative overflow-hidden bg-white pt-16 pb-10">
+    <footer className="relative overflow-hidden bg-white pt-16 pb-10 font-primary">
       <Glow className="w-[240px] h-[240px] sm:w-[454px] sm:h-[454px] -right-10 -top-16 bg-[rgba(165,220,243,0.91)] blur-[102px]" />
       <Glow className="w-[240px] h-[240px] sm:w-[454px] sm:h-[454px] -left-32 top-64 bg-[rgba(165,220,243,0.83)] blur-[102px]" />
       <Glow className="hidden sm:block w-[454px] h-[454px] -left-32 -top-24 bg-[rgba(165,220,243,0.43)] blur-[102px]" />
@@ -166,19 +166,14 @@ const ReadyToGetStarted = () => {
         {/* Bottom bar */}
       </div>
       <div className="relative mt-10 flex items-center justify-center gap-4 sm:gap-6">
-        <PulseLine
-          side="left"
-          className="w-full flex-1"
-        />
-        <p className="text-xs text-gray-700 text-center flex-1 max-w-[250px] sm:text-sm sm:text-gray-600 whitespace-nowrap">
+        {/* Text keeps its natural width; the pulse lines share what's left. */}
+        <PulseLine side="left" className="min-w-0 flex-1" />
+        <p className="shrink-0 whitespace-nowrap text-center text-xs text-gray-700 sm:text-sm sm:text-gray-600">
           &copy; {new Date().getFullYear()}{" "}
-          <span className="text-secondaryMagenta"> GGIRHR </span>, Inc. All rights
-          reserved.
+          <span className="font-bold text-secondaryMagenta">GGIRHR</span>, Inc.
+          All rights reserved.
         </p>
-        <PulseLine
-          side="right"
-          className="w-full flex-1"
-        />
+        <PulseLine side="right" className="min-w-0 flex-1" />
       </div>
     </footer>
   );

@@ -6,7 +6,7 @@ import RibbonWave from "components/ui/RibbonWave";
 import { HiUserGroup } from "react-icons/hi";
 import { GiFizzingFlask } from "react-icons/gi";
 
-const RESEARCH_IMAGE = "/research-microscope.png";
+const RESEARCH_IMAGE = "/images/home/research-microscope.png";
 
 const COMMITTEES = [
   {
@@ -60,7 +60,7 @@ const ResearchWing = () => {
     <section className="relative bg-[#FAFEFF] lg:bg-white overflow-hidden">
       <div className="hidden lg:block absolute left-0 top-0 w-[80%] h-full z-10">
         <Image
-          src="/research-fade-overlay.svg"
+          src="/images/home/research-fade-overlay.svg"
           alt=""
           fill
           sizes="80vw"
@@ -92,7 +92,7 @@ const ResearchWing = () => {
 
         <div className="hidden lg:block absolute left-0 bottom-0 lg:z-30 w-[680px] h-[680px]">
           <Image
-            src="/blogs-glow-ellipse.svg"
+            src="/images/shared/glow-ellipse.svg"
             alt=""
             fill
             sizes="100vw"

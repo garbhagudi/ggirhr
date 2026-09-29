@@ -1,5 +1,12 @@
 import React from "react";
+import Image from "next/image";
 import Chip from "components/ui/Chip";
+import HexagonPhoto from "components/ui/HexagonPhoto";
+
+// Left is a raw photo clipped by HexagonPhoto; the right export already
+// includes its hexagon outline, so it renders as a plain image.
+const HEX_LEFT_IMAGE = "/images/about/about-hex-left.png";
+const HEX_RIGHT_IMAGE = "/images/about/about-hex-right.png";
 
 const PARAGRAPHS = [
   "GGIRHR intends to create a renaissance in training doctors and embryologists in the field of fertility. Since it is a part of the GarbhaGudi group, it has many advantages that are not available to other training organizations. GarbhaGudi IVF Centre, the mother company of GGIRHR, is known for its great success rates, ethical treatment, affordable costs, world-class infrastructure, and humane touch. With the backing of such a capable and robust organization, GGIRHR is well prepared to provide the best-in-class training to clinicians, embryologists andrology technicians, and paramedical staff to prepare them for the challenges of infertility treatment.",
@@ -8,6 +15,24 @@ const PARAGRAPHS = [
 
 const AboutUs = () => (
   <section className="relative overflow-hidden bg-white py-10 sm:py-12 lg:py-[60px]">
+    {/* Decorative badges. Below xl they sit in the free space beside the
+        chip and after the short last line; from xl the 940px column leaves
+        room for them in the side margins. */}
+    <HexagonPhoto
+      src={HEX_LEFT_IMAGE}
+      alt="Sperm cells approaching an egg"
+      className="absolute left-[33px] top-[22px] xl:left-[27px] xl:top-[136px]"
+    />
+    <div className="absolute bottom-3 right-[45px] aspect-[136/130] w-[71px] xl:bottom-auto xl:right-[42px] xl:top-[254px] xl:w-[136px]">
+      <Image
+        src={HEX_RIGHT_IMAGE}
+        alt="A researcher at a microscope in the GGIRHR laboratory"
+        fill
+        sizes="(min-width: 1280px) 136px, 71px"
+        className="object-contain"
+      />
+    </div>
+
     <div className="relative z-10 mx-auto max-w-[940px] px-5 text-center sm:px-6 lg:px-0">
       <Chip
         className="px-4 uppercase tracking-widest !bg-white text-[#EF3E66]"

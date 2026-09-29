@@ -7,7 +7,7 @@ import React from 'react';
 
 const IndexPage = () => {
   return (
-    <div className='bg-white'>
+    <div className='bg-white font-primary'>
       <Hero />
       <SupportCards />
       <Mission />
