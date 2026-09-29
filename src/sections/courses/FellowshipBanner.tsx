@@ -7,6 +7,15 @@ import { usePathname } from "next/navigation";
 import { PhoneIcon } from "@heroicons/react/solid";
 import Glow from "components/ui/Glow";
 import Button from "components/ui/Button";
+import {
+  EMAIL_PATTERN,
+  FieldError,
+  FieldGroup,
+  PhoneInput,
+  inputClasses,
+  textareaClasses,
+  validatePhone,
+} from "components/ui/FormFields";
 
 // Placeholders — the Figma spec references a DNA-strand background image and
 // two award/certificate images that don't exist in this repo. Swap these for
@@ -14,68 +23,6 @@ import Button from "components/ui/Button";
 const DNA_BACKGROUND_IMAGE = "/research-microscope.png";
 const AWARD_IMAGE_ONE = "/images/why-ggirhr-1.webp";
 const AWARD_IMAGE_TWO = "/images/why-ggirhr-2.webp";
-
-const COUNTRY_CODES = [
-  { code: "+91", label: "India" },
-  { code: "+971", label: "UAE" },
-  { code: "+1", label: "USA / Canada" },
-  { code: "+44", label: "UK" },
-  { code: "+61", label: "Australia" },
-  { code: "+65", label: "Singapore" },
-];
-
-const fieldBase =
-  "w-full rounded-md border border-[#D9D9D9] bg-white px-4 text-[13px] text-[#111111] " +
-  "placeholder:text-gray-400 focus:outline-none focus:border-[#1DA8E1] " +
-  "focus:shadow-[0px_4px_24px_#BAEFFF] transition-colors sm:py-3 sm:text-base";
-
-const inputClasses = `${fieldBase} h-10 sm:h-auto sm:h-[50px]`;
-const textareaClasses = `${fieldBase} h-[85px] py-2.5 sm:min-h-[85px]`;
-
-const Chevron = ({ className = "" }: { className?: string }) => (
-  <svg
-    viewBox="0 0 8 5"
-    fill="none"
-    aria-hidden="true"
-    className={`w-2 h-[5px] ${className}`}
-  >
-    <path
-      d="M1 1L4 4L7 1"
-      stroke="currentColor"
-      strokeWidth="1.2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const FieldLabel = ({ children }: { children: React.ReactNode }) => (
-  <span className="text-[16px] tracking-[-0.02em] leading-[26px] text-[#111111]/80">
-    {children}
-  </span>
-);
-
-const FieldError = ({ message }: { message?: string }) =>
-  message ? <p className="text-sm text-red-500 mt-1">{message}</p> : null;
-
-const FieldGroup = ({
-  htmlFor,
-  label,
-  className = "",
-  children,
-}: {
-  htmlFor: string;
-  label: string;
-  className?: string;
-  children: React.ReactNode;
-}) => (
-  <div className={`flex flex-col gap-3 ${className}`}>
-    <label htmlFor={htmlFor}>
-      <FieldLabel>{label}</FieldLabel>
-    </label>
-    {children}
-  </div>
-);
 
 const StatBadge = () => (
   <div className="flex items-center gap-2.5 rounded-[130px] bg-white px-2.5 py-2 sm:px-3 sm:py-2.5 shadow-[0px_4px_14px_rgba(0,0,0,0.08)]">
@@ -219,46 +166,16 @@ const ApplicationForm = () => {
       </div>
 
       <FieldGroup htmlFor="Phone" label="Phone*">
-        <div className="flex items-stretch h-10 sm:h-[50px] rounded-md border border-[#D9D9D9] bg-white focus-within:border-[#1DA8E1] focus-within:shadow-[0px_4px_24px_#BAEFFF] transition-colors overflow-hidden">
-          <div className="relative flex items-center gap-1.5 pl-3 pr-5 border-r border-[#D9D9D9] shrink-0">
-            {countryCode === "+91" && (
-              <Image
-                src="/icons/flag-in.svg"
-                alt=""
-                width={22}
-                height={15}
-                className="shrink-0"
-              />
-            )}
-            <select
-              aria-label="Country code"
-              className="appearance-none bg-transparent text-[13px] sm:text-base text-[#414141] focus:outline-none cursor-pointer pr-3"
-              {...register("Country_Code")}
-            >
-              {COUNTRY_CODES.map(({ code, label }) => (
-                <option key={code} value={code} title={label}>
-                  {code}
-                </option>
-              ))}
-            </select>
-            <Chevron className="absolute right-1.5 top-1/2 -translate-y-1/2 text-[#414141] pointer-events-none" />
-          </div>
-          <input
-            type="tel"
-            id="Phone"
-            placeholder="Enter mobile number"
-            className="w-full bg-transparent px-4 text-[13px] sm:text-base sm:py-3 text-[#111111] placeholder:text-gray-400 focus:outline-none"
-            {...register("Phone", {
-              required: "Phone number is required",
-              validate: (value, formValues) =>
-                formValues.Country_Code === "+91"
-                  ? /^[0-9]{10}$/.test(value) ||
-                    "Enter a valid 10-digit mobile number"
-                  : /^[0-9]{6,15}$/.test(value) ||
-                    "Enter a valid mobile number",
-            })}
-          />
-        </div>
+        <PhoneInput
+          id="Phone"
+          countryCode={countryCode}
+          selectProps={register("Country_Code")}
+          inputProps={register("Phone", {
+            required: "Phone number is required",
+            validate: (value, formValues) =>
+              validatePhone(value, formValues.Country_Code),
+          })}
+        />
         <FieldError message={errors.Phone?.message as string} />
       </FieldGroup>
 
@@ -270,7 +187,7 @@ const ApplicationForm = () => {
           {...register("Email", {
             required: "Email is required",
             pattern: {
-              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              value: EMAIL_PATTERN,
               message: "Invalid email format",
             },
           })}

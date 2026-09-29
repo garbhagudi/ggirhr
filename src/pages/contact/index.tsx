@@ -1,12 +1,18 @@
-import Form from 'components/Form';
+import Hero from 'sections/contact/Hero';
+import SupportCards from 'sections/contact/SupportCards';
+import Mission from 'sections/contact/Mission';
+import GetInTouch from 'sections/contact/GetInTouch';
+import Career from 'sections/contact/Career';
 import React from 'react';
 
 const IndexPage = () => {
   return (
-    <div className='flex justify-center items-center w-full py-10 px-4 h-fit'>
-      <div className='rounded-t-lg overflow-hidden flex w-full md:w-1/2 flex-col items-start justify-start rounded-lg  pb-8 shadow-lg bg-gray-200 '>
-        <Form />
-      </div>
+    <div className='bg-white'>
+      <Hero />
+      <SupportCards />
+      <Mission />
+      <GetInTouch />
+      <Career />
     </div>
   );
 };

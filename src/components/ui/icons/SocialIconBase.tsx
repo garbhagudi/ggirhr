@@ -9,9 +9,9 @@ import React from 'react';
  * `size` exactly — unlike `components/ui/QuoteIcon`, no aspect-ratio math
  * is needed here.
  *
- * Each icon file supplies only its own <path> as children, which is why
- * the one odd glyph out — Email, the only stroke-based mark — needs no
- * special casing in this file.
+ * Each icon file supplies only its own <path> as children, so a glyph
+ * drawn on a different grid (Email's 17×17 Figma envelope, centred with a
+ * <g transform>) needs no special casing in this file.
  *
  * `aria-hidden` defaults to true: these icons are always paired with an
  * accessible name on the wrapping <a>/<button>. `...rest` is spread after
