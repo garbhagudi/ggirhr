@@ -1,6 +1,12 @@
 import React, { forwardRef } from 'react';
 
-export type ChipVariant = 'pink' | 'blue' | 'dark' | 'glass' | 'outline';
+export type ChipVariant =
+  | 'pink'
+  | 'blue'
+  | 'dark'
+  | 'glass'
+  | 'outline'
+  | 'muted';
 export type ChipSize = 'sm' | 'md' | 'lg';
 
 export type ChipProps = Omit<
@@ -24,6 +30,8 @@ const VARIANT_CLASSES: Record<ChipVariant, string> = {
   dark: 'bg-brandDark text-white shadow-[0px_4px_14px_rgba(0,0,0,0.1)]',
   glass: 'bg-[#FFFFFF1A] text-white backdrop-blur-[24px]',
   outline: 'bg-transparent text-brandDark border border-brandDark/20',
+  // Grey category pill on the blog cards; `!` beats the base `font-bold`.
+  muted: 'bg-[#EEEEEE] text-[#374151] !font-normal',
 };
 
 const SIZE_CLASSES: Record<ChipSize, string> = {

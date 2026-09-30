@@ -1,21 +1,18 @@
 import React from "react";
 import { gql } from "graphql-request";
-import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import graphcms from "lib/graphcms";
 import Loading from "components/loading";
 import { throttledFetch } from "lib/throttle";
-import Image from "next/image";
+import BlogsHeader from "sections/blogs/BlogsHeader";
+import BlogGrid from "sections/blogs/BlogGrid";
+import Pagination from "sections/blogs/Pagination";
 
-const limit = 6;
+// 1 featured card + a 2-column grid of 6, per the redesign.
+const limit = 7;
 
-const BlogList = ({
-  currentPageNumber,
-  hasNextPage,
-  hasPreviousPage,
-  blogs,
-}) => {
+const BlogList = ({ currentPageNumber, totalPages, blogs }) => {
   const blogTitle = `Blogs | Page - ${currentPageNumber} | GGIRHR`;
   const router = useRouter();
 
@@ -23,7 +20,7 @@ const BlogList = ({
     return <Loading />;
   }
   return (
-    <div>
+    <div className="bg-white font-primary">
       <Head>
         {/* Primary Tags */}
 
@@ -64,70 +61,9 @@ const BlogList = ({
           content="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegs1ar01h506pr5ijix6of"
         />
       </Head>
-      <div className="relative pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
-        <div className="absolute inset-0">
-          <div className="bg-white h-1/3 sm:h-2/3" />
-        </div>
-        <div className="relative max-w-7xl mx-auto">
-          <div className="text-center">
-            <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-5xl font-heading underline">
-              BLOGS
-            </h2>
-          </div>
-          <div className="mt-12 max-w-xl mx-auto grid gap-8 lg:grid-cols-3 lg:max-w-none">
-            {blogs?.map((item) => (
-              <div
-                key={item?.node?.id}
-                className="flex flex-col rounded-2xl shadow-lg overflow-hidden"
-              >
-                <Link href={`/blogs/${item.node.slug}`} passHref>
-                  <div className="flex-shrink-0">
-                    <Image
-                      className="h-38 w-full object-contain rounded-2xl cursor-pointer"
-                      src={item?.node?.image?.url}
-                      alt={item?.node?.title}
-                      width={500}
-                      height={300}
-                      sizes="(max-width: 640px) 90vw, 100vw"
-                      loading="lazy"
-                    />
-                  </div>
-                </Link>
-                <div className="flex-1 bg-white p-6 flex flex-col justify-between">
-                  <div className="flex-1">
-                    <Link href={`/blogs/${item?.node?.slug}`} passHref>
-                      <p className="text-lg font-semibold text-gray-900 cursor-pointer font-heading">
-                        {item?.node?.title}
-                      </p>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="flex justify-center space-x-4 text-center mt-10">
-            {hasPreviousPage ? (
-              <Link
-                className="my-8 rounded-xl w-44 py-4 px-6 bg-brandBlue font-qs font-semibold text-white"
-                href={`/blogs/page/${currentPageNumber - 1}`}
-              >
-                {"< "}Previous page
-              </Link>
-            ) : null}
-            {hasNextPage ? (
-              <Link
-                className="my-8 rounded-xl py-4 w-44 px-6 bg-brandBlue font-qs font-semibold text-white"
-                href={`/blogs/page/${currentPageNumber + 1}`}
-              >
-                Next page {">"}
-              </Link>
-            ) : null}
-          </div>
-          <div className="text-center font-qs text-xl font-semibold">
-            Page: {currentPageNumber}
-          </div>
-        </div>
-      </div>
+      <BlogsHeader />
+      <BlogGrid posts={(blogs ?? []).map((edge) => edge.node)} />
+      <Pagination current={currentPageNumber} total={totalPages} />
     </div>
   );
 };
@@ -146,19 +82,12 @@ export async function getStaticProps({ params }) {
             image {
               url
             }
-            teacher {
-              slug
-              name
-              id
-              image {
-                url
-              }
-            }
           }
         }
-        pageInfo {
-          hasNextPage
-          hasPreviousPage
+      }
+      total: blogsConnection {
+        aggregate {
+          count
         }
       }
     }
@@ -171,7 +100,8 @@ export async function getStaticProps({ params }) {
 
   // Use throttledFetch for the API call
   const {
-    blogsConnection: { blogs, pageInfo },
+    blogsConnection: { blogs },
+    total,
   } = await throttledFetch(
     fetchBlogs,
     limit,
@@ -181,8 +111,8 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       currentPageNumber: Number(params.page),
+      totalPages: Math.max(1, Math.ceil(total.aggregate.count / limit)),
       blogs,
-      ...pageInfo,
     },
     revalidate: 180,
   };

@@ -14,7 +14,13 @@ import Loading from "components/loading";
 
 // Redesigned pages render the "Ready to get started?" footer section
 // (sections/Home/ReadyToGetStarted) in place of the global Footer.
-const REDESIGNED_FOOTER_ROUTES = ["/", "/about", "/contact"];
+const REDESIGNED_FOOTER_ROUTES = [
+  "/",
+  "/about",
+  "/contact",
+  "/blogs/page/[page]",
+  "/blogs/search",
+];
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
