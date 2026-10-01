@@ -42,8 +42,16 @@ export const Chevron = ({ className = "" }: { className?: string }) => (
   </svg>
 );
 
-export const FieldLabel = ({ children }: { children: React.ReactNode }) => (
-  <span className="text-[16px] tracking-[-0.02em] leading-[26px] text-[#111111]/80">
+export const FieldLabel = ({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
+  <span
+    className={`text-[16px] tracking-[-0.02em] leading-[26px] text-[#111111]/80 ${className}`}
+  >
     {children}
   </span>
 );
@@ -55,16 +63,18 @@ export const FieldGroup = ({
   htmlFor,
   label,
   className = "",
+  labelClassName,
   children,
 }: {
   htmlFor: string;
-  label: string;
+  label: React.ReactNode;
   className?: string;
+  labelClassName?: string;
   children: React.ReactNode;
 }) => (
   <div className={`flex flex-col gap-3 ${className}`}>
     <label htmlFor={htmlFor}>
-      <FieldLabel>{label}</FieldLabel>
+      <FieldLabel className={labelClassName}>{label}</FieldLabel>
     </label>
     {children}
   </div>

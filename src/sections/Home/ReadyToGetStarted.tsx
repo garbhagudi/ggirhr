@@ -65,9 +65,15 @@ const FooterLinkList = ({
   </ul>
 );
 
-const ReadyToGetStarted = () => {
+// `showCta={false}` drops the inline CTA row (course pages render their own
+// blue CTA card overlapping the footer top) and pads for that overlap.
+const ReadyToGetStarted = ({ showCta = true }: { showCta?: boolean }) => {
   return (
-    <footer className="relative overflow-hidden bg-white pt-16 pb-10 font-primary">
+    <footer
+      className={`relative overflow-hidden bg-white pb-10 font-primary ${
+        showCta ? "pt-16" : "pt-[140px] lg:pt-[230px]"
+      }`}
+    >
       <Glow className="w-[240px] h-[240px] sm:w-[454px] sm:h-[454px] -right-10 -top-16 bg-[rgba(165,220,243,0.91)] blur-[102px]" />
       <Glow className="w-[240px] h-[240px] sm:w-[454px] sm:h-[454px] -left-32 top-64 bg-[rgba(165,220,243,0.83)] blur-[102px]" />
       <Glow className="hidden sm:block w-[454px] h-[454px] -left-32 -top-24 bg-[rgba(165,220,243,0.43)] blur-[102px]" />
@@ -75,51 +81,52 @@ const ReadyToGetStarted = () => {
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 xl:px-0">
         {/* CTA row */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div>
-            <h2 className="text-[23px] sm:text-[46px] leading-tight font-normal text-black">
-              Ready to get{" "}
-              <span className="font-bold text-primaryBlue">started?</span>
-            </h2>
-            <p className="mt-2 text-black text-[13px] leading-6 sm:text-lg">
-              We&apos;re here to provide information, advice, support.
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 sm:shrink-0">
-            <Button
-              href={CALL_US_HREF}
-              variant="primary"
-              size="md"
-              rounded="sm"
-              className="h-10 sm:h-auto"
-            >
-              Call Us
-            </Button>
-            <Button
-              href={WHATSAPP_HREF}
-              target="_blank"
-              rel="noreferrer"
-              variant="outline"
-              size="md"
-              rounded="sm"
-              className="h-10 !border-[#374151] !text-black hover:!bg-black/5 sm:h-auto"
-              leftIcon={
-                <WhatsAppIcon
-                  size={20}
-                  color="#4CAF50"
-                />
-              }
-            >
-              WhatsApp
-            </Button>
-          </div>
-        </div>
+        {showCta && (
+          <>
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div>
+                <h2 className="text-[23px] sm:text-[46px] leading-tight font-normal text-black">
+                  Ready to get{" "}
+                  <span className="font-bold text-primaryBlue">started?</span>
+                </h2>
+                <p className="mt-2 text-black text-[13px] leading-6 sm:text-lg">
+                  We&apos;re here to provide information, advice, support.
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 sm:shrink-0">
+                <Button
+                  href={CALL_US_HREF}
+                  variant="primary"
+                  size="md"
+                  rounded="sm"
+                  className="h-10 sm:h-auto"
+                >
+                  Call Us
+                </Button>
+                <Button
+                  href={WHATSAPP_HREF}
+                  target="_blank"
+                  rel="noreferrer"
+                  variant="outline"
+                  size="md"
+                  rounded="sm"
+                  className="h-10 !border-[#374151] !text-black hover:!bg-black/5 sm:h-auto"
+                  leftIcon={<WhatsAppIcon size={20} color="#4CAF50" />}
+                >
+                  WhatsApp
+                </Button>
+              </div>
+            </div>
 
-        {/* Divider */}
-        <div className="mt-10 border-t border-[#0000003D]" />
+            {/* Divider */}
+            <div className="mt-10 border-t border-[#0000003D]" />
+          </>
+        )}
 
         {/* Logo, socials & link columns */}
-        <div className="pt-10 flex flex-col gap-10 lg:flex-row lg:justify-between">
+        <div
+          className={`${showCta ? "pt-10" : ""} flex flex-col gap-10 lg:flex-row lg:justify-between`}
+        >
           <div className="flex flex-col gap-4">
             <Image
               src="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegtq5201oe06pryy2gzwdk"

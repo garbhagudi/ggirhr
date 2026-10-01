@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
 import { PhoneIcon } from "@heroicons/react/solid";
 import Glow from "components/ui/Glow";
+import RibbonWave from "components/ui/RibbonWave";
 import Button from "components/ui/Button";
 import {
   EMAIL_PATTERN,
@@ -17,56 +18,59 @@ import {
   validatePhone,
 } from "components/ui/FormFields";
 
-// Placeholders — the Figma spec references a DNA-strand background image and
-// two award/certificate images that don't exist in this repo. Swap these for
-// the real assets once supplied.
-const DNA_BACKGROUND_IMAGE = "/images/home/research-microscope.png";
-const AWARD_IMAGE_ONE = "/images/home/why-ggirhr-1.webp";
-const AWARD_IMAGE_TWO = "/images/home/why-ggirhr-2.webp";
+const DNA_BACKGROUND_IMAGE = "/images/courses/dna-strand.png";
+const AWARD_IMAGE_ONE = "/images/courses/award-university.png";
+const AWARD_IMAGE_TWO = "/images/courses/award-institutional.png";
+// Placeholder — the avatar photos aren't in the repo yet.
 
 const StatBadge = () => (
-  <div className="flex items-center gap-2.5 rounded-[130px] bg-white px-2.5 py-2 sm:px-3 sm:py-2.5 shadow-[0px_4px_14px_rgba(0,0,0,0.08)]">
+  <div className="flex items-center gap-[5px] rounded-[130px] bg-white py-[3.5px] pl-[5px] pr-[10px]">
     {/* Placeholder avatars — no CMS-backed "professionals" imagery exists yet. */}
-    <div className="flex -space-x-2.5">
+    <div className="flex -space-x-[9px] sm:-space-x-3">
       {[0, 1, 2, 3].map((i) => (
         <div
           key={i}
-          className="h-8 w-8 sm:h-9 sm:w-9 rounded-full border-2 border-white bg-gray-200"
+          className="h-[29px] w-[29px] rounded-full border-[0.75px] border-white bg-gray-200 sm:h-[38px] sm:w-[38px] sm:border"
         />
       ))}
     </div>
-    <p className="text-sm sm:text-lg font-bold text-[#5B65DC]">
-      500+ Professionals trained in India
+    <p className="text-xs font-bold leading-none text-black sm:text-lg">
+      <span className="text-[#5B65DC]">500+</span> Professionals trained in
+      India
     </p>
   </div>
 );
 
+// Figma "Group 2085663110": 389×149 on desktop, full card width on mobile.
 const AwardsCard = () => (
-  <div className="relative z-20 hidden sm:flex bg-white rounded-[10px] shadow-[0px_4px_14px_rgba(0,0,0,0.1)] px-5 py-5 gap-4 items-center w-fit max-w-[389px]">
-    <div className="flex flex-col gap-3">
-      <p className="text-[13px] font-bold tracking-[0.1em] uppercase text-black">
-        Awards
-      </p>
-      <div className="flex items-center gap-4">
-        <Image
-          src={AWARD_IMAGE_ONE}
-          alt="GGIRHR training certification"
-          width={90}
-          height={70}
-          className="h-[70px] w-auto object-contain"
-        />
-        <div className="h-[66px] w-px bg-[#707070]" />
-        <Image
-          src={AWARD_IMAGE_TWO}
-          alt="GGIRHR institutional certification"
-          width={68}
-          height={70}
-          className="h-[70px] w-auto object-contain"
-        />
-      </div>
+  <div className="relative z-20 flex w-full flex-col gap-3 rounded-[10px] text-left bg-white px-[10px] py-3 shadow-[0px_4px_14px_rgba(0,0,0,0.1)] sm:w-fit sm:max-w-[389px] sm:gap-[21px] sm:pb-[18px] sm:pl-[15px] sm:pr-[14px] sm:pt-[19px]">
+    <p className="text-[11px] font-bold uppercase leading-none tracking-[0.1em] text-black sm:text-[15px]">
+      Awards
+    </p>
+    <div className="flex items-center gap-4 sm:gap-[27px]">
+      <Image
+        src={AWARD_IMAGE_ONE}
+        alt="GGIRHR training certification"
+        width={174}
+        height={81}
+        className="h-[50px] w-auto object-contain sm:h-[81px]"
+      />
+      <div className="h-[45px] w-[1.3px] bg-[#707070] sm:h-[66px]" />
+      <Image
+        src={AWARD_IMAGE_TWO}
+        alt="GGIRHR institutional certification"
+        width={131}
+        height={79}
+        className="h-[50px] w-auto object-contain sm:h-[79px]"
+      />
     </div>
   </div>
 );
+
+// Mobile labels are 13px/#374151; the shared FieldLabel default is desktop.
+const LABEL =
+  "!text-[13px] !leading-4 !text-[#374151] sm:!text-[16px] sm:!leading-[26px] sm:!text-[#111111]/80";
+const GROUP = "!gap-2 sm:!gap-3";
 
 const ApplicationForm = () => {
   const router = useRouter();
@@ -140,10 +144,15 @@ const ApplicationForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-6 w-full"
+      className="flex w-full flex-col gap-4 sm:gap-[34px]"
     >
-      <div className="flex flex-col sm:flex-row gap-6">
-        <FieldGroup htmlFor="First_Name" label="First Name" className="flex-1">
+      <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
+        <FieldGroup
+          htmlFor="First_Name"
+          label="First Name"
+          className={`flex-1 ${GROUP}`}
+          labelClassName={LABEL}
+        >
           <input
             type="text"
             id="First_Name"
@@ -155,7 +164,12 @@ const ApplicationForm = () => {
           <FieldError message={errors.First_Name?.message as string} />
         </FieldGroup>
 
-        <FieldGroup htmlFor="Last_Name" label="Last Name" className="flex-1">
+        <FieldGroup
+          htmlFor="Last_Name"
+          label="Last Name"
+          className={`flex-1 ${GROUP}`}
+          labelClassName={LABEL}
+        >
           <input
             type="text"
             id="Last_Name"
@@ -165,7 +179,17 @@ const ApplicationForm = () => {
         </FieldGroup>
       </div>
 
-      <FieldGroup htmlFor="Phone" label="Phone*">
+      <FieldGroup
+        htmlFor="Phone"
+        label={
+          <>
+            <span className="sm:hidden">Mobile*</span>
+            <span className="hidden sm:inline">Phone*</span>
+          </>
+        }
+        className={GROUP}
+        labelClassName={LABEL}
+      >
         <PhoneInput
           id="Phone"
           countryCode={countryCode}
@@ -179,7 +203,12 @@ const ApplicationForm = () => {
         <FieldError message={errors.Phone?.message as string} />
       </FieldGroup>
 
-      <FieldGroup htmlFor="Email" label="Email address*">
+      <FieldGroup
+        htmlFor="Email"
+        label="Email address*"
+        className={GROUP}
+        labelClassName={LABEL}
+      >
         <input
           type="email"
           id="Email"
@@ -195,10 +224,15 @@ const ApplicationForm = () => {
         <FieldError message={errors.Email?.message as string} />
       </FieldGroup>
 
-      <FieldGroup htmlFor="Description" label="Message">
+      <FieldGroup
+        htmlFor="Description"
+        label="Message"
+        className={GROUP}
+        labelClassName={LABEL}
+      >
         <textarea
           id="Description"
-          className={textareaClasses}
+          className={`${textareaClasses} !h-[65px] sm:!h-[85px]`}
           {...register("Description")}
         />
       </FieldGroup>
@@ -209,7 +243,7 @@ const ApplicationForm = () => {
         rounded="md"
         fullWidth
         isLoading={load}
-        className="!text-white h-[45px]"
+        className="!text-white sm:h-[45px]"
       >
         Submit
       </Button>
@@ -217,55 +251,72 @@ const ApplicationForm = () => {
   );
 };
 
-const FellowshipBanner = ({ course }: { course?: { title?: string } }) => {
+const FELLOWSHIP_SLUG = "fellowship-in-clinical-embryology";
+const FELLOWSHIP_SUBTITLE =
+  "Develop industry-ready clinical embryology skills through extensive hands-on training, expert mentorship, research exposure, and placement support.";
+
+// Shared hero for every /courses/[slug] page.
+const FellowshipBanner = ({
+  course,
+}: {
+  course?: { title?: string; slug?: string; metaDescription?: string };
+}) => {
   const title = course?.title || "Fellowship in Clinical Embryology";
-  // Split the last word(s) off so it can be highlighted in blue, matching the
-  // reference design ("Fellowship in Clinical" + "Embryology" in blue).
-  const titleWords = title.split(" ");
-  const highlightWord = titleWords.pop();
+  const subtitle =
+    course?.slug === FELLOWSHIP_SLUG
+      ? FELLOWSHIP_SUBTITLE
+      : course?.metaDescription;
+  // The last two words are highlighted in blue, matching the design
+  // ("Fellowship in" + "Clinical Embryology" in blue). `\s` also catches the
+  // non-breaking space the CMS title has between "Clinical" and "Embryology".
+  const titleWords = title.trim().split(/\s+/);
+  const highlightWords = titleWords.splice(-2).join(" ");
   const leadWords = titleWords.join(" ");
 
   return (
-    <div className="px-5 xl:px-[30px] my-4 md:my-8">
-      <div className="relative overflow-hidden rounded-xl xl:rounded-[30px] bg-[#D2EEF9] px-5 py-10 sm:px-8 sm:py-12 lg:px-[89px] lg:py-16 lg:min-h-[738px] flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-8">
+    <div className="my-4 px-5 font-primary md:my-8 xl:px-[30px]">
+      {/* Figma: mobile 335×1004, desktop Frame 3 1380×738 — sized by padding. */}
+      <div className="relative flex flex-col gap-5 overflow-hidden rounded-xl bg-[#D2EEF9] px-[10px] pb-[39px] pt-[62px] sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:rounded-[30px] lg:py-[43px] lg:pl-[89px] lg:pr-[70px]">
         <Glow className="hidden lg:block -z-0 w-[454px] h-[454px] -left-[127px] -top-[148px] bg-[rgba(255,255,255,0.5)] blur-[80px]" />
         <Glow className="-z-0 w-[298px] h-[298px] right-0 lg:right-[-42px] top-[-100px] lg:-top-[42px] bg-[#7ADCF9] blur-[120px] lg:blur-[202px]" />
 
-        {/* Background DNA-strand illustration — placeholder, see comment at top of file. */}
-        <div className="hidden lg:block absolute z-0 right-0 top-0 w-[55%] h-full opacity-70">
-          <Image
-            src={DNA_BACKGROUND_IMAGE}
-            alt=""
-            fill
-            aria-hidden="true"
-            sizes="55vw"
-            className="object-cover object-left [transform:matrix(-0.98,0.18,0.18,0.98,0,0)]"
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(270deg,rgba(210,238,249,0)_40%,#D2EEF9_85%)]" />
-        </div>
+        <Image
+          src={DNA_BACKGROUND_IMAGE}
+          alt=""
+          aria-hidden="true"
+          width={955}
+          height={738}
+          sizes="(min-width: 1024px) 955px, 502px"
+          className="pointer-events-none absolute -left-[122px] top-[569px] z-0 h-auto w-[502px] max-w-none lg:-top-[30px] lg:left-[425px] lg:w-[955px]"
+        />
 
-        {/* Left column: headline, copy, CTAs, stat badge, awards card */}
-        <div className="relative z-10 w-full lg:w-1/2 flex flex-col gap-6">
+        <RibbonWave
+          color="#FFFFFF"
+          width={214}
+          height={84}
+          className="absolute left-[17px] top-[6px] z-10 w-[77px] -rotate-[12.21deg] lg:-top-[5px] lg:left-6 lg:w-[214px] lg:-rotate-[7.36deg]"
+        />
+
+        {/* Left column: stat badge, headline, copy, CTAs, awards card */}
+        <div className="relative z-10 flex w-full flex-col items-center text-center sm:items-start sm:text-left lg:w-1/2">
           <StatBadge />
 
-          <div className="flex flex-col gap-4">
-            <h1 className="font-heading text-[32px] leading-[36px] sm:text-[44px] sm:leading-[48px] lg:text-[61px] lg:leading-[58px] text-black">
-              {leadWords}{" "}
-              <span className="text-primaryBlue font-bold">{highlightWord}</span>
-            </h1>
-            <p className="max-w-[619px] text-[15px] sm:text-lg leading-6 sm:leading-[27px] font-semibold text-justify text-[#374151]">
-              Develop industry-ready clinical embryology skills through
-              extensive hands-on training, expert mentorship, research
-              exposure, and placement support.
+          <h1 className="mt-[10px] max-w-[280px] text-[31px] font-normal leading-[33px] text-[#111111] sm:mt-6 sm:max-w-[606px] sm:text-[61px] sm:leading-[58px] sm:text-black">
+            {leadWords}{" "}
+            <span className="font-bold text-primaryBlue">{highlightWords}</span>
+          </h1>
+          {subtitle && (
+            <p className="mt-[10px] text-[13px] font-semibold leading-[17px] text-[#374151] sm:mt-[15px] sm:max-w-[619px] sm:text-justify sm:text-lg sm:leading-[27px]">
+              {subtitle}
             </p>
-          </div>
+          )}
 
-          <div className="flex items-center gap-4">
+          <div className="mt-[10px] flex items-center gap-[10px] sm:mt-[21px] sm:gap-4">
             <Button
-              href={`/contact?pageVisit=/courses/fellowship-in-clinical-embryology`}
+              href={`/contact?pageVisit=/courses/${course?.slug ?? FELLOWSHIP_SLUG}`}
               variant="primary"
               rounded="sm"
-              className="!text-[#F1F1F1]"
+              className="!text-[#F1F1F1] sm:leading-[30px]"
             >
               Contact Us
             </Button>
@@ -273,21 +324,26 @@ const FellowshipBanner = ({ course }: { course?: { title?: string } }) => {
               href="tel:+919108910852"
               variant="outline"
               rounded="sm"
-              leftIcon={<PhoneIcon className="w-4 h-4" />}
+              className="sm:!border sm:leading-[30px]"
+              leftIcon={
+                <PhoneIcon className="h-[13px] w-[13px] sm:h-[18px] sm:w-[18px]" />
+              }
             >
               Call Us
             </Button>
           </div>
 
-          <AwardsCard />
+          <div className="mt-6 w-full sm:mt-[31px] sm:w-auto">
+            <AwardsCard />
+          </div>
         </div>
 
         {/* Right column: application form card */}
-        <div className="relative z-20 w-full lg:w-1/2 flex lg:justify-end">
-          <div className="w-full lg:max-w-[552px] flex flex-col gap-8 bg-white rounded-[20px] shadow-[0px_4px_54px_rgba(87,209,245,0.39)] px-6 py-8 sm:px-10 sm:py-10">
-            <h2 className="font-heading text-[22px] sm:text-[26px] leading-[29px] text-black">
+        <div className="relative z-20 flex w-full lg:w-1/2 lg:justify-end">
+          <div className="flex w-full flex-col gap-2 rounded-[6.7px] bg-white px-4 py-5 shadow-[0_2.69px_9.4px_rgba(0,0,0,0.1)] sm:gap-[34px] sm:rounded-[20px] sm:p-10 sm:shadow-[0px_4px_54px_rgba(87,209,245,0.39)] lg:max-w-[552px]">
+            <h2 className="text-[20px] font-normal leading-[29px] text-black sm:text-[26px]">
               Start Your{" "}
-              <span className="text-primaryBlue font-bold">
+              <span className="font-bold text-primaryBlue">
                 Application Journey
               </span>
             </h2>

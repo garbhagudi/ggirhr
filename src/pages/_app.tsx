@@ -20,6 +20,7 @@ const REDESIGNED_FOOTER_ROUTES = [
   "/contact",
   "/blogs/page/[page]",
   "/blogs/search",
+  "/courses/[slug]",
 ];
 
 function MyApp({ Component, pageProps }) {
@@ -82,7 +83,13 @@ function MyApp({ Component, pageProps }) {
           </main>
           <SalesIQ />
           <FloatPhone />
-          {usesRedesignedFooter ? <ReadyToGetStarted /> : <Footer />}
+          {usesRedesignedFooter ? (
+            <ReadyToGetStarted
+              showCta={router.pathname !== "/courses/[slug]"}
+            />
+          ) : (
+            <Footer />
+          )}
         </div>
       )}
     </div>
