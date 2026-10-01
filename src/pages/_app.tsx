@@ -19,7 +19,6 @@ const REDESIGNED_FOOTER_ROUTES = [
   "/about",
   "/contact",
   "/blogs/page/[page]",
-  "/blogs/search",
   "/courses/[slug]",
 ];
 
@@ -35,7 +34,11 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   useEffect(() => {
-    const start = () => {
+    // No full-screen loader for in-place updates (shallow, blog list ⇄ search).
+    const isBlogListing = (path: string) => path.startsWith("/blogs/page/");
+    const start = (url: string, { shallow }: { shallow: boolean }) => {
+      if (shallow) return;
+      if (isBlogListing(window.location.pathname) && isBlogListing(url)) return;
       setLoading(true);
     };
     const end = () => {

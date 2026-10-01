@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import ChevronDownIcon from "components/ui/icons/ChevronDownIcon";
+import { blogsHref } from "lib/blogs";
 
 const WINDOW = 5;
 
@@ -14,29 +15,29 @@ const IDLE =
 const ACTIVE = "bg-primaryBlue text-[#F1F1F1]";
 const DISABLED = `${IDLE} pointer-events-none opacity-50`;
 
-const pageHref = (n: number) => `/blogs/page/${n}`;
+type LinkTarget = { href: string; shallow?: boolean; scroll?: boolean };
 
 // Up to WINDOW page numbers centred on `current`, clamped to [1, total].
 const pageWindow = (current: number, total: number) => {
   const size = Math.min(WINDOW, total);
   const start = Math.min(
     Math.max(1, current - Math.floor(size / 2)),
-    total - size + 1
+    total - size + 1,
   );
   return Array.from({ length: size }, (_, i) => start + i);
 };
 
 const Arrow = ({
-  to,
+  target,
   label,
   children,
 }: {
-  to: number | null;
+  target: LinkTarget | null;
   label: string;
   children: React.ReactNode;
 }) =>
-  to ? (
-    <Link href={pageHref(to)} aria-label={label} className={`${BOX} ${IDLE}`}>
+  target ? (
+    <Link {...target} aria-label={label} className={`${BOX} ${IDLE}`}>
       {children}
     </Link>
   ) : (
@@ -45,29 +46,58 @@ const Arrow = ({
     </span>
   );
 
-const Pagination = ({ current, total }: { current: number; total: number }) => {
+const Pagination = ({
+  current,
+  total,
+  query,
+}: {
+  current: number;
+  total: number;
+  query?: string;
+}) => {
   if (total <= 1) return null;
+
+  // Search paging is shallow and keeps the scroll position; list pages need
+  // their own static data.
+  const link = (n: number): LinkTarget => ({
+    href: blogsHref(n, query),
+    ...(query ? { shallow: true, scroll: false } : {}),
+  });
 
   return (
     <nav
       aria-label="Blog pages"
       className="flex items-stretch justify-center gap-[6px] py-10 sm:gap-[10px] sm:py-16"
     >
-      <Arrow to={current > 1 ? current - 1 : null} label="Previous page">
-        <ChevronDownIcon size={14} aria-hidden="true" className="h-auto w-2 rotate-90 sm:w-[14px]" />
+      <Arrow
+        target={current > 1 ? link(current - 1) : null}
+        label="Previous page"
+      >
+        <ChevronDownIcon
+          size={14}
+          aria-hidden="true"
+          className="h-auto w-2 rotate-90 sm:w-[14px]"
+        />
       </Arrow>
       {pageWindow(current, total).map((n) => (
         <Link
           key={n}
-          href={pageHref(n)}
+          {...link(n)}
           aria-current={n === current ? "page" : undefined}
           className={`${BOX} ${n === current ? ACTIVE : IDLE}`}
         >
           {n}
         </Link>
       ))}
-      <Arrow to={current < total ? current + 1 : null} label="Next page">
-        <ChevronDownIcon size={14} aria-hidden="true" className="h-auto w-2 -rotate-90 sm:w-[14px]" />
+      <Arrow
+        target={current < total ? link(current + 1) : null}
+        label="Next page"
+      >
+        <ChevronDownIcon
+          size={14}
+          aria-hidden="true"
+          className="h-auto w-2 -rotate-90 sm:w-[14px]"
+        />
       </Arrow>
     </nav>
   );

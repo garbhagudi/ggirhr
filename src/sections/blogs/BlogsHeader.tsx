@@ -4,22 +4,39 @@ import Chip from "components/ui/Chip";
 import Glow from "components/ui/Glow";
 import RibbonWave from "components/ui/RibbonWave";
 
-const SearchBar = ({ defaultQuery = "" }: { defaultQuery?: string }) => (
+type SearchProps = {
+  defaultQuery?: string;
+  /** Called with the trimmed term; `""` means clear the search. */
+  onSearch?: (term: string) => void;
+};
+
+// The GET action is the no-JS fallback; with JS the page handles `onSearch`.
+const SearchBar = ({ defaultQuery = "", onSearch }: SearchProps) => (
   <form
-    action="/blogs/search"
+    action="/blogs/page/1"
     method="get"
     role="search"
+    onSubmit={(e) => {
+      if (!onSearch) return;
+      e.preventDefault();
+      onSearch(String(new FormData(e.currentTarget).get("q") ?? "").trim());
+    }}
     className="mx-auto flex h-[50px] w-full max-w-[481px] rounded-[10px] border border-transparent bg-white p-[5px] shadow-[0_4px_54px_rgba(0,0,0,0.08)] transition-colors focus-within:border-[#1DA8E1] focus-within:shadow-[0px_4px_24px_#BAEFFF] sm:h-[60px]"
   >
     <input
+      // Remount when the active query changes so defaultValue follows it.
+      key={defaultQuery}
       type="search"
       name="q"
-      required
       autoComplete="off"
       autoCorrect="off"
       autoCapitalize="off"
       spellCheck={false}
       defaultValue={defaultQuery}
+      onInput={(e) => {
+        // The native clear "×" empties the field: drop the active search.
+        if (!e.currentTarget.value && defaultQuery) onSearch?.("");
+      }}
       placeholder="Search blog..."
       aria-label="Search blogs"
       className="min-w-0 flex-1 bg-transparent px-3 text-[13px] text-[#111111] placeholder:text-[#848484] focus:outline-none sm:text-base"
@@ -37,11 +54,9 @@ const SearchBar = ({ defaultQuery = "" }: { defaultQuery?: string }) => (
 
 const BlogsHeader = ({
   defaultQuery,
+  onSearch,
   children,
-}: {
-  defaultQuery?: string;
-  children?: React.ReactNode;
-}) => (
+}: SearchProps & { children?: React.ReactNode }) => (
   <section className="relative overflow-x-clip pt-4 sm:pb-20 sm:pt-16">
     <Glow className="hidden sm:block -left-[180px] -top-[120px] h-[454px] w-[454px] bg-[rgba(142,230,255,0.55)] blur-[102px]" />
     <Glow className="hidden sm:block -right-[160px] top-[40px] h-[454px] w-[454px] bg-[rgba(142,230,255,0.5)] blur-[102px]" />
@@ -68,7 +83,7 @@ const BlogsHeader = ({
           Our <span className="font-bold text-primaryBlue">Blogs</span>
         </h1>
         <div className="mt-3 w-full sm:mt-5">
-          <SearchBar defaultQuery={defaultQuery} />
+          <SearchBar defaultQuery={defaultQuery} onSearch={onSearch} />
         </div>
         {children}
       </div>

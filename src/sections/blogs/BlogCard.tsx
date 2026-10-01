@@ -67,7 +67,7 @@ const BlogCard = ({
         </div>
         <div className="flex flex-col gap-2.5 px-3.5 pb-4 sm:gap-[21px] sm:px-0 sm:pb-0 sm:pr-6">
           <BlogMeta publishedOn={post.publishedOn} />
-          <h2 className="text-lg font-semibold leading-snug text-primaryBlue sm:text-[32px] sm:leading-[33px]">
+          <h2 className="text-lg font-semibold leading-snug text-black transition-colors group-hover:text-primaryBlue sm:text-[32px] sm:leading-[33px]">
             {post.title}
           </h2>
         </div>
@@ -93,7 +93,7 @@ const BlogCard = ({
       </div>
       <div className="mt-5 flex flex-col gap-3 px-0.5 pb-2 sm:mt-[30px] sm:gap-[18px] sm:px-[7px] sm:pb-3">
         <BlogMeta publishedOn={post.publishedOn} />
-        <h3 className="line-clamp-2 text-[15px] font-semibold leading-[19px] text-black sm:text-xl sm:leading-[29px]">
+        <h3 className="line-clamp-2 text-[15px] font-semibold leading-[19px] text-black transition-colors group-hover:text-primaryBlue sm:text-xl sm:leading-[29px]">
           {post.title}
         </h3>
       </div>
