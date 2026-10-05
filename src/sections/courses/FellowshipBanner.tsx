@@ -266,19 +266,15 @@ const FellowshipBanner = ({
     course?.slug === FELLOWSHIP_SLUG
       ? FELLOWSHIP_SUBTITLE
       : course?.metaDescription;
-  // The last two words are highlighted in blue, matching the design
-  // ("Fellowship in" + "Clinical Embryology" in blue). `\s` also catches the
-  // non-breaking space the CMS title has between "Clinical" and "Embryology".
   const titleWords = title.trim().split(/\s+/);
   const highlightWords = titleWords.splice(-2).join(" ");
   const leadWords = titleWords.join(" ");
 
   return (
-    <div className="my-4 px-5 font-primary md:my-8 xl:px-[30px]">
-      {/* Figma: mobile 335×1004, desktop Frame 3 1380×738 — sized by padding. */}
-      <div className="relative flex flex-col gap-5 overflow-hidden rounded-xl bg-[#D2EEF9] px-[10px] pb-[39px] pt-[62px] sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:gap-8 lg:rounded-[30px] lg:py-[43px] lg:pl-[89px] lg:pr-[70px]">
-        <Glow className="hidden lg:block -z-0 w-[454px] h-[454px] -left-[127px] -top-[148px] bg-[rgba(255,255,255,0.5)] blur-[80px]" />
-        <Glow className="-z-0 w-[298px] h-[298px] right-0 lg:right-[-42px] top-[-100px] lg:-top-[42px] bg-[#7ADCF9] blur-[120px] lg:blur-[202px]" />
+    <div className="my-4 px-5 font-primary sm:my-8 sm:px-[30px]">
+      <div className="relative flex flex-col gap-5 overflow-hidden rounded-xl bg-[#D2EEF9] px-[10px] pb-[39px] pt-[62px] sm:px-8 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:rounded-[30px] sm:py-[43px] sm:pl-[89px] sm:pr-[70px]">
+        <Glow className="hidden sm:block -z-0 w-[454px] h-[454px] -left-[127px] -top-[148px] bg-[rgba(255,255,255,0.5)] blur-[80px]" />
+        <Glow className="-z-0 w-[298px] h-[298px] right-0 sm:right-[-42px] top-[-100px] sm:-top-[42px] bg-[#7ADCF9] blur-[120px] sm:blur-[202px]" />
 
         <Image
           src={DNA_BACKGROUND_IMAGE}
@@ -286,19 +282,19 @@ const FellowshipBanner = ({
           aria-hidden="true"
           width={955}
           height={738}
-          sizes="(min-width: 1024px) 955px, 502px"
-          className="pointer-events-none absolute -left-[122px] top-[569px] z-0 h-auto w-[502px] max-w-none lg:-top-[30px] lg:left-[425px] lg:w-[955px]"
+          sizes="(min-width: 640px) 955px, 502px"
+          className="pointer-events-none absolute -left-[122px] top-[569px] z-0 h-auto w-[502px] max-w-none sm:-top-[30px] sm:left-[425px] sm:w-[955px]"
         />
 
         <RibbonWave
           color="#FFFFFF"
           width={214}
           height={84}
-          className="absolute left-[17px] top-[6px] z-10 w-[77px] -rotate-[12.21deg] lg:-top-[5px] lg:left-6 lg:w-[214px] lg:-rotate-[7.36deg]"
+          className="absolute left-[17px] top-[6px] z-10 w-[77px] -rotate-[12.21deg] sm:-top-[5px] sm:left-6 sm:w-[214px] sm:-rotate-[7.36deg]"
         />
 
         {/* Left column: stat badge, headline, copy, CTAs, awards card */}
-        <div className="relative z-10 flex w-full flex-col items-center text-center sm:items-start sm:text-left lg:w-1/2">
+        <div className="relative z-10 flex w-full flex-col items-center text-center sm:items-start sm:text-left sm:w-1/2">
           <StatBadge />
 
           <h1 className="mt-[10px] max-w-[280px] text-[31px] font-normal leading-[33px] text-[#111111] sm:mt-6 sm:max-w-[606px] sm:text-[61px] sm:leading-[58px] sm:text-black">
@@ -306,7 +302,7 @@ const FellowshipBanner = ({
             <span className="font-bold text-primaryBlue">{highlightWords}</span>
           </h1>
           {subtitle && (
-            <p className="mt-[10px] text-[13px] font-semibold leading-[17px] text-[#374151] sm:mt-[15px] sm:max-w-[619px] sm:text-justify sm:text-lg sm:leading-[27px]">
+            <p className="mt-[10px] text-[13px] font-semibold leading-[20px] text-black sm:text-[#374151] sm:mt-[15px] sm:max-w-[619px] sm:text-justify sm:text-lg sm:leading-[27px]">
               {subtitle}
             </p>
           )}
@@ -339,8 +335,8 @@ const FellowshipBanner = ({
         </div>
 
         {/* Right column: application form card */}
-        <div className="relative z-20 flex w-full lg:w-1/2 lg:justify-end">
-          <div className="flex w-full flex-col gap-2 rounded-[6.7px] bg-white px-4 py-5 shadow-[0_2.69px_9.4px_rgba(0,0,0,0.1)] sm:gap-[34px] sm:rounded-[20px] sm:p-10 sm:shadow-[0px_4px_54px_rgba(87,209,245,0.39)] lg:max-w-[552px]">
+        <div className="relative z-20 flex w-full sm:w-1/2 sm:justify-end">
+          <div className="flex w-full flex-col gap-2 rounded-[6.7px] bg-white px-4 py-5 shadow-[0_2.69px_9.4px_rgba(0,0,0,0.1)] sm:gap-[34px] sm:rounded-[20px] sm:p-10 sm:shadow-[0px_4px_54px_rgba(87,209,245,0.39)] sm:max-w-[552px]">
             <h2 className="text-[20px] font-normal leading-[29px] text-black sm:text-[26px]">
               Start Your{" "}
               <span className="font-bold text-primaryBlue">

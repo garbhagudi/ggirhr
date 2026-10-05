@@ -10,7 +10,6 @@ type Topic = {
   image: { src: string; width: number; height: number };
 };
 
-// Design order: rows alternate text-left / image-left on desktop.
 const TOPICS: Topic[] = [
   {
     heading: "Clinical Embryology",
@@ -59,8 +58,6 @@ const TOPICS: Topic[] = [
   },
 ];
 
-// Short "Label:" prefixes (Gametogenesis:, Fertilization:, …) are bold white in
-// the design; longer colons inside a sentence are left as plain text.
 const Point = ({ text }: { text: string }) => {
   const match = text.match(/^([^:]{1,20}):\s(.+)$/);
   if (!match) return <>{text}</>;
@@ -73,14 +70,14 @@ const Point = ({ text }: { text: string }) => {
 
 const TopicBlock = ({ topic }: { topic: Topic }) => (
   <div>
-    <h3 className="mb-3 text-left text-[20px] font-bold leading-tight text-white lg:mb-4 lg:text-[32px]">
+    <h3 className="mb-3 text-left text-[20px] font-bold leading-tight text-white sm:mb-4 sm:text-[32px]">
       {topic.heading}
     </h3>
-    <ul className="flex flex-col gap-1.5 lg:gap-2">
+    <ul className="flex flex-col gap-1.5 sm:gap-2">
       {topic.points.map((point) => (
         <li
           key={point}
-          className="text-left text-[13px] font-semibold leading-5 text-[#DEDEDE] lg:text-base lg:leading-[30px]"
+          className="text-left text-[13px] font-semibold leading-5 text-[#DEDEDE] sm:text-base sm:leading-[30px]"
         >
           <Point text={point} />
         </li>
@@ -90,12 +87,12 @@ const TopicBlock = ({ topic }: { topic: Topic }) => (
 );
 
 const TopicRow = ({ topic, imageLeft }: { topic: Topic; imageLeft: boolean }) => (
-  <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-[74px]">
+  <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-[74px]">
     <div
       className={`order-first flex justify-center ${
         imageLeft
-          ? "lg:w-[470px] lg:shrink-0"
-          : "lg:order-last lg:flex-1"
+          ? "sm:w-[470px] sm:shrink-0"
+          : "sm:order-last sm:flex-1"
       }`}
     >
       <Image
@@ -104,39 +101,39 @@ const TopicRow = ({ topic, imageLeft }: { topic: Topic; imageLeft: boolean }) =>
         aria-hidden="true"
         width={topic.image.width}
         height={topic.image.height}
-        sizes={`(min-width: 1024px) ${topic.image.width}px, 65vw`}
-        className="h-auto w-[65%] max-w-[260px] lg:w-auto lg:max-w-full"
+        sizes={`(min-width: 640px) ${topic.image.width}px, 65vw`}
+        className="h-auto w-[65%] max-w-[260px] sm:w-auto sm:max-w-full"
       />
     </div>
-    <div className={imageLeft ? "lg:flex-1" : "lg:ml-[53px] lg:w-[592px] lg:shrink-0"}>
+    <div className={imageLeft ? "sm:flex-1" : "sm:ml-[53px] sm:w-[592px] sm:shrink-0"}>
       <TopicBlock topic={topic} />
     </div>
   </div>
 );
 
 const CourseContent = () => (
-  <section className="relative overflow-hidden bg-[#1A97CA] pb-20 pt-[60px] font-primary lg:py-[100px]">
-    <Glow className="hidden lg:block -z-0 left-1/2 top-[568px] h-[1083px] w-[1083px] -translate-x-1/2 bg-[rgba(118,180,228,0.51)] blur-[300px]" />
+  <section className="relative overflow-hidden bg-[#1A97CA] pb-20 pt-[60px] font-primary sm:py-[100px]">
+    <Glow className="hidden sm:block -z-0 left-1/2 top-[568px] h-[1083px] w-[1083px] -translate-x-1/2 bg-[rgba(118,180,228,0.51)] blur-[300px]" />
 
     <RibbonWave
-      width={240}
-      height={94}
-      className="absolute left-5 top-6 z-10 w-[80px] -rotate-[18.14deg] lg:left-[138px] lg:top-[46px] lg:w-[240px]"
+      width={300}
+      height={150}
+      className="absolute left-5 top-4 z-10 w-[80px] -rotate-[20.09deg] sm:-rotate-[18.14deg] sm:left-[138px] sm:top-[46px] sm:w-[240px]"
     />
 
-    <div className="relative z-10 flex flex-col items-start px-5 lg:items-center lg:px-0">
+    <div className="relative z-10 flex flex-col items-start px-5 sm:items-center sm:px-0">
       <Chip
         variant="glass"
-        className="!px-4 !py-2 !text-[12px] font-bold uppercase !tracking-[0.1em] shadow-[0_4px_14px_rgba(0,0,0,0.1)] lg:!py-3 lg:!text-[15px]"
+        className="!px-4 !py-2 !text-[12px] font-bold uppercase !tracking-[0.1em] shadow-[0_4px_14px_rgba(0,0,0,0.1)] sm:!py-3 sm:!text-[15px]"
       >
         Content
       </Chip>
-      <h2 className="mt-3 text-[23px] font-normal leading-tight text-white lg:mt-6 lg:text-[46px] lg:leading-[50px]">
+      <h2 className="mt-3 text-[23px] font-normal leading-tight text-white sm:mt-6 sm:text-[46px] sm:leading-[50px]">
         Course <span className="font-bold">Content</span>
       </h2>
     </div>
 
-    <div className="relative z-10 mt-10 flex flex-col gap-14 px-5 lg:mx-auto lg:mt-[70px] lg:max-w-[1250px] lg:gap-20 lg:px-0">
+    <div className="relative z-10 mt-10 flex flex-col gap-14 px-5 sm:mx-auto sm:mt-[70px] sm:max-w-[1250px] sm:gap-20 sm:px-0">
       {TOPICS.map((topic, i) => (
         <TopicRow key={topic.heading} topic={topic} imageLeft={i % 2 === 1} />
       ))}

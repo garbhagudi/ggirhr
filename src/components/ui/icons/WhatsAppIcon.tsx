@@ -7,13 +7,13 @@ import SocialIconBase, {
 /**
  * WhatsAppIcon
  *
- * Outlined WhatsApp handset-in-speech-bubble glyph. Used in three places:
- * the footer social row and the "WhatsApp" CTA button (both in
- * `sections/Home/ReadyToGetStarted.tsx`, at `#fff` and `#4CAF50`
- * respectively) and the hero social rail (`sections/Home/Hero.tsx`).
+ * Outlined WhatsApp handset-in-speech-bubble glyph. Used in the footer
+ * social row (`sections/Home/ReadyToGetStarted.tsx`, at `#fff`) and the
+ * hero social rail (`sections/Home/Hero.tsx`). The "WhatsApp" CTA buttons
+ * use the full-colour `WhatsAppButtonIcon` instead.
  *
  * Usage:
- *   <WhatsAppIcon size={20} color="#4CAF50" />
+ *   <WhatsAppIcon size={20} color="#fff" />
  */
 export const WhatsAppIcon = ({
   color = DEFAULT_SOCIAL_ICON_COLOR,

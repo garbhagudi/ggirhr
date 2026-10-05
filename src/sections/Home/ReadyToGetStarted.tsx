@@ -5,7 +5,7 @@ import Button from "components/ui/Button";
 import Glow from "components/ui/Glow";
 import { CALL_US_HREF, WHATSAPP_HREF } from "lib/contact";
 import { SOCIAL_NETWORKS } from "components/ui/icons/socialNetworks";
-import WhatsAppIcon from "components/ui/icons/WhatsAppIcon";
+import WhatsAppButtonIcon from "components/ui/icons/WhatsAppButtonIcon";
 
 const ABOUT_LINKS = [
   { name: "Vision & Mission", href: "/about/mission-and-vision" },
@@ -111,7 +111,7 @@ const ReadyToGetStarted = ({ showCta = true }: { showCta?: boolean }) => {
                   size="md"
                   rounded="sm"
                   className="h-10 !border-[#374151] !text-black hover:!bg-black/5 sm:h-auto"
-                  leftIcon={<WhatsAppIcon size={20} color="#4CAF50" />}
+                  leftIcon={<WhatsAppButtonIcon size={20} />}
                 >
                   WhatsApp
                 </Button>

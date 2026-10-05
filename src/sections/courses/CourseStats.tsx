@@ -41,8 +41,6 @@ const buildStats = (course: Course): Stat[] => {
 
 const LINE = "pointer-events-none absolute opacity-60";
 
-// Figma: desktop one row split by vertical gradient lines; mobile 2×2 with a
-// centre vertical line and a short horizontal line under each top cell.
 const CourseStats = ({ course }: { course?: Course }) => {
   const stats = course ? buildStats(course) : [];
   if (stats.length === 0) return null;
@@ -52,33 +50,33 @@ const CourseStats = ({ course }: { course?: Course }) => {
     <SectionShell
       as="section"
       aria-label="Course highlights"
-      className="py-10 font-primary lg:py-16"
+      className="py-10 font-primary sm:py-16"
     >
-      <div className="grid grid-cols-2 lg:flex lg:justify-between">
+      <div className="grid grid-cols-2 sm:flex sm:justify-between">
         {stats.map(({ value, label }, i) => {
           const mobileVertical = i % 2 === 0 && i < last;
           const mobileHorizontal = i < 2 && stats.length > 2;
           return (
             <div
               key={label}
-              className="relative flex flex-col items-center py-7 text-center lg:flex-1 lg:px-6 lg:py-0"
+              className="relative flex flex-col items-center py-7 text-center sm:flex-1 sm:px-6 sm:py-0"
             >
               <p className="text-[35px] font-semibold leading-none text-[#1DA8E1] sm:text-[70px]">
                 {value}
               </p>
-              <p className="mt-3 text-[15px] font-semibold leading-6 text-black sm:text-[20px] lg:mt-5">
+              <p className="mt-3 text-[15px] font-semibold leading-6 text-black sm:text-[20px] sm:mt-5">
                 {label}
               </p>
               <span
                 aria-hidden="true"
-                className={`${LINE} right-0 top-1/2 h-[90px] w-px -translate-y-1/2 bg-[linear-gradient(180deg,transparent,#1DA8E1,transparent)] lg:h-[110px] ${
+                className={`${LINE} right-0 top-1/2 h-[90px] w-[3px] -translate-y-1/2 bg-[linear-gradient(180deg,transparent,#1DA8E1,transparent)] sm:h-[110px] ${
                   mobileVertical ? "block" : "hidden"
-                } ${i < last ? "lg:block" : "lg:hidden"}`}
+                } ${i < last ? "sm:block" : "sm:hidden"}`}
               />
               {mobileHorizontal && (
                 <span
                   aria-hidden="true"
-                  className={`${LINE} bottom-0 left-1/2 h-px w-[80%] -translate-x-1/2 bg-[linear-gradient(90deg,transparent,#1DA8E1,transparent)] lg:hidden`}
+                  className={`${LINE} bottom-0 left-1/2 h-[3px] w-[80%] -translate-x-1/2 bg-[linear-gradient(90deg,transparent,#1DA8E1,transparent)] sm:hidden`}
                 />
               )}
             </div>

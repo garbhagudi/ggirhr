@@ -94,21 +94,21 @@ const StudentVoices = () => {
   return (
     <SectionShell
       as="section"
-      className="relative overflow-hidden bg-white py-14 font-primary lg:py-20"
+      className="relative overflow-hidden bg-white py-14 font-primary sm:py-20"
     >
       <RibbonWave
         color="#A5DCF3"
-        width={170}
-        height={68}
-        className="absolute left-1/2 top-6 w-[90px] -translate-x-1/2 lg:top-10 lg:w-[170px]"
+        width={300}
+        height={150}
+        className="absolute left-1/2 top-6 w-[90px] -translate-x-1/2 sm:top-10 sm:w-[240px] -rotate-[6.3deg]"
       />
 
       <div className="relative z-10 flex flex-col">
         <Chip variant="pink" className="uppercase">
           Testimonial
         </Chip>
-        <div className="mb-5 mt-3 flex items-center justify-between gap-4 lg:mb-8 lg:mt-4">
-          <h2 className="text-left text-[23px] font-normal leading-tight text-black lg:text-[46px] lg:leading-[50px]">
+        <div className="mb-5 mt-3 flex items-center justify-between gap-4 sm:mb-8 sm:mt-4">
+          <h2 className="text-left text-[23px] font-normal leading-tight text-black sm:text-[46px] sm:leading-[50px]">
             Student <span className="font-bold text-primaryBlue">Voices</span>
           </h2>
           <div className="hidden items-center gap-3 sm:flex">{navButtons(false)}</div>
@@ -131,7 +131,7 @@ const StudentVoices = () => {
                   style={{ width: `${cardWidth}px` }}
                 >
                   <div
-                    className={`flex min-h-[323px] flex-col justify-between rounded-xl px-5 pb-5 pt-8 lg:min-h-[280px] lg:rounded-[20px] lg:px-[22px] ${
+                    className={`flex min-h-[323px] flex-col justify-between rounded-xl px-5 pb-5 pt-8 sm:min-h-[280px] sm:rounded-[20px] sm:px-[22px] ${
                       isActive
                         ? "bg-[#1DA8E1] shadow-[0_4px_44px_rgba(0,0,0,0.05)]"
                         : "border border-[#C2C2C2] bg-white"
@@ -144,7 +144,7 @@ const StudentVoices = () => {
                         aria-hidden="true"
                       />
                       <p
-                        className={`mt-4 text-justify text-base font-semibold leading-6 lg:text-left lg:font-normal ${
+                        className={`mt-4 text-justify text-base font-semibold leading-6 sm:text-left sm:font-normal ${
                           isActive ? "text-[#DEDEDE]" : "text-[#374151]"
                         }`}
                       >
@@ -152,9 +152,9 @@ const StudentVoices = () => {
                       </p>
                     </div>
 
-                    <div className="mt-4 flex items-center gap-[7px] lg:gap-[11px]">
+                    <div className="mt-4 flex items-center gap-[7px] sm:gap-[11px]">
                       <div
-                        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white text-lg font-semibold text-white lg:h-[47px] lg:w-[47px]"
+                        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white text-lg font-semibold text-white sm:h-[47px] sm:w-[47px]"
                         style={{
                           backgroundColor:
                             AVATAR_COLORS[index % AVATAR_COLORS.length],
@@ -163,7 +163,7 @@ const StudentVoices = () => {
                         {voice.name.charAt(0)}
                       </div>
                       <span
-                        className={`text-[15px] font-semibold leading-5 lg:text-[20px] lg:leading-7 ${
+                        className={`text-[15px] font-semibold leading-5 sm:text-[20px] sm:leading-7 ${
                           isActive ? "text-white" : "text-[#1DA8E1]"
                         }`}
                       >

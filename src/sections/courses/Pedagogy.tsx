@@ -13,18 +13,18 @@ const BODY =
 
 // Figma Frame 2131330139: 1440×581 centred copy with badges in the side margins.
 const Pedagogy = () => (
-  <section className="relative overflow-hidden bg-white px-5 pb-16 pt-10 font-primary lg:px-0 lg:pb-[85px] lg:pt-[100px]">
+  <section className="relative overflow-hidden bg-white px-5 pb-16 pt-10 font-primary sm:px-0 sm:pb-[85px] sm:pt-[100px]">
     <HexagonPhoto
       src={HEX_LEFT_IMAGE}
       alt="Sperm cells approaching an egg"
-      className="absolute left-5 top-3 xl:left-[211px] xl:top-[61px]"
+      className="absolute left-5 top-3 sm:left-[211px] sm:top-[61px]"
     />
-    <div className="absolute bottom-3 right-5 aspect-[136/130] w-[71px] xl:bottom-auto xl:right-[135px] xl:top-[86px] xl:w-[136px]">
+    <div className="absolute bottom-3 right-5 aspect-[136/130] w-[71px] sm:bottom-auto sm:right-[135px] sm:top-[86px] sm:w-[136px]">
       <Image
         src={HEX_RIGHT_IMAGE}
         alt="A researcher at a microscope in the GGIRHR laboratory"
         fill
-        sizes="(min-width: 1280px) 136px, 71px"
+        sizes="(min-width: 640px) 136px, 71px"
         className="object-contain"
       />
     </div>
@@ -33,10 +33,10 @@ const Pedagogy = () => (
       <Chip variant="pink" className="uppercase">
         Training Method
       </Chip>
-      <h2 className="mt-3 text-[23px] font-bold leading-tight text-black lg:mt-[34px] lg:text-[46px]">
+      <h2 className="mt-3 text-[23px] font-bold leading-tight text-black sm:mt-[34px] sm:text-[46px]">
         Pedagogy
       </h2>
-      <p className="mt-2 max-w-[1113px] text-center text-lg leading-7 text-[#374151] lg:mt-5 lg:text-[32px] lg:leading-[48px]">
+      <p className="mt-2 max-w-[1113px] text-center text-lg leading-7 text-[#374151] sm:mt-5 sm:text-[32px] sm:leading-[48px]">
         <span className="font-semibold">
           Our goal is to empower bioscience, biotechnology, embryology, life
           science, medical, and veterinary professionals with the knowledge and
@@ -44,7 +44,7 @@ const Pedagogy = () => (
         </span>{" "}
         and overcome complications faced by infertile couples.
       </p>
-      <p className="mt-5 text-center text-[13px] font-normal leading-[22px] text-[#374151] lg:mt-6 lg:text-base lg:leading-6">
+      <p className="mt-5 text-center text-[13px] font-normal leading-[22px] text-[#374151] sm:mt-6 sm:text-base sm:leading-6">
         {BODY}
       </p>
     </div>
