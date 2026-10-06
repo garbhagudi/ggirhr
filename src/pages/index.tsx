@@ -135,22 +135,38 @@ export const getServerSideProps = async () => {
           url
         }
       }
+      workshopCourses: courses(first: 100) {
+        title
+        slug
+        metaDescription
+      }
     }
   `;
 
   const data = await graphQLClient.request(query);
 
-  // `affilationalumni` is one Hygraph model holding both the partner logos and the
-  // alumni countries, told apart by its `types` field. Rest-destructure it out of the
-  // payload rather than spreading `data` and blanking the key: the raw list is replaced
-  // by the two partitioned lists below, and a key set to `undefined` would make Next
-  // throw "Error serializing .homeData.affilationalumni" — it rejects `undefined`
-  // anywhere in the props tree.
-  const { affilationalumni = [], events = [], ...rest } = data;
+  const {
+    affilationalumni = [],
+    events = [],
+    workshopCourses = [],
+    ...rest
+  } = data;
 
-  // `types` is a free-text String in Hygraph, not an enumeration, and the live entries
-  // are spelled "Affilations" (one "i") / "Alumni". Match on a prefix so a corrected
-  // spelling or a stray case/whitespace difference doesn't silently drop a whole row.
+  const normalize = (value) =>
+    (value ?? "").trim().toLowerCase().replace(/\s+/g, " ");
+  const findCourseForWorkshop = (workshop) => {
+    const title = normalize(workshop.title);
+    return (
+      workshopCourses.find((course) => course.slug === workshop.slug) ??
+      (title
+        ? (workshopCourses.find((course) => normalize(course.title) === title) ??
+          workshopCourses.find((course) =>
+            normalize(course.title).startsWith(title),
+          ))
+        : undefined)
+    );
+  };
+
   const byType = (pattern) =>
     affilationalumni
       .filter(
@@ -162,16 +178,19 @@ export const getServerSideProps = async () => {
     ...rest,
     affiliations: byType(/^affil/i),
     alumniCountries: byType(/^alumni/i),
-    // The announcement dialog renders one event and needs its square image, so
-    // resolve both here — `null` keeps the prop serializable when there is none.
     upcomingEvent: events.find((event) => event.squareImage?.url) ?? null,
-    // Only a two-line teaser is rendered, so trim `content.text` here rather
-    // than in the component — everything returned from getServerSideProps is
-    // serialized into __NEXT_DATA__ on every request.
+    workshops: data.workshops?.map((workshop) => {
+      const course = findCourseForWorkshop(workshop);
+      return {
+        ...workshop,
+        href: course ? `/courses/${course.slug}` : null,
+        subTitle:
+          course?.metaDescription?.trim() || workshop.subTitle?.trim() || null,
+      };
+    }),
+    
     blogs: data.blogs?.map(({ content, ...blog }) => ({
       ...blog,
-      // `content.text` carries the article's line breaks as literal "\n"
-      // sequences; flatten them so the teaser reads as one paragraph.
       excerpt:
         content?.text
           ?.replace(/\n/g, " ")

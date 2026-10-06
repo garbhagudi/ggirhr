@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Button from "components/ui/Button";
 import Tabs, { TabOption } from "components/ui/Tabs";
 import SectionShell from "components/ui/SectionShell";
@@ -17,6 +18,7 @@ type Workshop = {
   title?: string;
   subTitle?: string;
   slug?: string;
+  href?: string | null;
   image?: { url?: string };
 };
 
@@ -109,12 +111,20 @@ const Workshops = ({ workshops }: { workshops?: Workshop[] }) => {
                 />
               )}
               <div className="absolute inset-x-0 bottom-0 h-[87%] sm:h-1/2 bg-gradient-to-t from-[#081336] via-[#09153c]/60 to-transparent" />
+              {card.href && (
+                <Link
+                  href={card.href}
+                  aria-label={card.title?.trim() || "View course"}
+                  className="absolute inset-0 z-[5]"
+                />
+              )}
 
               {card.span === "tall-left" && (
                 <Button
                   variant="light"
                   size="icon-md"
                   aria-label="View workshop"
+                  {...(card.href ? { tabIndex: -1, "aria-hidden": true } : {})}
                   className="absolute top-[18px] right-6 !w-[34px] !h-[34px] sm:top-6 sm:!w-11 sm:!h-11 -rotate-[24.16deg]"
                 >
                   <svg
@@ -137,7 +147,7 @@ const Workshops = ({ workshops }: { workshops?: Workshop[] }) => {
                   {card.title}
                 </h2>
                 {card.subTitle?.trim() && (
-                  <p className="text-[#DEDEDE] mt-2 text-[13px] leading-5 sm:text-base sm:leading-6">
+                  <p className="text-[#DEDEDE] mt-2 text-[13px] leading-5 sm:text-base sm:leading-6 line-clamp-2">
                     {card.subTitle}
                   </p>
                 )}
