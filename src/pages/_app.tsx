@@ -58,6 +58,7 @@ function MyApp({ Component, pageProps }) {
           }}
         />
       </Head>
+      <SalesIQ />
       {loading ? (
         <Loading />
       ) : (
@@ -66,7 +67,6 @@ function MyApp({ Component, pageProps }) {
           <main className="min-h-screen text-justify">
             <Component {...pageProps} />
           </main>
-          <SalesIQ />
           <FloatPhone />
           <Footer />
         </div>
