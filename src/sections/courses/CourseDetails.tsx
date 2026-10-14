@@ -2,16 +2,20 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Chip from "components/ui/Chip";
 import SectionShell from "components/ui/SectionShell";
+import { RichText } from "@graphcms/rich-text-react-renderer";
+import type { RichTextSection } from "lib/richText";
 
-// Same asset the site header uses.
 const LOGO_URL =
   "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegtq5201oe06pryy2gzwdk";
 
 type Course = {
   title?: string;
   videoId?: string | null;
-  qualification?: string | null;
+  courseDetails?: RichTextSection;
 };
+
+const PARAGRAPH =
+  "mt-[30px] sm:mt-5 text-justify text-[13px] font-semibold leading-5 text-[#374151] sm:text-base sm:leading-[26px]";
 
 const YouTubeGlyph = ({ className = "" }: { className?: string }) => (
   <svg viewBox="0 0 24 17" aria-hidden="true" className={className}>
@@ -26,7 +30,7 @@ const YouTubeGlyph = ({ className = "" }: { className?: string }) => (
 const VideoCard = ({ videoId, title }: { videoId: string; title?: string }) => {
   const [playing, setPlaying] = useState(false);
   const [thumb, setThumb] = useState(
-    `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`
+    `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
   );
 
   return (
@@ -109,12 +113,10 @@ const VideoCard = ({ videoId, title }: { videoId: string; title?: string }) => {
 
 const CourseDetails = ({ course }: { course?: Course }) => {
   const videoId = course?.videoId?.trim();
-  const paragraphs = (course?.qualification ?? "")
-    .split(/\n+/)
-    .map((p) => p.trim())
-    .filter(Boolean);
-
-  if (!videoId && paragraphs.length === 0) return null;
+  const heading = course?.courseDetails?.heading?.trim();
+  const content = course?.courseDetails?.content?.raw;
+  if (!videoId && !content?.children?.length)
+    return null;
 
   return (
     <SectionShell
@@ -123,22 +125,22 @@ const CourseDetails = ({ course }: { course?: Course }) => {
     >
       {videoId && <VideoCard videoId={videoId} title={course?.title} />}
 
-      <div className="flex flex-col items-start">
+      <div className="flex flex-col items-start w-full">
         <Chip variant="pink" className="uppercase">
           Course Details
         </Chip>
-        <h2 className="mt-[15px] text-left text-[23px] font-normal leading-[29px] text-black sm:mt-5 sm:max-w-[420px] sm:text-[46px] sm:leading-[50px]">
+        <h2 className="mt-[15px] text-left text-[23px] font-normal leading-[29px] text-black sm:mt-5 sm:text-[46px] sm:leading-[50px]">
           Begin Your{" "}
-          <span className="font-bold text-primaryBlue">Medical Career Here</span>
+          <span className="font-bold text-primaryBlue">{heading}</span>
         </h2>
-        {paragraphs.map((p, i) => (
-          <p
-            key={i}
-            className="mt-[30px] sm:mt-5 text-justify text-[13px] font-semibold leading-5 text-[#374151] sm:max-w-[540px] sm:text-base sm:leading-[26px]"
-          >
-            {p}
-          </p>
-        ))}
+        {content && (
+          <RichText
+            content={content}
+            renderers={{
+              p: ({ children }) => <p className={PARAGRAPH}>{children}</p>,
+            }}
+          />
+        )}
       </div>
     </SectionShell>
   );

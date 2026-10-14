@@ -2,7 +2,6 @@ import React from "react";
 import { GraphQLClient, gql } from "graphql-request";
 import Head from "next/head";
 import { throttledFetch } from "lib/throttle";
-import { usePathname } from "next/navigation";
 import CourseCta from "sections/courses/CourseCta";
 import FellowshipBanner from "sections/courses/FellowshipBanner";
 import CourseStats from "sections/courses/CourseStats";
@@ -11,12 +10,72 @@ import CourseContent from "sections/courses/CourseContent";
 import KeyBenefits from "sections/courses/KeyBenefits";
 import Eligibility from "sections/courses/Eligibility";
 import Pedagogy from "sections/courses/Pedagogy";
-import CourseFaq from "sections/courses/CourseFaq";
+import CourseFaq, { faqPageJsonLd } from "sections/courses/CourseFaq";
 import StudentVoices from "sections/courses/StudentVoices";
+import InfoSection, { InfoItem } from "sections/courses/InfoSection";
 
-const CoursePage = ({ course }) => {
-  const courseSlug = usePathname();
-  const isFellowship = courseSlug === "/courses/fellowship-in-clinical-embryology";
+const SECTION_FRAGMENT = `
+  fragment SectionFields on Section {
+    heading
+    content {
+      raw
+    }
+  }
+`;
+
+const SECTION_FIELDS = `
+  courseDetails { ...SectionFields }
+  courseContent { ...SectionFields }
+  eligibility { ...SectionFields }
+  benefits { ...SectionFields }
+  pedagogy { ...SectionFields }
+`;
+
+const hasText = (node: any): boolean =>
+  !!node?.text?.trim() || (node?.children ?? []).some(hasText);
+
+const withoutEmptyBlocks = (course: any) => {
+  for (const key of ["courseDetails", "courseContent", "eligibility", "benefits", "pedagogy"]) {
+    const raw = course?.[key]?.content?.raw;
+    if (raw?.children) raw.children = raw.children.filter(hasText);
+  }
+  return course;
+};
+
+
+const orderedSections = (course: any) => {
+  const orderOf = (item: InfoItem) =>
+    Number.isFinite(item?.order) ? (item.order as number) : Infinity;
+  const extras: InfoItem[] = Array.isArray(course?.description)
+    ? [...course.description].sort((a, b) => orderOf(a) - orderOf(b))
+    : [];
+  const fixed = [
+    <CourseDetails key="courseDetails" course={course} />,
+    <CourseContent key="courseContent" section={course?.courseContent} />,
+    <Eligibility key="eligibility" section={course?.eligibility} />,
+    <KeyBenefits key="benefits" section={course?.benefits} />,
+    <Pedagogy key="pedagogy" section={course?.pedagogy} />,
+  ];
+
+  const sections: React.ReactNode[] = [];
+  for (let pos = 1, i = 0; fixed.length || i < extras.length; pos++) {
+    if (i < extras.length && (orderOf(extras[i]) <= pos || !fixed.length)) {
+      const item = extras[i];
+      sections.push(<InfoSection key={`info-${item?.order}-${i}`} item={item} />);
+      i++;
+    } else {
+      sections.push(fixed.shift());
+    }
+  }
+  return sections;
+};
+
+const CoursePage = ({ course, professionals }) => {
+  const title = course?.metaTitle || course?.title;
+  const description =
+    course?.metaDescription?.slice(0, 180) ||
+    course?.subTitle?.slice(0, 180) ||
+    course?.description?.text?.slice(0, 180);
 
   function addCourseJsonLd() {
     if (!course?.courseJson) return { __html: "" };
@@ -30,11 +89,8 @@ const CoursePage = ({ course }) => {
   }
 
   function addFAQJsonLd() {
-    if (!course?.faqJson) return { __html: "" };
-    const jsonLD =
-      typeof course.faqJson === "string"
-        ? JSON.parse(course.faqJson)
-        : course.faqJson;
+    const jsonLD = faqPageJsonLd(course?.faqJson);
+    if (!jsonLD) return { __html: "" };
     return {
       __html: JSON.stringify(jsonLD, null, 2),
     };
@@ -68,18 +124,9 @@ const CoursePage = ({ course }) => {
       <Head>
         {/* Primary Tags */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{`${course?.metaTitle || course?.title} | GGIRHR`}</title>
-        <meta
-          name="title"
-          content={`${course?.metaTitle || course?.title} | GGIRHR`}
-        />
-        <meta
-          name="description"
-          content={
-            course?.metaDescription?.slice(0, 180) ||
-            course?.description?.text.slice(0, 180)
-          }
-        />
+        <title>{`${title} | GGIRHR`}</title>
+        <meta name="title" content={`${title} | GGIRHR`} />
+        <meta name="description" content={description} />
         <meta
           name="keywords"
           content={
@@ -87,13 +134,10 @@ const CoursePage = ({ course }) => {
           }
         />
         {/* Open Graph / Facebook */}
-        <meta
-          property="og:title"
-          content={`${course?.metaTitle || course?.title} | GGIRHR`}
-        />
+        <meta property="og:title" content={`${title} | GGIRHR`} />
         <meta property="og:site_name" content="GGIRHR" />
         <meta property="og:url" content="https://ggirhr.com" />
-        <meta property="og:description" content={course?.metaDescription?.slice(0, 180) || course?.description?.text?.slice(0, 180)} />
+        <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={course?.courseImage?.url} />
         <meta property="og:image:secure_url" content={course?.courseImage?.url} />
@@ -103,10 +147,7 @@ const CoursePage = ({ course }) => {
         {/* Twitter*/}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@ggirhr" />
-        <meta
-          name="twitter:title"
-          content={`${course?.metaTitle || course?.title} | GGIRHR`}
-        />
+        <meta name="twitter:title" content={`${title} | GGIRHR`} />
         <meta name="twitter:image" content={course?.courseImage?.url} />
         <script
           type="application/ld+json"
@@ -121,13 +162,9 @@ const CoursePage = ({ course }) => {
           dangerouslySetInnerHTML={addFAQJsonLd()}
         />
       </Head>
-      <FellowshipBanner course={course} />
+      <FellowshipBanner course={course} professionals={professionals} />
       <CourseStats course={course} />
-      <CourseDetails course={course} />
-      {isFellowship && <CourseContent />}
-      {isFellowship && <Eligibility />}
-      {isFellowship && <KeyBenefits />}
-      {isFellowship && <Pedagogy />}
+      {orderedSections(course)}
       <CourseFaq faqJson={course?.faqJson} />
       <StudentVoices />
       <CourseCta slug={course?.slug} />
@@ -190,13 +227,81 @@ export const getStaticProps = async ({ params }: { params: any }) => {
         courseJson
         videoId
         youtubeVideos
+        ${SECTION_FIELDS}
       }
     }
+    ${SECTION_FRAGMENT}
   `;
 
   const variables = {
     pageSlug: params.slug,
   };
+
+  let professionals = [];
+  try {
+    const fetchTeachers = async () =>
+      graphQLClient.request(gql`
+        query {
+          teachers(orderBy: order_ASC, first: 20) {
+            id
+            name
+            image {
+              url
+            }
+          }
+        }
+      `);
+    const data = await throttledFetch(fetchTeachers);
+    professionals = (data?.teachers || [])
+      .filter((teacher) => teacher.image?.url)
+      .slice(0, 4);
+  } catch (error) {
+    console.error('Error fetching teachers:', error);
+  }
+
+  const stagingQuery = gql`
+    query ($pageSlug: String!) {
+      stagingCourse(where: { slug: $pageSlug }) {
+        id
+        title
+        subTitle
+        slug
+        numberOfBatchesPerYear
+        numberOfStudentIntakePerBatch
+        duration
+        fees
+        courseImage {
+          url
+        }
+        description
+        metaDescription
+        metaKeywords
+        metaTitle
+        faqJson
+        videoId
+        youtubeVideos
+        ${SECTION_FIELDS}
+      }
+    }
+    ${SECTION_FRAGMENT}
+  `;
+
+  try {
+    const fetchStagingCourse = async () =>
+      graphQLClient.request(stagingQuery, variables);
+    const data = await throttledFetch(fetchStagingCourse);
+    if (data?.stagingCourse) {
+      return {
+        props: {
+          course: withoutEmptyBlocks(data.stagingCourse),
+          professionals,
+        },
+        revalidate: 180,
+      };
+    }
+  } catch (error) {
+    console.error('Error fetching staging course data:', error);
+  }
 
   // Fetch the data with throttling
   let course = null;
@@ -237,8 +342,10 @@ export const getStaticProps = async ({ params }: { params: any }) => {
             faqJson
             courseJson
             videoId
+            ${SECTION_FIELDS}
           }
         }
+        ${SECTION_FRAGMENT}
       `;
       try {
         const fetchCourseWithoutVideos = async () => graphQLClient.request(queryWithoutVideos, variables);
@@ -270,7 +377,8 @@ export const getStaticProps = async ({ params }: { params: any }) => {
 
   return {
     props: {
-      course,
+      course: withoutEmptyBlocks(course),
+      professionals,
     },
     revalidate: 180, // ISR: Regenerate the page every 3 minutes
   };
@@ -325,8 +433,29 @@ export const getStaticPaths = async () => {
     };
   }
 
-  const paths = courses.map((course: { slug: string }) => ({
-    params: { slug: course.slug },
+  let stagingCourses = [];
+  try {
+    const fetchStagingCourses = async () =>
+      graphQLClient.request(gql`
+        query {
+          stagingCourses {
+            slug
+          }
+        }
+      `);
+    const data = await throttledFetch(fetchStagingCourses);
+    stagingCourses = data?.stagingCourses || [];
+  } catch (error) {
+    console.error('Error fetching staging courses:', error);
+  }
+
+  const slugs = new Set(
+    [...courses, ...stagingCourses]
+      .map((course: { slug?: string }) => course.slug)
+      .filter(Boolean)
+  );
+  const paths = Array.from(slugs).map((slug) => ({
+    params: { slug },
   }));
 
   return {

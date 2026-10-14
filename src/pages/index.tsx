@@ -155,15 +155,14 @@ export const getServerSideProps = async () => {
   const normalize = (value) =>
     (value ?? "").trim().toLowerCase().replace(/\s+/g, " ");
   const findCourseForWorkshop = (workshop) => {
+    const bySlug = workshopCourses.find(
+      (course) => course.slug === workshop.slug,
+    );
     const title = normalize(workshop.title);
+    if (bySlug || !title) return bySlug;
     return (
-      workshopCourses.find((course) => course.slug === workshop.slug) ??
-      (title
-        ? (workshopCourses.find((course) => normalize(course.title) === title) ??
-          workshopCourses.find((course) =>
-            normalize(course.title).startsWith(title),
-          ))
-        : undefined)
+      workshopCourses.find((course) => normalize(course.title) === title) ??
+      workshopCourses.find((course) => normalize(course.title).startsWith(title))
     );
   };
 

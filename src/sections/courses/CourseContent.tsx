@@ -3,6 +3,7 @@ import Image from "next/image";
 import Chip from "components/ui/Chip";
 import Glow from "components/ui/Glow";
 import RibbonWave from "components/ui/RibbonWave";
+import { RichTextSection, textOf } from "lib/richText";
 
 type Topic = {
   heading: string;
@@ -10,53 +11,35 @@ type Topic = {
   image: { src: string; width: number; height: number };
 };
 
-const TOPICS: Topic[] = [
-  {
-    heading: "Clinical Embryology",
-    points: [
-      "Introduction to Assisted Reproductive Technology (ART)",
-      "Gametogenesis: Folliculogenesis, Oogenesis, Spermatogenesis",
-      "Fertilization: Oocyte retrieval, sperm-oocyte interaction, artificial oocyte activation",
-      "Embryo Quality Assessment and Grading",
-      "Embryo Culture and Time-Lapse Imaging Techniques",
-    ],
-    image: { src: "/images/courses/content-embryology.png", width: 337, height: 305 },
-  },
-  {
-    heading: "Semenology and Cryopreservation",
-    points: [
-      "Spermatogenesis and Related Disorders",
-      "Semen Analysis and Computer-Aided Sperm Assessment (CASA)",
-      "Azoospermia: Causes, Diagnosis, and Sperm Retrieval Techniques",
-      "Semen Preparation, Sperm Function Tests, and DNA Fragmentation Assessment",
-      "Cryopreservation of Gametes, Embryos, and Ovarian/Testicular Tissue",
-    ],
-    image: { src: "/images/courses/content-semenology.png", width: 470, height: 369 },
-  },
-  {
-    heading: "Genetics in Infertility",
-    points: [
-      "Molecular Biology and Genetic Medicine",
-      "Preimplantation Genetic Testing (PGT-A, PGT-M, PGT-SR)",
-      "Genetic Karyotyping, PCR, FISH, NGS, CGH",
-      "Advanced ART Techniques: Stem Cells, Cloning, Gene Editing, Automated IVF",
-      "Genetic Counseling and Management of Genetic Disorders",
-      "Third-Party Reproduction: Donor Screening, Surrogacy",
-    ],
-    image: { src: "/images/courses/content-genetics.png", width: 502, height: 325 },
-  },
-  {
-    heading: "Assisted Reproductive Technology (ART)",
-    points: [
-      "ART Laboratory Setup, Equipment Handling, and Quality Control",
-      "IVF and Embryo Transfer Techniques",
-      "Micromanipulation: ICSI, IMSI, PICSI",
-      "Ethical Considerations and ART Regulations (ICMR, HFEA, ASRM Guidelines)",
-      "ART Counselling and Follow-Up Protocols",
-    ],
-    image: { src: "/images/courses/content-art-lab.png", width: 426, height: 391 },
-  },
+const IMAGES: Topic["image"][] = [
+  { src: "/images/courses/content-embryology.png", width: 337, height: 305 },
+  { src: "/images/courses/content-semenology.png", width: 470, height: 369 },
+  { src: "/images/courses/content-genetics.png", width: 502, height: 325 },
+  { src: "/images/courses/content-art-lab.png", width: 426, height: 391 },
 ];
+
+// The course's `courseContent` rich text: each Heading 3 starts a topic, and
+// every list item (or paragraph) under it is one point. Images repeat in order.
+const toTopics = (raw: any): Topic[] => {
+  const topics: Topic[] = [];
+  for (const node of raw?.children ?? []) {
+    const text = textOf(node).trim();
+    if (!text) continue;
+    if (node.type === "heading-three") {
+      topics.push({
+        heading: text,
+        points: [],
+        image: IMAGES[topics.length % IMAGES.length],
+      });
+    } else if (topics.length > 0) {
+      const items = node.type?.endsWith("-list") ? node.children : [node];
+      topics[topics.length - 1].points.push(
+        ...items.map((item) => textOf(item).trim()).filter(Boolean)
+      );
+    }
+  }
+  return topics;
+};
 
 const Point = ({ text }: { text: string }) => {
   const match = text.match(/^([^:]{1,20}):\s(.+)$/);
@@ -111,34 +94,40 @@ const TopicRow = ({ topic, imageLeft }: { topic: Topic; imageLeft: boolean }) =>
   </div>
 );
 
-const CourseContent = () => (
-  <section className="relative overflow-hidden bg-[#1A97CA] pb-20 pt-[60px] font-primary sm:py-[100px]">
-    <Glow className="hidden sm:block -z-0 left-1/2 top-[568px] h-[1083px] w-[1083px] -translate-x-1/2 bg-[rgba(118,180,228,0.51)] blur-[300px]" />
+const CourseContent = ({ section }: { section?: RichTextSection }) => {
+  const topics = toTopics(section?.content?.raw);
+  if (topics.length === 0) return null;
 
-    <RibbonWave
-      width={300}
-      height={150}
-      className="absolute left-5 top-4 z-10 w-[80px] -rotate-[20.09deg] sm:-rotate-[18.14deg] sm:left-[138px] sm:top-[46px] sm:w-[240px]"
-    />
+  return (
+    <section className="relative overflow-hidden bg-[#1A97CA] pb-20 pt-[60px] font-primary sm:py-[100px]">
+      <Glow className="hidden sm:block -z-0 left-1/2 top-[568px] h-[1083px] w-[1083px] -translate-x-1/2 bg-[rgba(118,180,228,0.51)] blur-[300px]" />
 
-    <div className="relative z-10 flex flex-col items-start px-5 sm:items-center sm:px-0">
-      <Chip
-        variant="glass"
-        className="!px-4 !py-2 !text-[12px] font-bold uppercase !tracking-[0.1em] shadow-[0_4px_14px_rgba(0,0,0,0.1)] sm:!py-3 sm:!text-[15px]"
-      >
-        Content
-      </Chip>
-      <h2 className="mt-3 text-[23px] font-normal leading-tight text-white sm:mt-6 sm:text-[46px] sm:leading-[50px]">
-        Course <span className="font-bold">Content</span>
-      </h2>
-    </div>
+      <RibbonWave
+        width={300}
+        height={150}
+        className="absolute left-5 top-4 z-10 w-[80px] -rotate-[20.09deg] sm:-rotate-[18.14deg] sm:left-[138px] sm:top-[46px] sm:w-[240px]"
+      />
 
-    <div className="relative z-10 mt-10 flex flex-col gap-14 px-5 sm:mx-auto sm:mt-[70px] sm:max-w-[1250px] sm:gap-20 sm:px-0">
-      {TOPICS.map((topic, i) => (
-        <TopicRow key={topic.heading} topic={topic} imageLeft={i % 2 === 1} />
-      ))}
-    </div>
-  </section>
-);
+      <div className="relative z-10 flex flex-col items-start px-5 sm:items-center sm:px-0">
+        <Chip
+          variant="glass"
+          className="!px-4 !py-2 !text-[12px] font-bold uppercase !tracking-[0.1em] shadow-[0_4px_14px_rgba(0,0,0,0.1)] sm:!py-3 sm:!text-[15px]"
+        >
+          Content
+        </Chip>
+        <h2 className="mt-3 text-[23px] font-normal leading-tight text-white sm:mt-6 sm:text-[46px] sm:leading-[50px]">
+          Course{" "}
+          <span className="font-bold">{section?.heading || "Content"}</span>
+        </h2>
+      </div>
+
+      <div className="relative z-10 mt-10 flex flex-col gap-14 px-5 sm:mx-auto sm:mt-[70px] sm:max-w-[1250px] sm:gap-20 sm:px-0">
+        {topics.map((topic, i) => (
+          <TopicRow key={topic.heading} topic={topic} imageLeft={i % 2 === 1} />
+        ))}
+      </div>
+    </section>
+  );
+};
 
 export default CourseContent;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Chip from "components/ui/Chip";
 import ChevronDownIcon from "components/ui/icons/ChevronDownIcon";
 
@@ -15,27 +15,38 @@ export const parseFaqs = (faqJson: unknown): Faq[] => {
   }
   const entries = Array.isArray(data) ? data : data?.mainEntity;
   if (!Array.isArray(entries)) return [];
+  // Accepts the editor-friendly `{ question, answer }` shape as well as
+  // schema.org `Question` objects (`name` / `acceptedAnswer.text`).
   return entries
     .map((e: any) => ({
-      question: String(e?.name ?? "").trim(),
-      answer: String(e?.acceptedAnswer?.text ?? "").trim(),
+      question: String(e?.question ?? e?.name ?? "").trim(),
+      answer: String(e?.answer ?? e?.acceptedAnswer?.text ?? "").trim(),
     }))
     .filter((f) => f.question && f.answer);
 };
 
-const PLACEHOLDER_ANSWER =
-  "Laboratory work, hands-on experience, interactive discussions, case-based learning, and advanced technology-driven tools to foster critical thinking and problem-solving at GarbhaGudi IVF Centre. Effective learning is facilitated when like-minded professionals are actively engaged in a collaborative ecosystem.";
-const PLACEHOLDER_FAQS: Faq[] = [1, 2, 3, 4].map((n) => ({
-  question: `Lorem Ipsum has been the industry's standard ${n}`,
-  answer: PLACEHOLDER_ANSWER,
-}));
+/** FAQPage structured data for the page head, or `null` when there are no FAQs. */
+export const faqPageJsonLd = (faqJson: unknown) => {
+  const faqs = parseFaqs(faqJson);
+  if (faqs.length === 0) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map(({ question, answer }) => ({
+      "@type": "Question",
+      name: question,
+      acceptedAnswer: { "@type": "Answer", text: answer },
+    })),
+  };
+};
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
 const CourseFaq = ({ faqJson }: { faqJson?: unknown }) => {
-  const parsed = parseFaqs(faqJson);
-  const faqs = parsed.length > 0 ? parsed : PLACEHOLDER_FAQS;
+  const faqs = useMemo(() => parseFaqs(faqJson), [faqJson]);
   const [open, setOpen] = useState<number | null>(0);
+
+  if (faqs.length === 0) return null;
 
   return (
     <section className="bg-[#D2EEF9] px-5 pb-14 pt-[51px] font-primary sm:px-0 sm:py-[100px]">

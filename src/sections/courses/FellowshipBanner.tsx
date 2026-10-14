@@ -21,18 +21,32 @@ import {
 const DNA_BACKGROUND_IMAGE = "/images/courses/dna-strand.png";
 const AWARD_IMAGE_ONE = "/images/courses/award-university.png";
 const AWARD_IMAGE_TWO = "/images/courses/award-institutional.png";
-// Placeholder — the avatar photos aren't in the repo yet.
+type Professional = { id: string; name?: string; image?: { url?: string } };
 
-const StatBadge = () => (
+// Four overlapping faculty photos (Hygraph `Teacher`); a missing photo keeps
+// the grey circle.
+const StatBadge = ({ professionals = [] }: { professionals?: Professional[] }) => (
   <div className="flex items-center gap-[5px] rounded-[130px] bg-white py-[3.5px] pl-[5px] pr-[10px]">
-    {/* Placeholder avatars — no CMS-backed "professionals" imagery exists yet. */}
     <div className="flex -space-x-[9px] sm:-space-x-3">
-      {[0, 1, 2, 3].map((i) => (
-        <div
-          key={i}
-          className="h-[29px] w-[29px] rounded-full border-[0.75px] border-white bg-gray-200 sm:h-[38px] sm:w-[38px] sm:border"
-        />
-      ))}
+      {[0, 1, 2, 3].map((i) => {
+        const person = professionals[i];
+        return (
+          <div
+            key={person?.id ?? i}
+            className="relative h-[29px] w-[29px] overflow-hidden rounded-full border-[0.75px] border-white bg-gray-200 sm:h-[38px] sm:w-[38px] sm:border"
+          >
+            {person?.image?.url && (
+              <Image
+                src={person.image.url}
+                alt={person.name || "GGIRHR faculty member"}
+                fill
+                sizes="(min-width: 640px) 38px, 29px"
+                className="object-cover"
+              />
+            )}
+          </div>
+        );
+      })}
     </div>
     <p className="text-xs font-bold leading-none text-black sm:text-lg">
       <span className="text-[#5B65DC]">500+</span> Professionals trained in
@@ -251,22 +265,22 @@ const ApplicationForm = () => {
   );
 };
 
-const FELLOWSHIP_SLUG = "fellowship-in-clinical-embryology";
-const FELLOWSHIP_SUBTITLE =
-  "Develop industry-ready clinical embryology skills through extensive hands-on training, expert mentorship, research exposure, and placement support.";
-
 // Shared hero for every /courses/[slug] page.
 const FellowshipBanner = ({
   course,
+  professionals,
 }: {
-  course?: { title?: string; slug?: string; metaDescription?: string };
+  professionals?: Professional[];
+  course?: {
+    title?: string;
+    slug?: string;
+    subTitle?: string | null;
+    metaDescription?: string;
+  };
 }) => {
-  const title = course?.title || "Fellowship in Clinical Embryology";
-  const subtitle =
-    course?.slug === FELLOWSHIP_SLUG
-      ? FELLOWSHIP_SUBTITLE
-      : course?.metaDescription;
-  const titleWords = title.trim().split(/\s+/);
+  const title = course?.title?.trim() || "Fellowship in Clinical Embryology";
+  const subtitle = course?.subTitle?.trim() || course?.metaDescription;
+  const titleWords = title.split(/\s+/);
   const highlightWords = titleWords.splice(-2).join(" ");
   const leadWords = titleWords.join(" ");
 
@@ -295,7 +309,7 @@ const FellowshipBanner = ({
 
         {/* Left column: stat badge, headline, copy, CTAs, awards card */}
         <div className="relative z-10 flex w-full flex-col items-center text-center sm:items-start sm:text-left sm:w-1/2">
-          <StatBadge />
+          <StatBadge professionals={professionals} />
 
           <h1 className="mt-[10px] max-w-[280px] text-[31px] font-normal leading-[33px] text-[#111111] sm:mt-6 sm:max-w-[606px] sm:text-[61px] sm:leading-[58px] sm:text-black">
             {leadWords}{" "}
@@ -309,7 +323,7 @@ const FellowshipBanner = ({
 
           <div className="mt-[10px] flex items-center gap-[10px] sm:mt-[21px] sm:gap-4">
             <Button
-              href={`/contact?pageVisit=/courses/${course?.slug ?? FELLOWSHIP_SLUG}`}
+              href={`/contact?pageVisit=/courses/${course?.slug ?? ""}`}
               variant="primary"
               rounded="sm"
               className="!text-[#F1F1F1] sm:leading-[30px]"

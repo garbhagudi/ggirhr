@@ -124,7 +124,8 @@ const Workshops = ({ workshops }: { workshops?: Workshop[] }) => {
                   variant="light"
                   size="icon-md"
                   aria-label="View workshop"
-                  {...(card.href ? { tabIndex: -1, "aria-hidden": true } : {})}
+                  tabIndex={card.href ? -1 : undefined}
+                  aria-hidden={card.href ? true : undefined}
                   className="absolute top-[18px] right-6 !w-[34px] !h-[34px] sm:top-6 sm:!w-11 sm:!h-11 -rotate-[24.16deg]"
                 >
                   <svg
