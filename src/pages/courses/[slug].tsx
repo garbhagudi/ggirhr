@@ -16,6 +16,7 @@ import InfoSection, { InfoItem } from "sections/courses/InfoSection";
 
 const SECTION_FRAGMENT = `
   fragment SectionFields on Section {
+    order
     heading
     content {
       raw
@@ -43,31 +44,25 @@ const withoutEmptyBlocks = (course: any) => {
 };
 
 
-const orderedSections = (course: any) => {
-  const orderOf = (item: InfoItem) =>
-    Number.isFinite(item?.order) ? (item.order as number) : Infinity;
-  const extras: InfoItem[] = Array.isArray(course?.description)
-    ? [...course.description].sort((a, b) => orderOf(a) - orderOf(b))
-    : [];
-  const fixed = [
-    <CourseDetails key="courseDetails" course={course} />,
-    <CourseContent key="courseContent" section={course?.courseContent} />,
-    <Eligibility key="eligibility" section={course?.eligibility} />,
-    <KeyBenefits key="benefits" section={course?.benefits} />,
-    <Pedagogy key="pedagogy" section={course?.pedagogy} />,
-  ];
+const orderOf = (value: unknown) =>
+  Number.isFinite(value) ? (value as number) : Infinity;
 
-  const sections: React.ReactNode[] = [];
-  for (let pos = 1, i = 0; fixed.length || i < extras.length; pos++) {
-    if (i < extras.length && (orderOf(extras[i]) <= pos || !fixed.length)) {
-      const item = extras[i];
-      sections.push(<InfoSection key={`info-${item?.order}-${i}`} item={item} />);
-      i++;
-    } else {
-      sections.push(fixed.shift());
-    }
-  }
-  return sections;
+const orderedSections = (course: any) => {
+  const extras: InfoItem[] = Array.isArray(course?.description) ? course.description : [];
+  const sections: { order: number; node: React.ReactNode }[] = [
+    { order: orderOf(course?.courseDetails?.order), node: <CourseDetails key="courseDetails" course={course} /> },
+    { order: orderOf(course?.courseContent?.order), node: <CourseContent key="courseContent" section={course?.courseContent} /> },
+    { order: orderOf(course?.eligibility?.order), node: <Eligibility key="eligibility" section={course?.eligibility} /> },
+    { order: orderOf(course?.benefits?.order), node: <KeyBenefits key="benefits" section={course?.benefits} /> },
+    { order: orderOf(course?.pedagogy?.order), node: <Pedagogy key="pedagogy" section={course?.pedagogy} /> },
+    ...extras.map((item, i) => ({
+      order: orderOf(item?.order),
+      node: <InfoSection key={`info-${i}`} item={item} />,
+    })),
+    // FAQ has no order field yet, so it stays after the ordered sections.
+    { order: Infinity, node: <CourseFaq key="faq" faqJson={course?.faqJson} /> },
+  ];
+  return sections.sort((a, b) => a.order - b.order || 0).map((s) => s.node);
 };
 
 const CoursePage = ({ course, professionals }) => {
@@ -165,7 +160,6 @@ const CoursePage = ({ course, professionals }) => {
       <FellowshipBanner course={course} professionals={professionals} />
       <CourseStats course={course} />
       {orderedSections(course)}
-      <CourseFaq faqJson={course?.faqJson} />
       <StudentVoices />
       <CourseCta slug={course?.slug} />
     </div>

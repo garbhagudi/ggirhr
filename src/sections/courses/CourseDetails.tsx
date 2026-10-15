@@ -15,7 +15,7 @@ type Course = {
 };
 
 const PARAGRAPH =
-  "mt-[30px] sm:mt-5 text-justify text-[13px] font-semibold leading-5 text-[#374151] sm:text-base sm:leading-[26px]";
+  "mt-[30px] sm:mt-5 text-[13px] font-semibold leading-5 text-[#374151] sm:text-base sm:leading-[26px]";
 
 const YouTubeGlyph = ({ className = "" }: { className?: string }) => (
   <svg viewBox="0 0 24 17" aria-hidden="true" className={className}>
@@ -125,11 +125,16 @@ const CourseDetails = ({ course }: { course?: Course }) => {
     >
       {videoId && <VideoCard videoId={videoId} title={course?.title} />}
 
-      <div className="flex flex-col items-start w-full">
+      {/* Without a video the text has the row to itself, so it's centred. */}
+      <div
+        className={`flex w-full flex-col ${
+          videoId ? "items-start text-left" : "items-center text-center"
+        }`}
+      >
         <Chip variant="pink" className="uppercase">
           Course Details
         </Chip>
-        <h2 className="mt-[15px] text-left text-[23px] font-normal leading-[29px] text-black sm:mt-5 sm:text-[46px] sm:leading-[50px]">
+        <h2 className="mt-[15px] text-[23px] font-normal leading-[29px] text-black sm:mt-5 sm:text-[46px] sm:leading-[50px]">
           {/* Begin Your{" "} */}
           <span className="font-bold text-primaryBlue">{heading}</span>
         </h2>
@@ -137,7 +142,11 @@ const CourseDetails = ({ course }: { course?: Course }) => {
           <RichText
             content={content}
             renderers={{
-              p: ({ children }) => <p className={PARAGRAPH}>{children}</p>,
+              p: ({ children }) => (
+                <p className={`${PARAGRAPH} ${videoId ? "text-justify" : "text-center"}`}>
+                  {children}
+                </p>
+              ),
             }}
           />
         )}

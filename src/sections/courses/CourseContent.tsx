@@ -116,7 +116,7 @@ const CourseContent = ({ section }: { section?: RichTextSection }) => {
           Content
         </Chip>
         <h2 className="mt-3 text-[23px] font-normal leading-tight text-white sm:mt-6 sm:text-[46px] sm:leading-[50px]">
-          Course{" "}
+          {/* Course{" "} */}
           <span className="font-bold">{section?.heading || "Content"}</span>
         </h2>
       </div>
