@@ -66,7 +66,7 @@ const KeyBenefits = ({ section }: { section?: RichTextSection }) => {
             Benefits
           </Chip>
           <h2 className="text-left text-[23px] font-normal leading-tight text-black sm:text-[46px] sm:leading-[50px]">
-            Key{" "}
+            {/* Key{" "} */}
             <span className="font-bold text-primaryBlue">
               {section?.heading || "Benefits"}
             </span>

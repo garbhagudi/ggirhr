@@ -130,7 +130,7 @@ const CourseDetails = ({ course }: { course?: Course }) => {
           Course Details
         </Chip>
         <h2 className="mt-[15px] text-left text-[23px] font-normal leading-[29px] text-black sm:mt-5 sm:text-[46px] sm:leading-[50px]">
-          Begin Your{" "}
+          {/* Begin Your{" "} */}
           <span className="font-bold text-primaryBlue">{heading}</span>
         </h2>
         {content && (
