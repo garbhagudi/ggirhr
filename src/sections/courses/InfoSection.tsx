@@ -64,10 +64,10 @@ const InfoSection = ({ item }: { item: InfoItem }) => {
             {points.map(({ lead, text }, i) => (
               <li key={i}>
                 {lead && (
-                  <span className="font-bold text-black">
+                  <h3 className="inline font-bold text-black">
                     {lead}
                     {text && ":"}
-                  </span>
+                  </h3>
                 )}{" "}
                 {text}
               </li>
