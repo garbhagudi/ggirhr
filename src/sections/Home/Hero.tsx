@@ -59,7 +59,7 @@ const StatsCard = ({
     </div>
     <div>
       <p className="text-xl lg:text-[30px] leading-none font-bold text-primaryBlue tracking-widest">
-        15+{" "}
+        {countries.length > 0 ? `${countries.length}+` : "15+"}{" "}
         <span className="text-[11px] lg:text-[13px] uppercase">Countries</span>
       </p>
       <p className="mt-1.5 lg:mt-2 text-[11px] lg:text-[13px] font-bold tracking-[0.12em] lg:tracking-[0.21em] uppercase text-black whitespace-nowrap">
@@ -142,7 +142,12 @@ const Hero = ({
                 GarbhaGudi Institute of Reproductive Health &amp; Research is a
                 platform launched by a team of renowned specialists interested
                 in training medical professionals and science students in
-                reproductive medicine and infertility.
+                reproductive medicine and infertility. Our goal is to bring a
+                revolutionary change in infertility education by presenting a
+                range of courses designed to help people specialize in their
+                skills. Being pioneers in new generation infertility treatment,
+                we have taken the onus of continuous medical education as part
+                of our mission and expansion!
               </p>
             </div>
             <Button

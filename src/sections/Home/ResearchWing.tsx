@@ -3,19 +3,16 @@ import Image from "next/image";
 import Chip from "components/ui/Chip";
 import Glow from "components/ui/Glow";
 import RibbonWave from "components/ui/RibbonWave";
-import { HiUserGroup } from "react-icons/hi";
-import { GiFizzingFlask } from "react-icons/gi";
-
 const RESEARCH_IMAGE = "/images/home/research-microscope.png";
 
-const COMMITTEES = [
-  {
-    id: 1,
-    label: "Garbhagudi Scientific and Research Committee",
-    icon: HiUserGroup,
-  },
-  { id: 2, label: "Internal Ethics Committee", icon: GiFizzingFlask },
-  { id: 3, label: "Internal Ethics Committee", icon: HiUserGroup },
+const ICON_BASE = "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz";
+
+// Icons carried over from the previous homepage's Research Wing (Hygraph assets).
+const RESEARCH_FEATURES = [
+  { id: 1, label: "Internal Ethics Committee", icon: `${ICON_BASE}/cmsegtkjg01kx06pns4zf3bme` },
+  { id: 2, label: "Full-fledged Research Lab", icon: `${ICON_BASE}/cmsegtkiv01kt06pn1l3vxz1i` },
+  { id: 3, label: "Expert Team", icon: `${ICON_BASE}/cmsegtkib01kp06pnfi8oos89` },
+  { id: 4, label: "Support Staff", icon: `${ICON_BASE}/cmsegtkk301l106pne58pn5td` },
 ];
 
 const ResearchContent = () => (
@@ -41,10 +38,20 @@ const ResearchContent = () => (
     </p>
 
     <div className="flex flex-col gap-5 lg:gap-6 xl:gap-[34px] mt-6">
-      {COMMITTEES.map((item) => (
+      {RESEARCH_FEATURES.map((item) => (
         <div className="flex items-center gap-4 lg:gap-5" key={item.id}>
           <div className="flex-shrink-0 w-11 h-11 lg:w-[60px] lg:h-[60px] rounded-full bg-primaryBlue inline-flex items-center justify-center text-white">
-            <item.icon className="w-6 h-6 lg:w-8 lg:h-8" />
+            {/* The SVGs are drawn in brand blue; `brightness-0 invert` turns them
+                white on the blue circle. */}
+            <div className="relative w-6 h-6 lg:w-8 lg:h-8">
+              <Image
+                src={item.icon}
+                alt=""
+                fill
+                sizes="32px"
+                className="object-contain brightness-0 invert"
+              />
+            </div>
           </div>
           <span className="font-semibold text-black text-base lg:text-xl">
             {item.label}

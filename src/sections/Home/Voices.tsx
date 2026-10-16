@@ -31,19 +31,24 @@ const VOICES: Voice[] = [
       "NRF program at GGIRHR is well structured to help practicing gynecologists get deep understanding of infertility management without leaving their work place ...",
   },
   {
-    name: "kunal kuhikar",
+    name: "Kunal Kuhikar",
     quote:
       "My name is Kunal Kuhikar, and I am pursuing my Master’s in Molecular and Human Genetics with specialization in Clinical Embryology ...",
   },
   {
     name: "Shivani Rao",
     quote:
-      "Finished 3 months CFS course at GGIRHR. I found the program very focussed on building core understanding and concepts around assisted reprexposure to",
+      "Finished 3 months CFS course at GGIRHR. I found the program very focussed on building core understanding and concepts ...",
   },
   {
-    name: "Priya Sharma",
+    name: "Avinash Mishra",
     quote:
-      "The hands-on training and mentorship at GGIRHR gave me the confidence to handle complex fertility cases independently within a few months …",
+      "Very happy with the training program. With just once a week classes, they have imparted clear and complete knowledge that will help to deal with infertility cases efficiently ...",
+  },
+  {
+    name: "Rahul P.R",
+    quote:
+      "One of the best infertility training centre in Bangalore. Well trained and experienced trainers, high class facilities. Strongly recommended.",
   },
 ];
 
