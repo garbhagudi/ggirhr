@@ -119,8 +119,8 @@ const CoursePage = ({ course, professionals }) => {
       <Head>
         {/* Primary Tags */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{`${title} | GGIRHR`}</title>
-        <meta name="title" content={`${title} | GGIRHR`} />
+        <title>{`${title}`}</title>
+        <meta name="title" content={`${title}`} />
         <meta name="description" content={description} />
         <meta
           name="keywords"
@@ -129,7 +129,7 @@ const CoursePage = ({ course, professionals }) => {
           }
         />
         {/* Open Graph / Facebook */}
-        <meta property="og:title" content={`${title} | GGIRHR`} />
+        <meta property="og:title" content={`${title}`} />
         <meta property="og:site_name" content="GGIRHR" />
         <meta property="og:url" content="https://ggirhr.com" />
         <meta property="og:description" content={description} />
@@ -142,7 +142,7 @@ const CoursePage = ({ course, professionals }) => {
         {/* Twitter*/}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@ggirhr" />
-        <meta name="twitter:title" content={`${title} | GGIRHR`} />
+        <meta name="twitter:title" content={`${title}`} />
         <meta name="twitter:image" content={course?.courseImage?.url} />
         <script
           type="application/ld+json"
