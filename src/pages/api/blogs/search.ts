@@ -12,7 +12,7 @@ import type { BlogPost } from "sections/blogs/BlogCard";
 
 const searchQuery = gql`
   query blogSearch($q: String!, $limit: Int!, $offset: Int!) {
-    blogsConnection(
+    blogsConnection: stagingBlogsConnection(
       where: { title_contains: $q }
       orderBy: publishedOn_DESC
       first: $limit
@@ -24,7 +24,7 @@ const searchQuery = gql`
         }
       }
     }
-    total: blogsConnection(where: { title_contains: $q }) {
+    total: stagingBlogsConnection(where: { title_contains: $q }) {
       aggregate {
         count
       }

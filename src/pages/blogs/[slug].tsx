@@ -14,7 +14,7 @@ export const getStaticProps = async ({ params }) => {
     return graphcms.request(
       `
       query ($slug: String!) {
-        blog(where: { slug: $slug }) {
+        blog: stagingBlog(where: { slug: $slug }) {
           id
           title
           image {
@@ -54,7 +54,7 @@ export async function getStaticPaths() {
   const fetchBlogs = async () => {
     return graphcms.request(`
       {
-        blogs {
+        blogs: stagingBlogs {
           slug
           title
         }
@@ -223,17 +223,19 @@ const BlogPage = ({ blog }) => {
                   {blog?.teacher?.name}
                 </span>
               </h1>
-              <figure>
-                <Image
-                  className='w-full rounded-lg mt-10 mb-5'
-                  src={blog?.image?.url}
-                  alt={blog?.title}
-                  width={800}
-                  height={500}
-                  sizes='(max-width: 640px) 90vw, 100vw'
-                  loading='lazy'
-                />
-              </figure>
+              {blog?.image?.url && (
+                <figure>
+                  <Image
+                    className='w-full rounded-lg mt-10 mb-5'
+                    src={blog.image.url}
+                    alt={blog?.title}
+                    width={800}
+                    height={500}
+                    sizes='(max-width: 640px) 90vw, 100vw'
+                    loading='lazy'
+                  />
+                </figure>
+              )}
               <div>
                 <RichText content={blog?.content?.raw.children} />
               </div>

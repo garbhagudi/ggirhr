@@ -96,7 +96,7 @@ export const getServerSideProps = async () => {
           url
         }
       }
-      blogs(orderBy: publishedOn_DESC, first: 3) {
+      blogs: stagingBlogs(orderBy: publishedOn_DESC, first: 3) {
         id
         title
         slug

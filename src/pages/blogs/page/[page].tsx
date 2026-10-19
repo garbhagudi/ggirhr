@@ -169,14 +169,14 @@ export default BlogList;
 export async function getStaticProps({ params }) {
   const query = gql`
     query blogPageQuery($limit: Int!, $offset: Int!) {
-      blogsConnection(orderBy: publishedOn_DESC, first: $limit, skip: $offset) {
+      blogsConnection: stagingBlogsConnection(orderBy: publishedOn_DESC, first: $limit, skip: $offset) {
         blogs: edges {
           node {
             ${BLOG_CARD_FIELDS}
           }
         }
       }
-      total: blogsConnection {
+      total: stagingBlogsConnection {
         aggregate {
           count
         }
@@ -212,7 +212,7 @@ export async function getStaticProps({ params }) {
 export const getStaticPaths = async () => {
   const query = gql`
     query {
-      blogsConnection {
+      blogsConnection: stagingBlogsConnection {
         aggregate {
           count
         }

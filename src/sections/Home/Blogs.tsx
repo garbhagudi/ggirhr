@@ -62,13 +62,15 @@ const Blogs = ({ blogs }: { blogs?: BlogPost[] }) => {
             className={`relative rounded-xl lg:rounded-[20px] bg-white overflow-hidden h-auto lg:h-[440px] flex flex-col p-2 ${FEATURED_CARD_CLASSES}`}
           >
             <div className="relative w-full h-[220px] shrink-0">
-              <Image
-                src={featured.image?.url}
-                alt={featured.title}
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover rounded-[6px] lg:rounded-[10px]"
-              />
+              {featured.image?.url && (
+                <Image
+                  src={featured.image.url}
+                  alt={featured.title}
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover rounded-[6px] lg:rounded-[10px]"
+                />
+              )}
             </div>
             <div className="flex flex-col gap-2 lg:gap-3 p-3 lg:p-6 flex-1">
               {featuredDate && (
@@ -104,13 +106,15 @@ const Blogs = ({ blogs }: { blogs?: BlogPost[] }) => {
                 className={`relative flex-1 rounded-[20px] bg-white overflow-hidden flex flex-col lg:flex-row items-stretch lg:items-center gap-4 lg:gap-6 p-2 lg:pl-1 lg:pr-6 lg:py-2 border border-[#C2C2C2] ${STACKED_CARD_CLASSES}`}
               >
                 <div className="relative w-full h-[180px] lg:w-[160px] lg:h-full shrink-0 rounded-2xl overflow-hidden">
-                  <Image
-                    src={post.image?.url}
-                    alt={post.title}
-                    fill
-                    sizes="160px"
-                    className="object-cover"
-                  />
+                  {post.image?.url && (
+                    <Image
+                      src={post.image.url}
+                      alt={post.title}
+                      fill
+                      sizes="160px"
+                      className="object-cover"
+                    />
+                  )}
                 </div>
                 <div className="flex flex-col gap-3 lg:gap-4 min-w-0 px-3 pb-3 lg:p-0">
                   {formatDate(post.publishedOn) && (
