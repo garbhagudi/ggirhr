@@ -236,7 +236,7 @@ const BlogPage = ({ blog }) => {
                   />
                 </figure>
               )}
-              <div>
+              <div className='blog-content'>
                 <RichText content={blog?.content?.raw.children} />
               </div>
               <div></div>

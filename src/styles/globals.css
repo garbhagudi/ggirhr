@@ -92,3 +92,107 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
+
+/* Hygraph rich text on blog posts: restore the spacing and list markers that
+   preflight/normalize strip from p, ul, ol, headings, etc. */
+@layer components {
+  .blog-content {
+    @apply text-base leading-7 text-gray-700 sm:text-lg sm:leading-8;
+  }
+
+  .blog-content p,
+  .blog-content li {
+    white-space: pre-wrap;
+  }
+
+  .blog-content p {
+    @apply mb-4;
+  }
+
+  /* Blank lines in the editor arrive as empty paragraphs */
+  .blog-content p:empty {
+    min-height: 1em;
+  }
+
+  .blog-content ul,
+  .blog-content ol {
+    @apply mb-4 pl-6;
+  }
+
+  .blog-content ul {
+    list-style: disc;
+  }
+
+  .blog-content ol {
+    list-style: decimal;
+  }
+
+  .blog-content ul ul {
+    list-style: circle;
+  }
+
+  .blog-content ul,
+  .blog-content ol {
+    list-style-position: outside;
+  }
+
+  .blog-content li {
+    @apply mb-2;
+  }
+
+  /* Some posts nest list-item directly in list-item-child, rendering
+     <li><li>…</li></li>; keep a single bullet per item */
+  .blog-content li > li {
+    @apply mb-0;
+    display: block;
+  }
+
+  .blog-content li > p,
+  .blog-content li > div > p {
+    @apply mb-0;
+  }
+
+  .blog-content li > ul,
+  .blog-content li > ol {
+    @apply mb-0 mt-2;
+  }
+
+  .blog-content h1,
+  .blog-content h2,
+  .blog-content h3,
+  .blog-content h4,
+  .blog-content h5,
+  .blog-content h6 {
+    @apply mb-3 mt-8 font-bold text-gray-900;
+  }
+
+  .blog-content h1 {
+    @apply text-3xl;
+  }
+
+  .blog-content h2 {
+    @apply text-2xl;
+  }
+
+  .blog-content h3 {
+    @apply text-xl;
+  }
+
+  .blog-content h4,
+  .blog-content h5,
+  .blog-content h6 {
+    @apply text-lg;
+  }
+
+  .blog-content a {
+    @apply text-brandPink underline;
+  }
+
+  .blog-content blockquote {
+    @apply mb-4 border-l-4 border-brandPink pl-4 italic;
+  }
+
+  .blog-content img {
+    @apply my-6 h-auto max-w-full rounded-lg;
+  }
+}
