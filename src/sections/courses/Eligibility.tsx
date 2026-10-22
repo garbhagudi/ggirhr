@@ -17,7 +17,7 @@ const Eligibility = ({ section }: { section?: RichTextSection }) => {
         color="#A5DCF3"
         width={300}
         height={150}
-        className="absolute right-[30px] top-[30px] z-20 w-[110px] rotate-[10deg] sm:right-[190px] sm:top-[150px] sm:w-[245px]"
+        className="absolute right-[30px] top-[30px] z-20 w-[110px] rotate-[10deg] sm:right-[100px] sm:top-[50px] sm:w-[245px]"
       />
 
       <div className="relative z-10 flex flex-col items-center gap-6 sm:mx-auto sm:max-w-[1040px] sm:flex-row sm:gap-[100px]">
