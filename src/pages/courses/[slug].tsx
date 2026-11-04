@@ -44,6 +44,14 @@ const withoutEmptyBlocks = (course: any) => {
 };
 
 
+// Hygraph transform: social previews need a small 1200×630 JPEG, not the raw upload.
+const OG_TRANSFORM = "resize=width:1200,height:630,fit:crop/quality=value:70/output=format:jpg";
+const ogImageUrl = (url?: string) => {
+  if (!url) return undefined;
+  const i = url.lastIndexOf("/");
+  return `${url.slice(0, i)}/${OG_TRANSFORM}${url.slice(i)}`;
+};
+
 const orderOf = (value: unknown) =>
   Number.isFinite(value) ? (value as number) : Infinity;
 
@@ -71,6 +79,7 @@ const CoursePage = ({ course, professionals }) => {
     course?.metaDescription?.slice(0, 180) ||
     course?.subTitle?.slice(0, 180) ||
     course?.description?.text?.slice(0, 180);
+  const ogImage = ogImageUrl(course?.courseImage?.url);
 
   function addCourseJsonLd() {
     if (!course?.courseJson) return { __html: "" };
@@ -131,19 +140,20 @@ const CoursePage = ({ course, professionals }) => {
         {/* Open Graph / Facebook */}
         <meta property="og:title" content={`${title}`} />
         <meta property="og:site_name" content="GGIRHR" />
-        <meta property="og:url" content="https://ggirhr.com" />
+        <meta property="og:url" content={`https://www.ggirhr.com/courses/${course?.slug}`} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content={course?.courseImage?.url} />
-        <meta property="og:image:secure_url" content={course?.courseImage?.url} />
-        <meta property="og:image:width" content="800" />
-        <meta property="og:image:height" content="500" />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:secure_url" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:image:type" content="image/jpeg" />
         {/* Twitter*/}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@ggirhr" />
         <meta name="twitter:title" content={`${title}`} />
-        <meta name="twitter:image" content={course?.courseImage?.url} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={addCourseJsonLd()}
