@@ -179,7 +179,7 @@ const AffiliationsAlumni = ({
                 >
                   <div
                     ref={collaborations.trackRef}
-                    className="flex w-max items-center gap-20 will-change-transform"
+                    className="flex w-max items-center gap-6 will-change-transform"
                   >
                     {[...collaborationItems, ...collaborationItems].map(
                       (item, i) => (
