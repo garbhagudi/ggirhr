@@ -33,33 +33,30 @@ const StatsCard = ({
   <div
     className={`absolute flex items-center gap-2.5 lg:gap-3 rounded-[60px] lg:rounded-[80px] bg-white px-2 lg:px-4 py-2 lg:py-2.5 shadow-[0_4px_50px_rgba(9,14,71,0.19)] ${className}`}
   >
-    {/* Alumni country flags, matching the "15+ Countries" label beside them and
-        the round-flag treatment in `AffiliationsAlumni`. `bg-gray-200` stays as
-        the ground so a country published without a flag still reads as a
-        circle, and an empty CMS list falls back to four plain circles. */}
     <div className="flex -space-x-2.5">
-      {(countries.length > 0 ? countries.slice(0, 4) : [null, null, null, null]).map(
-        (country, i) => (
-          <div
-            key={country?.id ?? i}
-            className="relative overflow-hidden h-7 w-7 lg:h-10 lg:w-10 rounded-full border-2 border-white bg-gray-200"
-          >
-            {country && (
-              <Image
-                src={country.image.url}
-                alt={`${country.name} flag`}
-                fill
-                sizes="(min-width: 1024px) 40px, 28px"
-                className="object-cover"
-              />
-            )}
-          </div>
-        ),
-      )}
+      {(countries.length > 0
+        ? countries.slice(0, 4)
+        : [null, null, null, null]
+      ).map((country, i) => (
+        <div
+          key={country?.id ?? i}
+          className="relative overflow-hidden h-7 w-7 lg:h-10 lg:w-10 rounded-full border-2 border-white bg-gray-200"
+        >
+          {country && (
+            <Image
+              src={country.image.url}
+              alt={`${country.name} flag`}
+              fill
+              sizes="(min-width: 1024px) 40px, 28px"
+              className="object-cover"
+            />
+          )}
+        </div>
+      ))}
     </div>
     <div>
       <p className="text-xl lg:text-[30px] leading-none font-bold text-primaryBlue tracking-widest">
-        {countries.length > 0 ? `${countries.length}+` : "15+"}{" "}
+        15+&nbsp;
         <span className="text-[11px] lg:text-[13px] uppercase">Countries</span>
       </p>
       <p className="mt-1.5 lg:mt-2 text-[11px] lg:text-[13px] font-bold tracking-[0.12em] lg:tracking-[0.21em] uppercase text-black whitespace-nowrap">
@@ -139,15 +136,15 @@ const Hero = ({
               </h1>
 
               <p className="max-w-[536px] text-center lg:text-justify text-[13px] sm:text-lg leading-6 lg:leading-[27px] font-semibold text-black">
-                GarbhaGudi Institute of Reproductive Health &amp; Research is a
+                GarbhaGudi Institute of Reproductive Health & Research is a
                 platform launched by a team of renowned specialists interested
                 in training medical professionals and science students in
                 reproductive medicine and infertility. Our goal is to bring a
                 revolutionary change in infertility education by presenting a
                 range of courses designed to help people specialize in their
                 skills. Being pioneers in new generation infertility treatment,
-                we have taken the onus of continuous medical education as part
-                of our mission and expansion!
+                we have taken the onus of continuing medical education (CME) as
+                part of our mission and expansion!
               </p>
             </div>
             <Button
@@ -178,7 +175,10 @@ const Hero = ({
         </div>
         <div className="hidden lg:flex relative w-full h-full lg:w-1/2">
           <div className="relative w-full h-full -ml-64 mt-96 self-start">
-            <StatsCard className="right-16 -bottom-6" countries={alumniCountries} />
+            <StatsCard
+              className="right-16 -bottom-6"
+              countries={alumniCountries}
+            />
           </div>
         </div>
       </div>

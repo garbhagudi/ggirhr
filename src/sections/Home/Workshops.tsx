@@ -78,13 +78,14 @@ const Workshops = ({ workshops }: { workshops?: Workshop[] }) => {
         <span className="bg-white/10 backdrop-blur-md rounded-full px-4 py-2 text-white text-[12px] sm:text-[15px] font-bold tracking-[0.1em] sm:tracking-widest uppercase leading-none sm:leading-7 text-center">
           Research and Workshops
         </span>
-        <h1 className="text-white text-[23px] sm:text-[36px] lg:text-[46px] text-center max-w-[263px] sm:max-w-none leading-[22px] sm:leading-tight lg:leading-[50px]">
+        <h1 className="text-white text-[23px] sm:text-[36px] lg:text-[46px] text-center max-w-[263px] sm:max-w-none leading-[22px] sm:leading-tight lg:leading-[50px] uppercase">
           Workshops & Professional <span className="font-bold">Training</span>
         </h1>
         <p className="text-[#DEDEDE] font-semibold max-w-[336px] sm:max-w-3xl mx-auto text-center text-[13px] leading-5 sm:text-base sm:leading-normal lg:text-lg">
-          Looking to stay ahead in reproductive medicine and ART? Explore our
-          upcoming conferences, workshops, and educational events to keep your
-          knowledge current and your skills evolving.
+          Looking to stay ahead in embryology and reproductive medicine? Explore
+          our upcoming conferences, continuing medical education (CME), and
+          workshop events to keep your knowledge current and your skills
+          evolving.
         </p>
 
         <Tabs<WorkshopTab>

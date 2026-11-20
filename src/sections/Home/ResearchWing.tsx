@@ -9,10 +9,11 @@ const ICON_BASE = "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz";
 
 // Icons carried over from the previous homepage's Research Wing (Hygraph assets).
 const RESEARCH_FEATURES = [
-  { id: 1, label: "Internal Ethics Committee", icon: `${ICON_BASE}/cmsegtkjg01kx06pns4zf3bme` },
-  { id: 2, label: "Full-fledged Research Lab", icon: `${ICON_BASE}/cmsegtkiv01kt06pn1l3vxz1i` },
-  { id: 3, label: "Expert Team", icon: `${ICON_BASE}/cmsegtkib01kp06pnfi8oos89` },
-  { id: 4, label: "Support Staff", icon: `${ICON_BASE}/cmsegtkk301l106pne58pn5td` },
+  { id: 1, label: "GarbhaGudi Scientific Review Committee (GSRC)", icon: `${ICON_BASE}/cmsegtkjg01kx06pns4zf3bme` },
+  { id: 2, label: "GarbhaGudi Ethics Committee (GEC)", icon: `${ICON_BASE}/cmsegtkjg01kx06pns4zf3bme` },
+  { id: 3, label: "Full-fledged Research Lab", icon: `${ICON_BASE}/cmsegtkiv01kt06pn1l3vxz1i` },
+  { id: 4, label: "Subject-Matter Experts", icon: `${ICON_BASE}/cmsegtkib01kp06pnfi8oos89` },
+  { id: 5, label: "Support Teams", icon: `${ICON_BASE}/cmsegtkk301l106pne58pn5td` },
 ];
 
 const ResearchContent = () => (
@@ -41,8 +42,6 @@ const ResearchContent = () => (
       {RESEARCH_FEATURES.map((item) => (
         <div className="flex items-center gap-4 lg:gap-5" key={item.id}>
           <div className="flex-shrink-0 w-11 h-11 lg:w-[60px] lg:h-[60px] rounded-full bg-primaryBlue inline-flex items-center justify-center text-white">
-            {/* The SVGs are drawn in brand blue; `brightness-0 invert` turns them
-                white on the blue circle. */}
             <div className="relative w-6 h-6 lg:w-8 lg:h-8">
               <Image
                 src={item.icon}
@@ -74,7 +73,7 @@ const ResearchWing = () => {
           className="object-fill"
         />
       </div>
-      <div className="w-full lg:h-[735px] lg:overflow-hidden lg:py-20 lg:px-40 flex flex-col lg:flex-row">
+      <div className="w-full lg:h-[800px] lg:overflow-hidden lg:py-20 lg:px-40 flex flex-col lg:flex-row">
         <div className="order-first lg:order-none relative w-full h-[244px] -mt-[21px] sm:h-[280px] lg:mt-0 lg:absolute lg:right-0 lg:top-0 lg:w-1/2 lg:h-full lg:z-0">
           <Image
             src={RESEARCH_IMAGE}

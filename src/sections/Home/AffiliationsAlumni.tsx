@@ -103,61 +103,95 @@ const ArrowButton = ({
   </button>
 );
 
+/* The box keeps a fixed width/height and the logo fills it with
+   `object-contain`: the CMS logos range from 71x84 to 218x54, and sizing the
+   box from a logo's intrinsic dimensions would change `scrollWidth` once the
+   images decode — which useMarquee caches once and never re-reads. */
+const LogoBox = ({ item }: { item: LogoItem }) => (
+  <div className="relative h-[70px] w-44 shrink-0 overflow-hidden">
+    <Image
+      src={item.image.url}
+      alt={item.name}
+      fill
+      sizes="176px"
+      className="object-contain"
+    />
+  </div>
+);
+
 const AffiliationsAlumni = ({
   affiliations: affiliationItems = [],
+  collaborations: collaborationItems = [],
   alumniCountries = [],
 }: {
   affiliations?: LogoItem[];
+  collaborations?: LogoItem[];
   alumniCountries?: LogoItem[];
 }) => {
-  const affiliations = useMarquee("left", 35);
+  const collaborations = useMarquee("left", 35);
   const alumni = useMarquee("right", 35);
 
-  // Nothing published in either group — render no section at all rather than an
+  const hasAffiliations = affiliationItems.length > 0;
+  const hasCollaborations = collaborationItems.length > 0;
+
+  // Nothing published in any group — render no section at all rather than an
   // empty white band, matching the guards in Courses and Blogs.
-  if (affiliationItems.length === 0 && alumniCountries.length === 0)
+  if (!hasAffiliations && !hasCollaborations && alumniCountries.length === 0)
     return null;
 
   return (
     <section className="bg-white py-14 lg:py-24">
-      {/* Our Affiliations and Alliances — pill stays centered, unpadded; the
-          logo row itself bleeds full width, unlike the rest of the section. */}
-      {affiliationItems.length > 0 && (
-        <>
-          <div className="flex justify-center mb-8">
-            <Pill>Our Affiliations and Alliances</Pill>
-          </div>
+      {(hasAffiliations || hasCollaborations) && (
+        <SectionShell>
+          {/* Affiliations : OJT collaborations at 1:9 on desktop, stacked on
+              smaller screens. `1fr` is `minmax(auto, 1fr)`, so the narrow
+              column still grows to fit its pill and logo. */}
           <div
-            className="w-full overflow-hidden"
-            onMouseEnter={() => affiliations.setPaused(true)}
-            onMouseLeave={() => affiliations.setPaused(false)}
+            className={`grid grid-cols-1 gap-10 lg:gap-12 lg:items-start ${
+              hasAffiliations && hasCollaborations
+                ? "lg:grid-cols-[1fr_9fr]"
+                : ""
+            }`}
           >
-            <div
-              ref={affiliations.trackRef}
-              className="flex w-max items-center gap-20 will-change-transform"
-            >
-              {[...affiliationItems, ...affiliationItems].map((item, i) => (
-                /* The box keeps a fixed width/height and the logo fills it with
-                   `object-contain`: the CMS logos range from 71x84 to 218x54, and
-                   sizing the box from a logo's intrinsic dimensions would change
-                   `scrollWidth` once the images decode — which useMarquee caches
-                   once and never re-reads. See the note on `measure` below. */
-                <div
-                  key={`${item.id}-${i}`}
-                  className="relative h-[70px] w-44 shrink-0 overflow-hidden"
-                >
-                  <Image
-                    src={item.image.url}
-                    alt={item.name}
-                    fill
-                    sizes="176px"
-                    className="object-contain"
-                  />
+            {hasAffiliations && (
+              <div>
+                <div className="flex justify-center mb-8">
+                  <Pill>
+                    <span className="whitespace-nowrap">Our Affiliations</span>
+                  </Pill>
                 </div>
-              ))}
-            </div>
+                <div className="flex flex-wrap justify-center gap-10">
+                  {affiliationItems.map((item) => (
+                    <LogoBox key={item.id} item={item} />
+                  ))}
+                </div>
+              </div>
+            )}
+            {hasCollaborations && (
+              <div className="min-w-0">
+                <div className="flex justify-center mb-8 text-center">
+                  <Pill>On-the-job training (OJT) collaborations</Pill>
+                </div>
+                <div
+                  className="overflow-hidden"
+                  onMouseEnter={() => collaborations.setPaused(true)}
+                  onMouseLeave={() => collaborations.setPaused(false)}
+                >
+                  <div
+                    ref={collaborations.trackRef}
+                    className="flex w-max items-center gap-20 will-change-transform"
+                  >
+                    {[...collaborationItems, ...collaborationItems].map(
+                      (item, i) => (
+                        <LogoBox key={`${item.id}-${i}`} item={item} />
+                      ),
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
-        </>
+        </SectionShell>
       )}
       <SectionShell>
         {alumniCountries.length > 0 && (

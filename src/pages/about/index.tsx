@@ -4,7 +4,6 @@ import AboutUs from "sections/About/AboutUs";
 import Alliances from "sections/About/Alliances";
 import ResearchTeam from "sections/About/ResearchTeam";
 import Values from "sections/About/Values";
-import Cta from "sections/About/Cta";
 import VisionMission from "sections/About/VisionMission";
 import Leadership from "sections/About/Leadership";
 import type { Leader } from "sections/About/Leadership";
@@ -71,11 +70,6 @@ const IndexPage = ({
 
 export default IndexPage;
 
-// The design's three-line teaser is all that is rendered, so `bio.text` is
-// trimmed here rather than in the component: everything returned from
-// getStaticProps is serialized into the page payload, and the full bios run
-// past 2 KB each. `bio.text` carries its line breaks as literal newline
-// sequences, so flatten them first or the teaser reads as fragments.
 const BIO_PREVIEW_CHARS = 165;
 
 const bioPreview = (text?: string) => {
@@ -89,9 +83,6 @@ const bioPreview = (text?: string) => {
 };
 
 export const getStaticProps = async () => {
-  // Both models in one request: two root fields, one round trip, one
-  // revalidate window. `orderBy: order_ASC` on teachers mirrors the homepage
-  // query so the Faculty carousel runs in the same order on both pages.
   const { leaders = [], teachers = [] } = await graphcms.request(`
     query {
       leaders {
@@ -120,24 +111,16 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      // A leader with no portrait would render an empty pink panel, so drop
-      // them here the way the homepage filters the affiliation logos.
       leaders: leaders
         .filter((leader) => leader.image?.url)
         .map(({ id, name, slug, designation, image, bio }) => ({
           id,
           name,
           slug,
-          // The live CMS value is "Chief Executive Officer " with a trailing
-          // space. `null`, never `undefined` — Next rejects `undefined`
-          // anywhere in the props tree.
           designation: designation?.trim() ?? null,
           image: { url: image.url },
           bioPreview: bioPreview(bio?.text),
         })),
-      // Same filter for the same reason: the Faculty card renders the
-      // portrait unguarded, so a teacher published without one would break
-      // the section rather than degrade.
       teachers: teachers
         .filter((teacher) => teacher.image?.url)
         .map(({ id, name, slug, designation, image }) => ({
@@ -148,7 +131,6 @@ export const getStaticProps = async () => {
           image: { url: image.url },
         })),
     },
-    // Matches the revalidate on /about/leadership, which reads the same model.
     revalidate: 180,
   };
 };

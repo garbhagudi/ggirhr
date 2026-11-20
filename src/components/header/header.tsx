@@ -10,11 +10,11 @@ import Button from 'components/ui/Button';
 
 const NAV_LINKS = [
   { href: '/', label: 'Home', mobileLabel: 'Home' },
-  { href: '/events', label: 'Events & Webinars', mobileLabel: 'Events', activeFontContent: true },
+  { href: '/events', label: 'CME & Events', mobileLabel: 'CME & Events', activeFontContent: true },
   {
     href: '/research',
-    label: 'Research & Journals',
-    mobileLabel: 'Research and Journals',
+    label: 'Research & Publications',
+    mobileLabel: 'Research & Publications',
     activeFontContent: true,
   },
   { href: '/blogs/page/1', label: 'Blogs', mobileLabel: 'Blogs' },

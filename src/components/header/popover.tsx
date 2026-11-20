@@ -454,7 +454,7 @@ export function Courses({
                 className=""
                 onClick={() => setIsPopoverOpen(!isPopoverOpen)}
               >
-                Courses <ChevronDownIcon className="inline-block ml-1" />
+                Courses & Programs <ChevronDownIcon className="inline-block ml-1" />
               </div>
             </PopoverButton>
             <Transition

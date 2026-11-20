@@ -47,14 +47,14 @@ const Courses = ({ courses }: { courses?: Course[] }) => {
       <div className="flex flex-col gap-5 sm:gap-7">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
           <div className="text-black">
-            <h1 className="text-[23px] leading-tight sm:text-4xl lg:text-[46px] lg:leading-[65px] font-bold">
+            <h1 className="text-[23px] leading-tight sm:text-4xl lg:text-[46px] lg:leading-[65px] font-bold uppercase">
               Courses and{" "}
               <span className="text-primaryBlue font-bold">
                 Programs
               </span>
             </h1>
             <p className="text-[13px] sm:text-sm lg:text-[18px] leading-6 font-semibold">
-              Check out our most popular courses below
+              Check out our most popular courses and programs
             </p>
           </div>
           <Button
@@ -63,7 +63,7 @@ const Courses = ({ courses }: { courses?: Course[] }) => {
             size="inline"
             className="hidden sm:inline-flex !text-base lg:!text-[18px] !font-semibold whitespace-nowrap self-start sm:self-auto"
           >
-            See All Courses
+            See all
           </Button>
         </div>
 

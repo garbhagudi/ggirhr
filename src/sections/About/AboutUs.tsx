@@ -3,21 +3,16 @@ import Image from "next/image";
 import Chip from "components/ui/Chip";
 import HexagonPhoto from "components/ui/HexagonPhoto";
 
-// Left is a raw photo clipped by HexagonPhoto; the right export already
-// includes its hexagon outline, so it renders as a plain image.
 const HEX_LEFT_IMAGE = "/images/about/about-hex-left.png";
 const HEX_RIGHT_IMAGE = "/images/about/about-hex-right.png";
 
 const PARAGRAPHS = [
-  "GGIRHR intends to create a renaissance in training doctors and embryologists in the field of fertility. Since it is a part of the GarbhaGudi group, it has many advantages that are not available to other training organizations. GarbhaGudi IVF Centre, the mother company of GGIRHR, is known for its great success rates, ethical treatment, affordable costs, world-class infrastructure, and humane touch. With the backing of such a capable and robust organization, GGIRHR is well prepared to provide the best-in-class training to clinicians, embryologists andrology technicians, and paramedical staff to prepare them for the challenges of infertility treatment.",
-  "Students at GGIRHR can get to learn the tips, tricks, processes, protocols, and treatment approaches followed at GarbhaGudi IVF, which has given such unbelievable success rates. Training will be provided by senior faculties who are well versed in their field of specialization. Teaching staff at GGIRHR possess profound knowledge and are not just academicians. So the knowledge they share will be efficient, practical, and something that can be implemented immediately.",
+  "GGIRHR intends to create a renaissance in training doctors and embryologists in the field of fertility. Since it is a part of the GarbhaGudi group, it has many advantages that are not available to other training organizations. GarbhaGudi IVF Centre, the mother company of GGIRHR, is known for its great success rates, ethical treatment, affordable costs, world-class infrastructure, and humane touch. With the backing of such a capable and robust organization, GGIRHR is well prepared to provide the best-in-class training to allied health, andrologists, andrology technologists, clinicians, counsellors, embryologists, and reproductive medicine (fertility) specialists to prepare them for the challenges of infertility treatment.",
+  "Fellows and students at GGIRHR can get to learn the tips, tricks, processes, protocols, and treatment approaches followed at GarbhaGudi IVF, which has given such unbelievable success rates. Training will be provided by senior faculties who are well versed in their field of specialization. Teaching staff at GGIRHR possess profound knowledge and are not just academicians. So, the knowledge they share will be efficient, practical, and something that can be implemented immediately.",
 ];
 
 const AboutUs = () => (
   <section className="relative overflow-hidden bg-white py-10 sm:py-12 lg:py-[60px]">
-    {/* Decorative badges. Below xl they sit in the free space beside the
-        chip and after the short last line; from xl the 940px column leaves
-        room for them in the side margins. */}
     <HexagonPhoto
       src={HEX_LEFT_IMAGE}
       alt="Sperm cells approaching an egg"
@@ -34,9 +29,7 @@ const AboutUs = () => (
     </div>
 
     <div className="relative z-10 mx-auto max-w-[940px] px-5 text-center sm:px-6 lg:px-0">
-      <Chip
-        className="px-4 uppercase tracking-widest !bg-white text-[#EF3E66]"
-      >
+      <Chip className="px-4 uppercase tracking-widest !bg-white text-[#EF3E66]">
         About Us
       </Chip>
 

@@ -57,14 +57,15 @@ const WhyGgirhrRow = () => (
         Why <span className="font-bold">GGIRHR</span>
       </h1>
       <p className="text-[#DEDEDE] lg:text-white font-semibold leading-5 sm:leading-7 text-justify text-[13px] sm:text-base lg:text-[18px]">
-        At GGIRHR, we have realized a severe shortage of trained clinicians,
-        embryologists, and support staff in infertility, leading to compromised
-        treatment for many infertile couples worldwide. GarbhaGudi Institute of
-        Reproductive Health &amp; Research (GGIRHR) is our venture to address
-        this lacuna by offering advanced fellowship courses and short-term
-        training courses, recognized by Rajiv Gandhi Institute of Health
-        Sciences and Indian Medical Association, in Clinical ART, Embryology,
-        and Obstetric Ultrasound that cater to the needs of a busy
+        At GGIRHR, we have recognized a severe shortage of trained allied health
+        professionals, clinicians, and embryologists in the field of
+        infertility, leading to compromised treatment for many infertile couples
+        worldwide. GarbhaGudi Institute of Reproductive Health & Research
+        (GGIRHR) is our venture to address this lacuna by offering micro,
+        short-term, medium-term courses, and fellowship programs, recognized by
+        Rajiv Gandhi Institute of Health Sciences (RGUHS) and Indian Medical
+        Association Academy of Medical Specialities (IMA-AMS), in Clinical ART,
+        Embryology, and Obstetric Ultrasound that cater to the needs of a busy
         practitioner.
       </p>
     </div>
@@ -76,20 +77,20 @@ const OurStoryRow = () => (
   <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
     <div className="w-full lg:w-1/2 flex flex-col gap-4">
       <h1 className="text-[23px] leading-[50px] sm:text-[36px] sm:leading-tight lg:text-[46px] text-white">
-        Our <span className="font-bold">Story</span>
+        OUR <span className="font-bold">STORY</span>
       </h1>
       <p className="text-[#DEDEDE] lg:text-white font-semibold leading-5 sm:leading-7 text-justify text-[13px] sm:text-base lg:text-[18px]">
-        GarbhaGudi Institute of Reproductive Health &amp; Research (GGIRHR) was
-        established to provide premier quality reproductive medicine and
-        infertility training to clinicians, embryologists, sonologists, and
-        students with a science background, to name a few. We believe in
-        training enthusiastic minds to excel in their desired field. Our
-        infertility courses aim to impart systematic elucidation of all facets
-        of the ART treatments, such as IVF, featuring hands-on IVF training and
-        fellowship programs in Reproductive Medicine for postgraduate doctors.
-        Moreover, GGIRHR’s courses are beneficial in providing insights into the
-        ethical and economic implications of the treatment to equip every
-        individual with full-fledged knowledge.
+        GarbhaGudi Institute of Reproductive Health & Research (GGIRHR) was
+        established to provide premier-quality training in reproductive medicine
+        and infertility to clinicians, embryologists, sonologists, and students
+        with a relevant science background. We believe in training enthusiastic
+        minds to excel in their desired field. Our infertility courses aim to
+        impart systematic elucidation of all facets of the ART treatments, such
+        as IVF, featuring hands-on IVF training and fellowship programs in
+        Reproductive Medicine for postgraduate doctors. Moreover, GGIRHR's
+        courses and programs are beneficial in providing insights into the
+        ethical and economic implications of the treatment, empowering every
+        individual with comprehensive knowledge.
       </p>
     </div>
     <div className="relative w-full lg:w-1/2">

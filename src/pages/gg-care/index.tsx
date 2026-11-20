@@ -9,8 +9,6 @@ const IndexPage = () => {
   return (
     <div>
       <Head>
-        {/* Primary Tags */}
-
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Contact Us | GGIRHR</title>
         <meta name="title" content="Contact Us | GGIRHR" />
@@ -18,9 +16,6 @@ const IndexPage = () => {
           name="description"
           content="Ready to get started? We're here to provide information, advice, support."
         />
-
-        {/* Open Graph / Facebook */}
-
         <meta property="og:title" content="Contact Us | GGIRHR" />
         <meta property="og:site_name" content="GGIRHR" />
         <meta property="og:url" content="https://ggirhr.com" />
@@ -33,8 +28,6 @@ const IndexPage = () => {
           property="og:image"
           content="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegs1bb01h906prv5ylhixa"
         />
-
-        {/* Twitter*/}
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@ggirhr" />

@@ -15,7 +15,7 @@ import EventAnnouncementDialog from "sections/Home/EventAnnouncementDialog";
 import { HOME_FEATURE_IMAGE } from "sections/Home/assets";
 
 const PAGE_TITLE =
-  "GGIRHR | Best IVF & Infertility Training Institute in India";
+  "GGIRHR | Best Embryology, Infertility and Reproductive Medicine Training Institute in India";
 const PAGE_DESCRIPTION =
   "GarbhaGudi Institute of Reproductive Health & Research is a platform launched by a team of renowned specialists interested in training medical professionals and science students in reproductive medicine and infertility.";
 
@@ -49,6 +49,7 @@ const HomePage = ({ homeData }) => (
     <Hero alumniCountries={homeData?.alumniCountries} />
     <AffiliationsAlumni
       affiliations={homeData?.affiliations}
+      collaborations={homeData?.collaborations}
       alumniCountries={homeData?.alumniCountries}
     />
     <AboutUs />
@@ -176,6 +177,7 @@ export const getServerSideProps = async () => {
   const homeData = {
     ...rest,
     affiliations: byType(/^affil/i),
+    collaborations: byType(/^collab/i),
     alumniCountries: byType(/^alumni/i),
     upcomingEvent: events.find((event) => event.squareImage?.url) ?? null,
     workshops: data.workshops?.map((workshop) => {
