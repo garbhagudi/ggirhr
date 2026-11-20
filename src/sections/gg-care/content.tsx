@@ -94,18 +94,18 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className='text-lg leading-6 font-medium text-gray-900'>
-                  Partnership
+                  Collaboration
                 </h3>
                 <dl className='mt-2 text-base text-gray-500'>
                   <div>
                     <dt className='sr-only'>Email</dt>
                     <dd>
                       <Link
-                        href='mailto:jayaram@garbhagudi.com'
+                        href='mailto:drgirish.bv@ggirhr.com'
                         className='text-brandPink2 hover:underline'
                       >
                         <AtSymbolIcon className='inline-flex w-5 h-5' />{' '}
-                        jayaram@garbhagudi.com
+                        drgirish.bv@ggirhr.com
                       </Link>
                     </dd>
                   </div>
@@ -113,11 +113,10 @@ const Contact = () => {
                     <dt className='sr-only'>Phone number</dt>
                     <dd>
                       <Link
-                        href='tel:+919980997111'
+                        href='tel:+919364013830'
                         className='text-brandBlue hover:underline'
                       >
-                        <PhoneIcon className='inline-block w-5 h-5' /> +91 9980
-                        9971 11
+                        <PhoneIcon className='inline-block w-5 h-5' />+91 93640 13830
                       </Link>
                     </dd>
                   </div>

@@ -165,25 +165,12 @@
         &copy; 2025 GGIRHR. All rights reserved.
       </div>
     </footer>
-    <!-- Zoho SalesIQ Integration -->
-    <script>
-      var $zoho = $zoho || {};
-      $zoho.salesiq = $zoho.salesiq || {
-        widgetcode:
-          "siq9cb07e4f29c86a0622c4785734fcaba7b624414ff160b99492e8afeead60bd0a",
-        values: {},
-        ready: function () {},
-      };
-      var d = document;
-      var s = d.createElement("script");
-      s.type = "text/javascript";
-      s.id = "zsiqscript";
-      s.defer = true;
-      s.src = "https://salesiq.zohopublic.com/widget";
-      var t = d.getElementsByTagName("script")[0];
-      t.parentNode.insertBefore(s, t);
-      d.innerHTML += '<div id="zsiqwidget"></div>';
-    </script>
+    <!-- Zoho SalesIQ Integration (current `widget?wc=` embed; the legacy `widgetcode` embed no longer renders) -->
+    <script
+      id="zsiqscript"
+      src="https://salesiq.zohopublic.com/widget?wc=siq9cb07e4f29c86a0622c4785734fcaba7b624414ff160b99492e8afeead60bd0a"
+      defer
+    ></script>
     <!-- End Zoho SalesIQ Integration -->
   </body>
 </html>
