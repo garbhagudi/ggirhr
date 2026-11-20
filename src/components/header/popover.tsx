@@ -8,7 +8,7 @@ import {
   TabPanels,
   Transition,
 } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/solid";
+import ChevronDownIcon from "components/ui/icons/ChevronDownIcon";
 import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import { Tab } from "@headlessui/react";
@@ -24,27 +24,27 @@ const AboutSection = [
   },
   {
     name: "Our Values",
-    href: "/about/values",
+    href: "/about#values",
     icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegt5o001lg06prx5l8yp71",
   },
   {
     name: "Vision and Mission",
-    href: "/about/mission-and-vision",
+    href: "/about#mission-and-vision",
     icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegta1501m006prpbbg7f00",
   },
   {
     name: "Leadership",
-    href: "/about/leadership",
+    href: "/about#leadership",
     icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsu9k01j306pn02qhsxr9",
   },
   {
     name: "Our Faculty",
-    href: "/about/faculty",
+    href: "/about#faculty",
     icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegt5ni01lc06prj9yyjnlq",
   },
   {
     name: "Awards and Accolades",
-    href: "/about/awards-and-accolades",
+    href: "/about#awards-and-accolades",
     icon: "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegsp5401k306prlodsjbbq",
   },
 ];
@@ -245,7 +245,7 @@ export function About({
               About
               <ChevronDownIcon
                 className={`${open ? "" : "text-opacity-70"}
-                  ml-1 h-5 w-5 inline-block`}
+                  ml-1 inline-block`}
                 aria-hidden="true"
               />
             </span>
@@ -317,7 +317,7 @@ export function Contact({
               Contact
               <ChevronDownIcon
                 className={`${open ? "" : "text-opacity-70"}
-                  ml-1 h-5 w-5 inline-block`}
+                  ml-1 inline-block`}
                 aria-hidden="true"
               />
             </span>
@@ -454,7 +454,7 @@ export function Courses({
                 className=""
                 onClick={() => setIsPopoverOpen(!isPopoverOpen)}
               >
-                Courses <ChevronDownIcon className="inline-block w-5 h-5" />
+                Courses & Programs <ChevronDownIcon className="inline-block ml-1" />
               </div>
             </PopoverButton>
             <Transition

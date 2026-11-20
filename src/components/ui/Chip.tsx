@@ -1,0 +1,77 @@
+import React, { forwardRef } from 'react';
+
+export type ChipVariant =
+  | 'pink'
+  | 'blue'
+  | 'dark'
+  | 'glass'
+  | 'outline'
+  | 'muted';
+export type ChipSize = 'sm' | 'md' | 'lg';
+
+export type ChipProps = Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  'children'
+> & {
+  variant?: ChipVariant;
+  size?: ChipSize;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+  className?: string;
+  children: React.ReactNode;
+};
+
+const cx = (...classes: Array<string | false | undefined>) =>
+  classes.filter(Boolean).join(' ');
+
+const VARIANT_CLASSES: Record<ChipVariant, string> = {
+  pink: 'bg-white text-[#BB2649] shadow-[0px_4px_14px_rgba(0,0,0,0.1)]',
+  blue: 'bg-white text-[#1DA8E1] shadow-[0px_4px_14px_rgba(0,0,0,0.1)]',
+  dark: 'bg-brandDark text-white shadow-[0px_4px_14px_rgba(0,0,0,0.1)]',
+  glass: 'bg-[#FFFFFF1A] text-white backdrop-blur-[24px]',
+  outline: 'bg-transparent text-brandDark border border-brandDark/20',
+  // Grey category pill on the blog cards; `!` beats the base `font-bold`.
+  muted: 'bg-[#EEEEEE] text-[#374151] !font-normal',
+};
+
+const SIZE_CLASSES: Record<ChipSize, string> = {
+  sm: 'text-xs px-3 py-1.5 gap-1.5',
+  md: 'text-xs px-4 py-1.5 gap-2 tracking-widest sm:text-[15px] sm:leading-[29px] sm:py-2 sm:tracking-[10%]',
+  lg: 'text-base px-5 py-4 gap-2.5',
+};
+
+const BASE_CLASSES =
+  'inline-flex flex-row items-center justify-center w-fit rounded-[70px] font-bold';
+
+export const Chip = forwardRef<HTMLDivElement, ChipProps>((props, ref) => {
+  const {
+    variant = 'pink',
+    size = 'md',
+    leftIcon,
+    rightIcon,
+    className,
+    children,
+    ...rest
+  } = props;
+
+  return (
+    <div
+      ref={ref}
+      className={cx(
+        BASE_CLASSES,
+        VARIANT_CLASSES[variant],
+        SIZE_CLASSES[size],
+        className
+      )}
+      {...rest}
+    >
+      {leftIcon}
+      <span>{children}</span>
+      {rightIcon}
+    </div>
+  );
+});
+
+Chip.displayName = 'Chip';
+
+export default Chip;

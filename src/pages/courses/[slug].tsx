@@ -1,27 +1,85 @@
 import React from "react";
 import { GraphQLClient, gql } from "graphql-request";
-import { RichText } from "@graphcms/rich-text-react-renderer";
-import {
-  ClockIcon,
-  AcademicCapIcon,
-  CurrencyRupeeIcon,
-  PhoneIcon,
-} from "@heroicons/react/solid";
 import Head from "next/head";
-import Link from "next/link";
 import { throttledFetch } from "lib/throttle";
-import Image from "next/image";
-import { courses } from "components/header/popover";
-import { usePathname } from "next/navigation";
-import Form from "components/Form";
-import Cta from "sections/gg-care/cta";
-import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
-import LiteYouTubeEmbed from "react-lite-youtube-embed";
-import { YouTubeIcon } from "lib/svg";
-import YouTubeVideoCarousel from "components/courses/YouTubeVideoCarousel";
+import CourseCta from "sections/courses/CourseCta";
+import FellowshipBanner from "sections/courses/FellowshipBanner";
+import CourseStats from "sections/courses/CourseStats";
+import CourseDetails from "sections/courses/CourseDetails";
+import CourseContent from "sections/courses/CourseContent";
+import KeyBenefits from "sections/courses/KeyBenefits";
+import Eligibility from "sections/courses/Eligibility";
+import Pedagogy from "sections/courses/Pedagogy";
+import CourseFaq, { faqPageJsonLd } from "sections/courses/CourseFaq";
+import StudentVoices from "sections/courses/StudentVoices";
+import InfoSection, { InfoItem } from "sections/courses/InfoSection";
 
-const CoursePage = ({ course }) => {
-  const courseSlug = usePathname();
+const SECTION_FRAGMENT = `
+  fragment SectionFields on Section {
+    order
+    heading
+    content {
+      raw
+    }
+  }
+`;
+
+const SECTION_FIELDS = `
+  courseDetails { ...SectionFields }
+  courseContent { ...SectionFields }
+  eligibility { ...SectionFields }
+  benefits { ...SectionFields }
+  pedagogy { ...SectionFields }
+`;
+
+const hasText = (node: any): boolean =>
+  !!node?.text?.trim() || (node?.children ?? []).some(hasText);
+
+const withoutEmptyBlocks = (course: any) => {
+  for (const key of ["courseDetails", "courseContent", "eligibility", "benefits", "pedagogy"]) {
+    const raw = course?.[key]?.content?.raw;
+    if (raw?.children) raw.children = raw.children.filter(hasText);
+  }
+  return course;
+};
+
+
+// Hygraph transform: social previews need a small 1200×630 JPEG, not the raw upload.
+const OG_TRANSFORM = "resize=width:1200,height:630,fit:crop/quality=value:70/output=format:jpg";
+const ogImageUrl = (url?: string) => {
+  if (!url) return undefined;
+  const i = url.lastIndexOf("/");
+  return `${url.slice(0, i)}/${OG_TRANSFORM}${url.slice(i)}`;
+};
+
+const orderOf = (value: unknown) =>
+  Number.isFinite(value) ? (value as number) : Infinity;
+
+const orderedSections = (course: any) => {
+  const extras: InfoItem[] = Array.isArray(course?.description) ? course.description : [];
+  const sections: { order: number; node: React.ReactNode }[] = [
+    { order: orderOf(course?.courseDetails?.order), node: <CourseDetails key="courseDetails" course={course} /> },
+    { order: orderOf(course?.courseContent?.order), node: <CourseContent key="courseContent" section={course?.courseContent} /> },
+    { order: orderOf(course?.eligibility?.order), node: <Eligibility key="eligibility" section={course?.eligibility} /> },
+    { order: orderOf(course?.benefits?.order), node: <KeyBenefits key="benefits" section={course?.benefits} /> },
+    { order: orderOf(course?.pedagogy?.order), node: <Pedagogy key="pedagogy" section={course?.pedagogy} /> },
+    ...extras.map((item, i) => ({
+      order: orderOf(item?.order),
+      node: <InfoSection key={`info-${i}`} item={item} />,
+    })),
+    // FAQ has no order field yet, so it stays after the ordered sections.
+    { order: Infinity, node: <CourseFaq key="faq" faqJson={course?.faqJson} /> },
+  ];
+  return sections.sort((a, b) => a.order - b.order || 0).map((s) => s.node);
+};
+
+const CoursePage = ({ course, professionals }) => {
+  const title = course?.metaTitle || course?.title;
+  const description =
+    course?.metaDescription?.slice(0, 180) ||
+    course?.subTitle?.slice(0, 180) ||
+    course?.description?.text?.slice(0, 180);
+  const ogImage = ogImageUrl(course?.courseImage?.url);
 
   function addCourseJsonLd() {
     if (!course?.courseJson) return { __html: "" };
@@ -35,11 +93,8 @@ const CoursePage = ({ course }) => {
   }
 
   function addFAQJsonLd() {
-    if (!course?.faqJson) return { __html: "" };
-    const jsonLD =
-      typeof course.faqJson === "string"
-        ? JSON.parse(course.faqJson)
-        : course.faqJson;
+    const jsonLD = faqPageJsonLd(course?.faqJson);
+    if (!jsonLD) return { __html: "" };
     return {
       __html: JSON.stringify(jsonLD, null, 2),
     };
@@ -73,18 +128,9 @@ const CoursePage = ({ course }) => {
       <Head>
         {/* Primary Tags */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{`${course?.metaTitle || course?.title} | GGIRHR`}</title>
-        <meta
-          name="title"
-          content={`${course?.metaTitle || course?.title} | GGIRHR`}
-        />
-        <meta
-          name="description"
-          content={
-            course?.metaDescription?.slice(0, 180) ||
-            course?.description?.text.slice(0, 180)
-          }
-        />
+        <title>{`${title}`}</title>
+        <meta name="title" content={`${title}`} />
+        <meta name="description" content={description} />
         <meta
           name="keywords"
           content={
@@ -92,27 +138,22 @@ const CoursePage = ({ course }) => {
           }
         />
         {/* Open Graph / Facebook */}
-        <meta
-          property="og:title"
-          content={`${course?.metaTitle || course?.title} | GGIRHR`}
-        />
+        <meta property="og:title" content={`${title}`} />
         <meta property="og:site_name" content="GGIRHR" />
-        <meta property="og:url" content="https://ggirhr.com" />
-        <meta property="og:description" content={course?.metaDescription?.slice(0, 180) || course?.description?.text?.slice(0, 180)} />
+        <meta property="og:url" content={`https://www.ggirhr.com/courses/${course?.slug}`} />
+        <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content={course?.courseImage?.url} />
-        <meta property="og:image:secure_url" content={course?.courseImage?.url} />
-        <meta property="og:image:width" content="800" />
-        <meta property="og:image:height" content="500" />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:secure_url" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:image:type" content="image/jpeg" />
         {/* Twitter*/}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@ggirhr" />
-        <meta
-          name="twitter:title"
-          content={`${course?.metaTitle || course?.title} | GGIRHR`}
-        />
-        <meta name="twitter:image" content={course?.courseImage?.url} />
+        <meta name="twitter:title" content={`${title}`} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={addCourseJsonLd()}
@@ -126,368 +167,11 @@ const CoursePage = ({ course }) => {
           dangerouslySetInnerHTML={addFAQJsonLd()}
         />
       </Head>
-      <div className="py-16 overflow-hidden mx-auto">
-        <div className="max-w-7xl mx-auto px-3 space-y-8 sm:px-6 lg:px-11">
-          <div className="mx-auto">
-            <h2 className="text-base text-brandBlue font-semibold tracking-wide uppercase">
-              Courses
-            </h2>
-            <h1 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-brandDark sm:text-4xl font-heading">
-              {course?.title}
-            </h1>
-          </div>
-          <div className="flex justify-center">
-            <Image
-              src={course?.courseImage?.url}
-              alt={course?.title}
-              className="w-screen"
-              width={800}
-              height={500}
-              sizes="(max-width: 640px) 90vw, 100vw"
-              priority={true}
-            />
-          </div>
-
-          <div className="relative z-10 text-base mx-auto lg:max-w-6xl lg:mx-0">
-            {course?.objective?.raw?.children && (
-              <RichText
-                content={course?.objective?.raw}
-                renderers={{
-                  h1: ({ children }) => (
-                    <h1 className="text-3xl font-extrabold text-brandDark my-4">
-                      {children}
-                    </h1>
-                  ),
-                  h2: ({ children }) => (
-                    <h2 className="text-2xl font-bold text-brandDark my-3">
-                      {children}
-                    </h2>
-                  ),
-                  h3: ({ children }) => (
-                    <h3 className="text-xl font-bold text-brandDark my-2">
-                      {children}
-                    </h3>
-                  ),
-                  p: ({ children }) => (
-                    <p className="text-base text-gray-700 my-2 leading-relaxed">
-                      {children}
-                    </p>
-                  ),
-                  ul: ({ children }) => (
-                    <ul className="list-disc pl-6 my-3">{children}</ul>
-                  ),
-                  ol: ({ children }) => (
-                    <ol className="list-decimal pl-6 my-3">{children}</ol>
-                  ),
-                  li: ({ children }) => <li className="mb-1">{children}</li>,
-                }}
-              />
-            )}
-          </div>
-          <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none space-x-3">
-            <div className="rounded-md shadow">
-              <Link
-                href={`/contact?pageVisit=${courseSlug}`}
-                className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brandBlue hover:bg-brandBlueDark3"
-              >
-                Contact Us
-              </Link>
-            </div>
-            <div className="rounded-md shadow flex justify-center">
-              <a
-                href="tel:+919108910852"
-                className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brandBlue hover:bg-brandBlueDark3"
-              >
-                <PhoneIcon className="w-5 h-5 mr-2" /> Call Us
-              </a>
-            </div>
-            {!course?.videoId && (
-              <div className="rounded-md shadow flex justify-center">
-                <a
-                  href="https://www.youtube.com/channel/UCPWVap8s4REIDwqYpHq0pew"
-                  className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brandBlue hover:bg-brandBlueDark3"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <YouTubeIcon className="w-6 h-6 mr-2" /> Videos
-                </a>
-              </div>
-            )}  
-          </div>
-          <div className="lg:grid lg:grid-cols-2 lg:gap-10 lg:items-start">
-            <div className="relative z-10">
-              {course?.videoId && (
-                <LiteYouTubeEmbed
-                  id={course.videoId}
-                  title={course?.title}
-                  poster="maxresdefault"
-                  thumbnail={""}
-                  params="fs=1&modestbranding=1&rel=0"
-                />
-              )}
-              <div className="text-brandDark mx-auto lg:max-w-none">
-                {course?.description?.raw?.children ? (
-                  <RichText
-                    content={course?.description?.raw}
-                    renderers={{
-                      h1: ({ children }) => (
-                        <h1 className="text-3xl font-extrabold text-brandDark my-4">
-                          {children}
-                        </h1>
-                      ),
-                      h2: ({ children }) => (
-                        <h2 className="text-2xl font-bold text-brandDark my-3">
-                          {children}
-                        </h2>
-                      ),
-                      h3: ({ children }) => (
-                        <h3 className="text-xl font-bold text-brandDark my-2">
-                          {children}
-                        </h3>
-                      ),
-                      p: ({ children }) => (
-                        <p className="text-base text-gray-700 my-2 leading-relaxed">
-                          {children}
-                        </p>
-                      ),
-                      ul: ({ children }) => (
-                        <ul className="list-disc pl-6 my-3">{children}</ul>
-                      ),
-                      ol: ({ children }) => (
-                        <ol className="list-decimal pl-6 my-3">{children}</ol>
-                      ),
-                      li: ({ children }) => (
-                        <li className="mb-1">{children}</li>
-                      ),
-                      a: ({ children, ...props }) => (
-                        <a className="text-brandBlue underline" {...props}>
-                          {children}
-                        </a>
-                      ),
-                    }}
-                  />
-                ) : (
-                  <p>Description not available</p>
-                )}
-              </div>
-            </div>
-            <div className="mt-12 relative isolate text-base max-w-prose mx-auto lg:mt-0 lg:max-w-none">
-              {courseSlug ===
-                "/courses/comprehensive-andrology-training-program" && (
-                  <div className="relative z-10">
-                    <LiteYouTubeEmbed
-                      id={"sDiR0gx3nfs"}
-                      title={"Comprehensive Course in Andrology — short video"}
-                      poster="maxresdefault"
-                      thumbnail={""}
-                      params="fs=1&modestbranding=1&rel=0"
-                    />
-                  </div>
-                )}
-              <svg
-                className="pointer-events-none absolute top-0 right-0 z-0 -mt-20 -mr-20 lg:top-auto lg:right-auto lg:bottom-1/2 lg:left-1/2 lg:mt-0 lg:mr-0 xl:top-0 xl:right-0 xl:-mt-20 xl:-mr-20"
-                width={404}
-                height={384}
-                fill="none"
-                viewBox="0 0 404 384"
-                aria-hidden="true"
-              >
-                <defs>
-                  <pattern
-                    id="bedc54bc-7371-44a2-a2bc-dc68d819ae60"
-                    x={0}
-                    y={0}
-                    width={20}
-                    height={20}
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <rect
-                      x={0}
-                      y={0}
-                      width={4}
-                      height={4}
-                      className="text-gray-200"
-                      fill="currentColor"
-                    />
-                  </pattern>
-                </defs>
-                <rect
-                  width={404}
-                  height={384}
-                  fill="url(#bedc54bc-7371-44a2-a2bc-dc68d819ae60)"
-                />
-              </svg>
-
-              <blockquote className="relative bg-white rounded-lg shadow-lg mb-10">
-                <div className="rounded-t-lg py-2 sm:px-4 sm:pt-4 sm:pb-8">
-                  <div className="overflow-x-auto ">
-                    <table className="w-full table-auto">
-                      <tbody className="divide-y divide-pink-100 text-lg font-medium dark:divide-gray-500">
-                        {course?.numberOfBatchesPerYear && (
-                          <tr className="flex">
-                            <td className="whitespace-nowrap p-2">
-                              <div className="flex items-center justify-center font-medium text-gray-800">
-                                <div className=" w-[300px] md:w-fit overflow-hidden text-wrap  text-gray-700 flex gap-x-3 items-start">
-                                  <Image
-                                    src="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegtq2x01o206pr08oi9nuj"
-                                    alt="Number_of_Student_Intake_Per_Batch_icon"
-                                    width={100}
-                                    height={100}
-                                    className="h-8 w-8 object-cover"
-                                    loading="lazy"
-                                  />
-                                  Number of Student Intake Per Batch:
-                                </div>
-                              </div>
-                            </td>
-
-                            <td className=" p-2 px-0">
-                              <div className="text-left font-medium text-gg-500 dark:text-gg-400">
-                                {course?.numberOfStudentIntakePerBatch}
-                              </div>
-                            </td>
-                          </tr>
-                        )}
-                        {course?.numberOfStudentIntakePerBatch && (
-                          <tr className="flex">
-                            <td className="whitespace-nowrap p-2">
-                              <div className="font-medium text-gray-800">
-                                <div className="flex items-center justify-center font-medium text-gray-800">
-                                  <div className="h-10  text-gray-700 flex gap-x-3 items-start">
-                                    <Image
-                                      src={
-                                        "https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegtq3m01o606prdzzf48ee"
-                                      }
-                                      alt={"Number_of_Batches_Per_Year_icon"}
-                                      width={100}
-                                      height={100}
-                                      className="h-8 w-8 object-cover"
-                                      loading="lazy"
-                                    />
-                                    Number of Batches Per Year:
-                                  </div>
-                                </div>
-                              </div>
-                            </td>
-
-                            <td className=" p-2 px-0">
-                              <div className="text-left font-medium text-gg-500 dark:text-gg-400">
-                                {course?.numberOfBatchesPerYear}
-                              </div>
-                            </td>
-                          </tr>
-                        )}
-                        {course?.qualification && (
-                          <tr className="flex">
-                            <td className="whitespace-nowrap p-2">
-                              <div className="font-medium text-gray-800">
-                                <div className="flex items-center justify-center font-medium text-gray-800">
-                                  <div className="h-10  text-gray-700  flex gap-x-3 items-start">
-                                    <AcademicCapIcon className="w-8 h-8 inline-block text-brandBlue" />
-                                    Qualification:
-                                  </div>
-                                </div>
-                              </div>
-                            </td>
-
-                            <td className=" p-2 px-0">
-                              <div className="text-left font-medium text-gg-500 dark:text-gg-400">
-                                {course?.qualification}
-                              </div>
-                            </td>
-                          </tr>
-                        )}
-                        {course?.duration && (
-                          <tr className="flex">
-                            <td className="whitespace-nowrap p-2">
-                              <div className="font-medium">
-                                <div className="flex items-center justify-center font-medium">
-                                  <div className="h-10   text-gray-700 flex gap-x-3 items-start">
-                                    <ClockIcon className="w-8 h-8 inline-block text-brandBlue" />
-                                    Duration:
-                                  </div>
-                                </div>
-                              </div>
-                            </td>
-
-                            <td className="p-2 px-0">
-                              <div className="text-left font-medium text-gg-500 dark:text-gg-400">
-                                {course?.duration}
-                              </div>
-                            </td>
-                          </tr>
-                        )}
-                        {course?.fees && (
-                          <tr className="flex">
-                            <td className="whitespace-nowrap p-2">
-                              <div className="flex items-center justify-center font-medium">
-                                <div className="h-10  text-gray-700 flex gap-x-3 items-start">
-                                  <CurrencyRupeeIcon className="w-8 h-8 inline-block text-brandBlue" />{" "}
-                                  Fee:
-                                </div>
-                              </div>
-                            </td>
-
-                            <td className="p-2 px-0">
-                              <div className="text-left font-medium text-gg-500 dark:text-gg-400">
-                                {course?.fees}
-                              </div>
-                            </td>
-                          </tr>
-                        )}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </blockquote>
-
-              <blockquote className="relative bg-gray-200 rounded-lg shadow-lg mb-10">
-                <div className="rounded-t-lg overflow-hidden w-full rounded-lg shadow-lg">
-                  <Form refPath={courseSlug} />
-                </div>
-              </blockquote>
-
-              {course?.youtubeVideos && course.youtubeVideos.length > 0 && (
-                <YouTubeVideoCarousel 
-                  videos={course.youtubeVideos} 
-                  title="Testimonial Videos"
-                />
-              )}
-
-              <blockquote className="relative bg-white rounded-lg shadow-lg mb-10">
-                <div className="rounded-t-lg py-2 sm:px-4 sm:pt-4 bg-brandBlue">
-                  <div className=" text-base text-white font-bold tracking-wide text-center">
-                    Training Courses and Programs
-                  </div>
-                </div>
-                <div className="py-2">
-                  {courses &&
-                    Array.from(
-                      new Map(
-                        Object.values(courses)
-                          .flat()
-                          .map((course) => [course.href, course]),
-                      ).values(),
-                    ).map((course, index) => (
-                      <div
-                        className={`group hover:bg-gray-200 hover:text-brandBlue rounded-md px-4 py-1 ${
-                          courseSlug === course.href &&
-                          "bg-brandBlue font-semibold text-white"
-                        }`}
-                        key={course.href}
-                      >
-                        <Link href={course.href} key={course.name}>
-                          {index + 1}. {course.name}
-                        </Link>
-                      </div>
-                    ))}
-                </div>
-              </blockquote>
-            </div>
-          </div>
-        </div>
-      </div>
-      <Cta />
+      <FellowshipBanner course={course} professionals={professionals} />
+      <CourseStats course={course} />
+      {orderedSections(course)}
+      <StudentVoices />
+      <CourseCta slug={course?.slug} />
     </div>
   );
 };
@@ -523,6 +207,7 @@ export const getStaticProps = async ({ params }: { params: any }) => {
       course(where: { slug: $pageSlug }) {
         id
         title
+        slug
         objective {
           raw
           text
@@ -546,13 +231,81 @@ export const getStaticProps = async ({ params }: { params: any }) => {
         courseJson
         videoId
         youtubeVideos
+        ${SECTION_FIELDS}
       }
     }
+    ${SECTION_FRAGMENT}
   `;
 
   const variables = {
     pageSlug: params.slug,
   };
+
+  let professionals = [];
+  try {
+    const fetchTeachers = async () =>
+      graphQLClient.request(gql`
+        query {
+          teachers(orderBy: order_ASC, first: 20) {
+            id
+            name
+            image {
+              url
+            }
+          }
+        }
+      `);
+    const data = await throttledFetch(fetchTeachers);
+    professionals = (data?.teachers || [])
+      .filter((teacher) => teacher.image?.url)
+      .slice(0, 4);
+  } catch (error) {
+    console.error('Error fetching teachers:', error);
+  }
+
+  const stagingQuery = gql`
+    query ($pageSlug: String!) {
+      stagingCourse(where: { slug: $pageSlug }) {
+        id
+        title
+        subTitle
+        slug
+        numberOfBatchesPerYear
+        numberOfStudentIntakePerBatch
+        duration
+        fees
+        courseImage {
+          url
+        }
+        description
+        metaDescription
+        metaKeywords
+        metaTitle
+        faqJson
+        videoId
+        youtubeVideos
+        ${SECTION_FIELDS}
+      }
+    }
+    ${SECTION_FRAGMENT}
+  `;
+
+  try {
+    const fetchStagingCourse = async () =>
+      graphQLClient.request(stagingQuery, variables);
+    const data = await throttledFetch(fetchStagingCourse);
+    if (data?.stagingCourse) {
+      return {
+        props: {
+          course: withoutEmptyBlocks(data.stagingCourse),
+          professionals,
+        },
+        revalidate: 180,
+      };
+    }
+  } catch (error) {
+    console.error('Error fetching staging course data:', error);
+  }
 
   // Fetch the data with throttling
   let course = null;
@@ -570,6 +323,7 @@ export const getStaticProps = async ({ params }: { params: any }) => {
           course(where: { slug: $pageSlug }) {
             id
             title
+            slug
             objective {
               raw
               text
@@ -592,8 +346,10 @@ export const getStaticProps = async ({ params }: { params: any }) => {
             faqJson
             courseJson
             videoId
+            ${SECTION_FIELDS}
           }
         }
+        ${SECTION_FRAGMENT}
       `;
       try {
         const fetchCourseWithoutVideos = async () => graphQLClient.request(queryWithoutVideos, variables);
@@ -625,7 +381,8 @@ export const getStaticProps = async ({ params }: { params: any }) => {
 
   return {
     props: {
-      course,
+      course: withoutEmptyBlocks(course),
+      professionals,
     },
     revalidate: 180, // ISR: Regenerate the page every 3 minutes
   };
@@ -680,8 +437,29 @@ export const getStaticPaths = async () => {
     };
   }
 
-  const paths = courses.map((course: { slug: string }) => ({
-    params: { slug: course.slug },
+  let stagingCourses = [];
+  try {
+    const fetchStagingCourses = async () =>
+      graphQLClient.request(gql`
+        query {
+          stagingCourses {
+            slug
+          }
+        }
+      `);
+    const data = await throttledFetch(fetchStagingCourses);
+    stagingCourses = data?.stagingCourses || [];
+  } catch (error) {
+    console.error('Error fetching staging courses:', error);
+  }
+
+  const slugs = new Set(
+    [...courses, ...stagingCourses]
+      .map((course: { slug?: string }) => course.slug)
+      .filter(Boolean)
+  );
+  const paths = Array.from(slugs).map((slug) => ({
+    params: { slug },
   }));
 
   return {

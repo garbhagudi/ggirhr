@@ -1,35 +1,109 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gql } from "graphql-request";
-import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import graphcms from "lib/graphcms";
 import Loading from "components/loading";
 import { throttledFetch } from "lib/throttle";
-import Image from "next/image";
+import {
+  BLOG_CARD_FIELDS,
+  BLOG_PAGE_SIZE,
+  blogsHref,
+  firstParam,
+  pageParam,
+  totalPagesFor,
+} from "lib/blogs";
+import BlogsHeader from "sections/blogs/BlogsHeader";
+import BlogGrid from "sections/blogs/BlogGrid";
+import Pagination from "sections/blogs/Pagination";
+import type { BlogPost } from "sections/blogs/BlogCard";
+import type { BlogSearchResult } from "pages/api/blogs/search";
 
-const limit = 6;
+// `?q=` turns this page into search results: the static page renders as
+// usual, then results for the query + `p` (results page) are fetched from
+// /api/blogs/search (the Hygraph token is server-only) and replace the grid.
+// Search URLs stay on /blogs/page/1 (see `blogsHref`) so every search step is
+// a shallow, in-place update; the previous result stays shown while loading.
+const EMPTY_RESULT: BlogSearchResult = { blogs: [], total: 0, totalPages: 1 };
 
-const BlogList = ({
-  currentPageNumber,
-  hasNextPage,
-  hasPreviousPage,
-  blogs,
-}) => {
-  const blogTitle = `Blogs | Page - ${currentPageNumber} | GGIRHR`;
+const useBlogSearch = (q: string, page: number) => {
+  const key = `${q}|${page}`;
+  const [result, setResult] = useState<{
+    key: string;
+    data: BlogSearchResult;
+  } | null>(null);
+
+  useEffect(() => {
+    if (!q) {
+      setResult(null);
+      return;
+    }
+    const controller = new AbortController();
+    fetch(`/api/blogs/search?q=${encodeURIComponent(q)}&page=${page}`, {
+      signal: controller.signal,
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+      .then((data: BlogSearchResult) => setResult({ key, data }))
+      .catch((error) => {
+        if (error?.name !== "AbortError")
+          setResult({ key, data: EMPTY_RESULT });
+      });
+    return () => controller.abort();
+  }, [q, page, key]);
+
+  return {
+    result: result?.data ?? null,
+    loading: Boolean(q) && result?.key !== key,
+  };
+};
+
+const BlogList = ({ currentPageNumber, totalPages, blogs }) => {
   const router = useRouter();
+  const q = firstParam(router.query.q);
+  const searchPage = pageParam(router.query.p);
+  const { result, loading } = useBlogSearch(q, searchPage);
+
+  // Shallow from page 1 (props already match); from page N it's a normal push.
+  const search = (term: string) =>
+    router.push(blogsHref(1, term), undefined, {
+      scroll: false,
+      shallow: currentPageNumber === 1,
+    });
+
+  // Paging through results: glide to the grid instead of jumping to the top.
+  const resultsRef = useRef<HTMLDivElement>(null);
+  const prevSearchPage = useRef(searchPage);
+  useEffect(() => {
+    if (prevSearchPage.current !== searchPage) {
+      resultsRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+    prevSearchPage.current = searchPage;
+  }, [searchPage]);
+
+  const blogTitle = q
+    ? `Search: ${q} | Blogs | GGIRHR`
+    : `Blogs | Page - ${currentPageNumber} | GGIRHR`;
 
   if (router.isFallback) {
     return <Loading />;
   }
+
+  const listPosts: BlogPost[] = (blogs ?? []).map((edge) => edge.node);
+  // While the first search request is in flight, keep showing the list.
+  const posts = q && result ? result.blogs : listPosts;
+  const pages = q && result ? result.totalPages : totalPages;
   return (
-    <div>
+    <div className="bg-white font-primary">
       <Head>
         {/* Primary Tags */}
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{blogTitle}</title>
         <meta name="title" content={blogTitle} />
+        {q && <meta name="robots" content="noindex" />}
         <meta
           name="description"
           content="Our Blogs and Articles regarding Infertility, Treatment, Academics and Parenthood"
@@ -64,69 +138,28 @@ const BlogList = ({
           content="https://ap-south-1.graphassets.com/AEQ42Ga7sTjWPxPil2Xudz/cmsegs1ar01h506pr5ijix6of"
         />
       </Head>
-      <div className="relative pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
-        <div className="absolute inset-0">
-          <div className="bg-white h-1/3 sm:h-2/3" />
-        </div>
-        <div className="relative max-w-7xl mx-auto">
-          <div className="text-center">
-            <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-5xl font-heading underline">
-              BLOGS
-            </h2>
-          </div>
-          <div className="mt-12 max-w-xl mx-auto grid gap-8 lg:grid-cols-3 lg:max-w-none">
-            {blogs?.map((item) => (
-              <div
-                key={item?.node?.id}
-                className="flex flex-col rounded-2xl shadow-lg overflow-hidden"
-              >
-                <Link href={`/blogs/${item.node.slug}`} passHref>
-                  <div className="flex-shrink-0">
-                    <Image
-                      className="h-38 w-full object-contain rounded-2xl cursor-pointer"
-                      src={item?.node?.image?.url}
-                      alt={item?.node?.title}
-                      width={500}
-                      height={300}
-                      sizes="(max-width: 640px) 90vw, 100vw"
-                      loading="lazy"
-                    />
-                  </div>
-                </Link>
-                <div className="flex-1 bg-white p-6 flex flex-col justify-between">
-                  <div className="flex-1">
-                    <Link href={`/blogs/${item?.node?.slug}`} passHref>
-                      <p className="text-lg font-semibold text-gray-900 cursor-pointer font-heading">
-                        {item?.node?.title}
-                      </p>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="flex justify-center space-x-4 text-center mt-10">
-            {hasPreviousPage ? (
-              <Link
-                className="my-8 rounded-xl w-44 py-4 px-6 bg-brandBlue font-qs font-semibold text-white"
-                href={`/blogs/page/${currentPageNumber - 1}`}
-              >
-                {"< "}Previous page
-              </Link>
-            ) : null}
-            {hasNextPage ? (
-              <Link
-                className="my-8 rounded-xl py-4 w-44 px-6 bg-brandBlue font-qs font-semibold text-white"
-                href={`/blogs/page/${currentPageNumber + 1}`}
-              >
-                Next page {">"}
-              </Link>
-            ) : null}
-          </div>
-          <div className="text-center font-qs text-xl font-semibold">
-            Page: {currentPageNumber}
-          </div>
-        </div>
+      <BlogsHeader defaultQuery={q} onSearch={search}>
+        {q && (
+          <p className="text-[13px] text-[#374151] sm:text-base">
+            {!result
+              ? "Searching…"
+              : `${result.total} ${result.total === 1 ? "result" : "results"} for “${q}”`}
+          </p>
+        )}
+      </BlogsHeader>
+      {/* Previous results stay visible and fade while the next set loads. */}
+      <div
+        ref={resultsRef}
+        className={`scroll-mt-24 transition-opacity duration-200 ${
+          loading ? "opacity-50" : "opacity-100"
+        }`}
+      >
+        <BlogGrid posts={posts} />
+        <Pagination
+          current={q ? searchPage : currentPageNumber}
+          total={pages}
+          query={q}
+        />
       </div>
     </div>
   );
@@ -136,29 +169,16 @@ export default BlogList;
 export async function getStaticProps({ params }) {
   const query = gql`
     query blogPageQuery($limit: Int!, $offset: Int!) {
-      blogsConnection(orderBy: publishedOn_DESC, first: $limit, skip: $offset) {
+      blogsConnection: stagingBlogsConnection(orderBy: publishedOn_DESC, first: $limit, skip: $offset) {
         blogs: edges {
           node {
-            id
-            title
-            publishedOn
-            slug
-            image {
-              url
-            }
-            teacher {
-              slug
-              name
-              id
-              image {
-                url
-              }
-            }
+            ${BLOG_CARD_FIELDS}
           }
         }
-        pageInfo {
-          hasNextPage
-          hasPreviousPage
+      }
+      total: stagingBlogsConnection {
+        aggregate {
+          count
         }
       }
     }
@@ -171,18 +191,19 @@ export async function getStaticProps({ params }) {
 
   // Use throttledFetch for the API call
   const {
-    blogsConnection: { blogs, pageInfo },
+    blogsConnection: { blogs },
+    total,
   } = await throttledFetch(
     fetchBlogs,
-    limit,
-    Number((params.page - 1) * limit)
+    BLOG_PAGE_SIZE,
+    Number((params.page - 1) * BLOG_PAGE_SIZE),
   );
 
   return {
     props: {
       currentPageNumber: Number(params.page),
+      totalPages: totalPagesFor(total.aggregate.count),
       blogs,
-      ...pageInfo,
     },
     revalidate: 180,
   };
@@ -191,7 +212,7 @@ export async function getStaticProps({ params }) {
 export const getStaticPaths = async () => {
   const query = gql`
     query {
-      blogsConnection {
+      blogsConnection: stagingBlogsConnection {
         aggregate {
           count
         }
@@ -220,7 +241,7 @@ export const getStaticPaths = async () => {
   const paths = [
     ...numberOfPages({
       total: blogsConnection.aggregate.count,
-      limit,
+      limit: BLOG_PAGE_SIZE,
     }),
   ].map((page) => ({
     params: { page: String(page) },

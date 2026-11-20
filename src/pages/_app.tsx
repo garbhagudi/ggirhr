@@ -3,6 +3,7 @@ import "../styles/globals.css";
 import "../styles/caoursel.css";
 import Header from "components/header/header";
 import Footer from "components/footer/footer";
+import ReadyToGetStarted from "sections/Home/ReadyToGetStarted";
 import SalesIQ from "components/SalesIQ";
 import FloatPhone from "components/floatPhone";
 import TagManager from "react-gtm-module";
@@ -11,16 +12,33 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Loading from "components/loading";
 
+// Redesigned pages render the "Ready to get started?" footer section
+// (sections/Home/ReadyToGetStarted) in place of the global Footer.
+const REDESIGNED_FOOTER_ROUTES = [
+  "/",
+  "/about",
+  "/contact",
+  "/blogs/page/[page]",
+  "/courses/[slug]",
+];
+
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [loading, setLoading] = React.useState(false);
+  const usesRedesignedFooter = REDESIGNED_FOOTER_ROUTES.includes(
+    router.pathname
+  );
 
   useEffect(() => {
     TagManager.initialize({ gtmId: "GTM-5462HX7" });
   }, []);
 
   useEffect(() => {
-    const start = () => {
+    // No full-screen loader for in-place updates (shallow, blog list ⇄ search).
+    const isBlogListing = (path: string) => path.startsWith("/blogs/page/");
+    const start = (url: string, { shallow }: { shallow: boolean }) => {
+      if (shallow) return;
+      if (isBlogListing(window.location.pathname) && isBlogListing(url)) return;
       setLoading(true);
     };
     const end = () => {
@@ -68,7 +86,13 @@ function MyApp({ Component, pageProps }) {
             <Component {...pageProps} />
           </main>
           <FloatPhone />
-          <Footer />
+          {usesRedesignedFooter ? (
+            <ReadyToGetStarted
+              showCta={router.pathname !== "/courses/[slug]"}
+            />
+          ) : (
+            <Footer />
+          )}
         </div>
       )}
     </div>
