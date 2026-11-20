@@ -87,7 +87,7 @@ const OurStoryRow = () => (
         minds to excel in their desired field. Our infertility courses aim to
         impart systematic elucidation of all facets of the ART treatments, such
         as IVF, featuring hands-on IVF training and fellowship programs in
-        Reproductive Medicine for postgraduate doctors. Moreover, GGIRHR's
+        Reproductive Medicine for postgraduate doctors. Moreover, GGIRHR&apos;s
         courses and programs are beneficial in providing insights into the
         ethical and economic implications of the treatment, empowering every
         individual with comprehensive knowledge.
